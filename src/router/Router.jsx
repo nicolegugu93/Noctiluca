@@ -7,6 +7,8 @@ import Home from "../pages/Home";
 import ContactButterfly from "../pages/ContactButterfly";
 import ButterflyGallery from "../pages/ButterflyGallery";
 import ButterflyMembers from "../pages/ButterflyMembers";
+import ButterflyDetail from "../pages/ButterflyDetail";
+
 
 const routerButterfly =createBrowserRouter ([{
     path:"/",
