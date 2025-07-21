@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "api-fake": "json-server --watch server/butterfly.json"
+    "api-fake": "json-server --watch server/butterfly.json --port 3002"
   },
   "dependencies": {
     "d3-geo": "^3.1.1",
