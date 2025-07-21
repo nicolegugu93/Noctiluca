@@ -112,5 +112,42 @@
       "Conservación": "LC; muy común"
     }
   ]
+},
+    {
+  [
+  "familia":"Papilionidae (colas de golondrina)", 
+  "butterfly":{
+      "id": "1.1",
+      "Nombre": "Cola de golondrina (Papilio machaon)",
+      "Distribución": "Europa: España, Portugal, Francia, Alemania, Italia, Suiza, Polonia, noroeste de Reino Unido (Norfolk), Escandinavia (algunas zonas); también presente en Asia y América del Norte",
+      "Ubicación en Europa": "España, Francia, Alemania, Italia, Suiza, Polonia, Reino Unido (muy limitada al SE), Suecia, Noruega, Finlandia",
+      "Hábitat": "Praderas, bordes de cultivos, montañas (hasta ~3 000 m), zonas rurales y subalpinas :contentReference[oaicite:1]{index=1}",
+      "Morfología": "Envergadura 55–88 mm; fondo amarillo crema con venación negra; colas en alas posteriores y ocelos rojos y azulados :contentReference[oaicite:2]{index=2}",
+      "Ciclo de vida": "De 1 a 3 generaciones según latitud; vuelos entre febrero‑octubre; crisálidas verdes o marrones según desarrollo :contentReference[oaicite:3]{index=3}",
+      "Alimentación": "Larvas en umbelíferas (zanahoria, hinojo, perejil) y rutáceas; adultos liban néctar de floraciones variadas y fruta fermentada :contentReference[oaicite:4]{index=4}",
+      "Conservación": "LC (Least Concern, IUCN); especie común aunque declinante localmente por pesticidas y pérdida de plantas hospederas :contentReference[oaicite:5]{index=5}"
+    },
+    {
+      "id": "1.2",
+      "Nombre": "Cola de golondrina meridional (Iphiclides feisthamelii)",
+      "Distribución": "Europa: sur de España, Portugal, sur de Francia; también Marruecos, Argelia, Túnez, sur de Italia/Serbia :contentReference[oaicite:6]{index=6}",
+      "Ubicación en Europa": "España (incluida Andalucía, Cataluña), Portugal, sur de Francia (región mediterránea)",
+      "Hábitat": "Pinares naturalizados, encinares, tierras agrícolas abandonadas con Prunus; desde zonas litorales hasta montañas bajas :contentReference[oaicite:7]{index=7}",
+      "Morfología": "Envergadura 35–42 mm; fondo blanco o blanco‑amarillento con bandas negras; colas posteriores con escamas azul‑metálicas :contentReference[oaicite:8]{index=8}",
+      "Ciclo de vida": "2–3 generaciones anuales entre primavera y otoño; hembras ponen 1‑2 huevos; larvas sobre Prunus (almendro, melocotón, manzano, espino) :contentReference[oaicite:9]{index=9}",
+      "Alimentación": "Larvas en hojas de diversas Rosaceae (Prunus, Pyrus, Malus, Crataegus); adultos probables liban néctar y savia :contentReference[oaicite:10]{index=10}",
+      "Conservación": "LC (no amenazada globalmente); parece estable localmente aunque sujeta a cambio de uso del suelo :contentReference[oaicite:11]{index=11}"
+    },
+    {
+      "id": "1.3",
+      "Nombre": "Cola de golondrina escasa (Iphiclides podalirius)",
+      "Distribución": "Europa central y meridional (España, Francia, Italia, Austria, Alemania, Suiza, Polonia, Grecia); ausente o muy escasa en Reino Unido, Irlanda y Escandinavia :contentReference[oaicite:12]{index=12}",
+      "Ubicación en Europa": "España (principalmente mediterráneo), Francia, Italia, Austria, Alemania, Polonia, Suiza, Grecia; rarísima en Reino Unido/Ireland; ausente en Escandinavia",
+      "Hábitat": "Matorrales, márgenes de bosques, huertos, viñedos, laderas soleadas hasta ~2 000 m en Alpes :contentReference[oaicite:13]{index=13}",
+      "Morfología": "Envergadura 60–90 mm; fondo claro (amarillento o crema) con bandas negras longitudinales y cola posterior; ocelo azul‑rojo en margén :contentReference[oaicite:14]{index=14}",
+      "Ciclo de vida": "1 generación en Europa central/norte (mayo-julio); 2–3 generaciones en sur de Europa (marzo‑octubre); huevos aislados; pupas verdes o marrones según época :contentReference[oaicite:15]{index=15}",
+      "Alimentación": "Larvas comen Prunus (espino negro, ciruelo, almendro), Malus, Pyrus, Crataegus; adultos néctar de flores como buddleia, cardos, Lantana, etc. :contentReference[oaicite:16]{index=16}",
+      "Conservación": "LC globalmente, aunque en algunos países (Austria) figura como NT; localmente protegida y en declive por pérdida de setos frutales y pesticidas :contentReference[oaicite:17]{index=17}"
+    }
+  ]
 }
-    
