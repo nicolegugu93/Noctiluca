@@ -14,12 +14,25 @@ const home = () => {
           Galería
         </button>
         </Link>
-        <Link to='src/pages/ContactButterfly.jsx'> {/* enlaza el link correcto */}
+        <Link to='src/pages/ContactButterfly.jsx'> 
         <button className='bg-[#e7d7b8] text-[#2c1f4a] px-6 py-2 rounded-full shadow-md hover:bg-[#fff3d4] transition'>
           Contacto
         </button>
         </Link>
       </div>
+      
+      {/* Línea decorativa abajo, opcional SVG */}
+      <div className="mt-10 w-full">
+        <hr className="border-t border-[#e7d7b8] opacity-30" />
+        {/* Aquí podrías poner un SVG decorativo si lo tienes exportado del Figma */}
+      </div>
+      <section className="bg-white p-6 max-w-4xl mx-auto my-8 rounded-xl shadow-md border">
+  <h2 className="text-2xl font-bold mb-4 text-gray-800">Sobre el proyecto</h2>
+  <p className="text-gray-700 leading-relaxed">
+    Las mariposas no solo embellecen nuestro mundo, sino que mantienen los ecosistemas en equilibrio. <strong>“Noctiluca”</strong> documenta su presencia en Europa, promoviendo la observación, conservación y digitalización del conocimiento natural.
+  </p>
+</section>
+
       </section>
   );
 };
