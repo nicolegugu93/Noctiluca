@@ -5,7 +5,8 @@ import ButterflyDetail from "../pages/ButterflyDetail";
 import Layout from "../layout/Layout";
 import Home from "../pages/Home";
 import ContactButterfly from "../pages/ContactButterfly";
-
+import ButterflyGallery from "../pages/ButterflyGallery";
+import ButterflyMembers from "../pages/ButterflyMembers";
 
 const routerButterfly =createBrowserRouter ([{
     path:"/",
@@ -30,6 +31,15 @@ const routerButterfly =createBrowserRouter ([{
      {
         path: "/contactbutterfly",
         element: <ContactButterfly/>
+    },
+    {
+        path: "/butterflygallery",
+        element: <ButterflyGallery/>
+    },
+
+    {
+        path: "/butterflymembers",
+        element: <ButterflyMembers/>
     },
 
     ]
