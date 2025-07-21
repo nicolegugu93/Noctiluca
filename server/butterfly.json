@@ -1,5 +1,116 @@
 {
-    "butterfly" : [
-
-    ]
+  "familia": "Nymphalidae (alas cepillo)",
+  "butterfly": [
+       {
+      "id": "1",
+      "Nombre": "Vanesa atalanta (Almirante rojo)",
+      "Distribución": "Europa (desde España, Portugal, Francia, Alemania, Reino Unido hasta Escandinavia), Norte de África, Asia occidental",
+      "Ubicación en Europa": "Presente en España, Francia, Italia, Reino Unido, Alemania, Suecia, Noruega, Finlandia; migraciones hacia el norte en primavera y vuelta al sur en otoño",
+      "Hábitat": "Bosques claros, jardines, márgenes; larvas en ortigas",
+      "Morfología": "Alas negras con bandas rojas y blancas, envergadura 45–60 mm; forma invernal más oscura",
+      "Ciclo de vida": "Varias generaciones en sur de Europa; hibernación de adultos; huevos en Urtica, larvas espinosas, pupación variable",
+      "Alimentación": "Larvas en ortigas; adultos en néctar, savia, fruta",
+      "Conservación": "LC; migraciones sensibles al cambio climático"
+    },
+    {
+      "id": "2",
+      "Nombre": "Vanesa de los cardos (Painted lady)",
+      "Distribución": "Europa (España, Francia, Reino Unido, Alemania, Suecia, Italia, Hungría, Polonia, Rusia), Asia, África",
+      "Ubicación en Europa": "España, Portugal, Francia, Reino Unido, Irlanda, Alemania, Italia, Suecia, hasta Islandia; migraciones masivas primavera-otoño",
+      "Hábitat": "Praderas, campos, jardines, bordes semiáridos, montañas",
+      "Morfología": "Envergadura 51–73 mm; alas naranja con bandas negras y blancas; reverso grisáceo",
+      "Ciclo de vida": "Múltiples generaciones; huevos en Asteraceae; oruga, pupa metálica",
+      "Alimentación": "Larvas en Carduus, Cirsium; adultos en néctar variado",
+      "Conservación": "LC; migración afectada por clima"
+    },
+    {
+      "id": "3",
+      "Nombre": "Mariposa del abeto (Camberwell beauty)",
+      "Distribución": "Europa (España norte, Francia, Alemania, países escandinavos pero ausente en Reino Unido/Ireland)",
+      "Ubicación en Europa": "España (norte), Francia, Alemania, Suecia, Noruega, Finlandia, Polonia; rara en Reino Unido",
+      "Hábitat": "Bosques caducifolios, ribereños, alamedas",
+      "Morfología": "Envergadura 60–80 mm; alas marrón oscuro con borde amarillo pálido",
+      "Ciclo de vida": "Generación anual; hibernación de adultos; larvas gregarias",
+      "Alimentación": "Larvas en sauces, álamos, abedules; adultos en savia y fruta podre",
+      "Conservación": "LC; raro localmente, protegido en algunos países"
+    },
+    {
+      "id": "4",
+      "Nombre": "Mariposa del ortigal (Small tortoiseshell)",
+      "Distribución": "Toda Europa (desde Portugal y España hasta Escandinavia y Rusia)",
+      "Ubicación en Europa": "España, Francia, Reino Unido, Irlanda, Alemania, Suecia, Rusia, Polonia",
+      "Hábitat": "Orillas, praderas, jardines con ortigas",
+      "Morfología": "Anverso naranja con manchas negras/azules, 40–60 mm",
+      "Ciclo de vida": "2–3 generaciones; hibernación adulta",
+      "Alimentación": "Larvas en Urtica dioica; adultos en néctar, savia",
+      "Conservación": "LC, en declive en Reino Unido"
+    },
+    {
+      "id": "5",
+      "Nombre": "Mariposa pavo real (Peacock)",
+      "Distribución": "Toda Europa, desde Reino Unido, Irlanda, Francia, Alemania, España, hasta Rusia y Asia",
+      "Ubicación en Europa": "España, Francia, Reino Unido, Irlanda, Alemania, Polonia, Suecia, Rusia",
+      "Hábitat": "Jardines, bosques claros, praderas",
+      "Morfología": "Alas rojizas con grandes ocelos, 50–55 mm",
+      "Ciclo de vida": "2 generaciones (en sur Europa), 1 en norte; hibernación adulta",
+      "Alimentación": "Larvas en ortigas; adultos en néctar, savia, fruta podrida",
+      "Conservación": "LC; rango estable o en expansión"
+    },
+    {
+      "id": "6",
+      "Nombre": "Mariposa del sauce (Large tortoiseshell)",
+      "Distribución": "Europa central y meridional (España, Francia, Italia, Austria, Hungría, Rusia), ausente en norte y Reino Unido",
+      "Ubicación en Europa": "España (Mediterráneo), Francia, Italia, Austria, Eslovenia, Hungría, Rusia; rara en Reino Unido",
+      "Hábitat": "Bosques ribereños con sauces y álamos",
+      "Morfología": "Alas 60–70 mm, anaranjadas con borde oscuro",
+      "Ciclo de vida": "Una generación anual; hibernación adulta",
+      "Alimentación": "Larvas en Salix, Populus; adultos en savia, fruta",
+      "Conservación": "LC, pero localmente declinante"
+    },
+    {
+      "id": "7",
+      "Nombre": "Mariposa de los muros (Wall brown)",
+      "Distribución": "Europa (España, Francia, Reino Unido, Alemania, Suecia) hasta Asia Menor",
+      "Ubicación en Europa": "España, Francia, Reino Unido (sur), Alemania, Polonia, Suecia, Noruega, Grecia",
+      "Hábitat": "Praderas secas, muros, margenes; hasta 3 000 m",
+      "Morfología": "Envergadura 36–50 mm; anaranjado con ocelo en ala anterior",
+      "Ciclo de vida": "2–3 generaciones; orugas hibernan",
+      "Alimentación": "Larvas en gramíneas; adultos en néctar",
+      "Conservación": "LC"
+    },
+    {
+      "id": "8",
+      "Nombre": "Mariposa medioluto ibérica",
+      "Distribución": "Península Ibérica y sur de Francia (Valle del Ródano)",
+      "Ubicación en Europa": "España (toda la península), Portugal, sur de Francia (hasta Avignon)",
+      "Hábitat": "Praderas secas y floridas en calizas",
+      "Morfología": "Alas blancas y ocos negros en cuadrícula, 50–60 mm",
+      "Ciclo de vida": "Una generación (junio–julio); orugas hibernan",
+      "Alimentación": "Larvas en gramíneas; adultos en néctar",
+      "Conservación": "LC, endémica; sensible a alteraciones de praderas"
+    },
+    {
+      "id": "9",
+      "Nombre": "Mariposa medioluto norteña (Marbled white)",
+      "Distribución": "Europa central y sur (Reino Unido, Francia, Alemania, Polonia, Rusia)",
+      "Ubicación en Europa": "España, Francia, Reino Unido, Alemania, Polonia, Rusia, Suecia",
+      "Hábitat": "Praderas secas y claros",
+      "Morfología": "Alas blancas con manchas negras, 50–56 mm",
+      "Ciclo de vida": "Una generación (junio–agosto); orugas hibernan",
+      "Alimentación": "Larvas en gramíneas; adultos en néctar",
+      "Conservación": "LC"
+    },
+    {
+      "id": "10",
+      "Nombre": "Mariposa de los prados (Meadow brown)",
+      "Distribución": "Europa (Portugal, España, Reino Unido, Francia, Alemania, Suecia, Rusia)",
+      "Ubicación en Europa": "España, Portugal, Reino Unido, Francia, Alemania, Suecia, Finlandia, Rusia",
+      "Hábitat": "Praderas, bordes herbáceos",
+      "Morfología": "Envergadura 45–55 mm; alas marrones con ocelos",
+      "Ciclo de vida": "1–2 generaciones (dependiendo de latitud); orugas hibernan",
+      "Alimentación": "Larvas en gramíneas; adultos en néctar",
+      "Conservación": "LC; muy común"
+    }
+  ]
 }
+    
