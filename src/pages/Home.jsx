@@ -18,6 +18,11 @@ const home = () => {
           Contacto
         </button>
         </Link>
+        <Link to="/butterflydetail:id">
+        <button className='bg-[#e7d7b8] text-[#2c1f4a] px-6 py-2 rounded-full shadow-md hover:bg-[#fff3d4] transition'>
+          Detail 
+        </button>
+        </Link>
       </div>
       
       {/* Línea decorativa abajo, opcional SVG */}
