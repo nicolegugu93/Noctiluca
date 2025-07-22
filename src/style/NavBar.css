@@ -1,16 +1,23 @@
+/* Contenedor general */
+.app-container {
+  font-family: sans-serif;
+  min-height: 100vh;
+}
+
+/* ---------------- NAVBAR ---------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: linear-gradient(to bottom, #1e1b4b00, #4d1d9500);
+  background: linear-gradient(to bottom, #1e1b4b, #4c1d95);
   position: relative;
   z-index: 10;
 }
 
 .navbar-logo {
   font-size: 1.5rem;
-  color: #F5E0A3;
+  color: #f5e8c7;
   font-weight: bold;
 }
 
@@ -19,7 +26,7 @@
   font-size: 2rem;
   background: none;
   border: none;
-  color: #F5E0A3;
+  color: #f5e8c7;
   cursor: pointer;
 }
 
@@ -33,20 +40,58 @@
   color: #1e1b4b;
   font-weight: 600;
   padding: 0.6rem 1.2rem;
-  border: none;
   border-radius: 9999px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
   text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
 }
 
 .navbar-button:hover {
   background-color: #ffefb8;
-  box-shadow: 0 0 10px rgba(255, 239, 184, 0.6);
+  box-shadow: 0 0 8px rgba(255, 239, 184, 0.6);
 }
 
-/* Responsive para móviles */
+/* ---------------- SECCIÓN GALERÍA ---------------- */
+.galeria-section {
+  padding: 2rem;
+  position: relative;
+}
+
+.galeria-extra-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ala-mariposa {
+  width: 100px;
+  opacity: 0.85;
+}
+
+.galeria-buttons-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.galeria-button {
+  background-color: #f5e8c7;
+  color: #1e1b4b;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.galeria-button:hover {
+  background-color: #ffefb8;
+  box-shadow: 0 0 8px rgba(255, 239, 184, 0.6);
+}
+
+/* ---------------- RESPONSIVE ---------------- */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -67,5 +112,10 @@
     width: 100%;
     text-align: left;
   }
+
+  .galeria-extra-buttons {
+    display: none;
+  }
 }
+
 
