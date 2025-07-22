@@ -7,7 +7,7 @@ import Home from "../pages/Home";
 import ContactButterfly from "../pages/ContactButterfly";
 
 
-const routerButterfly =createBrowserRouter ([{
+export const routerButterfly =createBrowserRouter ([{
     path:"/",
     element: <Layout/>,
     children: [
@@ -34,5 +34,5 @@ const routerButterfly =createBrowserRouter ([{
 
     ]
 }])
-export default routehrButterfly;
+
 
