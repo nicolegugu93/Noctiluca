@@ -14,7 +14,7 @@ const home = () => {
           Galería
         </button>
         </Link>
-        <Link to='src/pages/ContactButterfly.jsx'> {/* enlaza el link correcto */}
+        <Link to='src/pages/ContactButterfly.jsx'> 
         <button className='bg-[#e7d7b8] text-[#2c1f4a] px-6 py-2 rounded-full shadow-md hover:bg-[#fff3d4] transition'>
           Contacto
         </button>
