@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import EditButterfly from "../pages/EditButterfly";
 import CreateButterfly from "../pages/CreateButterfly";
-import ButterflyDetail from "../pages/ButterflyDetail";
 import Layout from "../layout/Layout";
 import Home from "../pages/Home";
 import ContactButterfly from "../pages/ContactButterfly";
+import ButterflyGallery from "../pages/ButterflyGallery";
+import ButterflyMembers from "../pages/ButterflyMembers";
+import ButterflyDetail from "../pages/ButterflyDetail";
 
 
 const routerButterfly =createBrowserRouter ([{
@@ -30,6 +32,15 @@ const routerButterfly =createBrowserRouter ([{
      {
         path: "/contactbutterfly",
         element: <ContactButterfly/>
+    },
+    {
+        path: "/butterflygallery",
+        element: <ButterflyGallery/>
+    },
+
+    {
+        path: "/butterflymembers",
+        element: <ButterflyMembers/>
     },
 
     ]
