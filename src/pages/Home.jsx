@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const home = () => {
+const Home = () => {
   return (
     <section className='min-h-screen bg-gradient-to-b from-[#2c1f4a] to-[#6b4b77] text-center text-white flex flex-col justify-center items-center px-4'>
       <p className='text-sm mb-2'>Un cuaderno de campo sobre las mariposas de Europa</p>
-      <img src="../public\logo-noctiluca.png" alt="Logo Noctiluca" className="w-1 h-auto" />
+      <img src="/logo-noctiluca.png" alt="Logo Noctiluca" className="w-1 h-auto" />
       <p className='text-md max-w-md mb-6 text-[#f0e8d4]'>Explora el mundo místico de las mariposas europeas, su belleza y su rol esencial como polinizadoras</p>
       <div className='flex gap-4'>
         <Link to="/butterflygallery">
@@ -18,13 +18,7 @@ const home = () => {
           Contacto
         </button>
         </Link>
-        <Link to="/butterflydetail:id">
-        <button className='bg-[#e7d7b8] text-[#2c1f4a] px-6 py-2 rounded-full shadow-md hover:bg-[#fff3d4] transition'>
-          Detail 
-        </button>
-        </Link>
       </div>
-      
       {/* Línea decorativa abajo, opcional SVG */}
       <div className="mt-10 w-full">
         <hr className="border-t border-[#e7d7b8] opacity-30" />
@@ -41,4 +35,4 @@ const home = () => {
       </section>
   );
 };
-export default home;
+export default Home;
