@@ -9,7 +9,8 @@ import ButterflyMembers from "../pages/ButterflyMembers";
 import ButterflyDetail from "../pages/ButterflyDetail";
 
 
-const routerButterfly =createBrowserRouter ([{
+
+export const routerButterfly =createBrowserRouter ([{
     path:"/",
     element: <Layout/>,
     children: [
@@ -45,4 +46,5 @@ const routerButterfly =createBrowserRouter ([{
 
     ]
 }])
-export default routerButterfly;
+
+

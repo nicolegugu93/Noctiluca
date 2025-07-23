@@ -1,155 +1,352 @@
-[
-  {
-    "familia": "Nymphalidae (alas cepillo)",
-    "butterfly": [
-      {
-        "id": "1",
-        "Nombre": "Vanesa atalanta (Almirante rojo)",
-        "Distribución": "Europa (desde España, Portugal, Francia, Alemania, Reino Unido hasta Escandinavia), Norte de África, Asia occidental",
-        "Ubicación en Europa": "Presente en España, Francia, Italia, Reino Unido, Alemania, Suecia, Noruega, Finlandia; migraciones hacia el norte en primavera y vuelta al sur en otoño",
-        "Hábitat": "Bosques claros, jardines, márgenes; larvas en ortigas",
-        "Morfología": "Alas negras con bandas rojas y blancas, envergadura 45–60 mm; forma invernal más oscura",
-        "Ciclo de vida": "Varias generaciones en sur de Europa; hibernación de adultos; huevos en Urtica, larvas espinosas, pupación variable",
-        "Alimentación": "Larvas en ortigas; adultos en néctar, savia, fruta",
-        "Conservación": "LC; migraciones sensibles al cambio climático"
-      },
-      {
-        "id": "2",
-        "Nombre": "Vanesa de los cardos (Painted lady)",
-        "Distribución": "Europa (España, Francia, Reino Unido, Alemania, Suecia, Italia, Hungría, Polonia, Rusia), Asia, África",
-        "Ubicación en Europa": "España, Portugal, Francia, Reino Unido, Irlanda, Alemania, Italia, Suecia, hasta Islandia; migraciones masivas primavera-otoño",
-        "Hábitat": "Praderas, campos, jardines, bordes semiáridos, montañas",
-        "Morfología": "Envergadura 51–73 mm; alas naranja con bandas negras y blancas; reverso grisáceo",
-        "Ciclo de vida": "Múltiples generaciones; huevos en Asteraceae; oruga, pupa metálica",
-        "Alimentación": "Larvas en Carduus, Cirsium; adultos en néctar variado",
-        "Conservación": "LC; migración afectada por clima"
-      },
-      {
-        "id": "3",
-        "Nombre": "Mariposa del abeto (Camberwell beauty)",
-        "Distribución": "Europa (España norte, Francia, Alemania, países escandinavos pero ausente en Reino Unido/Ireland)",
-        "Ubicación en Europa": "España (norte), Francia, Alemania, Suecia, Noruega, Finlandia, Polonia; rara en Reino Unido",
-        "Hábitat": "Bosques caducifolios, ribereños, alamedas",
-        "Morfología": "Envergadura 60–80 mm; alas marrón oscuro con borde amarillo pálido",
-        "Ciclo de vida": "Generación anual; hibernación de adultos; larvas gregarias",
-        "Alimentación": "Larvas en sauces, álamos, abedules; adultos en savia y fruta podre",
-        "Conservación": "LC; raro localmente, protegido en algunos países"
-      },
-      {
-        "id": "4",
-        "Nombre": "Mariposa del ortigal (Small tortoiseshell)",
-        "Distribución": "Toda Europa (desde Portugal y España hasta Escandinavia y Rusia)",
-        "Ubicación en Europa": "España, Francia, Reino Unido, Irlanda, Alemania, Suecia, Rusia, Polonia",
-        "Hábitat": "Orillas, praderas, jardines con ortigas",
-        "Morfología": "Anverso naranja con manchas negras/azules, 40–60 mm",
-        "Ciclo de vida": "2–3 generaciones; hibernación adulta",
-        "Alimentación": "Larvas en Urtica dioica; adultos en néctar, savia",
-        "Conservación": "LC, en declive en Reino Unido"
-      },
-      {
-        "id": "5",
-        "Nombre": "Mariposa pavo real (Peacock)",
-        "Distribución": "Toda Europa, desde Reino Unido, Irlanda, Francia, Alemania, España, hasta Rusia y Asia",
-        "Ubicación en Europa": "España, Francia, Reino Unido, Irlanda, Alemania, Polonia, Suecia, Rusia",
-        "Hábitat": "Jardines, bosques claros, praderas",
-        "Morfología": "Alas rojizas con grandes ocelos, 50–55 mm",
-        "Ciclo de vida": "2 generaciones (en sur Europa), 1 en norte; hibernación adulta",
-        "Alimentación": "Larvas en ortigas; adultos en néctar, savia, fruta podrida",
-        "Conservación": "LC; rango estable o en expansión"
-      },
-      {
-        "id": "6",
-        "Nombre": "Mariposa del sauce (Large tortoiseshell)",
-        "Distribución": "Europa central y meridional (España, Francia, Italia, Austria, Hungría, Rusia), ausente en norte y Reino Unido",
-        "Ubicación en Europa": "España (Mediterráneo), Francia, Italia, Austria, Eslovenia, Hungría, Rusia; rara en Reino Unido",
-        "Hábitat": "Bosques ribereños con sauces y álamos",
-        "Morfología": "Alas 60–70 mm, anaranjadas con borde oscuro",
-        "Ciclo de vida": "Una generación anual; hibernación adulta",
-        "Alimentación": "Larvas en Salix, Populus; adultos en savia, fruta",
-        "Conservación": "LC, pero localmente declinante"
-      },
-      {
-        "id": "7",
-        "Nombre": "Mariposa de los muros (Wall brown)",
-        "Distribución": "Europa (España, Francia, Reino Unido, Alemania, Suecia) hasta Asia Menor",
-        "Ubicación en Europa": "España, Francia, Reino Unido (sur), Alemania, Polonia, Suecia, Noruega, Grecia",
-        "Hábitat": "Praderas secas, muros, margenes; hasta 3 000 m",
-        "Morfología": "Envergadura 36–50 mm; anaranjado con ocelo en ala anterior",
-        "Ciclo de vida": "2–3 generaciones; orugas hibernan",
-        "Alimentación": "Larvas en gramíneas; adultos en néctar",
-        "Conservación": "LC"
-      },
-      {
-        "id": "8",
-        "Nombre": "Mariposa medioluto ibérica",
-        "Distribución": "Península Ibérica y sur de Francia (Valle del Ródano)",
-        "Ubicación en Europa": "España (toda la península), Portugal, sur de Francia (hasta Avignon)",
-        "Hábitat": "Praderas secas y floridas en calizas",
-        "Morfología": "Alas blancas y ocos negros en cuadrícula, 50–60 mm",
-        "Ciclo de vida": "Una generación (junio–julio); orugas hibernan",
-        "Alimentación": "Larvas en gramíneas; adultos en néctar",
-        "Conservación": "LC, endémica; sensible a alteraciones de praderas"
-      },
-      {
-        "id": "9",
-        "Nombre": "Mariposa medioluto norteña (Marbled white)",
-        "Distribución": "Europa central y sur (Reino Unido, Francia, Alemania, Polonia, Rusia)",
-        "Ubicación en Europa": "España, Francia, Reino Unido, Alemania, Polonia, Rusia, Suecia",
-        "Hábitat": "Praderas secas y claros",
-        "Morfología": "Alas blancas con manchas negras, 50–56 mm",
-        "Ciclo de vida": "Una generación (junio–agosto); orugas hibernan",
-        "Alimentación": "Larvas en gramíneas; adultos en néctar",
-        "Conservación": "LC"
-      },
-      {
-        "id": "10",
-        "Nombre": "Mariposa de los prados (Meadow brown)",
-        "Distribución": "Europa (Portugal, España, Reino Unido, Francia, Alemania, Suecia, Rusia)",
-        "Ubicación en Europa": "España, Portugal, Reino Unido, Francia, Alemania, Suecia, Finlandia, Rusia",
-        "Hábitat": "Praderas, bordes herbáceos",
-        "Morfología": "Envergadura 45–55 mm; alas marrones con ocelos",
-        "Ciclo de vida": "1–2 generaciones (dependiendo de latitud); orugas hibernan",
-        "Alimentación": "Larvas en gramíneas; adultos en néctar",
-        "Conservación": "LC; muy común"
-      }
-    ]
-  },
-  {
-    "familia": "Papilionidae (colas de golondrina)",
-    "butterfly": [
-      {
-        "id": "1.1",
-        "Nombre": "Cola de golondrina (Papilio machaon)",
-        "Distribución": "Europa: España, Portugal, Francia, Alemania, Italia, Suiza, Polonia, noroeste de Reino Unido (Norfolk), Escandinavia (algunas zonas); también presente en Asia y América del Norte",
-        "Ubicación en Europa": "España, Francia, Alemania, Italia, Suiza, Polonia, Reino Unido (muy limitada al SE), Suecia, Noruega, Finlandia",
-        "Hábitat": "Praderas, bordes de cultivos, montañas (hasta ~3 000 m), zonas rurales y subalpinas",
-        "Morfología": "Envergadura 55–88 mm; fondo amarillo crema con venación negra; colas en alas posteriores y ocelos rojos y azulados",
-        "Ciclo de vida": "De 1 a 3 generaciones según latitud; vuelos entre febrero‑octubre; crisálidas verdes o marrones según desarrollo",
-        "Alimentación": "Larvas en umbelíferas (zanahoria, hinojo, perejil) y rutáceas; adultos liban néctar de floraciones variadas y fruta fermentada",
-        "Conservación": "LC (Least Concern, IUCN); especie común aunque declinante localmente por pesticidas y pérdida de plantas hospederas"
-      },
-      {
-        "id": "1.2",
-        "Nombre": "Cola de golondrina meridional (Iphiclides feisthamelii)",
-        "Distribución": "Europa: sur de España, Portugal, sur de Francia; también Marruecos, Argelia, Túnez, sur de Italia/Serbia",
-        "Ubicación en Europa": "España (incluida Andalucía, Cataluña), Portugal, sur de Francia (región mediterránea)",
-        "Hábitat": "Pinares naturalizados, encinares, tierras agrícolas abandonadas con Prunus; desde zonas litorales hasta montañas bajas",
-        "Morfología": "Envergadura 35–42 mm; fondo blanco o blanco‑amarillento con bandas negras; colas posteriores con escamas azul‑metálicas",
-        "Ciclo de vida": "2–3 generaciones anuales entre primavera y otoño; hembras ponen 1‑2 huevos; larvas sobre Prunus (almendro, melocotón, manzano, espino)",
-        "Alimentación": "Larvas en hojas de diversas Rosaceae (Prunus, Pyrus, Malus, Crataegus); adultos probables liban néctar y savia",
-        "Conservación": "LC (no amenazada globalmente); parece estable localmente aunque sujeta a cambio de uso del suelo"
-      },
-      {
-        "id": "1.3",
-        "Nombre": "Cola de golondrina escasa (Iphiclides podalirius)",
-        "Distribución": "Europa central y meridional (España, Francia, Italia, Austria, Alemania, Suiza, Polonia, Grecia); ausente o muy escasa en Reino Unido, Irlanda y Escandinavia",
-        "Ubicación en Europa": "España (principalmente mediterráneo), Francia, Italia, Austria, Alemania, Polonia, Suiza, Grecia; rarísima en Reino Unido/Ireland; ausente en Escandinavia",
-        "Hábitat": "Matorrales, márgenes de bosques, huertos, viñedos, laderas soleadas hasta ~2 000 m en Alpes",
-        "Morfología": "Envergadura 60–90 mm; fondo claro (amarillento o crema) con bandas negras longitudinales y cola posterior; ocelo azul‑rojo en margén",
-        "Ciclo de vida": "1 generación en Europa central/norte (mayo-julio); 2–3 generaciones en sur de Europa (marzo‑octubre); huevos aislados; pupas verdes o marrones según época",
-        "Alimentación": "Larvas comen Prunus (espino negro, ciruelo, almendro), Malus, Pyrus, Crataegus; adultos néctar de flores como buddleia, cardos, Lantana, etc.",
-        "Conservación": "LC globalmente, aunque en algunos países (Austria) figura como NT; localmente protegida y en declive por pérdida de setos frutales y pesticidas"
-      }
-    ]
-  }
-]
+    {
+        "butterfly": [
+            {
+                "id": "1",
+                "name": "Vanesa atalanta (Almirante rojo)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "Presente en España, Francia, Italia, Reino Unido, Alemania, Suecia, Noruega, Finlandia; migraciones hacia el norte en primavera y vuelta al sur en otoño",
+                "Hábitat": "Bosques claros, jardines, márgenes; larvas en ortigas",
+                "Morphology": "Alas negras con bandas rojas y blancas, envergadura 45–60 mm; forma invernal más oscura",
+                "Life": "Varias generaciones en sur de Europa; hibernación de adultos; huevos en Urtica, larvas espinosas, pupación variable",
+                "Feeding": "Larvas en ortigas; adultos en néctar, savia, fruta",
+                "Conservation": "LC; migraciones sensibles al cambio climático",
+                "image":""
+            },
+            {
+                "id": "2",
+                "name": "Vanesa de los cardos (Painted lady)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España, Portugal, Francia, Reino Unido, Irlanda, Alemania, Italia, Suecia, hasta Islandia; migraciones masivas primavera-otoño",
+                "Hábitat": "Praderas, campos, jardines, bordes semiáridos, montañas",
+                "Morphology": "Envergadura 51–73 mm; alas naranja con bandas negras y blancas; reverso grisáceo",
+                "Life": "Múltiples generaciones; huevos en Asteraceae; oruga, pupa metálica",
+                "Feeding": "Larvas en Carduus, Cirsium; adultos en néctar variado",
+                "Conservation": "LC; migración afectada por clima",
+                "image":""
+            },
+            {
+                "id": "3",
+                "name": "Mariposa del abeto (Camberwell beauty)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España (norte), Francia, Alemania, Suecia, Noruega, Finlandia, Polonia; rara en Reino Unido",
+                "Hábitat": "Bosques caducifolios, ribereños, alamedas",
+                "Morphology": "Envergadura 60–80 mm; alas marrón oscuro con borde amarillo pálido",
+                "Life": "Generación anual; hibernación de adultos; larvas gregarias",
+                "Feeding": "Larvas en sauces, álamos, abedules; adultos en savia y fruta podre",
+                "Conservation": "LC; raro localmente, protegido en algunos países",
+                "image":""
+            },
+            {
+                "id": "4",
+                "name": "Mariposa del ortigal (Small tortoiseshell)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España, Francia, Reino Unido, Irlanda, Alemania, Suecia, Rusia, Polonia",
+                "Hábitat": "Orillas, praderas, jardines con ortigas",
+                "Morphology": "Anverso naranja con manchas negras/azules, 40–60 mm",
+                "Life": "2–3 generaciones; hibernación adulta",
+                "Feeding": "Larvas en Urtica dioica; adultos en néctar, savia",
+                "Conservation": "LC, en declive en Reino Unido",
+                "image":""
+            },
+            {
+                "id": "5",
+                "name": "Mariposa pavo real (Peacock)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España, Francia, Reino Unido, Irlanda, Alemania, Polonia, Suecia, Rusia",
+                "Hábitat": "Jardines, bosques claros, praderas",
+                "Morphology": "Alas rojizas con grandes ocelos, 50–55 mm",
+                "Life": "2 generaciones (en sur Europa), 1 en norte; hibernación adulta",
+                "Feeding": "Larvas en ortigas; adultos en néctar, savia, fruta podrida",
+                "Conservation": "LC; rango estable o en expansión",
+                "image":""
+            },
+            {
+                "id": "6",
+                "name": "Mariposa del sauce (Large tortoiseshell)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España (Mediterráneo), Francia, Italia, Austria, Eslovenia, Hungría, Rusia; rara en Reino Unido",
+                "Hábitat": "Bosques ribereños con sauces y álamos",
+                "Morphology": "Alas 60–70 mm, anaranjadas con borde oscuro",
+                "Life": "Una generación anual; hibernación adulta",
+                "Feeding": "Larvas en Salix, Populus; adultos en savia, fruta",
+                "Conservation": "LC, pero localmente declinante",
+                "image":""
+            },
+            {
+                "id": "7",
+                "name": "Mariposa de los muros (Wall brown)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España, Francia, Reino Unido (sur), Alemania, Polonia, Suecia, Noruega, Grecia",
+                "Hábitat": "Praderas secas, muros, margenes; hasta 3 000 m",
+                "Morphology": "Envergadura 36–50 mm; anaranjado con ocelo en ala anterior",
+                "Life": "2–3 generaciones; orugas hibernan",
+                "Feeding": "Larvas en gramíneas; adultos en néctar",
+                "Conservation": "LC",
+                "image":""
+            },
+            {
+                "id": "8",
+                "name": "Mariposa medioluto ibérica",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España (toda la península), Portugal, sur de Francia (hasta Avignon)",
+                "Hábitat": "Praderas secas y floridas en calizas",
+                "Morphology": "Alas blancas y ocos negros en cuadrícula, 50–60 mm",
+                "Life": "Una generación (junio–julio); orugas hibernan",
+                "Feeding": "Larvas en gramíneas; adultos en néctar",
+                "Conservation": "LC, endémica; sensible a alteraciones de praderas",
+                "image":""
+            },
+            {
+                "id": "9",
+                "name": "Mariposa medioluto norteña (Marbled white)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España, Francia, Reino Unido, Alemania, Polonia, Rusia, Suecia",
+                "Hábitat": "Praderas secas y claros",
+                "Morphology": "Alas blancas con manchas negras, 50–56 mm",
+                "Life": "Una generación (junio–agosto); orugas hibernan",
+                "Feeding": "Larvas en gramíneas; adultos en néctar",
+                "Conservation": "LC",
+                "image":""
+            },
+            {
+                "id": "10",
+                "name": "Mariposa de los prados (Meadow brown)",
+                "family": "Nymphalidae (alas cepillo)",
+                "Location": "España, Portugal, Reino Unido, Francia, Alemania, Suecia, Finlandia, Rusia",
+                "Hábitat": "Praderas, bordes herbáceos",
+                "Morphology": "Envergadura 45–55 mm; alas marrones con ocelos",
+                "Life": "1–2 generaciones (dependiendo de latitud); orugas hibernan",
+                "Feeding": "Larvas en gramíneas; adultos en néctar",
+                "Conservation": "LC; muy común",
+                "image":""
+            },
+            {
+                "id": "11",
+                "name": "Cola de golondrina (Papilio machaon)",
+                "family": "Papilionidae (colas de golondrina)",
+                "Location": "España, Francia, Alemania, Italia, Suiza, Polonia, Reino Unido (muy limitada al SE), Suecia, Noruega, Finlandia",
+                "Hábitat": "Praderas, bordes de cultivos, montañas (hasta ~3 000 m), zonas rurales y subalpinas",
+                "Morphology": "Envergadura 55–88 mm; fondo amarillo crema con venación negra; colas en alas posteriores y ocelos rojos y azulados",
+                "Life": "De 1 a 3 generaciones según latitud; vuelos entre febrero‑octubre; crisálidas verdes o marrones según desarrollo",
+                "Feeding": "Larvas en umbelíferas (zanahoria, hinojo, perejil) y rutáceas; adultos liban néctar de floraciones variadas y fruta fermentada",
+                "Conservation": "LC (Least Concern, IUCN); especie común aunque declinante localmente por pesticidas y pérdida de plantas hospederas",
+                "image":""
+            },
+            {
+                "id": "12",
+                "name": "Cola de golondrina meridional (Iphiclides feisthamelii)",
+                "family": "Papilionidae (colas de golondrina)",
+                "Location": "España (incluida Andalucía, Cataluña), Portugal, sur de Francia (región mediterránea)",
+                "Hábitat": "Pinares naturalizados, encinares, tierras agrícolas abandonadas con Prunus; desde zonas litorales hasta montañas bajas",
+                "Morphology": "Envergadura 35–42 mm; fondo blanco o blanco‑amarillento con bandas negras; colas posteriores con escamas azul‑metálicas",
+                "Life": "2–3 generaciones anuales entre primavera y otoño; hembras ponen 1‑2 huevos; larvas sobre Prunus (almendro, melocotón, manzano, espino)",
+                "Feeding": "Larvas en hojas de diversas Rosaceae (Prunus, Pyrus, Malus, Crataegus); adultos probables liban néctar y savia",
+                "Conservation": "LC (no amenazada globalmente); parece estable localmente aunque sujeta a cambio de uso del suelo",
+                "image":""
+            },
+            {
+                "id": "13",
+                "name": "Cola de golondrina escasa (Iphiclides podalirius)",
+                "family": "Papilionidae (colas de golondrina)",
+                "Location": "España (principalmente mediterráneo), Francia, Italia, Austria, Alemania, Polonia, Suiza, Grecia; rarísima en Reino Unido/Ireland; ausente en Escandinavia",
+                "Hábitat": "Matorrales, márgenes de bosques, huertos, viñedos, laderas soleadas hasta ~2 000 m en Alpes",
+                "Morphology": "Envergadura 60–90 mm; fondo claro (amarillento o crema) con bandas negras longitudinales y cola posterior; ocelo azul‑rojo en margén",
+                "Life": "1 generación en Europa central/norte (mayo-julio); 2–3 generaciones en sur de Europa (marzo‑octubre); huevos aislados; pupas verdes o marrones según época",
+                "Feeding": "Larvas comen Prunus (espino negro, ciruelo, almendro), Malus, Pyrus, Crataegus; adultos néctar de flores como buddleia, cardos, Lantana, etc.",
+                "Conservation": "LC globalmente, aunque en algunos países (Austria) figura como NT; localmente protegida y en declive por pérdida de setos frutales y pesticidas",
+                "image":""
+            },
+            {
+                "id": "14",
+                "name": "Blanca de la col (Pieris rapae)",
+                "family": "Pieridae (blancas y amarillas)",
+                "Location": "Amplia, desde Mediterráneo hasta Escandinavia e incluso Rusia; muy común en todos los países europeos mencionados",
+                "Hábitat": "Campos cultivados, huertos, jardines, praderas, bordes de caminos",
+                "Morphology": "Envergadura 32–47 mm; alas blancas con una o dos manchas negras en alas anteriores",
+                "Life": "3–4 generaciones entre abril y octubre; pupa hiberna :contentReference[oaicite:1]{index=1}",
+                "Feeding": "Larvas en crucíferas (col, brócoli), adultos en néctar variado :contentReference[oaicite:2]{index=2}",
+                "Conservation": "LC; sin preocupación, pero plaga ocasional en cultivos :contentReference[oaicite:3]{index=3}",
+                "image":""
+            },
+            {
+                "id": "15",
+                "name": "Blanquita de la mostaza (Pieris napi)",
+                "family": "Pieridae (blancas y amarillas)",
+                "Location": "Prácticamente en todo el continente, desde la península ibérica hasta Escandinavia e incluso Rusia :contentReference[oaicite:4]{index=4}",
+                "Hábitat": "Herbazales húmedos, márgenes, claros boscosos, orillas de ríos; hasta 2 600 m en Alpes :contentReference[oaicite:5]{index=5}",
+                "Morphology": "Envergadura ~45–55 mm; alas blancas con nerviación verde en reverso",
+                "Life": "2–4 generaciones entre marzo y octubre; pupa hiberna :contentReference[oaicite:6]{index=6}",
+                "Feeding": "Larvas en Brassicaceae; adultos en néctar de flores silvestres :contentReference[oaicite:7]{index=7}",
+                "Conservation": "LC; común y no amenazada :contentReference[oaicite:8]{index=8}",
+                "image":""
+            },
+            {
+                "id": "16",
+                "name": "Amarilla de la alfalfa (Colias crocea)",
+                "family": "Pieridae (blancas y amarillas)",
+                "Location": "Sur y centro de Europa como residente; migrante regular en Reino Unido y Escandinavia :contentReference[oaicite:9]{index=9}",
+                "Hábitat": "Praderas, bordes, pastizales, dunas, hasta 2 500 m :contentReference[oaicite:10]{index=10}",
+                "Morphology": "Envergadura 50–60 mm; alas amarillas con borde oscuro, dimorfismo sexual leve",
+                "Life": "3 generaciones (abril–septiembre), migrante al norte; pupa a veces hiberna :contentReference[oaicite:11]{index=11}",
+                "Feeding": "Larvas en leguminosas y gramíneas; adultos en néctar de flores silvestres :contentReference[oaicite:12]{index=12}",
+                "Conservation": "LC según IUCN :contentReference[oaicite:13]{index=13}",
+                "image":""
+            },
+            {
+                "id": "17",
+                "name": "Mariposa amarilla limón (Gonepteryx rhamni)",
+                "family": "Pieridae (blancas y amarillas)",
+                "Location": "Muy extendida en toda Europa excepto extremo norte y Escocia; frecuentes en Inglaterra, Irlanda, Europa central y sur :contentReference[oaicite:14]{index=14}",
+                "Hábitat": "Setos de Rhamnus/Frangula, bosques mixtos, jardines urbanos, parques :contentReference[oaicite:15]{index=15}",
+                "Morphology": "Envergadura 60–74 mm; machos amarillos limón, hembras pálidas.",
+                "Life": "Una generación anual (vuela junio–agosto); pupa hiberna, adulto también hiberna y emerge en primavera :contentReference[oaicite:16]{index=16}",
+                "Feeding": "Larvas en Rhamnaceae (espinos, aladierno); adultos néctar de flores primaverales.",
+                "Conservation": "LC; sin amenazas actuales :contentReference[oaicite:17]{index=17}",
+                "image":""
+            },
+            {
+                "id": "18",
+                "name": "Punta anaranjada (Anthocharis cardamines)",
+                "family": "Pieridae (blancas y amarillas)",
+                "Location": "Presente en casi todo el continente, excepto extremo norte de Escandinavia y sur de España :contentReference[oaicite:18]{index=18}",
+                "Hábitat": "Bordes de bosques, praderas húmedas, setos, claros hasta 2 000 –2 600 m en montaña :contentReference[oaicite:19]{index=19}",
+                "Morphology": "Envergadura 52–60 mm; machos con puntas anaranjadas; hembras blancas con nerviación verde",
+                "Life": "Una generación en primavera (mar‑junio); pupa hiberna :contentReference[oaicite:20]{index=20}",
+                "Feeding": "Larvas en Brassicaceae (Cardamine, Alliaria, Armoracia); adultos en néctar primavera",
+                "Conservation": "LC :contentReference[oaicite:21]{index=21}",
+                "image":""
+            },
+            {
+                "id": "19",
+                "name": "Blanquita ibérica (Pontia daplidice)",
+                "family": "Pieridae (blancas y amarillas)",
+                "Location": "Sur y centro de Europa: mantiene poblaciones en España, Portugal, Francia, Italia, llega ocasionalmente a Reino Unido, Escandinavia meridional :contentReference[oaicite:22]{index=22}",
+                "Hábitat": "Praderas secas, áreas agrícolas, hasta montañas bajas",
+                "Morphology": "Envergadura 45–50 mm; alas blancas con manchas verdes en reverso",
+                "Life": "Varias generaciones primaverales y veraniegas; migraciones al norte en verano; pupa hiberna en zonas más frías",
+                "Feeding": "Larvas en Brassicaceae (Erysimum, Hirschfeldia); adultos néctar de flores silvestres",
+                "Conservation": "LC :contentReference[oaicite:23]{index=23}",
+                "image":""
+            },
+     {
+                "id": "20",
+                "name": "Azul común (Polyommatus icarus)",
+                "family": "Lycaenidae (azules y cobres)",
+                "Location": "Presente en Albania, Andorra, Austria, Bélgica, Reino Unido, Irlanda, España, Francia, Alemania, Italia, Países Bajos, Polonia, Suecia, Finlandia, Rusia, entre otros :contentReference[oaicite:1]{index=1}",
+                "Hábitat": "Praderas floridas, márgenes, claros boscosos, dunas, hasta 2 700 m :contentReference[oaicite:2]{index=2}",
+                "Morphology": "Envergadura 28–36 mm; machos azules lilas con borde oscuro y halo blanco; hembras marrón con manchas anaranjadas :contentReference[oaicite:3]{index=3}",
+                "Life": "2–3 generaciones (abril–octubre); oruga verde inverna; pupa sobre planta hospedera :contentReference[oaicite:4]{index=4}",
+                "Feeding": "Larvas en leguminosas (Lotus, Trifolium, Vicia); adultos en néctar de cardos, tréboles, escabiosas :contentReference[oaicite:5]{index=5}",
+                "Conservation": "LC (IUCN, 2023), tendencia decreciente pero aún común :contentReference[oaicite:6]{index=6}",
+                "image":""
+            },
+            {
+                "id": "21",
+                "name": "Azul celeste / Azul de Adonis (Lysandra bellargus)",
+                "family": "Lycaenidae (azules y cobres)",
+                "Location": "Frecuente en Reino Unido, Francia, España, Italia, Alemania, Austria y Suiza",
+                "Hábitat": "Praderas calizas y laderas floridas",
+                "Morphology": "Envergadura ~30–38 mm; brillante azul celeste en machos, hembras marrón grisáceo",
+                "Life": "Una generación (mayo‑julio); oruga inverna",
+                "Feeding": "Larvas en leguminosas (como Anthyllis, Lotus), adultos en néctar de flores silvestres",
+                "Conservation": "LC; estable, aunque en zonas intensamente gestionadas puede disminuir",
+                "image":""
+            },
+            {
+                "id": "22",
+                "name": "Azul de Escher (Polyommatus escheri)",
+                "family": "Lycaenidae (azules y cobres)",
+                "Location": "Frecuente en los Alpes (Francia, Suiza, Austria, Alemania, Italia)",
+                "Hábitat": "Praderas alpinas y laderas floridas a 1 200–2 500 m",
+                "Morphology": "Envergadura 32–40 mm; machos azules brillantes con halo oscuro, hembras marrón azulado",
+                "Life": "Una generación (junio–agosto); oruga inverna",
+                "Feeding": "Larvas en Lathyrus, Vicia; adultos en néctar alpino",
+                "Conservation": "LC; estable en zonas de montaña",
+                "image":""
+            },
+            {
+                "id": "23",
+                "name": "Cobre pequeño (Lycaena phlaeas)",
+                "family": "Lycaenidae (azules y cobres)",
+                "Location": "Presente en España, Reino Unido, Francia, Alemania, Suecia, Finlandia, Rusia :contentReference[oaicite:7]{index=7}",
+                "Hábitat": "Praderas secas, bordes, claros boscosos, pastos",
+                "Morphology": "Envergadura 25–35 mm; anverso naranja con borde oscuro y manchas negras, reverso pardo con puntos pequeños :contentReference[oaicite:8]{index=8}",
+                "Life": "3–4 generaciones (primavera‑otoño); pupa inverna y a veces larva también",
+                "Feeding": "Larvas en Polygonaceae (Rumex), adultos en néctar de flores silvestres :contentReference[oaicite:9]{index=9}",
+                "Conservation": "LC; muy común y extendida :contentReference[oaicite:10]{index=10}",
+                "image":""
+            },
+            {
+                "id": "24",
+                "name": "Cobre grande (Lycaena dispar)",
+                "family": "Lycaenidae (azules y cobres)",
+                "Location": "Presente en Francia, Alemania, Países Bajos, Polonia, Austria, Finlandia, Rusia; extinto en Reino Unido :contentReference[oaicite:11]{index=11}",
+                "Hábitat": "Humedales, marismas, pastos húmedos, bordes",
+                "Morphology": "Envergadura 38–50 mm; alas anaranjadas con banda oscura; reverso gris azulado :contentReference[oaicite:12]{index=12}",
+                "Life": "1 generación norte (junio-julio), 2 en sur; larva hiberna en segundo estadío :contentReference[oaicite:13]{index=13}",
+                "Feeding": "Larvas en Rumex spp.; adultos en néctar de flores húmedas :contentReference[oaicite:14]{index=14}",
+                "Conservation": "LC a nivel europeo (2023); poblaciones fragmentadas y declinantes; protegido bajo Directiva Hábitats :contentReference[oaicite:15]{index=15}",
+                "image":""
+            },
+            {
+                "id": "25",
+                "name": "Mariposa de rabo largo (Lampides boeticus)",
+                "family": "Lycaenidae (azules y cobres)",
+                "Location": "España, Italia, Grecia, sur de Francia; migrante ocasional más al norte",
+                "Hábitat": "Áreas abiertas, praderas, bordes agrícolas",
+                "Morphology": "Envergadura 28–38 mm; alas superiores marrón con estrías blancas, largas colas en alas posteriores",
+                "Life": "2–3 generaciones primavera–otoño; migrante",
+                "Feeding": "Larvas en Fabaceae; adultos en néctar variado",
+                "Conservation": "LC; común en su rango",
+                "image":""
+            },
+            {
+                "id": "26",
+                "name": "Saltadora de las coles (Thymelicus lineola)",
+                "family": "Hesperiidae (saltarinas)",
+                "Location": "España, Francia, Italia, Reino Unido (sur e Irlanda), Suecia, Noruega, Finlandia, Rusia, resto de Europa continental :contentReference[oaicite:1]{index=1}",
+                "Hábitat": "Praderas, bordes de cultivos, claros boscosos, zonas urbanas con hierba; prefiere áreas de césped sin cortar :contentReference[oaicite:2]{index=2}",
+                "Morphology": "Envergadura ~26–30 mm; antenas con punta negra; color marrón anaranjado uniforme :contentReference[oaicite:3]{index=3}",
+                "Life": "1 generación (mayo‑julio/agosto); huevo sobre vaina de gramínea; hibernación en estado larvario dentro del huevo o larva temprana :contentReference[oaicite:4]{index=4}",
+                "Feeding": "Larvas en Poaceae (Calamagrostis, Agropyron, Helictochloa, Bromus); adultos liban néctar de cardos y tréboles :contentReference[oaicite:5]{index=5}",
+                "Conservation": "LC; común y en expansión de rango hacia el norte; no amenazada :contentReference[oaicite:6]{index=6}",
+                "image":""
+            },
+            {
+                "id": "27",
+                "name": "Saltadora dorada (Thymelicus sylvestris)",
+                "family": "Hesperiidae (saltarinas)",
+                "Location": "Muy extendida en España, Francia, Reino Unido, Alemania, Suecia, Rusia; suele coexistir con T. lineola :contentReference[oaicite:7]{index=7}",
+                "Hábitat": "Praderas húmedas, herbazales, márgenes; prefiere zonas más húmedas que T. lineola :contentReference[oaicite:8]{index=8}",
+                "Morphology": "Muy similar a T. lineola; antenas doradas abajo (vs negras en lineola) :contentReference[oaicite:9]{index=9}",
+                "Life": "1 generación anual; huevos en vainas, hibernan como larva :contentReference[oaicite:10]{index=10}",
+                "Feeding": "Larvas en Poaceae (Holcus, Phleum, Phalaris); adultos en néctar diverso :contentReference[oaicite:11]{index=11}",
+                "Conservation": "LC; común, no amenazada",
+                "image":""
+            },
+            {
+                "id": "28",
+                "name": "Saltadora grisácea (Ochlodes sylvanus)",
+                "family": "Hesperiidae (saltarinas)",
+                "Location": "Presente ampliamente en España, Francia, Reino Unido, Alemania, Suecia, Rusia",
+                "Hábitat": "Praderas, bordes de caminos, claros boscosos húmedos",
+                "Morphology": "Envergadura 32–38 mm; alas marrón grisáceo con manchas y ocelo apical",
+                "Life": "1–2 generaciones entre primavera y otoño; hibernación como oruga",
+                "Feeding": "Larvas en gramíneas; adultos en néctar de flores silvestres",
+                "Conservation": "LC; especie común y estable",
+                "image":""
+            },
+            {
+                "id": "29",
+                "name": "Saltadora ibérica (Carcharodus baeticus)",
+                "family": "Hesperiidae (saltarinas)",
+                "Location": "España (Peninsula Ibérica), sur de Francia, Italia (incluida Sicilia), extinta en Suiza :contentReference[oaicite:12]{index=12}",
+                "Hábitat": "Laderas rocosas y secas, matorrales, bordes de arroyos, piornales hasta 2 500 m :contentReference[oaicite:13]{index=13}",
+                "Morphology": "Envergadura 25–30 mm; alas anteriores pardo rojizo jaspeado con manchas blancas; característica banda blanca continua en ala posterior :contentReference[oaicite:14]{index=14}",
+                "Life": "Varias generaciones (abril‑septiembre); larva inverna como oruga dentro de refugio vegetal :contentReference[oaicite:15]{index=15}",
+                "Feeding": "Larvas en Marrubium vulgare y Ballota spp.; adultos liban néctar variado :contentReference[oaicite:16]{index=16}",
+                "Conservation": "LC; no evaluada por IUCN globalmente, en España preocupacion menor y protegida en algunas regiones :contentReference[oaicite:17]{index=17}",
+                "image":""
+            }
+        ]
+    }
