@@ -7,7 +7,7 @@ import ContactButterfly from "../pages/ContactButterfly";
 import ButterflyGallery from "../pages/ButterflyGallery";
 import ButterflyMembers from "../pages/ButterflyMembers";
 import ButterflyDetail from "../pages/ButterflyDetail";
-
+import MapPreview from "../pages/MapPreview";
 
 
 export const routerButterfly =createBrowserRouter ([{
@@ -42,6 +42,11 @@ export const routerButterfly =createBrowserRouter ([{
     {
         path: "/butterflymembers",
         element: <ButterflyMembers/>
+    },
+
+    {
+        path: "/mappreview",
+        element: <MapPreview/>
     },
 
     ]
