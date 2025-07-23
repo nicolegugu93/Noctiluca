@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <section className='min-h-screen bg-gradient-to-b from-[#2c1f4a] to-[#6b4b77] text-center text-white flex flex-col justify-center items-center px-4'>
-      <p className='text-sm mb-2'>Un cuaderno de campo sobre las mariposas de Europa</p>
+      <p className='text-sm mb-2'>Documentar es conservar</p>
       <img src="/logo-noctiluca.png" alt="Logo Noctiluca" className="w-1 h-auto" />
-      <p className='text-md max-w-md mb-6 text-[#f0e8d4]'>Explora el mundo místico de las mariposas europeas, su belleza y su rol esencial como polinizadoras</p>
+      <p className='text-md max-w-md mb-6 text-[#f0e8d4]'>Un proyecto que combina ciencia, arte y amor por la biodiversidad</p>
       <div className='flex gap-4'>
         <Link to="/butterflygallery">
         <button className='bg-[#e7d7b8] text-[#2c1f4a] px-6 py-2 rounded-full shadow-md hover:bg-[#fff3d4] transition'>
@@ -27,10 +27,10 @@ const Home = () => {
       <section className="bg-white p-6 max-w-4xl mx-auto my-8 rounded-xl shadow-md border">
   <h2 className="text-2xl font-bold mb-4 text-gray-800">Sobre el proyecto</h2>
   <p className="text-gray-700 leading-relaxed">
-    Las mariposas no solo embellecen nuestro mundo, sino que mantienen los ecosistemas en equilibrio. <strong>“Noctiluca”</strong> documenta su presencia en Europa, promoviendo la observación, conservación y digitalización del conocimiento natural.
-  </p>
-  
-</section>
+  <strong>Noctiluca</strong> es un cuaderno de campo digital dedicado a las mariposas de Europa. Una experiencia visual y educativa que combina ciencia, arte y conservación. Desde los rincones más silvestres del continente, cada especie registrada revela una historia que merece ser contada.
+
+  Más que una página web, Noctiluca es una invitación a observar, aprender y proteger. Porque cada aleteo, por pequeño que parezca, es vital para el equilibrio del planeta.  </p>
+  </section>
 
       </section>
   );
