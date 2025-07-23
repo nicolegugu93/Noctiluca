@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import '../style/NavBar.css'
-import alaImg from "./assets/ala-mariposa.png";
+import alaImg from "../assets/logo-mariposa.png";
 
 
 function NavBar(){
