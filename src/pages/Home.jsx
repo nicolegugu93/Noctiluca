@@ -5,7 +5,7 @@ const home = () => {
   return (
     <section className='min-h-screen bg-gradient-to-b from-[#2c1f4a] to-[#6b4b77] text-center text-white flex flex-col justify-center items-center px-4'>
       <p className='text-sm mb-2'>Un cuaderno de campo sobre las mariposas de Europa</p>
-      <img src="/noctilucalogo.png" alt="Logo Noctiluca" className="w-1 h-auto" />
+      <img src="../public\logo-noctiluca.png" alt="Logo Noctiluca" className="w-1 h-auto" />
       <p className='text-md max-w-md mb-6 text-[#f0e8d4]'>Explora el mundo místico de las mariposas europeas, su belleza y su rol esencial como polinizadoras</p>
       <div className='flex gap-4'>
         <Link to="/butterflygallery">
@@ -35,6 +35,7 @@ const home = () => {
   <p className="text-gray-700 leading-relaxed">
     Las mariposas no solo embellecen nuestro mundo, sino que mantienen los ecosistemas en equilibrio. <strong>“Noctiluca”</strong> documenta su presencia en Europa, promoviendo la observación, conservación y digitalización del conocimiento natural.
   </p>
+  
 </section>
 
       </section>
