@@ -315,10 +315,10 @@ const Map = ({ butterfliesData = [] }) => {
         {dataToUse.length === 0 && (
           <div className="text-center mt-8 p-6 bg-yellow-50 rounded-lg border border-yellow-200">
             <div className="text-4xl mb-2">🦋</div>
-            <p className="text-gray-600" style={{ fontFamily: 'serif' }}>
+            <p className="text-gray-600" style={{ fontFamily: 'serif' , color:'black'}}>
               No hay datos de mariposas disponibles.
             </p>
-            <p className="text-gray-500 text-sm mt-1" style={{ fontFamily: 'serif' }}>
+            <p className="text-gray-500 text-sm mt-1" style={{ fontFamily: 'serif',color:'black' }}>
               Agrega nuevas mariposas para verlas en el mapa.
             </p>
           </div>

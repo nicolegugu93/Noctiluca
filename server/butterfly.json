@@ -1,297 +1,352 @@
-import React, { useState } from 'react';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import { X } from 'lucide-react';
-
-// URL del mapa del mundo en formato TopoJSON desde CDN público
-const geoUrl = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
-
-// Diccionario que mapea códigos ISO de países a nombres en español para mostrar
-const countryNames = {
-  FR: 'Francia',
-  ES: 'España',
-  IT: 'Italia',
-  DE: 'Alemania',
-  GB: 'Reino Unido',
-  PL: 'Polonia',
-  PT: 'Portugal', // Añadido Portugal que aparece en tu JSON
-};
-
-// Función para extraer códigos de país desde el campo Location del JSON
-const extractCountriesFromLocation = (location) => {
-  // Convertimos el texto a minúsculas para hacer búsquedas insensibles a mayúsculas
-  const locationLower = location.toLowerCase();
-  const countries = [];
-  
-  // Buscamos menciones de países en el texto de ubicación
-  if (locationLower.includes('españa') || locationLower.includes('peninsula')) {
-    countries.push('ES'); // Añadimos código ISO de España
-  }
-  if (locationLower.includes('portugal')) {
-    countries.push('PT'); // Añadimos código ISO de Portugal
-  }
-  if (locationLower.includes('francia') || locationLower.includes('france')) {
-    countries.push('FR'); // Añadimos código ISO de Francia
-  }
-  if (locationLower.includes('italia') || locationLower.includes('italy')) {
-    countries.push('IT'); // Añadimos código ISO de Italia
-  }
-  if (locationLower.includes('alemania') || locationLower.includes('germany')) {
-    countries.push('DE'); // Añadimos código ISO de Alemania
-  }
-  if (locationLower.includes('reino unido') || locationLower.includes('united kingdom')) {
-    countries.push('GB'); // Añadimos código ISO de Reino Unido
-  }
-  if (locationLower.includes('polonia') || locationLower.includes('poland')) {
-    countries.push('PL'); // Añadimos código ISO de Polonia
-  }
-  
-  return countries; // Devolvemos array con códigos ISO encontrados
-};
-
-// Datos de ejemplo por defecto en caso de que no se pasen datos externos
-const defaultButterfliesData = [
-  {
-    id: "1",
-    name: 'Swallowtail Europea',
-    family: 'Papilionidae',
-    Location: 'Francia, España, Italia, Alemania',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop',
-  },
-  {
-    id: "2", 
-    name: 'Adonis Blue',
-    family: 'Lycaenidae',
-    Location: 'Francia, España, Italia',
-    image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300&h=200&fit=crop',
-  },
-];
-
-// Componente principal Map que recibe datos de mariposas y función callback
-const Map = ({ butterfliesData = [], onButterflySelect }) => {
-  // Estado para controlar qué país está seleccionado y su modal
-  const [selectedCountry, setSelectedCountry] = useState(null);
-  // Estado para controlar qué país tiene el cursor encima (hover)
-  const [hoveredISO, setHoveredISO] = useState(null);
-
-  // Usamos datos externos si existen, sino usamos datos por defecto
-  const dataToUse = butterfliesData.length ? butterfliesData : defaultButterfliesData;
-
-  // Función que se ejecuta cuando se hace clic en un país del mapa
-  const handleCountryClick = (isoCode) => {
-    // Filtramos mariposas que existen en el país clickeado
-    const butterfliesInCountry = dataToUse.filter((butterfly) => {
-      // Extraemos países de la ubicación de cada mariposa
-      const countries = extractCountriesFromLocation(butterfly.Location || '');
-      // Verificamos si el país clickeado está en la lista de países de la mariposa
-      return countries.includes(isoCode);
-    });
-    
-    // Si hay mariposas en ese país, abrimos el modal
-    if (butterfliesInCountry.length > 0) {
-      setSelectedCountry({
-        id: isoCode, // Código ISO del país
-        name: countryNames[isoCode] || isoCode, // Nombre bonito del país
-        butterflies: butterfliesInCountry, // Array de mariposas en ese país
-      });
-    }
-  };
-
-  return (
-    // Contenedor principal con ancho máximo y centrado
-    <div className="w-full max-w-7xl mx-auto p-4">
-      {/* Contenedor del mapa con fondo degradado y sombra */}
-      <div
-        className="rounded-xl shadow-2xl relative overflow-hidden p-6"
-        style={{
-          // Fondo degradado beige/dorado que simula pergamino antiguo
-          background: 'linear-gradient(135deg, #F5F5DC 0%, #E6D7B8 30%, #D2B48C 100%)',
-        }}
-      >
-        {/* Textura de puntos sutil como fondo decorativo */}
-        <div
-          className="absolute inset-0 opacity-10 z-0"
-          style={{
-            // SVG inline que crea patrón de puntos pequeños
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-
-        {/* Título instructivo centrado */}
-        <div className="text-center mb-4 z-10 relative">
-          <p className="text-gray-700 text-lg font-medium" style={{ fontFamily: 'serif' }}>
-            Haz clic en un país para descubrir sus mariposas polinizadoras.
-          </p>
-        </div>
-
-        {/* Componente de mapa interactivo */}
-        <ComposableMap
-          projection="geoAzimuthalEqualArea" // Proyección que mantiene áreas proporcionales
-          projectionConfig={{ rotate: [-10, -52, 0], scale: 850 }} // Configuración para centrar en Europa
-          className="relative z-10"
-          style={{ maxHeight: '600px', width: '100%' }}
-        >
-          {/* Componente que maneja las geografías del mapa */}
-          <Geographies geography={geoUrl}>
-            {({ geographies }) =>
-              // Mapeamos cada país del archivo TopoJSON
-              geographies.map((geo) => {
-                // Obtenemos código ISO del país actual
-                const iso = geo.properties.ISO_A2;
-                
-                // Verificamos si hay mariposas documentadas en este país
-                const hasButterflies = dataToUse.some((butterfly) => {
-                  const countries = extractCountriesFromLocation(butterfly.Location || '');
-                  return countries.includes(iso);
-                });
-
-                // Verificamos si el mouse está sobre este país
-                const isHovered = hoveredISO === iso;
-
-                // Definimos estilos según si el país tiene mariposas o no
-                const styles = {
-                  // Estilo por defecto
-                  default: {
-                    fill: hasButterflies ? '#8B7355' : '#E5E7EB', // Marrón si tiene mariposas, gris si no
-                    stroke: hasButterflies ? '#6B5B47' : '#D1D5DB', // Borde más oscuro
-                    cursor: hasButterflies ? 'pointer' : 'not-allowed', // Cursor cambia según interactividad
-                    opacity: hasButterflies ? 1 : 0.6, // Más opaco si tiene mariposas
-                    transition: 'all 0.3s ease', // Transición suave para cambios
-                  },
-                  // Estilo cuando se pasa el mouse encima
-                  hover: {
-                    fill: hasButterflies ? '#D4AF37' : '#E5E7EB', // Dorado si tiene mariposas
-                    stroke: hasButterflies ? '#B8860B' : '#D1D5DB',
-                    cursor: hasButterflies ? 'pointer' : 'not-allowed',
-                  },
-                  // Estilo cuando se presiona
-                  pressed: {
-                    fill: '#B8860B', // Dorado más oscuro
-                  },
-                };
-
-                // Renderizamos cada país como componente Geography
-                return (
-                  <Geography
-                    key={geo.rsmKey} // Key único para React
-                    geography={geo} // Datos geográficos del país
-                    onClick={() => handleCountryClick(iso)} // Evento de clic
-                    onMouseEnter={() => setHoveredISO(iso)} // Evento cuando entra el mouse
-                    onMouseLeave={() => setHoveredISO(null)} // Evento cuando sale el mouse
-                    style={styles} // Aplicamos estilos definidos arriba
-                  />
-                );
-              })
-            }
-          </Geographies>
-        </ComposableMap>
-
-        {/* Modal que aparece cuando se selecciona un país */}
-        {selectedCountry && (
-          // Overlay de fondo oscuro semitransparente
-          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
-            {/* Contenedor principal del modal */}
-            <div className="rounded-xl max-w-4xl w-full max-h-96 overflow-auto shadow-2xl" style={{ backgroundColor: '#F5F5DC' }}>
-              {/* Header del modal con título y botón cerrar */}
-              <div
-                className="flex justify-between items-center p-6 border-b rounded-t-xl"
-                style={{ background: 'linear-gradient(135deg, #4A4458 0%, #3D3650 100%)' }}
-              >
-                {/* Título del modal mostrando nombre del país */}
-                <h3 className="text-xl font-bold text-yellow-300" style={{ fontFamily: 'serif' }}>
-                  Mariposas de {selectedCountry.name}
-                </h3>
-                {/* Botón X para cerrar modal */}
-                <button 
-                  onClick={() => setSelectedCountry(null)} 
-                  className="text-yellow-300 hover:text-white transition-colors"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-
-              {/* Contenido principal del modal */}
-              <div className="p-6">
-                {/* Texto descriptivo con cantidad de especies */}
-                <p className="text-gray-700 mb-6 text-center" style={{ fontFamily: 'serif' }}>
-                  Hemos documentado <strong>{selectedCountry.butterflies.length}</strong> especie
-                  {selectedCountry.butterflies.length !== 1 ? 's' : ''} de mariposa
-                  {selectedCountry.butterflies.length !== 1 ? 's' : ''} polinizadora
-                  {selectedCountry.butterflies.length !== 1 ? 's' : ''} en {selectedCountry.name}
-                </p>
-
-                {/* Grid responsive para mostrar las mariposas */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {/* Mapeamos cada mariposa del país seleccionado */}
-                  {selectedCountry.butterflies.map((butterfly) => (
-                    // Tarjeta individual de cada mariposa
-                    <div
-                      key={butterfly.id} // Key único usando ID de la mariposa
-                      className="border-2 rounded-lg overflow-hidden hover:shadow-xl transition-all cursor-pointer transform hover:scale-105"
-                      onClick={() => {
-                        // Si hay función callback, la ejecutamos con la mariposa seleccionada
-                        if (onButterflySelect) onButterflySelect(butterfly);
-                        // Cerramos el modal
-                        setSelectedCountry(null);
-                      }}
-                      style={{ borderColor: '#8B7355', backgroundColor: '#FEFEFE' }}
-                    >
-                      {/* Imagen de la mariposa */}
-                      <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-                        {butterfly.image ? (
-                          // Si tiene imagen, la mostramos
-                          <img 
-                            src={butterfly.image} 
-                            alt={butterfly.name} 
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              // Si la imagen falla al cargar, mostramos placeholder
-                              e.target.style.display = 'none';
-                              e.target.nextSibling.style.display = 'flex';
-                            }}
-                          />
-                        ) : null}
-                        {/* Placeholder cuando no hay imagen o falla al cargar */}
-                        <div 
-                          className="w-full h-full bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center"
-                          style={{ display: butterfly.image ? 'none' : 'flex' }}
-                        >
-                          <div className="text-center p-4">
-                            <div className="text-4xl mb-2">🦋</div>
-                            <p className="text-sm text-gray-600">Imagen no disponible</p>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Información de la mariposa debajo de la imagen */}
-                      <div className="p-4">
-                        {/* Nombre común de la mariposa */}
-                        <h4 className="font-bold text-purple-800 mb-2 text-center" style={{ fontFamily: 'serif' }}>
-                          {butterfly.name}
-                        </h4>
-                        
-                        {/* Información adicional si está disponible */}
-                        {butterfly.family && (
-                          <p className="text-sm text-gray-600 text-center mb-1" style={{ fontFamily: 'serif' }}>
-                            Familia: {butterfly.family}
-                          </p>
-                        )}
-                        
-                        {/* Mensaje para explorar más detalles */}
-                        <p className="text-xs text-center mt-2" style={{ color: '#8B7355', fontFamily: 'serif' }}>
-                          Toca para explorar →
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-// Exportamos el componente para uso en otros archivos
-export default Map;
+{
+  "butterfly": [
+      {
+          "id": "1",
+          "name": "Vanesa atalanta (Almirante rojo)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "Presente en España, Francia, Italia, Reino Unido, Alemania, Suecia, Noruega, Finlandia; migraciones hacia el norte en primavera y vuelta al sur en otoño",
+          "Hábitat": "Bosques claros, jardines, márgenes; larvas en ortigas",
+          "Morphology": "Alas negras con bandas rojas y blancas, envergadura 45–60 mm; forma invernal más oscura",
+          "Life": "Varias generaciones en sur de Europa; hibernación de adultos; huevos en Urtica, larvas espinosas, pupación variable",
+          "Feeding": "Larvas en ortigas; adultos en néctar, savia, fruta",
+          "Conservation": "LC; migraciones sensibles al cambio climático",
+          "image":""
+      },
+      {
+          "id": "2",
+          "name": "Vanesa de los cardos (Painted lady)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España, Portugal, Francia, Reino Unido, Irlanda, Alemania, Italia, Suecia, hasta Islandia; migraciones masivas primavera-otoño",
+          "Hábitat": "Praderas, campos, jardines, bordes semiáridos, montañas",
+          "Morphology": "Envergadura 51–73 mm; alas naranja con bandas negras y blancas; reverso grisáceo",
+          "Life": "Múltiples generaciones; huevos en Asteraceae; oruga, pupa metálica",
+          "Feeding": "Larvas en Carduus, Cirsium; adultos en néctar variado",
+          "Conservation": "LC; migración afectada por clima",
+          "image":""
+      },
+      {
+          "id": "3",
+          "name": "Mariposa del abeto (Camberwell beauty)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España (norte), Francia, Alemania, Suecia, Noruega, Finlandia, Polonia; rara en Reino Unido",
+          "Hábitat": "Bosques caducifolios, ribereños, alamedas",
+          "Morphology": "Envergadura 60–80 mm; alas marrón oscuro con borde amarillo pálido",
+          "Life": "Generación anual; hibernación de adultos; larvas gregarias",
+          "Feeding": "Larvas en sauces, álamos, abedules; adultos en savia y fruta podre",
+          "Conservation": "LC; raro localmente, protegido en algunos países",
+          "image":""
+      },
+      {
+          "id": "4",
+          "name": "Mariposa del ortigal (Small tortoiseshell)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España, Francia, Reino Unido, Irlanda, Alemania, Suecia, Rusia, Polonia",
+          "Hábitat": "Orillas, praderas, jardines con ortigas",
+          "Morphology": "Anverso naranja con manchas negras/azules, 40–60 mm",
+          "Life": "2–3 generaciones; hibernación adulta",
+          "Feeding": "Larvas en Urtica dioica; adultos en néctar, savia",
+          "Conservation": "LC, en declive en Reino Unido",
+          "image":""
+      },
+      {
+          "id": "5",
+          "name": "Mariposa pavo real (Peacock)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España, Francia, Reino Unido, Irlanda, Alemania, Polonia, Suecia, Rusia",
+          "Hábitat": "Jardines, bosques claros, praderas",
+          "Morphology": "Alas rojizas con grandes ocelos, 50–55 mm",
+          "Life": "2 generaciones (en sur Europa), 1 en norte; hibernación adulta",
+          "Feeding": "Larvas en ortigas; adultos en néctar, savia, fruta podrida",
+          "Conservation": "LC; rango estable o en expansión",
+          "image":""
+      },
+      {
+          "id": "6",
+          "name": "Mariposa del sauce (Large tortoiseshell)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España (Mediterráneo), Francia, Italia, Austria, Eslovenia, Hungría, Rusia; rara en Reino Unido",
+          "Hábitat": "Bosques ribereños con sauces y álamos",
+          "Morphology": "Alas 60–70 mm, anaranjadas con borde oscuro",
+          "Life": "Una generación anual; hibernación adulta",
+          "Feeding": "Larvas en Salix, Populus; adultos en savia, fruta",
+          "Conservation": "LC, pero localmente declinante",
+          "image":""
+      },
+      {
+          "id": "7",
+          "name": "Mariposa de los muros (Wall brown)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España, Francia, Reino Unido (sur), Alemania, Polonia, Suecia, Noruega, Grecia",
+          "Hábitat": "Praderas secas, muros, margenes; hasta 3 000 m",
+          "Morphology": "Envergadura 36–50 mm; anaranjado con ocelo en ala anterior",
+          "Life": "2–3 generaciones; orugas hibernan",
+          "Feeding": "Larvas en gramíneas; adultos en néctar",
+          "Conservation": "LC",
+          "image":""
+      },
+      {
+          "id": "8",
+          "name": "Mariposa medioluto ibérica",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España (toda la península), Portugal, sur de Francia (hasta Avignon)",
+          "Hábitat": "Praderas secas y floridas en calizas",
+          "Morphology": "Alas blancas y ocos negros en cuadrícula, 50–60 mm",
+          "Life": "Una generación (junio–julio); orugas hibernan",
+          "Feeding": "Larvas en gramíneas; adultos en néctar",
+          "Conservation": "LC, endémica; sensible a alteraciones de praderas",
+          "image":""
+      },
+      {
+          "id": "9",
+          "name": "Mariposa medioluto norteña (Marbled white)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España, Francia, Reino Unido, Alemania, Polonia, Rusia, Suecia",
+          "Hábitat": "Praderas secas y claros",
+          "Morphology": "Alas blancas con manchas negras, 50–56 mm",
+          "Life": "Una generación (junio–agosto); orugas hibernan",
+          "Feeding": "Larvas en gramíneas; adultos en néctar",
+          "Conservation": "LC",
+          "image":""
+      },
+      {
+          "id": "10",
+          "name": "Mariposa de los prados (Meadow brown)",
+          "family": "Nymphalidae (alas cepillo)",
+          "Location": "España, Portugal, Reino Unido, Francia, Alemania, Suecia, Finlandia, Rusia",
+          "Hábitat": "Praderas, bordes herbáceos",
+          "Morphology": "Envergadura 45–55 mm; alas marrones con ocelos",
+          "Life": "1–2 generaciones (dependiendo de latitud); orugas hibernan",
+          "Feeding": "Larvas en gramíneas; adultos en néctar",
+          "Conservation": "LC; muy común",
+          "image":""
+      },
+      {
+          "id": "11",
+          "name": "Cola de golondrina (Papilio machaon)",
+          "family": "Papilionidae (colas de golondrina)",
+          "Location": "España, Francia, Alemania, Italia, Suiza, Polonia, Reino Unido (muy limitada al SE), Suecia, Noruega, Finlandia",
+          "Hábitat": "Praderas, bordes de cultivos, montañas (hasta ~3 000 m), zonas rurales y subalpinas",
+          "Morphology": "Envergadura 55–88 mm; fondo amarillo crema con venación negra; colas en alas posteriores y ocelos rojos y azulados",
+          "Life": "De 1 a 3 generaciones según latitud; vuelos entre febrero‑octubre; crisálidas verdes o marrones según desarrollo",
+          "Feeding": "Larvas en umbelíferas (zanahoria, hinojo, perejil) y rutáceas; adultos liban néctar de floraciones variadas y fruta fermentada",
+          "Conservation": "LC (Least Concern, IUCN); especie común aunque declinante localmente por pesticidas y pérdida de plantas hospederas",
+          "image":""
+      },
+      {
+          "id": "12",
+          "name": "Cola de golondrina meridional (Iphiclides feisthamelii)",
+          "family": "Papilionidae (colas de golondrina)",
+          "Location": "España (incluida Andalucía, Cataluña), Portugal, sur de Francia (región mediterránea)",
+          "Hábitat": "Pinares naturalizados, encinares, tierras agrícolas abandonadas con Prunus; desde zonas litorales hasta montañas bajas",
+          "Morphology": "Envergadura 35–42 mm; fondo blanco o blanco‑amarillento con bandas negras; colas posteriores con escamas azul‑metálicas",
+          "Life": "2–3 generaciones anuales entre primavera y otoño; hembras ponen 1‑2 huevos; larvas sobre Prunus (almendro, melocotón, manzano, espino)",
+          "Feeding": "Larvas en hojas de diversas Rosaceae (Prunus, Pyrus, Malus, Crataegus); adultos probables liban néctar y savia",
+          "Conservation": "LC (no amenazada globalmente); parece estable localmente aunque sujeta a cambio de uso del suelo",
+          "image":""
+      },
+      {
+          "id": "13",
+          "name": "Cola de golondrina escasa (Iphiclides podalirius)",
+          "family": "Papilionidae (colas de golondrina)",
+          "Location": "España (principalmente mediterráneo), Francia, Italia, Austria, Alemania, Polonia, Suiza, Grecia; rarísima en Reino Unido/Ireland; ausente en Escandinavia",
+          "Hábitat": "Matorrales, márgenes de bosques, huertos, viñedos, laderas soleadas hasta ~2 000 m en Alpes",
+          "Morphology": "Envergadura 60–90 mm; fondo claro (amarillento o crema) con bandas negras longitudinales y cola posterior; ocelo azul‑rojo en margén",
+          "Life": "1 generación en Europa central/norte (mayo-julio); 2–3 generaciones en sur de Europa (marzo‑octubre); huevos aislados; pupas verdes o marrones según época",
+          "Feeding": "Larvas comen Prunus (espino negro, ciruelo, almendro), Malus, Pyrus, Crataegus; adultos néctar de flores como buddleia, cardos, Lantana, etc.",
+          "Conservation": "LC globalmente, aunque en algunos países (Austria) figura como NT; localmente protegida y en declive por pérdida de setos frutales y pesticidas",
+          "image":""
+      },
+      {
+          "id": "14",
+          "name": "Blanca de la col (Pieris rapae)",
+          "family": "Pieridae (blancas y amarillas)",
+          "Location": "Amplia, desde Mediterráneo hasta Escandinavia e incluso Rusia; muy común en todos los países europeos mencionados",
+          "Hábitat": "Campos cultivados, huertos, jardines, praderas, bordes de caminos",
+          "Morphology": "Envergadura 32–47 mm; alas blancas con una o dos manchas negras en alas anteriores",
+          "Life": "3–4 generaciones entre abril y octubre; pupa hiberna :contentReference[oaicite:1]{index=1}",
+          "Feeding": "Larvas en crucíferas (col, brócoli), adultos en néctar variado :contentReference[oaicite:2]{index=2}",
+          "Conservation": "LC; sin preocupación, pero plaga ocasional en cultivos :contentReference[oaicite:3]{index=3}",
+          "image":""
+      },
+      {
+          "id": "15",
+          "name": "Blanquita de la mostaza (Pieris napi)",
+          "family": "Pieridae (blancas y amarillas)",
+          "Location": "Prácticamente en todo el continente, desde la península ibérica hasta Escandinavia e incluso Rusia :contentReference[oaicite:4]{index=4}",
+          "Hábitat": "Herbazales húmedos, márgenes, claros boscosos, orillas de ríos; hasta 2 600 m en Alpes :contentReference[oaicite:5]{index=5}",
+          "Morphology": "Envergadura ~45–55 mm; alas blancas con nerviación verde en reverso",
+          "Life": "2–4 generaciones entre marzo y octubre; pupa hiberna :contentReference[oaicite:6]{index=6}",
+          "Feeding": "Larvas en Brassicaceae; adultos en néctar de flores silvestres :contentReference[oaicite:7]{index=7}",
+          "Conservation": "LC; común y no amenazada :contentReference[oaicite:8]{index=8}",
+          "image":""
+      },
+      {
+          "id": "16",
+          "name": "Amarilla de la alfalfa (Colias crocea)",
+          "family": "Pieridae (blancas y amarillas)",
+          "Location": "Sur y centro de Europa como residente; migrante regular en Reino Unido y Escandinavia :contentReference[oaicite:9]{index=9}",
+          "Hábitat": "Praderas, bordes, pastizales, dunas, hasta 2 500 m :contentReference[oaicite:10]{index=10}",
+          "Morphology": "Envergadura 50–60 mm; alas amarillas con borde oscuro, dimorfismo sexual leve",
+          "Life": "3 generaciones (abril–septiembre), migrante al norte; pupa a veces hiberna :contentReference[oaicite:11]{index=11}",
+          "Feeding": "Larvas en leguminosas y gramíneas; adultos en néctar de flores silvestres :contentReference[oaicite:12]{index=12}",
+          "Conservation": "LC según IUCN :contentReference[oaicite:13]{index=13}",
+          "image":""
+      },
+      {
+          "id": "17",
+          "name": "Mariposa amarilla limón (Gonepteryx rhamni)",
+          "family": "Pieridae (blancas y amarillas)",
+          "Location": "Muy extendida en toda Europa excepto extremo norte y Escocia; frecuentes en Inglaterra, Irlanda, Europa central y sur :contentReference[oaicite:14]{index=14}",
+          "Hábitat": "Setos de Rhamnus/Frangula, bosques mixtos, jardines urbanos, parques :contentReference[oaicite:15]{index=15}",
+          "Morphology": "Envergadura 60–74 mm; machos amarillos limón, hembras pálidas.",
+          "Life": "Una generación anual (vuela junio–agosto); pupa hiberna, adulto también hiberna y emerge en primavera :contentReference[oaicite:16]{index=16}",
+          "Feeding": "Larvas en Rhamnaceae (espinos, aladierno); adultos néctar de flores primaverales.",
+          "Conservation": "LC; sin amenazas actuales :contentReference[oaicite:17]{index=17}",
+          "image":""
+      },
+      {
+          "id": "18",
+          "name": "Punta anaranjada (Anthocharis cardamines)",
+          "family": "Pieridae (blancas y amarillas)",
+          "Location": "Presente en casi todo el continente, excepto extremo norte de Escandinavia y sur de España :contentReference[oaicite:18]{index=18}",
+          "Hábitat": "Bordes de bosques, praderas húmedas, setos, claros hasta 2 000 –2 600 m en montaña :contentReference[oaicite:19]{index=19}",
+          "Morphology": "Envergadura 52–60 mm; machos con puntas anaranjadas; hembras blancas con nerviación verde",
+          "Life": "Una generación en primavera (mar‑junio); pupa hiberna :contentReference[oaicite:20]{index=20}",
+          "Feeding": "Larvas en Brassicaceae (Cardamine, Alliaria, Armoracia); adultos en néctar primavera",
+          "Conservation": "LC :contentReference[oaicite:21]{index=21}",
+          "image":""
+      },
+      {
+          "id": "19",
+          "name": "Blanquita ibérica (Pontia daplidice)",
+          "family": "Pieridae (blancas y amarillas)",
+          "Location": "Sur y centro de Europa: mantiene poblaciones en España, Portugal, Francia, Italia, llega ocasionalmente a Reino Unido, Escandinavia meridional :contentReference[oaicite:22]{index=22}",
+          "Hábitat": "Praderas secas, áreas agrícolas, hasta montañas bajas",
+          "Morphology": "Envergadura 45–50 mm; alas blancas con manchas verdes en reverso",
+          "Life": "Varias generaciones primaverales y veraniegas; migraciones al norte en verano; pupa hiberna en zonas más frías",
+          "Feeding": "Larvas en Brassicaceae (Erysimum, Hirschfeldia); adultos néctar de flores silvestres",
+          "Conservation": "LC :contentReference[oaicite:23]{index=23}",
+          "image":""
+      },
+{
+          "id": "20",
+          "name": "Azul común (Polyommatus icarus)",
+          "family": "Lycaenidae (azules y cobres)",
+          "Location": "Presente en Albania, Andorra, Austria, Bélgica, Reino Unido, Irlanda, España, Francia, Alemania, Italia, Países Bajos, Polonia, Suecia, Finlandia, Rusia, entre otros :contentReference[oaicite:1]{index=1}",
+          "Hábitat": "Praderas floridas, márgenes, claros boscosos, dunas, hasta 2 700 m :contentReference[oaicite:2]{index=2}",
+          "Morphology": "Envergadura 28–36 mm; machos azules lilas con borde oscuro y halo blanco; hembras marrón con manchas anaranjadas :contentReference[oaicite:3]{index=3}",
+          "Life": "2–3 generaciones (abril–octubre); oruga verde inverna; pupa sobre planta hospedera :contentReference[oaicite:4]{index=4}",
+          "Feeding": "Larvas en leguminosas (Lotus, Trifolium, Vicia); adultos en néctar de cardos, tréboles, escabiosas :contentReference[oaicite:5]{index=5}",
+          "Conservation": "LC (IUCN, 2023), tendencia decreciente pero aún común :contentReference[oaicite:6]{index=6}",
+          "image":""
+      },
+      {
+          "id": "21",
+          "name": "Azul celeste / Azul de Adonis (Lysandra bellargus)",
+          "family": "Lycaenidae (azules y cobres)",
+          "Location": "Frecuente en Reino Unido, Francia, España, Italia, Alemania, Austria y Suiza",
+          "Hábitat": "Praderas calizas y laderas floridas",
+          "Morphology": "Envergadura ~30–38 mm; brillante azul celeste en machos, hembras marrón grisáceo",
+          "Life": "Una generación (mayo‑julio); oruga inverna",
+          "Feeding": "Larvas en leguminosas (como Anthyllis, Lotus), adultos en néctar de flores silvestres",
+          "Conservation": "LC; estable, aunque en zonas intensamente gestionadas puede disminuir",
+          "image":""
+      },
+      {
+          "id": "22",
+          "name": "Azul de Escher (Polyommatus escheri)",
+          "family": "Lycaenidae (azules y cobres)",
+          "Location": "Frecuente en los Alpes (Francia, Suiza, Austria, Alemania, Italia)",
+          "Hábitat": "Praderas alpinas y laderas floridas a 1 200–2 500 m",
+          "Morphology": "Envergadura 32–40 mm; machos azules brillantes con halo oscuro, hembras marrón azulado",
+          "Life": "Una generación (junio–agosto); oruga inverna",
+          "Feeding": "Larvas en Lathyrus, Vicia; adultos en néctar alpino",
+          "Conservation": "LC; estable en zonas de montaña",
+          "image":""
+      },
+      {
+          "id": "23",
+          "name": "Cobre pequeño (Lycaena phlaeas)",
+          "family": "Lycaenidae (azules y cobres)",
+          "Location": "Presente en España, Reino Unido, Francia, Alemania, Suecia, Finlandia, Rusia :contentReference[oaicite:7]{index=7}",
+          "Hábitat": "Praderas secas, bordes, claros boscosos, pastos",
+          "Morphology": "Envergadura 25–35 mm; anverso naranja con borde oscuro y manchas negras, reverso pardo con puntos pequeños :contentReference[oaicite:8]{index=8}",
+          "Life": "3–4 generaciones (primavera‑otoño); pupa inverna y a veces larva también",
+          "Feeding": "Larvas en Polygonaceae (Rumex), adultos en néctar de flores silvestres :contentReference[oaicite:9]{index=9}",
+          "Conservation": "LC; muy común y extendida :contentReference[oaicite:10]{index=10}",
+          "image":""
+      },
+      {
+          "id": "24",
+          "name": "Cobre grande (Lycaena dispar)",
+          "family": "Lycaenidae (azules y cobres)",
+          "Location": "Presente en Francia, Alemania, Países Bajos, Polonia, Austria, Finlandia, Rusia; extinto en Reino Unido :contentReference[oaicite:11]{index=11}",
+          "Hábitat": "Humedales, marismas, pastos húmedos, bordes",
+          "Morphology": "Envergadura 38–50 mm; alas anaranjadas con banda oscura; reverso gris azulado :contentReference[oaicite:12]{index=12}",
+          "Life": "1 generación norte (junio-julio), 2 en sur; larva hiberna en segundo estadío :contentReference[oaicite:13]{index=13}",
+          "Feeding": "Larvas en Rumex spp.; adultos en néctar de flores húmedas :contentReference[oaicite:14]{index=14}",
+          "Conservation": "LC a nivel europeo (2023); poblaciones fragmentadas y declinantes; protegido bajo Directiva Hábitats :contentReference[oaicite:15]{index=15}",
+          "image":""
+      },
+      {
+          "id": "25",
+          "name": "Mariposa de rabo largo (Lampides boeticus)",
+          "family": "Lycaenidae (azules y cobres)",
+          "Location": "España, Italia, Grecia, sur de Francia; migrante ocasional más al norte",
+          "Hábitat": "Áreas abiertas, praderas, bordes agrícolas",
+          "Morphology": "Envergadura 28–38 mm; alas superiores marrón con estrías blancas, largas colas en alas posteriores",
+          "Life": "2–3 generaciones primavera–otoño; migrante",
+          "Feeding": "Larvas en Fabaceae; adultos en néctar variado",
+          "Conservation": "LC; común en su rango",
+          "image":""
+      },
+      {
+          "id": "26",
+          "name": "Saltadora de las coles (Thymelicus lineola)",
+          "family": "Hesperiidae (saltarinas)",
+          "Location": "España, Francia, Italia, Reino Unido (sur e Irlanda), Suecia, Noruega, Finlandia, Rusia, resto de Europa continental :contentReference[oaicite:1]{index=1}",
+          "Hábitat": "Praderas, bordes de cultivos, claros boscosos, zonas urbanas con hierba; prefiere áreas de césped sin cortar :contentReference[oaicite:2]{index=2}",
+          "Morphology": "Envergadura ~26–30 mm; antenas con punta negra; color marrón anaranjado uniforme :contentReference[oaicite:3]{index=3}",
+          "Life": "1 generación (mayo‑julio/agosto); huevo sobre vaina de gramínea; hibernación en estado larvario dentro del huevo o larva temprana :contentReference[oaicite:4]{index=4}",
+          "Feeding": "Larvas en Poaceae (Calamagrostis, Agropyron, Helictochloa, Bromus); adultos liban néctar de cardos y tréboles :contentReference[oaicite:5]{index=5}",
+          "Conservation": "LC; común y en expansión de rango hacia el norte; no amenazada :contentReference[oaicite:6]{index=6}",
+          "image":""
+      },
+      {
+          "id": "27",
+          "name": "Saltadora dorada (Thymelicus sylvestris)",
+          "family": "Hesperiidae (saltarinas)",
+          "Location": "Muy extendida en España, Francia, Reino Unido, Alemania, Suecia, Rusia; suele coexistir con T. lineola :contentReference[oaicite:7]{index=7}",
+          "Hábitat": "Praderas húmedas, herbazales, márgenes; prefiere zonas más húmedas que T. lineola :contentReference[oaicite:8]{index=8}",
+          "Morphology": "Muy similar a T. lineola; antenas doradas abajo (vs negras en lineola) :contentReference[oaicite:9]{index=9}",
+          "Life": "1 generación anual; huevos en vainas, hibernan como larva :contentReference[oaicite:10]{index=10}",
+          "Feeding": "Larvas en Poaceae (Holcus, Phleum, Phalaris); adultos en néctar diverso :contentReference[oaicite:11]{index=11}",
+          "Conservation": "LC; común, no amenazada",
+          "image":""
+      },
+      {
+          "id": "28",
+          "name": "Saltadora grisácea (Ochlodes sylvanus)",
+          "family": "Hesperiidae (saltarinas)",
+          "Location": "Presente ampliamente en España, Francia, Reino Unido, Alemania, Suecia, Rusia",
+          "Hábitat": "Praderas, bordes de caminos, claros boscosos húmedos",
+          "Morphology": "Envergadura 32–38 mm; alas marrón grisáceo con manchas y ocelo apical",
+          "Life": "1–2 generaciones entre primavera y otoño; hibernación como oruga",
+          "Feeding": "Larvas en gramíneas; adultos en néctar de flores silvestres",
+          "Conservation": "LC; especie común y estable",
+          "image":""
+      },
+      {
+          "id": "29",
+          "name": "Saltadora ibérica (Carcharodus baeticus)",
+          "family": "Hesperiidae (saltarinas)",
+          "Location": "España (Peninsula Ibérica), sur de Francia, Italia (incluida Sicilia), extinta en Suiza :contentReference[oaicite:12]{index=12}",
+          "Hábitat": "Laderas rocosas y secas, matorrales, bordes de arroyos, piornales hasta 2 500 m :contentReference[oaicite:13]{index=13}",
+          "Morphology": "Envergadura 25–30 mm; alas anteriores pardo rojizo jaspeado con manchas blancas; característica banda blanca continua en ala posterior :contentReference[oaicite:14]{index=14}",
+          "Life": "Varias generaciones (abril‑septiembre); larva inverna como oruga dentro de refugio vegetal :contentReference[oaicite:15]{index=15}",
+          "Feeding": "Larvas en Marrubium vulgare y Ballota spp.; adultos liban néctar variado :contentReference[oaicite:16]{index=16}",
+          "Conservation": "LC; no evaluada por IUCN globalmente, en España preocupacion menor y protegida en algunas regiones :contentReference[oaicite:17]{index=17}",
+          "image":""
+      }
+  ]
+}
