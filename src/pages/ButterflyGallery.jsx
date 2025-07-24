@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../style/butterflygallery.css';
 
 export default function ButterflyGallery() {
   const [data, setData] = useState([]);
@@ -16,7 +17,6 @@ export default function ButterflyGallery() {
         const response = await fetch('http://localhost:3002/butterfly');
         
         console.log("Status de la respuesta:", response.status);
-        console.log("Response OK:", response.ok);
         
         if (!response.ok) {
           throw new Error(`Error HTTP: ${response.status} - ${response.statusText}`);
@@ -25,10 +25,46 @@ export default function ButterflyGallery() {
         const jsonData = await response.json();
         console.log("JSON recibido:", jsonData);
         
-        setData(jsonData);
+        // Verificar la estructura de los datos
+        if (jsonData && jsonData.butterfly) {
+          setData(jsonData.butterfly);
+        } else if (Array.isArray(jsonData)) {
+          setData(jsonData);
+        } else {
+          throw new Error("Estructura de datos no reconocida");
+        }
+        
       } catch (error) {
         console.error('Error en la petición:', error);
-        setError(error.message);
+        
+        // Datos de prueba en caso de error del servidor
+        console.log("Cargando datos de prueba...");
+        const mockData = [
+          {
+            "id": "1",
+            "name": "Vanesa atalanta (Almirante rojo)",
+            "family": "Nymphalidae (alas cepillo)",
+            "Location": "Presente en España, Francia, Italia, Reino Unido, Alemania, Suecia, Noruega, Finlandia",
+            "image": "https://images.unsplash.com/photo-1534307671554-9a6d81f4d629?w=400&h=300&fit=crop&auto=format"
+          },
+          {
+            "id": "2",
+            "name": "Vanesa de los cardos (Painted lady)",
+            "family": "Nymphalidae (alas cepillo)",
+            "Location": "España, Portugal, Francia, Reino Unido, Irlanda, Alemania, Italia, Suecia",
+            "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&auto=format"
+          },
+          {
+            "id": "3",
+            "name": "Cola de golondrina (Papilio machaon)",
+            "family": "Papilionidae (colas de golondrina)",
+            "Location": "España, Francia, Alemania, Italia, Suiza, Polonia, Reino Unido, Suecia, Noruega, Finlandia",
+            "image": "https://images.unsplash.com/photo-1444927714506-8492d94b5ba0?w=400&h=300&fit=crop&auto=format"
+          }
+        ];
+        
+        setData(mockData);
+        setError(`Error del servidor: ${error.message}. Mostrando datos de prueba.`);
       } finally {
         setLoading(false);
       }
@@ -37,95 +73,92 @@ export default function ButterflyGallery() {
     fetchButterflies();
   }, []);
 
-  // Mostrar estado de carga
   if (loading) {
     return (
-      <div style={{ padding: '2rem', textAlign: 'center' }}>
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
         <h1>Galería de Mariposas</h1>
         <p>Cargando mariposas...</p>
       </div>
     );
   }
 
-  // Mostrar error si ocurrió
   if (error) {
     return (
-      <div style={{ padding: '2rem' }}>
+      <div className="error-container">
         <h1>Galería de Mariposas</h1>
-        <div style={{ 
-          backgroundColor: '#ffe6e6', 
-          border: '1px solid #ff9999', 
-          borderRadius: '4px', 
-          padding: '1rem', 
-          color: '#cc0000' 
-        }}>
+        <div className="error-box">
           <h3>Error al cargar los datos:</h3>
           <p>{error}</p>
-          <p><strong>Posibles soluciones:</strong></p>
-          <ul>
-            <li>Verifica que el servidor esté ejecutándose en puerto 3002</li>
-            <li>Revisa la estructura del archivo JSON</li>
-            <li>Comprueba la consola del servidor para más detalles</li>
-          </ul>
+          <div>
+            <strong>Posibles soluciones:</strong>
+            <ul>
+              <li>Verifica que el servidor esté ejecutándose en puerto 3002</li>
+              <li>Revisa la estructura del archivo JSON</li>
+              <li>Comprueba la consola del servidor para más detalles</li>
+            </ul>
+          </div>
         </div>
       </div>
     );
   }
 
-  console.log("data:", data);
-  if (Array.isArray(data)) {
-    data.forEach(f => console.log("family:", f.familia, "butterfly:", f.butterfly));
-  }
-
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Galería de Mariposas</h1>
+    <div className="gallery-container">
+      <div className="gallery-content">
+        <h1 className="gallery-title">🦋 Galería de Mariposas Europeas</h1>
 
-      {Array.isArray(data) && data.length > 0 ? (
-        data.map((family, index) => (
-          <div key={family.familia || `family-${index}`} style={{ marginBottom: '3rem' }}>
-            <h2>{family.familia || 'Familia desconocida'}</h2>
-
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '1rem'
-            }}>
-              {Array.isArray(family.butterfly) && family.butterfly.length > 0 ? (
-                family.butterfly.map((butterfly, butterflyIndex) => (
-                  <div
-                    key={butterfly.id || `butterfly-${index}-${butterflyIndex}`}
-                    style={{
-                      border: '1px solid #ccc',
-                      borderRadius: '8px',
-                      padding: '1rem',
-                      width: '250px',
-                      backgroundColor: '#f8f8f8',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                    }}
-                  >
-                    <p><strong>ID:</strong> {butterfly.id || 'N/A'}</p>
-                    <p><strong>Nombre:</strong> {butterfly.Nombre || 'Sin nombre'}</p>
-                    <p><strong>Ubicación en Europa:</strong> {butterfly["Ubicación en Europa"] || 'No especificada'}</p>
-                    <p><strong>Conservación:</strong> {butterfly.Conservación || 'No especificado'}</p>
+        {Array.isArray(data) && data.length > 0 ? (
+          <div className="cards-grid">
+            {data.map((butterfly) => (
+              <div key={butterfly.id} className="card-container">
+                <div className="card">
+                  
+                  {/* Parte frontal - Imagen */}
+                  <div className="card-front">
+                    <img
+                      src={butterfly.image || 'https://images.unsplash.com/photo-1444927714506-8492d94b5ba0?w=400&h=300&fit=crop&auto=format'}
+                      alt={butterfly.name}
+                      className="butterfly-image"
+                      onError={(e) => {
+                        e.target.src = 'https://images.unsplash.com/photo-1444927714506-8492d94b5ba0?w=400&h=300&fit=crop&auto=format';
+                      }}
+                    />
+                    <div className="image-overlay"></div>
+                    <div className="hover-indicator">
+                      <span>🔄 Hover para más info</span>
+                    </div>
                   </div>
-                ))
-              ) : (
-                <p>No hay mariposas en esta familia.</p>
-              )}
-            </div>
+
+                  {/* Parte trasera - Información */}
+                  <div className="card-back">
+                    <div className="card-info">
+                      <div className="butterfly-name">
+                        {butterfly.name || 'No disponible'}
+                      </div>
+                      
+                      <div className="butterfly-family">
+                        {butterfly.family || 'No especificada'}
+                      </div>
+                      
+                      <div className="location-section">
+                        <h3>Ubicación</h3>
+                        <p>{butterfly.Location || 'No especificada'}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))
-      ) : (
-        <div style={{ 
-          backgroundColor: '#fff3cd', 
-          border: '1px solid #ffeaa7', 
-          borderRadius: '4px', 
-          padding: '1rem' 
-        }}>
-          <p>No se encontraron datos de mariposas.</p>
-        </div>
-      )}
+        ) : (
+          <div className="no-data">
+            <div className="no-data-icon">🦋</div>
+            <h2>No se encontraron datos de mariposas</h2>
+            <p>Verifica que el servidor esté proporcionando los datos correctamente.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
