@@ -1,7 +1,7 @@
 const URL_API = "http://localhost:3002/butterfly";
 
 // Método GET para leer todas las mariposas
-async function getAllButterflies() {
+export async function getAllButterflies() {
   try {
     const response = await fetch(URL_API); 
     const data = await response.json();
@@ -12,7 +12,7 @@ async function getAllButterflies() {
 }
 
 // Método GET para obtener una sola mariposa por ID
-async function getOneButterfly(id) {
+export async function getOneButterfly(id) {
   try {
     const response = await fetch(`${URL_API}/${id}`);
     const data = await response.json();
@@ -23,7 +23,7 @@ async function getOneButterfly(id) {
 }
 
 //Metodo Post para el create
-async function createButterfly(butterflyData) {
+export async function createButterfly(butterflyData) {
   try {
     const response = await fetch(URL_API, {
       method: "POST",
@@ -39,7 +39,7 @@ async function createButterfly(butterflyData) {
   }
 }
 //Metodo Put para actualizar 
-async function updateButterfly(id, updatedData) {
+export async function updateButterfly(id, updatedData) {
   try {
     const response = await fetch(`${URL_API}/${id}`, {
       method: "PUT",
@@ -56,7 +56,7 @@ async function updateButterfly(id, updatedData) {
 }
 
 //Metodo Delete para eliminar
-async function deleteButterfly(id) {
+export async function deleteButterfly(id) {
   try {
     const response = await fetch(`${URL_API}/${id}`, {
       method: "DELETE"
