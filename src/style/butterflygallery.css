@@ -1,268 +1,193 @@
-/* Contenedor principal */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
+/* Contenedor general de la galería */
 .gallery-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  padding: 32px;
+  width: 100vw;
+  height: 100vh;
+  padding-inline: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f5e0a3;
+  overflow: hidden;
 }
 
+/* Contenido interno con scroll si hace falta */
 .gallery-content {
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-block: 20px;
 }
 
+/* Título */
 .gallery-title {
-  font-size: 2.5rem;
-  font-weight: bold;
   text-align: center;
-  color: #1f2937;
-  margin-bottom: 48px;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #f5e0a3;
 }
 
-/* Grid de cards */
+/* Grid de tarjetas */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
-/* Contenedor de cada card */
+/* Contenedor con perspectiva */
 .card-container {
   perspective: 1000px;
-  height: 320px;
 }
 
-/* Card principal */
+/* Tarjeta que se voltea */
 .card {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 320px;
   transform-style: preserve-3d;
-  transition: transform 0.7s ease;
+  transition: transform 0.8s;
 }
 
+/* Flip al hacer hover */
 .card-container:hover .card {
   transform: rotateY(180deg);
 }
 
-/* Estilos comunes para ambas caras */
-.card-front,
-.card-back {
+/* Cara delantera */
+.card-front, .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 10px;
+  border: 2px solid #f5e0a3;
+  background-color: #1d1b3faa;
   backface-visibility: hidden;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-/* Parte frontal - Imagen */
-.card-front {
-  background: white;
-}
-
+/* Imagen frontal */
 .butterfly-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.image-overlay {
+  border-radius: 8px 8px 0 0;
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+  z-index: 1;
 }
 
-.hover-indicator {
+/* Overlay semitransparente encima de la imagen */
+.image-overlay {
   position: absolute;
-  bottom: 16px;
-  left: 0;
-  right: 0;
-  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(29, 27, 63, 0.8), transparent);
+  z-index: 2;
 }
 
-.hover-indicator span {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  color: white;
-  font-size: 0.875rem;
-  padding: 8px 16px;
-  border-radius: 20px;
+/* Indicador de hover */
+.hover-indicator {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 10px;
+  color: #f5e0a3;
+  font-size: 0.9rem;
+  background-color: rgba(29, 27, 63, 0.6);
+  padding: 4px 8px;
+  border-radius: 5px;
 }
 
-/* Parte trasera - Información */
+/* Cara trasera */
 .card-back {
-  background: white;
   transform: rotateY(180deg);
+  padding: 16px;
+  text-align: center;
+  z-index: 2;
 }
 
+/* Información de la mariposa */
 .card-info {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 32px;
-  text-align: center;
-  gap: 24px;
+  height: 100%;
+  gap: 10px;
+  color: #f5e0a3;
 }
 
 .butterfly-name {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #1f2937;
-  line-height: 1.4;
 }
 
 .butterfly-family {
-  font-size: 1rem;
-  color: #6b7280;
-  line-height: 1.4;
+  font-style: italic;
+  font-size: 0.95rem;
 }
 
 .location-section h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 12px;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .location-section p {
-  color: #6b7280;
-  line-height: 1.5;
+  margin: 4px 0 0;
   font-size: 0.9rem;
 }
 
-/* Estados de carga y error */
-.loading-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.loading-spinner {
-  width: 48px;
-  height: 48px;
-  border: 3px solid #e5e7eb;
-  border-top: 3px solid #059669;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.loading-container h1 {
-  font-size: 1.875rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 8px;
-}
-
-.loading-container p {
-  color: #6b7280;
-}
-
-.error-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fef2f2 0%, #fce7e7 100%);
-  padding: 32px;
-}
-
-.error-container h1 {
-  font-size: 1.875rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.error-box {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #fee2e2;
-  border: 1px solid #fca5a5;
-  border-radius: 8px;
-  padding: 24px;
-  color: #991b1b;
-}
-
-.error-box h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.error-box p {
-  margin-bottom: 16px;
-}
-
-.error-box ul {
-  list-style: disc;
-  margin-left: 20px;
-}
-
-.error-box li {
-  margin-bottom: 4px;
-}
-
+/* Estilo para el mensaje sin datos */
 .no-data {
-  background: #fef3c7;
-  border: 1px solid #fbbf24;
-  border-radius: 8px;
-  padding: 48px;
   text-align: center;
-  max-width: 500px;
-  margin: 0 auto;
+  margin-top: 50px;
+  color: #f5e0a3;
 }
 
 .no-data-icon {
   font-size: 4rem;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
-.no-data h2 {
-  font-size: 1.25rem;
+/* */ 
+.card-info {
+  font-family: 'Libre Baskerville', serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 10px;
+  color: #f5e0a3;
+}
+
+.butterfly-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.butterfly-family {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.location-section h3 {
+  margin: 0;
+  font-size: 1rem;
   font-weight: 600;
-  color: #92400e;
-  margin-bottom: 8px;
 }
 
-.no-data p {
-  color: #b45309;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .gallery-container {
-    padding: 16px;
-  }
-  
-  .gallery-title {
-    font-size: 2rem;
-    margin-bottom: 32px;
-  }
-  
-  .cards-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  
-  .card-info {
-    padding: 24px;
-    gap: 20px;
-  }
-  
-  .butterfly-name {
-    font-size: 1.125rem;
-  }
+.location-section p {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
 }
