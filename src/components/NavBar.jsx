@@ -17,15 +17,11 @@ function NavBar() {
         <img src={alaImg} alt="ala mariposa" className="ala-mariposa" />
         <div className="galeria-buttons-group">
           <Link to="/" className="galeria-button">Home</Link>
-          <Link to="/contacto" className="galeria-button">Contacto</Link>
+          <Link to="/contactbutterfly" className="galeria-button">Contacto</Link>
         </div>
       </div>
 
-      {/* CONTENIDO PRINCIPAL */}
-      <section className="galeria-section">
-        <h2>Galería de Mariposas Europeas</h2>
-        {/* Aquí irán las tarjetas o el contenido que desees */}
-      </section>
+     
     </div>
   );
 }
