@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* Contenedor general de la galería */
 .gallery-container {
@@ -27,6 +27,7 @@
   font-size: 2rem;
   margin-bottom: 24px;
   color: #f5e0a3;
+  font-family: 'Libre Baskerville', serif;
 }
 
 /* Grid de tarjetas */
@@ -58,7 +59,7 @@
   transform: rotateY(180deg);
 }
 
-/* Cara delantera */
+/* Cara delantera y trasera */
 .card-front, .card-back {
   position: absolute;
   width: 100%;
@@ -107,6 +108,7 @@
   background-color: rgba(29, 27, 63, 0.6);
   padding: 4px 8px;
   border-radius: 5px;
+  font-family: 'Libre Baskerville', serif;
 }
 
 /* Cara trasera */
@@ -119,49 +121,6 @@
 
 /* Información de la mariposa */
 .card-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  gap: 10px;
-  color: #f5e0a3;
-}
-
-.butterfly-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.butterfly-family {
-  font-style: italic;
-  font-size: 0.95rem;
-}
-
-.location-section h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.location-section p {
-  margin: 4px 0 0;
-  font-size: 0.9rem;
-}
-
-/* Estilo para el mensaje sin datos */
-.no-data {
-  text-align: center;
-  margin-top: 50px;
-  color: #f5e0a3;
-}
-
-.no-data-icon {
-  font-size: 4rem;
-  margin-bottom: 10px;
-}
-
-/* */ 
-.card-info {
   font-family: 'Libre Baskerville', serif;
   display: flex;
   flex-direction: column;
@@ -173,7 +132,7 @@
 
 .butterfly-name {
   font-size: 1.4rem;
-  font-weight: bold ;
+  font-weight: bold;
 }
 
 .butterfly-family {
@@ -192,54 +151,74 @@
   font-size: 0.8rem;
 }
 
-/* Estilos para los botones de acción en las cards */
+/* Botones de acción mejorados */
 .card-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
+  display: flex !important;
+  gap: 10px !important;
+  margin-top: 15px !important;
+  padding-top: 15px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   justify-content: center;
 }
 
-.btn-edit,
-.btn-delete {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+.improved-btn {
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  border: 2px solid #f5e0a3 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  min-height: 36px !important;
+  user-select: none !important;
+  font-family: 'Libre Baskerville', serif !important;
 }
 
-.btn-edit {
-  background-color: #f5e0a3;
-  color: #1d1b3f;
-  border: 2px solid #f5e0a3;
+.btn-edit.improved-btn {
+  background-color: #f5e0a3 !important;
+  color: #1d1b3f !important;
 }
 
-.btn-edit:hover {
-  background-color: transparent;
+.btn-edit.improved-btn:hover,
+.btn-edit.improved-btn:focus {
+  background-color: transparent !important;
+  color: #f5e0a3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
+}
+
+.btn-delete.improved-btn {
+  background-color: #f5e0a3 !important;
+  color: #1d1b3f !important;
+}
+
+.btn-delete.improved-btn:hover,
+.btn-delete.improved-btn:focus {
+  background-color: transparent !important;
+  color: #f5e0a3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
+}
+
+.improved-btn:active {
+  transform: translateY(0px) !important;
+  transition: all 0.1s ease !important;
+}
+
+/* Estilos para el mensaje sin datos */
+.no-data {
+  text-align: center;
+  margin-top: 50px;
   color: #f5e0a3;
-  border: 2px solid #f5e0a3;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3);
+  font-family: 'Libre Baskerville', serif;
 }
 
-.btn-delete {
-  background-color: #f5e0a3;
-  color: #1d1b3f;
-  border: 2px solid #f5e0a3;
-}
-
-.btn-delete:hover {
-  background-color: transparent;
-  color: #f5e0a3;
-  border: 2px solid #f5e0a3;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3);
+.no-data-icon {
+  font-size: 4rem;
+  margin-bottom: 10px;
 }
 
 /* Estilos para el modal */
@@ -258,7 +237,8 @@
 }
 
 .modal-content {
-  background: white;
+  background: rgba(29, 27, 63, 0.95);
+  border: 2px solid #f5e0a3;
   border-radius: 15px;
   padding: 0;
   max-width: 500px;
@@ -269,15 +249,24 @@
   animation: slideIn 0.3s ease;
 }
 
+/* Modal expandido */
+.expanded-modal {
+  max-width: 1200px !important;
+  width: 95% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px;
-  border-bottom: 1px solid #eee;
-  background-color: #1d1b3f;
+  border-bottom: 1px solid #f5e0a3;
+  background-color: rgba(29, 27, 63, 0.95);
   color: #f5e0a3;
   border-radius: 15px 15px 0 0;
+  font-family: 'Libre Baskerville', serif;
 }
 
 .modal-header h2 {
@@ -288,7 +277,7 @@
 .modal-close {
   background: none;
   border: none;
-  color: white;
+  color: #f5e0a3;
   font-size: 24px;
   cursor: pointer;
   padding: 0;
@@ -308,41 +297,75 @@
 /* Estilos para el formulario */
 .edit-form {
   padding: 25px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.expanded-form {
+  max-height: 70vh !important;
+  overflow-y: auto !important;
+  padding-right: 10px !important;
+}
+
+.form-columns {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.form-column h3 {
+  color: #f5e0a3 !important;
+  margin-bottom: 15px !important;
+  padding-bottom: 5px !important;
+  border-bottom: 2px solid #f5e0a3 !important;
+  font-size: 16px !important;
+  font-family: 'Libre Baskerville', serif !important;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px !important;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #333;
-  font-size: 14px;
+  display: block !important;
+  margin-bottom: 5px !important;
+  font-weight: 600 !important;
+  color: #f5e0a3 !important;
+  font-size: 14px !important;
+  font-family: 'Libre Baskerville', serif !important;
 }
 
 .form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  box-sizing: border-box;
+.form-group textarea,
+.form-group select {
+  width: 100% !important;
+  padding: 8px 12px !important;
+  border: 2px solid #f5e0a3 !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  transition: border-color 0.3s ease !important;
+  box-sizing: border-box !important;
+  background-color: rgba(245, 224, 163, 0.1) !important;
+  color: #f5e0a3 !important;
+  font-family: 'Libre Baskerville', serif !important;
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #f5e0a3;
-  box-shadow: 0 0 0 3px rgba(245, 224, 163, 0.1);
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none !important;
+  border-color: #f5e0a3 !important;
+  box-shadow: 0 0 5px rgba(245, 224, 163, 0.5) !important;
+  background-color: rgba(245, 224, 163, 0.2) !important;
 }
 
 .form-group textarea {
-  resize: vertical;
-  min-height: 80px;
+  resize: vertical !important;
+  min-height: 60px !important;
+}
+
+.full-width {
+  grid-column: 1 / -1 !important;
 }
 
 /* Estilos para los botones del formulario */
@@ -352,44 +375,63 @@
   justify-content: flex-end;
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #f5e0a3;
 }
 
 .btn-cancel,
 .btn-save {
   padding: 12px 24px;
-  border: none;
+  border: 2px solid #f5e0a3;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
   transition: all 0.3s ease;
   min-width: 120px;
+  font-family: 'Libre Baskerville', serif;
 }
 
 .btn-cancel {
-  background-color: #6c757d;
-  color: white;
+  background-color: transparent;
+  color: #f5e0a3;
 }
 
 .btn-cancel:hover {
-  background-color: #5a6268;
+  background-color: #f5e0a3;
+  color: #1d1b3f;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3);
 }
 
 .btn-save {
   background-color: #f5e0a3;
   color: #1d1b3f;
-  border: 2px solid #f5e0a3;
 }
 
 .btn-save:hover {
   background-color: transparent;
   color: #f5e0a3;
-  border: 2px solid #f5e0a3;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(245, 224, 163, 0.4);
+}
+
+/* Scroll personalizado para formularios */
+.expanded-form::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.expanded-form::-webkit-scrollbar-track {
+  background: rgba(245, 224, 163, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.expanded-form::-webkit-scrollbar-thumb {
+  background: #f5e0a3 !important;
+  border-radius: 4px !important;
+}
+
+.expanded-form::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 224, 163, 0.8) !important;
 }
 
 /* Animaciones */
@@ -413,11 +455,23 @@
   }
 }
 
-/* Responsive para el modal */
+/* Responsive para tablets */
+@media (max-width: 1024px) {
+  .form-columns {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Responsive para móviles */
 @media (max-width: 768px) {
   .modal-content {
     width: 95%;
     margin: 20px;
+  }
+  
+  .expanded-modal {
+    width: 95% !important;
+    margin: 10px !important;
   }
   
   .modal-header {
@@ -426,6 +480,11 @@
   
   .edit-form {
     padding: 20px;
+  }
+  
+  .form-columns {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
   }
   
   .form-actions {
@@ -438,13 +497,72 @@
   }
   
   .card-actions {
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: column !important;
+    gap: 8px !important;
   }
   
-  .btn-edit,
-  .btn-delete {
-    width: 100%;
-    justify-content: center;
+  .improved-btn {
+    width: 100% !important;
+    justify-content: center !important;
   }
+}
+
+
+/* sweetAlert*/
+
+/* Estilos personalizados para SweetAlert2 */
+.custom-swal-popup {
+  border: 2px solid #f5e0a3 !important;
+  border-radius: 15px !important;
+  font-family: 'Libre Baskerville', serif !important;
+}
+
+.custom-swal-title {
+  color: #f5e0a3 !important;
+  font-family: 'Libre Baskerville', serif !important;
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+}
+
+.custom-swal-text {
+  color: #f5e0a3 !important;
+  font-family: 'Libre Baskerville', serif !important;
+  font-size: 1rem !important;
+}
+
+.custom-swal-confirm {
+  background-color: #f5e0a3 !important;
+  color: #1d1b3f !important;
+  border: 2px solid #f5e0a3 !important;
+  border-radius: 8px !important;
+  font-family: 'Libre Baskerville', serif !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-swal-confirm:hover {
+  background-color: transparent !important;
+  color: #f5e0a3 !important;
+  border: 2px solid #f5e0a3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
+}
+
+.custom-swal-cancel {
+  background-color: transparent !important;
+  color: #f5e0a3 !important;
+  border: 2px solid #f5e0a3 !important;
+  border-radius: 8px !important;
+  font-family: 'Libre Baskerville', serif !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-swal-cancel:hover {
+  background-color: #f5e0a3 !important;
+  color: #1d1b3f !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
 }
