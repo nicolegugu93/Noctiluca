@@ -62,8 +62,8 @@
 /* Cara delantera y trasera */
 .card-front, .card-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 105%;
+  height: 105%;
   border-radius: 10px;
   border: 2px solid #f5e0a3;
   background-color: #1d1b3faa;
