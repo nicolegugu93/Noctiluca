@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../style/butterflygallery.css';
 import { getAllButterflies, updateButterfly, deleteButterfly } from '../services/ButterflyServices';
 import Swal from 'sweetalert2';
 
 export default function ButterflyGallery() {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,15 +13,16 @@ export default function ButterflyGallery() {
   const [editingButterfly, setEditingButterfly] = useState(null);
   const [editFormData, setEditFormData] = useState({
     name: '',
+    'other names': '',
     family: '',
     Location: '',
-    image: '',
-    // Campos simplificados
-    habitat: '',
-    morphology: '',
-    life: '',
-    feeding: '',
-    conservation: ''
+    'Hábitat': '',
+    Morphology: '',
+    Life: '',
+    Feeding: '',
+    Conservation: '',
+    'about conservation': '',
+    image: ''
   });
 
   useEffect(() => {
@@ -49,32 +52,62 @@ export default function ButterflyGallery() {
       
     } catch (error) {
       console.error('Error en la petición:', error);
-      
       setError(`Error del servidor: ${error.message}. Mostrando datos de prueba.`);
     } finally {
       setLoading(false);
     }
   }
 
+  // Función para navegar al detalle de la mariposa
+  const handleCardClick = (butterfly) => {
+    navigate(`/butterfly-detail/${butterfly.id}`, { state: { butterfly } });
+  };
+
   // Función para manejar la edición
-  const handleEdit = (butterfly) => {
+  const handleEdit = (e, butterfly) => {
+    e.stopPropagation(); // Prevenir que se active el click de la card
     setEditingButterfly(butterfly);
     setEditFormData({
       name: butterfly.name || '',
+      'other names': butterfly['other names'] || '',
       family: butterfly.family || '',
       Location: butterfly.Location || '',
-      image: butterfly.image || '',
-      habitat: butterfly.habitat || '',
-      morphology: butterfly.morphology || '',
-      life: butterfly.life || '',
-      feeding: butterfly.feeding || '',
-      conservation: butterfly.conservation || ''
+      'Hábitat': butterfly['Hábitat'] || '',
+      Morphology: butterfly.Morphology || '',
+      Life: butterfly.Life || '',
+      Feeding: butterfly.Feeding || '',
+      Conservation: butterfly.Conservation || '',
+      'about conservation': butterfly['about conservation'] || '',
+      image: butterfly.image || ''
     });
     setShowEditModal(true);
   };
 
+  // Función para obtener el color del estado de conservación
+  const getConservationColor = (status) => {
+    if (!status) return '#f5e0a3';
+    
+    const lowerStatus = status.toLowerCase();
+    if (lowerStatus.includes('lc') || lowerStatus.includes('preocupación menor')) {
+      return '#4ade80'; // Verde
+    } else if (lowerStatus.includes('nt') || lowerStatus.includes('casi amenazada')) {
+      return '#fbbf24'; // Amarillo
+    } else if (lowerStatus.includes('vu') || lowerStatus.includes('vulnerable')) {
+      return '#f97316'; // Naranja
+    } else if (lowerStatus.includes('en') || lowerStatus.includes('peligro')) {
+      return '#ef4444'; // Rojo
+    } else if (lowerStatus.includes('cr') || lowerStatus.includes('crítico')) {
+      return '#dc2626'; // Rojo oscuro
+    } else if (lowerStatus.includes('ex') || lowerStatus.includes('extinta')) {
+      return '#6b7280'; // Gris
+    }
+    return '#f5e0a3'; // Color por defecto
+  };
+
   // Función para manejar la eliminación con SweetAlert2 personalizado
-  const handleDelete = async (butterfly) => {
+  const handleDelete = async (e, butterfly) => {
+    e.stopPropagation(); // Prevenir que se active el click de la card
+    
     try {
       const result = await Swal.fire({
         title: '¿Estás seguro?',
@@ -92,9 +125,7 @@ export default function ButterflyGallery() {
         },
         background: 'rgba(29, 27, 63, 0.95)',
         color: '#f5e0a3',
-        backdrop: `
-          rgba(0, 0, 0, 0.7)
-        `
+        backdrop: `rgba(0, 0, 0, 0.7)`
       });
 
       if (result.isConfirmed) {
@@ -157,7 +188,7 @@ export default function ButterflyGallery() {
       });
     } catch (error) {
       console.error('Error al actualizar la mariposa:', error);
-      window.Swal.fire({
+      Swal.fire({
         title: 'Error',
         text: 'Hubo un problema al actualizar la mariposa.',
         customClass: {
@@ -225,10 +256,18 @@ export default function ButterflyGallery() {
           <div className="cards-grid">
             {data.map((butterfly) => (
               <div key={butterfly.id} className="card-container">
-                <div className="card">
+                <div className="card" onClick={() => handleCardClick(butterfly)}>
                   
-                  {/* Parte frontal - Imagen */}
+                  {/* Parte frontal - Imagen con estado de conservación */}
                   <div className="card-front">
+                    {/* Estado de conservación en la parte superior */}
+                    <div 
+                      className="conservation-badge"
+                      style={{ backgroundColor: getConservationColor(butterfly['about conservation']) }}
+                    >
+                      {butterfly['about conservation'] || 'No especificado'}
+                    </div>
+                    
                     <img
                       src={butterfly.image || 'https://images.unsplash.com/photo-1444927714506-8492d94b5ba0?w=400&h=300&fit=crop&auto=format'}
                       alt={butterfly.name}
@@ -243,7 +282,7 @@ export default function ButterflyGallery() {
                     </div>
                   </div>
 
-                  {/* Parte trasera - Información y Botones */}
+                  {/* Parte trasera - Información básica y Botones */}
                   <div className="card-back">
                     <div className="card-info">
                       <div className="butterfly-name">
@@ -259,27 +298,21 @@ export default function ButterflyGallery() {
                         <p>{butterfly.Location || 'No especificada'}</p>
                       </div>
 
-                      {/* Botones de Editar y Eliminar - Mejorados */}
+                      {/* Botones de Editar y Eliminar */}
                       <div className="card-actions">
                         <button 
                           className="btn-edit improved-btn"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleEdit(butterfly);
-                          }}
+                          onClick={(e) => handleEdit(e, butterfly)}
                           onMouseDown={(e) => e.preventDefault()}
                         >
-                          ✏️ Editar
+                          Editar
                         </button>
                         <button 
                           className="btn-delete improved-btn"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleDelete(butterfly);
-                          }}
+                          onClick={(e) => handleDelete(e, butterfly)}
                           onMouseDown={(e) => e.preventDefault()}
                         >
-                          🗑️ Eliminar
+                          Eliminar
                         </button>
                       </div>
                     </div>
@@ -297,7 +330,7 @@ export default function ButterflyGallery() {
         )}
       </div>
 
-      {/* Modal de Edición Expandido */}
+      {/* Modal de Edición Expandido con todos los campos del JSON */}
       {showEditModal && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content expanded-modal" onClick={(e) => e.stopPropagation()}>
@@ -308,7 +341,7 @@ export default function ButterflyGallery() {
               </button>
             </div>
             
-            <form onSubmit={handleEditSubmit} className="edit-form expanded-form">
+            <div className="edit-form expanded-form">
               <div className="form-columns">
                 {/* Columna 1 - Información Básica */}
                 <div className="form-column">
@@ -323,6 +356,17 @@ export default function ButterflyGallery() {
                       value={editFormData.name}
                       onChange={handleInputChange}
                       required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="other names">Otros nombres:</label>
+                    <input
+                      type="text"
+                      id="other names"
+                      name="other names"
+                      value={editFormData['other names']}
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -347,7 +391,7 @@ export default function ButterflyGallery() {
                       onChange={handleInputChange}
                       rows="3"
                       required
-                    />
+                    ></textarea>
                   </div>
                 </div>
 
@@ -356,27 +400,39 @@ export default function ButterflyGallery() {
                   <h3>Características y Hábitat</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="habitat">Hábitat:</label>
+                    <label htmlFor="Hábitat">Hábitat:</label>
                     <textarea
-                      id="habitat"
-                      name="habitat"
-                      value={editFormData.habitat}
+                      id="Hábitat"
+                      name="Hábitat"
+                      value={editFormData['Hábitat']}
                       onChange={handleInputChange}
                       rows="3"
                       placeholder="Descripción del hábitat natural"
-                    />
+                    ></textarea>
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="morphology">Morfología:</label>
+                    <label htmlFor="Morphology">Morfología:</label>
                     <textarea
-                      id="morphology"
-                      name="morphology"
-                      value={editFormData.morphology}
+                      id="Morphology"
+                      name="Morphology"
+                      value={editFormData.Morphology}
                       onChange={handleInputChange}
                       rows="3"
                       placeholder="Descripción física de la mariposa"
-                    />
+                    ></textarea>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="Life">Vida:</label>
+                    <textarea
+                      id="Life"
+                      name="Life"
+                      value={editFormData.Life}
+                      onChange={handleInputChange}
+                      rows="3"
+                      placeholder="Ciclo de vida y comportamiento"
+                    ></textarea>
                   </div>
                 </div>
 
@@ -385,27 +441,46 @@ export default function ButterflyGallery() {
                   <h3>Comportamiento y Conservación</h3>
                   
                   <div className="form-group">
-                    <label htmlFor="life">Vida:</label>
+                    <label htmlFor="Feeding">Alimentación:</label>
                     <textarea
-                      id="life"
-                      name="life"
-                      value={editFormData.life}
-                      onChange={handleInputChange}
-                      rows="3"
-                      placeholder="Ciclo de vida y comportamiento"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="feeding">Alimentación:</label>
-                    <textarea
-                      id="feeding"
-                      name="feeding"
-                      value={editFormData.feeding}
+                      id="Feeding"
+                      name="Feeding"
+                      value={editFormData.Feeding}
                       onChange={handleInputChange}
                       rows="3"
                       placeholder="Hábitos alimentarios"
-                    />
+                    ></textarea>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="Conservation">Conservación Detallada:</label>
+                    <textarea
+                      id="Conservation"
+                      name="Conservation"
+                      value={editFormData.Conservation}
+                      onChange={handleInputChange}
+                      rows="3"
+                      placeholder="Información detallada sobre conservación"
+                    ></textarea>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="about conservation">Estado de Conservación:</label>
+                    <select
+                      id="about conservation"
+                      name="about conservation"
+                      value={editFormData['about conservation']}
+                      onChange={handleInputChange}
+                    >
+                      <option value="">Seleccionar estado...</option>
+                      <option value="LC">LC - Preocupación menor</option>
+                      <option value="NT">NT - Casi amenazada</option>
+                      <option value="VU">VU - Vulnerable</option>
+                      <option value="EN">EN - En peligro</option>
+                      <option value="CR">CR - En peligro crítico</option>
+                      <option value="EW">EW - Extinta en estado silvestre</option>
+                      <option value="EX">EX - Extinta</option>
+                    </select>
                   </div>
 
                   <div className="form-group">
@@ -421,35 +496,15 @@ export default function ButterflyGallery() {
                 </div>
               </div>
 
-              {/* Conservación - Ancho completo */}
-              <div className="form-group full-width">
-                <label htmlFor="conservation">Estado de Conservación:</label>
-                <select
-                  id="conservation"
-                  name="conservation"
-                  value={editFormData.conservation}
-                  onChange={handleInputChange}
-                >
-                  <option value="">Seleccionar estado de conservación...</option>
-                  <option value="Preocupación menor (LC)">Preocupación menor (LC)</option>
-                  <option value="Casi amenazada (NT)">Casi amenazada (NT)</option>
-                  <option value="Vulnerable (VU)">Vulnerable (VU)</option>
-                  <option value="En peligro (EN)">En peligro (EN)</option>
-                  <option value="En peligro crítico (CR)">En peligro crítico (CR)</option>
-                  <option value="Extinta en estado silvestre (EW)">Extinta en estado silvestre (EW)</option>
-                  <option value="Extinta (EX)">Extinta (EX)</option>
-                </select>
-              </div>
-
               <div className="form-actions">
                 <button type="button" className="btn-cancel" onClick={closeModal}>
                   Cancelar
                 </button>
-                <button type="submit" className="btn-save">
+                <button type="button" className="btn-save" onClick={handleEditSubmit}>
                   Guardar Cambios
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       )}

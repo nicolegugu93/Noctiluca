@@ -1,7 +1,6 @@
 {
   "butterfly": [
     {
-      "id": "1",
       "name": "Vanesa atalanta",
       "other names": "Almirante rojo",
       "family": "Nymphalidae (alas cepillo)",
@@ -12,12 +11,12 @@
       "Feeding": "Larvas en ortigas; adultos en néctar, savia, fruta",
       "Conservation": "LC; migraciones sensibles al cambio climático",
       "about conservation": "LC",
-      "image":""
-            },
+      "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/327184069/large.jpeg",
+      "id": "1"
+    },
     {
-      "id": "2",
       "name": "Vanesa de los cardos",
-      "other names":"Painted lady", 
+      "other names": "Painted lady",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España, Portugal, Francia, Reino Unido, Irlanda, Alemania, Italia, Suecia, hasta Islandia; migraciones masivas primavera-otoño",
       "Hábitat": "Praderas, campos, jardines, bordes semiáridos, montañas",
@@ -26,12 +25,13 @@
       "Feeding": "Larvas en Carduus, Cirsium; adultos en néctar variado",
       "Conservation": "LC; migración afectada por clima",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2018/06/13/5fa433c0be305.jpeg",
+      "id": "2"
     },
     {
       "id": "3",
       "name": "Mariposa del abeto",
-      "other names":"Camberwell beauty",
+      "other names": "Camberwell beauty",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España (norte), Francia, Alemania, Suecia, Noruega, Finlandia, Polonia; rara en Reino Unido",
       "Hábitat": "Bosques caducifolios, ribereños, alamedas",
@@ -45,7 +45,7 @@
     {
       "id": "4",
       "name": "Mariposa del ortigal",
-      "other names":"Small tortoiseshell",
+      "other names": "Small tortoiseshell",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España, Francia, Reino Unido, Irlanda, Alemania, Suecia, Rusia, Polonia",
       "Hábitat": "Orillas, praderas, jardines con ortigas",
@@ -59,7 +59,7 @@
     {
       "id": "5",
       "name": "Mariposa pavo real",
-      "other names":"Peacock", 
+      "other names": "Peacock",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España, Francia, Reino Unido, Irlanda, Alemania, Polonia, Suecia, Rusia",
       "Hábitat": "Jardines, bosques claros, praderas",
@@ -73,7 +73,7 @@
     {
       "id": "6",
       "name": "Mariposa del sauce",
-      "other names":"Large tortoiseshell",
+      "other names": "Large tortoiseshell",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España (Mediterráneo), Francia, Italia, Austria, Eslovenia, Hungría, Rusia; rara en Reino Unido",
       "Hábitat": "Bosques ribereños con sauces y álamos",
@@ -87,7 +87,7 @@
     {
       "id": "7",
       "name": "Mariposa de los muros",
-      "other names":"Wall brown", 
+      "other names": "Wall brown",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España, Francia, Reino Unido (sur), Alemania, Polonia, Suecia, Noruega, Grecia",
       "Hábitat": "Praderas secas, muros, margenes; hasta 3 000 m",
@@ -101,7 +101,7 @@
     {
       "id": "8",
       "name": "Mariposa medioluto ibérica",
-      "other names":"", 
+      "other names": "",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España (toda la península), Portugal, sur de Francia (hasta Avignon)",
       "Hábitat": "Praderas secas y floridas en calizas",
@@ -115,7 +115,7 @@
     {
       "id": "9",
       "name": "Mariposa medioluto norteña",
-      "other names":"Marbled white", 
+      "other names": "Marbled white",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España, Francia, Reino Unido, Alemania, Polonia, Rusia, Suecia",
       "Hábitat": "Praderas secas y claros",
@@ -129,7 +129,7 @@
     {
       "id": "10",
       "name": "Mariposa de los prados",
-      "other names":"Meadow brown", 
+      "other names": "Meadow brown",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España, Portugal, Reino Unido, Francia, Alemania, Suecia, Finlandia, Rusia",
       "Hábitat": "Praderas, bordes herbáceos",
@@ -143,7 +143,7 @@
     {
       "id": "11",
       "name": "Cola de golondrina",
-      "other names":"Papilio machaon", 
+      "other names": "Papilio machaon",
       "family": "Papilionidae (colas de golondrina)",
       "Location": "España, Francia, Alemania, Italia, Suiza, Polonia, Reino Unido (muy limitada al SE), Suecia, Noruega, Finlandia",
       "Hábitat": "Praderas, bordes de cultivos, montañas (hasta ~3 000 m), zonas rurales y subalpinas",
@@ -157,7 +157,7 @@
     {
       "id": "12",
       "name": "Cola de golondrina meridional",
-      "other names":"Iphiclides feisthamelii", 
+      "other names": "Iphiclides feisthamelii",
       "family": "Papilionidae (colas de golondrina)",
       "Location": "España (incluida Andalucía, Cataluña), Portugal, sur de Francia (región mediterránea)",
       "Hábitat": "Pinares naturalizados, encinares, tierras agrícolas abandonadas con Prunus; desde zonas litorales hasta montañas bajas",
@@ -171,7 +171,7 @@
     {
       "id": "13",
       "name": "Cola de golondrina escasa",
-      "other names":"Iphiclides podalirius", 
+      "other names": "Iphiclides podalirius",
       "family": "Papilionidae (colas de golondrina)",
       "Location": "España (principalmente mediterráneo), Francia, Italia, Austria, Alemania, Polonia, Suiza, Grecia; rarísima en Reino Unido/Ireland; ausente en Escandinavia",
       "Hábitat": "Matorrales, márgenes de bosques, huertos, viñedos, laderas soleadas hasta ~2 000 m en Alpes",
@@ -185,7 +185,7 @@
     {
       "id": "14",
       "name": "Blanca de la col",
-      "other names":"Pieris rapae", 
+      "other names": "Pieris rapae",
       "family": "Pieridae (blancas y amarillas)",
       "Location": "Amplia, desde Mediterráneo hasta Escandinavia e incluso Rusia; muy común en todos los países europeos mencionados",
       "Hábitat": "Campos cultivados, huertos, jardines, praderas, bordes de caminos",
@@ -198,8 +198,8 @@
     },
     {
       "id": "15",
-      "name": "Blanquita de la mostaza", 
-      "other names":"Pieris napi", 
+      "name": "Blanquita de la mostaza",
+      "other names": "Pieris napi",
       "family": "Pieridae (blancas y amarillas)",
       "Location": "Prácticamente en todo el continente, desde la península ibérica hasta Escandinavia e incluso Rusia",
       "Hábitat": "Herbazales húmedos, márgenes, claros boscosos, orillas de ríos; hasta 2 600 m en Alpes",
@@ -213,7 +213,7 @@
     {
       "id": "16",
       "name": "Amarilla de la alfalfa",
-      "other names":"Colias crocea", 
+      "other names": "Colias crocea",
       "family": "Pieridae (blancas y amarillas)",
       "Location": "Sur y centro de Europa como residente; migrante regular en Reino Unido y Escandinavia ",
       "Hábitat": "Praderas, bordes, pastizales, dunas, hasta 2 500 m",
@@ -227,7 +227,7 @@
     {
       "id": "17",
       "name": "Mariposa amarilla limón",
-      "other names":"Gonepteryx rhamni", 
+      "other names": "Gonepteryx rhamni",
       "family": "Pieridae (blancas y amarillas)",
       "Location": "Muy extendida en toda Europa excepto extremo norte y Escocia; frecuentes en Inglaterra, Irlanda, Europa central y sur",
       "Hábitat": "Setos de Rhamnus/Frangula, bosques mixtos, jardines urbanos, parques}",
@@ -241,7 +241,7 @@
     {
       "id": "18",
       "name": "Punta anaranjada",
-      "other names":"Anthocharis cardamines", 
+      "other names": "Anthocharis cardamines",
       "family": "Pieridae (blancas y amarillas)",
       "Location": "Presente en casi todo el continente, excepto extremo norte de Escandinavia y sur de España",
       "Hábitat": "Bordes de bosques, praderas húmedas, setos, claros hasta 2 000 –2 600 m en montaña",
@@ -255,7 +255,7 @@
     {
       "id": "19",
       "name": "Blanquita ibérica",
-      "other names":"Pontia daplidice", 
+      "other names": "Pontia daplidice",
       "family": "Pieridae (blancas y amarillas)",
       "Location": "Sur y centro de Europa: mantiene poblaciones en España, Portugal, Francia, Italia, llega ocasionalmente a Reino Unido, Escandinavia meridional",
       "Hábitat": "Praderas secas, áreas agrícolas, hasta montañas bajas",
@@ -269,21 +269,21 @@
     {
       "id": "20",
       "name": "Azul común",
-      "other names":"Polyommatus icarus", 
+      "other names": "Polyommatus icarus",
       "family": "Lycaenidae (azules y cobres)",
       "Location": "Presente en Albania, Andorra, Austria, Bélgica, Reino Unido, Irlanda, España, Francia, Alemania, Italia, Países Bajos, Polonia, Suecia, Finlandia, Rusia, entre otro",
       "Hábitat": "Praderas floridas, márgenes, claros boscosos, dunas, hasta 2 700 m ",
       "Morphology": "Envergadura 28–36 mm; machos azules lilas con borde oscuro y halo blanco; hembras marrón con manchas anaranjadas ",
       "Life": "2–3 generaciones (abril–octubre); oruga verde inverna; pupa sobre planta hospedera",
       "Feeding": "Larvas en leguminosas (Lotus, Trifolium, Vicia); adultos en néctar de cardos, tréboles, escabiosas",
-      "Conservation": "LC", 
+      "Conservation": "LC",
       "about conservation": "LC",
       "image": ""
     },
     {
       "id": "21",
       "name": "Azul celeste / Azul de Adonis",
-      "other names":"Lysandra bellargus", 
+      "other names": "Lysandra bellargus",
       "family": "Lycaenidae (azules y cobres)",
       "Location": "Frecuente en Reino Unido, Francia, España, Italia, Alemania, Austria y Suiza",
       "Hábitat": "Praderas calizas y laderas floridas",
@@ -297,7 +297,7 @@
     {
       "id": "22",
       "name": "Azul de Escher",
-      "other names":"Polyommatus escheri", 
+      "other names": "Polyommatus escheri",
       "family": "Lycaenidae (azules y cobres)",
       "Location": "Frecuente en los Alpes (Francia, Suiza, Austria, Alemania, Italia)",
       "Hábitat": "Praderas alpinas y laderas floridas a 1 200–2 500 m",
@@ -311,7 +311,7 @@
     {
       "id": "23",
       "name": "Cobre pequeño",
-      "other names":"Lycaena phlaeas", 
+      "other names": "Lycaena phlaeas",
       "family": "Lycaenidae (azules y cobres)",
       "Location": "Presente en España, Reino Unido, Francia, Alemania, Suecia, Finlandia, Rusia",
       "Hábitat": "Praderas secas, bordes, claros boscosos, pastos",
@@ -325,7 +325,7 @@
     {
       "id": "24",
       "name": "Cobre grande",
-      "other names":"Lycaena dispar", 
+      "other names": "Lycaena dispar",
       "family": "Lycaenidae (azules y cobres)",
       "Location": "Presente en Francia, Alemania, Países Bajos, Polonia, Austria, Finlandia, Rusia; extinto en Reino Unido",
       "Hábitat": "Humedales, marismas, pastos húmedos, bordes",
@@ -339,7 +339,7 @@
     {
       "id": "25",
       "name": "Mariposa de rabo largo",
-      "other names":"Lampides boeticus", 
+      "other names": "Lampides boeticus",
       "family": "Lycaenidae (azules y cobres)",
       "Location": "España, Italia, Grecia, sur de Francia; migrante ocasional más al norte",
       "Hábitat": "Áreas abiertas, praderas, bordes agrícolas",
@@ -353,7 +353,7 @@
     {
       "id": "26",
       "name": "Saltadora de las coles",
-      "other names":"Thymelicus lineola", 
+      "other names": "Thymelicus lineola",
       "family": "Hesperiidae (saltarinas)",
       "Location": "España, Francia, Italia, Reino Unido (sur e Irlanda), Suecia, Noruega, Finlandia, Rusia, resto de Europa continental",
       "Hábitat": "Praderas, bordes de cultivos, claros boscosos, zonas urbanas con hierba; prefiere áreas de césped sin cortar",
@@ -367,7 +367,7 @@
     {
       "id": "27",
       "name": "Saltadora dorada",
-      "other names":"Thymelicus sylvestris", 
+      "other names": "Thymelicus sylvestris",
       "family": "Hesperiidae (saltarinas)",
       "Location": "Muy extendida en España, Francia, Reino Unido, Alemania, Suecia, Rusia; suele coexistir con T. lineola",
       "Hábitat": "Praderas húmedas, herbazales, márgenes; prefiere zonas más húmedas que T. lineola",
@@ -381,7 +381,7 @@
     {
       "id": "28",
       "name": "Saltadora grisácea",
-      "other names":"Ochlodes sylvanus", 
+      "other names": "Ochlodes sylvanus",
       "family": "Hesperiidae (saltarinas)",
       "Location": "Presente ampliamente en España, Francia, Reino Unido, Alemania, Suecia, Rusia",
       "Hábitat": "Praderas, bordes de caminos, claros boscosos húmedos",
@@ -394,8 +394,8 @@
     },
     {
       "id": "29",
-      "name": "Saltadora ibérica ()",
-      "other names":"Carcharodus baeticus", 
+      "name": "Saltadora ibérica",
+      "other names": "Carcharodus baeticus",
       "family": "Hesperiidae (saltarinas)",
       "Location": "España (Peninsula Ibérica), sur de Francia, Italia (incluida Sicilia), extinta en Suiza",
       "Hábitat": "Laderas rocosas y secas, matorrales, bordes de arroyos, piornales hasta 2 500 m ",
