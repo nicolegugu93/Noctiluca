@@ -1,9 +1,20 @@
 import { useState } from 'react';
-import { createButterfly } from '../services/ButterflyServices';
 
-export default function ButterflyForm() {
+// Simulación del servicio (en tu caso real usarías la importación)
+const createButterfly = async (butterflyData) => {
+  // Simulación de la función - en tu código real importarías desde ButterflyServices.jsx
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('Mariposa creada:', butterflyData);
+      resolve({ success: true, data: butterflyData });
+    }, 1000);
+  });
+};
+
+export default function CreateButterfly() {
   const [formData, setFormData] = useState({
     name: '',
+    'other names': '',
     family: '',
     Location: '',
     Hábitat: '',
@@ -11,6 +22,7 @@ export default function ButterflyForm() {
     Life: '',
     Feeding: '',
     Conservation: '',
+    'about conservation': '',
     image: ''
   });
 
@@ -30,9 +42,7 @@ export default function ButterflyForm() {
     setMessage('');
 
     try {
-
       const newId = Date.now().toString();
-      
       const newButterfly = {
         id: newId,
         ...formData
@@ -44,6 +54,7 @@ export default function ButterflyForm() {
         setMessage('¡Mariposa añadida correctamente!');
         setFormData({
           name: '',
+          'other names': '',
           family: '',
           Location: '',
           Hábitat: '',
@@ -51,6 +62,7 @@ export default function ButterflyForm() {
           Life: '',
           Feeding: '',
           Conservation: '',
+          'about conservation': '',
           image: ''
         });
       } else {
@@ -63,260 +75,246 @@ export default function ButterflyForm() {
     }
   };
 
-  const containerStyle = {
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '24px',
-    backgroundColor: 'white',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px',
-    fontFamily: 'Arial, sans-serif'
-  };
-
-  const titleStyle = {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: '24px',
-    color: '#333'
-  };
-
-  const messageStyle = {
-    padding: '12px',
-    marginBottom: '16px',
-    borderRadius: '4px',
-    border: '1px solid',
-    backgroundColor: message.includes('correctamente') ? '#d4edda' : '#f8d7da',
-    color: message.includes('correctamente') ? '#155724' : '#721c24',
-    borderColor: message.includes('correctamente') ? '#c3e6cb' : '#f5c6cb'
-  };
-
-  const formGroupStyle = {
-    marginBottom: '16px'
-  };
-
-  const gridStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '16px',
-    marginBottom: '16px'
-  };
-
-  const labelStyle = {
-    display: 'block',
-    fontSize: '14px',
-    fontWeight: '500',
-    color: '#374151',
-    marginBottom: '4px'
-  };
-
-  const inputStyle = {
-    width: '100%',
-    padding: '8px 12px',
-    border: '1px solid #d1d5db',
-    borderRadius: '4px',
-    fontSize: '14px',
-    outline: 'none',
-    boxSizing: 'border-box'
-  };
-
-  const textareaStyle = {
-    ...inputStyle,
-    resize: 'vertical',
-    minHeight: '60px'
-  };
-
-  const buttonContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    paddingTop: '16px'
-  };
-
-  const buttonStyle = {
-    padding: '12px 32px',
-    borderRadius: '4px',
-    fontWeight: '500',
-    color: 'white',
-    border: 'none',
-    cursor: isSubmitting ? 'not-allowed' : 'pointer',
-    backgroundColor: isSubmitting ? '#9ca3af' : '#2563eb',
-    transition: 'background-color 0.2s'
-  };
-
   return (
-    <div style={containerStyle}>
-      <h2 style={titleStyle}>
-        Añadir Nueva Mariposa
-      </h2>
+    <div className="min-h-screen" style={{
+      background: 'linear-gradient(135deg, #2D1B69 0%, #11092A 50%, #0D0820 100%)',
+      fontFamily: 'Inter, system-ui, sans-serif'
+    }}>
+      {/* Botón superior */}
+      <div className="pt-6 pl-6">
+        <button className="px-4 py-2 bg-yellow-600 text-yellow-100 rounded-md text-sm font-medium hover:bg-yellow-700 transition-colors">
+          » Regresar a la galería
+        </button>
+      </div>
 
-      {message && (
-        <div style={messageStyle}>
-          {message}
+      {/* Contenido principal */}
+      <div className="flex flex-col items-center justify-center px-6 py-12">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-light text-yellow-200 mb-6">
+            Cada mariposa tiene una historia ¿Quieres contarla?
+          </h1>
+          <p className="text-lg text-purple-200 mb-2">
+            Comparte lo que sabes sobre una especie europea.
+          </p>
+          <p className="text-lg text-purple-200">
+            Con tu ayuda, la magia de Noctiluca seguirá creciendo.
+          </p>
         </div>
-      )}
 
-      <div>
-        <div style={gridStyle}>
-          <div style={formGroupStyle}>
-            <label htmlFor="name" style={labelStyle}>
-              Nombre *
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              style={inputStyle}
-              placeholder="Ej: Vanesa atalanta (Almirante rojo)"
-            />
+        {/* Decorative butterfly */}
+        <div className="absolute top-32 right-16 opacity-30">
+          <svg width="80" height="80" viewBox="0 0 100 100" className="text-yellow-300">
+            <path d="M50 20 C40 10, 20 15, 15 35 C10 50, 20 60, 35 55 C40 52, 45 48, 50 50 C55 48, 60 52, 65 55 C80 60, 90 50, 85 35 C80 15, 60 10, 50 20 Z" 
+                  fill="currentColor" opacity="0.6"/>
+            <path d="M50 50 C45 60, 40 70, 35 85 C30 95, 40 98, 50 90 C50 85, 50 75, 50 70 C50 75, 50 85, 50 90 C60 98, 70 95, 65 85 C60 70, 55 60, 50 50 Z" 
+                  fill="currentColor" opacity="0.4"/>
+          </svg>
+        </div>
+
+        {/* Formulario */}
+        <div className="w-full max-w-4xl">
+          <div className="bg-gray-900 bg-opacity-60 backdrop-blur-sm p-8 rounded-3xl border-2 border-yellow-400 shadow-2xl">
+            {message && (
+              <div className={`mb-6 p-4 rounded-lg text-center font-medium ${
+                message.includes('correctamente') 
+                  ? 'bg-green-900 bg-opacity-50 text-green-300 border border-green-700' 
+                  : 'bg-red-900 bg-opacity-50 text-red-300 border border-red-700'
+              }`}>
+                {message}
+              </div>
+            )}
+
+            <div className="space-y-6">
+              {/* Primera fila */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border-2 border-blue-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Hábitat
+                  </label>
+                  <input
+                    type="text"
+                    name="Hábitat"
+                    value={formData.Hábitat}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Alimentación
+                  </label>
+                  <input
+                    type="text"
+                    name="Feeding"
+                    value={formData.Feeding}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder=""
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Segunda fila */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Otros nombres
+                  </label>
+                  <input
+                    type="text"
+                    name="other names"
+                    value={formData['other names']}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder=""
+                  />
+                </div>
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Morfología
+                  </label>
+                  <input
+                    type="text"
+                    name="Morphology"
+                    value={formData.Morphology}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Conservación detallada
+                  </label>
+                  <input
+                    type="text"
+                    name="Conservation"
+                    value={formData.Conservation}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder=""
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Tercera fila */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Familia
+                  </label>
+                  <input
+                    type="text"
+                    name="family"
+                    value={formData.family}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Vida
+                  </label>
+                  <input
+                    type="text"
+                    name="Life"
+                    value={formData.Life}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Estado de conservacion
+                  </label>
+                  <select
+                    name="about conservation"
+                    value={formData['about conservation']}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-blue-400 transition-colors"
+                    required
+                  >
+                    <option value="">Seleccionar</option>
+                    <option value="LC">LC (Least Concern)</option>
+                    <option value="NT">NT (Near Threatened)</option>
+                    <option value="VU">VU (Vulnerable)</option>
+                    <option value="EN">EN (Endangered)</option>
+                    <option value="CR">CR (Critically Endangered)</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Cuarta fila */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    Ubicación
+                  </label>
+                  <textarea
+                    name="Location"
+                    value={formData.Location}
+                    onChange={handleChange}
+                    rows="3"
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors resize-vertical"
+                    placeholder=""
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-white text-sm font-medium mb-2">
+                    URL de la imagen
+                  </label>
+                  <textarea
+                    name="image"
+                    value={formData.image}
+                    onChange={handleChange}
+                    rows="3"
+                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors resize-vertical"
+                    placeholder="https://"
+                  />
+                </div>
+              </div>
+
+              {/* Botón de envío */}
+              <div className="flex justify-center pt-8">
+                <button
+                  type="button"
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className={`px-12 py-4 rounded-xl font-medium text-lg transition-all duration-300 ${
+                    isSubmitting
+                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                      : 'bg-gradient-to-r from-yellow-500 to-yellow-600 text-white hover:from-yellow-600 hover:to-yellow-700 hover:scale-105 shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  {isSubmitting ? 'Guardando...' : 'Crear Mariposa'}
+                </button>
+              </div>
+            </div>
           </div>
-
-          <div style={formGroupStyle}>
-            <label htmlFor="family" style={labelStyle}>
-              Familia *
-            </label>
-            <input
-              type="text"
-              id="family"
-              name="family"
-              value={formData.family}
-              onChange={handleChange}
-              required
-              style={inputStyle}
-              placeholder="Ej: Nymphalidae (alas cepillo)"
-            />
-          </div>
-        </div>
-
-        <div style={formGroupStyle}>
-          <label htmlFor="Location" style={labelStyle}>
-            Ubicación *
-          </label>
-          <textarea
-            id="Location"
-            name="Location"
-            value={formData.Location}
-            onChange={handleChange}
-            required
-            style={textareaStyle}
-            placeholder="Describe la distribución geográfica de la mariposa"
-          />
-        </div>
-
-        <div style={formGroupStyle}>
-          <label htmlFor="Hábitat" style={labelStyle}>
-            Hábitat *
-          </label>
-          <textarea
-            id="Hábitat"
-            name="Hábitat"
-            value={formData.Hábitat}
-            onChange={handleChange}
-            required
-            style={textareaStyle}
-            placeholder="Describe el hábitat natural de la mariposa"
-          />
-        </div>
-
-        <div style={formGroupStyle}>
-          <label htmlFor="Morphology" style={labelStyle}>
-            Morfología *
-          </label>
-          <textarea
-            id="Morphology"
-            name="Morphology"
-            value={formData.Morphology}
-            onChange={handleChange}
-            required
-            style={textareaStyle}
-            placeholder="Describe las características físicas de la mariposa"
-          />
-        </div>
-
-        <div style={formGroupStyle}>
-          <label htmlFor="Life" style={labelStyle}>
-            Ciclo de Vida *
-          </label>
-          <textarea
-            id="Life"
-            name="Life"
-            value={formData.Life}
-            onChange={handleChange}
-            required
-            style={textareaStyle}
-            placeholder="Describe el ciclo de vida y reproducción"
-          />
-        </div>
-
-        <div style={formGroupStyle}>
-          <label htmlFor="Feeding" style={labelStyle}>
-            Alimentación *
-          </label>
-          <textarea
-            id="Feeding"
-            name="Feeding"
-            value={formData.Feeding}
-            onChange={handleChange}
-            required
-            style={textareaStyle}
-            placeholder="Describe los hábitos alimentarios"
-          />
-        </div>
-
-        <div style={gridStyle}>
-          <div style={formGroupStyle}>
-            <label htmlFor="Conservation" style={labelStyle}>
-              Estado de Conservación *
-            </label>
-            <input
-              type="text"
-              id="Conservation"
-              name="Conservation"
-              value={formData.Conservation}
-              onChange={handleChange}
-              required
-              style={inputStyle}
-              placeholder="Ej: LC (Least Concern)"
-            />
-          </div>
-
-          <div style={formGroupStyle}>
-            <label htmlFor="image" style={labelStyle}>
-              URL de Imagen
-            </label>
-            <input
-              type="url"
-              id="image"
-              name="image"
-              value={formData.image}
-              onChange={handleChange}
-              style={inputStyle}
-              placeholder="https://ejemplo.com/imagen.jpg"
-            />
-          </div>
-        </div>
-
-        <div style={buttonContainerStyle}>
-          <button
-            type="button"
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-            style={buttonStyle}
-            onMouseOver={(e) => {
-              if (!isSubmitting) {
-                e.target.style.backgroundColor = '#1d4ed8';
-              }
-            }}
-            onMouseOut={(e) => {
-              if (!isSubmitting) {
-                e.target.style.backgroundColor = '#2563eb';
-              }
-            }}
-          >
-            {isSubmitting ? 'Guardando...' : 'Añadir Mariposa'}
-          </button>
         </div>
       </div>
     </div>
