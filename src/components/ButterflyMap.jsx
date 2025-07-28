@@ -23,7 +23,7 @@ const countryNames = {
   LU: 'Luxemburgo',
   IE: 'Irlanda',
   IS: 'Islandia',
-  
+
   // Europa del Este
   PL: 'Polonia',
   CZ: 'República Checa',
@@ -39,24 +39,24 @@ const countryNames = {
   MK: 'Macedonia del Norte',
   AL: 'Albania',
   XK: 'Kosovo',
-  
+
   // Europa Nórdica
   SE: 'Suecia',
   NO: 'Noruega',
   DK: 'Dinamarca',
   FI: 'Finlandia',
-  
+
   // Países Bálticos
   EE: 'Estonia',
   LV: 'Letonia',
   LT: 'Lituania',
-  
+
   // Europa Oriental
   UA: 'Ucrania',
   BY: 'Bielorrusia',
   MD: 'Moldavia',
   RU: 'Rusia',
-  
+
   // Otros
   GR: 'Grecia',
   CY: 'Chipre',
@@ -73,7 +73,6 @@ const extractCountriesFromLocation = (location) => {
   const locationLower = location.toLowerCase();
   const countries = [];
 
-  // Buscamos menciones de países en diferentes idiomas
   if (locationLower.includes('españa') || locationLower.includes('spain') || locationLower.includes('ibérica')) {
     countries.push('ES');
   }
@@ -103,25 +102,25 @@ const Map = () => {
   const [butterfliesData, setButterfliesData] = useState([]); // Datos de mariposas desde la API
   const [selectedCountry, setSelectedCountry] = useState(null); // País seleccionado para mostrar modal
   const [hoveredISO, setHoveredISO] = useState(null); // País sobre el que está el cursor
-  const [position, setPosition] = useState({ coordinates: [0, 20], zoom: 1 }); // Posición y zoom del mapa
 
-  // 🔄 Cargar datos de mariposas al montar el componente
+  // ⬇️ Estado inicial centrado en Europa con zoom menos aumentado para vista general
+  const initialPosition = { coordinates: [15, 50], zoom: 1.2 };
+  const [position, setPosition] = useState(initialPosition); // Posición y zoom del mapa
+
   useEffect(() => {
     async function fetchData() {
       try {
         const data = await getAllButterflies();
-        console.log('Mariposas cargadas:', data);
         setButterfliesData(data || []);
       } catch (error) {
-        console.error('Error cargando mariposas:', error);
         setButterfliesData([]);
       }
     }
-
     fetchData();
   }, []);
 
-  // 🗺️ Función auxiliar para convertir ISO3 a ISO2
+  // Funciones auxiliares convertISO3ToISO2, convertCountryNameToISO2, getCountryISO (sin cambio)
+
   const convertISO3ToISO2 = (iso3) => {
     const iso3ToIso2Map = {
       'ESP': 'ES', 'FRA': 'FR', 'ITA': 'IT', 'DEU': 'DE', 'GBR': 'GB',
@@ -135,7 +134,6 @@ const Map = () => {
     return iso3ToIso2Map[iso3] || null;
   };
 
-  // 🏷️ Función auxiliar para convertir nombres de países a ISO2
   const convertCountryNameToISO2 = (countryName) => {
     const nameToIso2Map = {
       'spain': 'ES', 'españa': 'ES', 'espagne': 'ES',
@@ -158,437 +156,318 @@ const Map = () => {
     return nameToIso2Map[countryName.toLowerCase()] || null;
   };
 
-  // 🔍 Función robusta para obtener el código ISO del país desde los datos geográficos
   const getCountryISO = (geo) => {
     const props = geo.properties;
-    
-    // Lista de posibles propiedades que contienen códigos de país
     const possibleISOProps = [
       'ISO_A2', 'iso_a2', 'ISO_A3', 'iso_a3', 'ADM0_A3', 'SOV_A3',
       'ISO2', 'iso2', 'ISO3', 'iso3', 'ADMIN', 'admin',
       'NAME', 'name', 'NAME_EN', 'name_en', 'NAME_ES', 'name_es',
       'SOVEREIGNT', 'sovereignt'
     ];
-
-    // Intentamos encontrar un código ISO válido
     for (const prop of possibleISOProps) {
       const value = props[prop];
       if (value) {
-        // Si es un código de 2 letras, lo usamos directamente
-        if (typeof value === 'string' && value.length === 2 && /^[A-Z]{2}$/i.test(value)) {
-          return value.toUpperCase();
-        }
-        // Si es un código de 3 letras, intentamos convertirlo a 2 letras
+        if (typeof value === 'string' && value.length === 2 && /^[A-Z]{2}$/i.test(value)) return value.toUpperCase();
         if (typeof value === 'string' && value.length === 3) {
           const iso2 = convertISO3ToISO2(value.toUpperCase());
           if (iso2) return iso2;
         }
-        // Si es un nombre de país, intentamos convertirlo
         if (typeof value === 'string') {
           const iso2 = convertCountryNameToISO2(value);
           if (iso2) return iso2;
         }
       }
     }
-    
     return null;
   };
 
-  // 🖱️ Manejo del clic en un país
+  // 🖱️ Manejo clic en país (sin cambios)
   const handleCountryClick = (geo) => {
     const isoCode = getCountryISO(geo);
-    
-    console.log('País clicado - ISO detectado:', isoCode);
-    
-    if (!isoCode) {
-      console.log('No se pudo determinar el código del país');
-      return;
-    }
-
-    // Filtrar mariposas que pertenecen a este país
+    if (!isoCode) return;
     const butterfliesInCountry = butterfliesData.filter((butterfly) => {
       const countries = extractCountriesFromLocation(butterfly.Location || '');
       return countries.includes(isoCode);
     });
-  
-    console.log('Mariposas en', isoCode, butterfliesInCountry);
-  
-    // Si hay mariposas, abrimos el modal
     if (butterfliesInCountry.length > 0) {
       setSelectedCountry({
         id: isoCode,
         name: countryNames[isoCode] || isoCode,
         butterflies: butterfliesInCountry,
       });
-    } else {
-      console.log(`No hay mariposas registradas en ${countryNames[isoCode] || isoCode}`);
     }
   };
 
-  // 🦋 Manejo del clic en una mariposa para ir a su detalle
+  // 🦋 Manejo clic en mariposa (sin cambios)
   const handleButterflyClick = (butterfly) => {
-    console.log('Navegando a mariposa:', butterfly);
-    setSelectedCountry(null); // Cerrar modal
-    navigate(`/butterflydetail/${butterfly.id}`); // Navegar a página de detalle
+    setSelectedCountry(null);
+    navigate(`/butterflydetail/${butterfly.id}`);
   };
 
-  // 🔍 Funciones de control de zoom
+  // 🔍 Control zoom
   const handleZoomIn = () => {
-    if (position.zoom >= 4) return;
+    if (position.zoom >= 8) return;
     setPosition(pos => ({ ...pos, zoom: pos.zoom * 2 }));
   };
-
   const handleZoomOut = () => {
     if (position.zoom <= 1) return;
     setPosition(pos => ({ ...pos, zoom: pos.zoom / 2 }));
   };
-
-  const handleResetZoom = () => {
-    setPosition({ coordinates: [0, 20], zoom: 1 });
-  };
-
-  const handleMoveEnd = (position) => {
-    setPosition(position);
-  };
+  const handleResetZoom = () => setPosition(initialPosition);
+  const handleMoveEnd = (pos) => setPosition(pos);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F5F1E8' }}>
-      {/* 📦 Contenedor principal centrado */}
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        
-        {/* 🎨 Header estilo vintage */}
-        <div className="text-center mb-8">
-          <h1 
-            className="text-5xl font-bold mb-4"
-            style={{ 
-              color: '#D4AF37',
-              fontFamily: 'serif',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
-            }}
-          >
-           
-          </h1>
-          <p 
-            className="text-xl mb-2"
-            style={{ 
-              color: '#5D4E37',
-              fontFamily: 'serif'
-            }}
-          >
-            Explora el mundo místico de las mariposas europeas
-          </p>
-          <p 
-            className="text-lg"
-            style={{ 
-              color: '#8B7355',
-              fontFamily: 'serif'
-            }}
-          >
-            Haz clic en un país para descubrir sus mariposas polinizadoras
-          </p>
-        </div>
+    // Fondo pergamino vintage general (sin cambios)
+    <div >
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="relative rounded-3xl shadow-2xl overflow-hidden border-2 border-[#C8B676] bg-[#F1E9D2]">
 
-        {/* 🗺️ Contenedor del mapa con estilo vintage */}
-        <div 
-          className="relative rounded-2xl shadow-2xl overflow-hidden border-4"
-          style={{ 
-            backgroundColor: '#E8DCC0',
-            borderColor: '#B8860B',
-            height: '500px'
-          }}
-        >
-          {/* 🎛️ Controles de zoom estilo vintage */}
-          <div className="absolute top-4 right-4 z-30 flex flex-col gap-2">
+          {/* Instrucciones morado/dorado */}
+          <div className="absolute top-6 left-6 z-30 bg-[#693971]/90 backdrop-blur-sm rounded-xl px-4 py-3 border border-[#C8B676]/40">
+            <p className="text-[#F5E0A3] font-lato text-sm font-medium">
+              Haz clic en un país para descubrir sus mariposas polinizadoras
+            </p>
+          </div>
+
+          {/* Botones zoom con mismo estilo */}
+          <div className="absolute top-6 right-6 z-30 flex flex-col gap-2">
             <button
               onClick={handleZoomIn}
-              className="p-2 rounded-lg shadow-lg border-2 transition-all hover:scale-105"
-              style={{ 
-                backgroundColor: '#D4AF37',
-                borderColor: '#B8860B',
-                color: '#5D4E37'
-              }}
+              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F5E0A3] font-lato rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-transform duration-200 shadow-lg"
               title="Acercar"
             >
-              <ZoomIn size={18} />
+              <ZoomIn size={20} />
             </button>
             <button
               onClick={handleZoomOut}
-              className="p-2 rounded-lg shadow-lg border-2 transition-all hover:scale-105"
-              style={{ 
-                backgroundColor: '#D4AF37',
-                borderColor: '#B8860B',
-                color: '#5D4E37'
-              }}
+              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F5E0A3] font-lato rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-transform duration-200 shadow-lg"
               title="Alejar"
             >
-              <ZoomOut size={18} />
+              <ZoomOut size={20} />
             </button>
             <button
               onClick={handleResetZoom}
-              className="p-2 rounded-lg shadow-lg border-2 transition-all hover:scale-105"
-              style={{ 
-                backgroundColor: '#D4AF37',
-                borderColor: '#B8860B',
-                color: '#5D4E37'
-              }}
-              title="Restablecer vista"
+              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F5E0A3] font-lato rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-transform duration-200 shadow-lg"
+              title="Vista inicial"
             >
-              <RotateCcw size={18} />
+              <RotateCcw size={20} />
             </button>
           </div>
 
-          {/* 🗺️ Mapa con colores vintage */}
-          <ComposableMap
-            projection="geoAzimuthalEqualArea"
-            projectionConfig={{ 
-              rotate: [-10, -52, 0], 
-              scale: 700 
-            }}
-            style={{ width: '100%', height: '100%' }}
-          >
-            <ZoomableGroup
-              zoom={position.zoom}
-              center={position.coordinates}
-              onMoveEnd={handleMoveEnd}
-              minZoom={1}
-              maxZoom={8}
+          {/* Mapa principal */}
+          <div className="h-[600px] bg-[#F1E9D2]">
+            <ComposableMap
+              projection="geoAzimuthalEqualArea"
+              projectionConfig={{ rotate: [-10, -52, 0], scale: 700 }}
+              style={{ width: '100%', height: '100%', outline: 'none' }}
             >
-              <Geographies geography={geoUrl}>
-                {({ geographies }) =>
-                  geographies.map((geo) => {
-                    const iso = getCountryISO(geo);
+              <ZoomableGroup
+                zoom={position.zoom}
+                center={position.coordinates}
+                onMoveEnd={handleMoveEnd}
+                minZoom={1}
+                maxZoom={8}
+              >
+                <Geographies geography={geoUrl}>
+                  {({ geographies }) =>
+                    geographies.map((geo) => {
+                      const iso = getCountryISO(geo);
+                      const hasButterflies = iso && butterfliesData.some(butterfly => {
+                        const countries = extractCountriesFromLocation(butterfly.Location || '');
+                        return countries.includes(iso);
+                      });
+                      const butterflyCount = iso ? butterfliesData.filter(butterfly => {
+                        const countries = extractCountriesFromLocation(butterfly.Location || '');
+                        return countries.includes(iso);
+                      }).length : 0;
 
-                    // Verificar si el país tiene mariposas registradas
-                    const hasButterflies = iso && butterfliesData.some((butterfly) => {
-                      const countries = extractCountriesFromLocation(butterfly.Location || '');
-                      return countries.includes(iso);
-                    });
-
-                    // Contar mariposas en este país
-                    const butterflyCount = iso ? butterfliesData.filter((butterfly) => {
-                      const countries = extractCountriesFromLocation(butterfly.Location || '');
-                      return countries.includes(iso);
-                    }).length : 0;
-
-                    // 🎨 Estilos vintage del mapa
-                    const styles = {
-                      default: {
-                        fill: hasButterflies ? '#8B7D6B' : '#C4B5A0', // Verde oliva vs beige claro
-                        stroke: '#654321',
-                        strokeWidth: 0.5,
-                        cursor: hasButterflies ? 'pointer' : 'default',
-                        opacity: hasButterflies ? 0.9 : 0.7,
-                        transition: 'all 0.3s ease',
-                      },
-                      hover: {
-                        fill: hasButterflies ? '#A0916F' : '#C4B5A0', // Verde oliva más claro
-                        stroke: '#8B7355',
-                        strokeWidth: 1,
-                        cursor: hasButterflies ? 'pointer' : 'default',
-                        opacity: 1,
-                      },
-                      pressed: {
-                        fill: '#B8A082',
-                        strokeWidth: 1.5,
-                      },
-                    };
-
-                    return (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        onClick={() => handleCountryClick(geo)}
-                        onMouseEnter={() => setHoveredISO(iso)}
-                        onMouseLeave={() => setHoveredISO(null)}
-                        style={styles}
-                        title={
-                          hasButterflies
-                            ? `${countryNames[iso] || iso}: ${butterflyCount} especie${butterflyCount !== 1 ? 's' : ''}`
-                            : `${countryNames[iso] || iso}: Sin datos`
+                      const styles = {
+                        default: {
+                          fill: hasButterflies ? '#F0DC82' : '#DFD8C3',
+                          stroke: '#907958',
+                          strokeWidth: 0.9,
+                          cursor: hasButterflies ? 'pointer' : 'default',
+                          opacity: 1,
+                          outline: 'none',
+                          transition: 'all 0.2s ease'
+                        },
+                        hover: {
+                          fill: '#FAE2A2',
+                          stroke: '#C8B676',
+                          strokeWidth: 2,
+                          outline: 'none'
+                        },
+                        pressed: {
+                          fill: '#E6D3B3',
+                          stroke: '#907958',
+                          strokeWidth: 2.5,
+                          outline: 'none'
                         }
-                      />
-                    );
-                  })
-                }
-              </Geographies>
-            </ZoomableGroup>
-          </ComposableMap>
-        </div>
+                      };
 
-        {/* 📈 Leyenda vintage */}
-        <div className="mt-6 text-center">
-          <div className="flex items-center justify-center gap-8 text-sm" style={{ color: '#5D4E37' }}>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded border" style={{ backgroundColor: '#8B7D6B', borderColor: '#654321' }}></div>
-              <span style={{ fontFamily: 'serif' }}>Países con mariposas documentadas</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 rounded border" style={{ backgroundColor: '#C4B5A0', borderColor: '#654321' }}></div>
-              <span style={{ fontFamily: 'serif' }}>Sin datos disponibles</span>
+                      return (
+                        <Geography
+                          key={geo.rsmKey}
+                          geography={geo}
+                          onClick={() => handleCountryClick(geo)}
+                          onMouseEnter={() => setHoveredISO(iso)}
+                          onMouseLeave={() => setHoveredISO(null)}
+                          style={styles}
+                          title={
+                            hasButterflies
+                              ? `${countryNames[iso] || iso}: ${butterflyCount} especie${butterflyCount !== 1 ? 's' : ''}`
+                              : `${countryNames[iso] || iso}: Sin datos`
+                          }
+                        />
+                      );
+                    })
+                  }
+                </Geographies>
+              </ZoomableGroup>
+            </ComposableMap>
+          </div>
+
+          {/* Leyenda estilo morado/dorado */}
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30">
+            <div className="flex items-center gap-6 bg-[#693971]/90 backdrop-blur-sm rounded-xl px-6 py-3 border border-[#C8B676]/40">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-sm" style={{ backgroundColor: '#F0DC82', border: '1.5px solid #907958' }}></div>
+                <span className="text-[#F5E0A3] font-lato text-sm font-medium">Países con mariposas</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-sm" style={{ backgroundColor: '#DFD8C3', border: '1.5px solid #907958' }}></div>
+                <span className="text-[#F5E0A3] font-lato text-sm font-medium">Sin datos</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 🪟 MODAL estilo vintage centrado */}
+      {/* MODAL CON FONDO TRANSPARENTE Y DESENFOQUE SUAVE */}
       {selectedCountry && (
-        <div 
-          className="fixed inset-0 flex items-center justify-center z-50 p-4"
-          style={{ backgroundColor: 'rgba(93, 78, 55, 0.85)' }}
+  <div
+    className="fixed inset-0 flex items-center justify-center z-50 p-6"
+    style={{
+      backdropFilter: 'blur(6px)',
+      backgroundColor: 'rgba(255,255,255,0.12)'
+    }}
+    onClick={() => setSelectedCountry(null)}
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="max-w-5xl w-full max-h-[85vh] overflow-y-auto rounded-3xl shadow-lg border-2 p-0 bg-[#F3E9C9cc] flex flex-col"
+      style={{
+        borderColor: '#693971', // Borde morado como la leyenda
+        fontFamily: "'Lato', sans-serif",
+        color: '#5B4B24',
+        boxShadow: '0 4px 20px 0 #69397133'
+      }}
+    >
+      {/* Header modal con fondo degradado morado claro y borde inferior dorado */}
+      <div
+        className="flex items-center justify-between px-8 py-6"
+        style={{
+          background: 'linear-gradient(90deg, #69397122 0%, #D9A7C740 100%)',
+          borderTopLeftRadius: '1.5rem',
+          borderTopRightRadius: '1.5rem',
+          borderBottom: '2px solid #F5E0A3'
+        }}
+      >
+        <h3
+          className="text-3xl md:text-4xl font-bold"
+          style={{
+            fontFamily: "'Libre Baskerville', serif",
+            color: '#693971',
+            letterSpacing: '.02em'
+          }}
         >
-          <div 
-            className="rounded-2xl max-w-4xl w-full max-h-[80vh] overflow-hidden shadow-2xl border-4"
-            style={{ 
-              backgroundColor: '#F5F1E8',
-              borderColor: '#B8860B'
-            }}
-          >
-            {/* 🏷️ Header del modal vintage */}
+          {selectedCountry.name}
+        </h3>
+        <button
+          onClick={() => setSelectedCountry(null)}
+          className="p-2 rounded-full hover:bg-[#d9a7c7]/30 focus:outline-none transition"
+          style={{ border: '2px solid #693971', color: '#693971' }}
+          aria-label="Cerrar modal"
+        >
+          <X size={28} />
+        </button>
+      </div>
+      
+      {/* Contenido mariposas */}
+      <div className="p-8 pt-6" style={{ background: 'linear-gradient(0deg, #f3e9c9 80%, #d9a7c7 120%)' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {selectedCountry.butterflies.map(butterfly => (
             <div
-              className="px-8 py-6 border-b-4 flex justify-between items-center"
-              style={{ 
-                backgroundColor: '#5D4E37',
-                borderColor: '#B8860B'
+              key={butterfly.id}
+              onClick={() => handleButterflyClick(butterfly)}
+              className="cursor-pointer rounded-xl shadow-md border border-[#69397150] bg-[#fcf5e5cc] hover:shadow-lg hover:bg-[#ede6f6] transition-colors duration-200 flex flex-col overflow-hidden group"
+              style={{
+                fontFamily: "'Lato', sans-serif"
               }}
             >
-              <div>
-                <h3 
-                  className="text-3xl font-bold mb-2"
-                  style={{ 
-                    color: '#D4AF37',
-                    fontFamily: 'serif'
-                  }}
-                >
-                  {selectedCountry.name}
-                </h3>
-                <p 
-                  className="text-lg"
-                  style={{ 
-                    color: '#F5F1E8',
-                    fontFamily: 'serif'
-                  }}
-                >
-                  {selectedCountry.butterflies.length} especie{selectedCountry.butterflies.length !== 1 ? 's' : ''} documentada{selectedCountry.butterflies.length !== 1 ? 's' : ''}
-                </p>
-              </div>
-              <button
-                onClick={() => setSelectedCountry(null)}
-                className="p-2 rounded-lg transition-all hover:scale-110"
-                style={{ 
-                  backgroundColor: '#D4AF37',
-                  color: '#5D4E37'
+              {/* Imagen o icono de mariposa */}
+              <div className="relative w-full h-48 flex items-center justify-center overflow-hidden"
+                style={{
+                  background: 'linear-gradient(120deg, #e5d2fa 0%, #f3e9c9 100%)'
                 }}
               >
-                <X size={24} />
-              </button>
-            </div>
-
-            {/* 📋 Contenido del modal - solo nombre e imagen */}
-            <div className="p-8 overflow-y-auto max-h-[60vh]">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {selectedCountry.butterflies.map((butterfly) => (
-                  <div
-                    key={butterfly.id}
-                    className="border-3 rounded-xl overflow-hidden shadow-lg transition-all cursor-pointer transform hover:scale-105"
-                    onClick={() => handleButterflyClick(butterfly)}
-                    style={{ 
-                      backgroundColor: '#FFF8DC',
-                      borderColor: '#8B7355'
+                {butterfly.image ? (
+                  <img
+                    src={butterfly.image}
+                    alt={butterfly.name}
+                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                    onError={e => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
                     }}
-                  >
-                    {/* 🖼️ Imagen de la mariposa */}
-                    <div 
-                      className="w-full h-48 flex items-center justify-center overflow-hidden"
-                      style={{ backgroundColor: '#E8DCC0' }}
-                    >
-                      {butterfly.image ? (
-                        <img
-                          src={butterfly.image}
-                          alt={butterfly.name}
-                          className="w-full h-full object-cover transition-transform hover:scale-110"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'flex';
-                          }}
-                        />
-                      ) : null}
-                      <div
-                        className="w-full h-full flex items-center justify-center"
-                        style={{ 
-                          display: butterfly.image ? 'none' : 'flex',
-                          background: 'linear-gradient(135deg, #F0E68C 0%, #DDD3B8 100%)'
-                        }}
-                      >
-                        <div className="text-6xl">🦋</div>
-                      </div>
-                    </div>
-
-                    {/* 📝 Solo nombre de la mariposa */}
-                    <div className="p-4 text-center">
-                      <h4 
-                        className="font-bold text-lg leading-tight"
-                        style={{ 
-                          color: '#5D4E37',
-                          fontFamily: 'serif'
-                        }}
-                      >
-                        {butterfly.name}
-                      </h4>
-                    </div>
-                  </div>
-                ))}
+                  />
+                ) : (
+                  <div className="text-8xl opacity-40 text-[#693971] select-none">🦋</div>
+                )}
+              </div>
+              {/* Nombre mariposa */}
+              <div className="p-4">
+                <h4 className="text-lg md:text-xl font-semibold truncate"
+                  style={{
+                    color: '#693971', // Acento morado en el nombre
+                    fontFamily: "'Lato', sans-serif"
+                  }}>
+                  {butterfly.name}
+                </h4>
               </div>
             </div>
-
-            {/* 💡 Footer informativo */}
-            <div 
-              className="px-8 py-4 border-t-4 text-center"
-              style={{ 
-                backgroundColor: '#E8DCC0',
-                borderColor: '#B8860B'
-              }}
-            >
-              <p 
-                className="text-sm"
-                style={{ 
-                  color: '#5D4E37',
-                  fontFamily: 'serif'
-                }}
-              >
-                💡 Haz clic en cualquier mariposa para ver más detalles
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
-      )}
+      </div>
+      {/* Footer modal con acento morado y dorado */}
+      <div
+        className="mt-2 px-8 py-3 text-center"
+        style={{
+          borderTop: '2px solid #F5E0A3',
+          background: 'linear-gradient(90deg, #ede6f6 0%, #f3e9c9 100%)',
+          borderBottomLeftRadius: '1.5rem',
+          borderBottomRightRadius: '1.5rem'
+        }}
+      >
+        <p className="font-lato text-sm" style={{ color: '#693971', fontFamily: "'Lato', sans-serif" }}>
+          Haz clic en cualquier mariposa para explorar sus detalles
+        </p>
+      </div>
+    </div>
+  </div>
+)}
 
-      {/* ⚠️ MENSAJE cuando no hay datos */}
+
+      {/* Mensaje cuando no hay datos (sin cambios) */}
       {butterfliesData.length === 0 && (
         <div className="max-w-5xl mx-auto px-4 mt-8">
-          <div 
-            className="text-center p-8 rounded-2xl border-4 shadow-lg"
-            style={{ 
-              backgroundColor: '#FFF8DC',
-              borderColor: '#DAA520'
-            }}
-          >
-            <div className="text-6xl mb-4">🦋</div>
-            <h3 
-              className="text-2xl font-bold mb-2"
-              style={{ 
-                color: '#5D4E37',
-                fontFamily: 'serif'
-              }}
-            >
-              No hay datos de mariposas disponibles
+          <div className="text-center p-12 bg-gradient-to-br from-amber-50 to-stone-100 rounded-3xl border-2 border-amber-400/30 shadow-xl">
+            <div className="text-8xl mb-6 opacity-60">🦋</div>
+            <h3 className="text-3xl font-bold text-slate-800 mb-4">
+              Colección en construcción
             </h3>
-            <p 
-              style={{ 
-                color: '#8B7355',
-                fontFamily: 'serif'
-              }}
-            >
-              Agrega nuevas mariposas a la base de datos para verlas en el mapa interactivo.
+            <p className="text-lg text-slate-600 font-light max-w-md mx-auto">
+              Pronto tendremos datos fascinantes sobre las mariposas de Europa para compartir contigo
             </p>
           </div>
         </div>

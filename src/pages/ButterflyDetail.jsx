@@ -136,77 +136,102 @@ const ButterflyDetail = () => {
       {/* Contenedor principal con los detalles de la mariposa */}
       <div className="butterfly-detail-card">
         
-        {/* Columna izquierda - Tarjeta con imagen */}
-        <div className="butterfly-image-card">
-          {/* Placeholder para imagen de mariposa */}
-          <div className="butterfly-image-placeholder">
-            🦋
-          </div>
-          
-          {/* Información básica en la tarjeta */}
-          <div className="basic-info-card">
-            <h2>Información General</h2>
-            <p><strong>ID:</strong> {butterfly.id}</p>
-            <p><strong>Familia:</strong> {butterfly.family}</p>
+        {/* Título principal con el nombre de la mariposa */}
+        <h1 className="butterfly-title">{butterfly.name}</h1>
+        
+        {/* Familia en itálica como subtítulo */}
+        <p className="butterfly-family">{butterfly.family}</p>
+        
+        {/* Contenedor de imagen centrada */}
+        <div className="butterfly-image-container">
+          <div className="butterfly-image-wrapper">
+            {butterfly.image ? (
+              <img 
+                src={butterfly.image} 
+                alt={butterfly.name}
+                className="butterfly-image"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+            ) : null}
+            <div className="butterfly-image-placeholder">
+              🦋
+            </div>
           </div>
         </div>
         
-        {/* Columna derecha - Contenido detallado */}
-        <div className="butterfly-content">
-          {/* Título principal con el nombre de la mariposa */}
-          <h1 className="butterfly-title">{butterfly.name}</h1>
+        {/* Contenedor de información en dos columnas */}
+        <div className="butterfly-info-columns">
           
-          {/* Familia en itálica */}
-          <p className="butterfly-family">{butterfly.family}</p>
-          
-          {/* Detalles completos organizados en secciones */}
-          <div className="detailed-info">
+          {/* Primera columna */}
+          <div className="info-column">
             
             {/* Sección de Ubicación */}
             <div className="info-section">
-              <h3>📍 Ubicación</h3>
-              <p>{butterfly.Location || 'Información no disponible'}</p>
-            </div>
-            
-            {/* Sección de Hábitat */}
-            <div className="info-section">
-              <h3>🏞️ Hábitat</h3>
-              <p>{butterfly.Hábitat || 'Información no disponible'}</p>
+              <h3 className="section-title">Ubicación</h3>
+              <p className="section-content">{butterfly.Location || 'Información no disponible'}</p>
             </div>
             
             {/* Sección de Morfología */}
             <div className="info-section">
-              <h3>🔬 Morfología</h3>
-              <p>{butterfly.Morphology || 'Información no disponible'}</p>
-            </div>
-            
-            {/* Sección de Ciclo de Vida */}
-            <div className="info-section">
-              <h3>🔄 Ciclo de Vida</h3>
-              <p>{butterfly.Life || 'Información no disponible'}</p>
+              <h3 className="section-title">Morfología</h3>
+              <p className="section-content">{butterfly.Morphology || 'Información no disponible'}</p>
             </div>
             
             {/* Sección de Alimentación */}
             <div className="info-section">
-              <h3>🍃 Alimentación</h3>
-              <p>{butterfly.Feeding || 'Información no disponible'}</p>
+              <h3 className="section-title">Alimentación</h3>
+              <p className="section-content">{butterfly.Feeding || 'Información no disponible'}</p>
+            </div>
+            
+          </div>
+          
+          {/* Segunda columna */}
+          <div className="info-column">
+            
+            {/* Sección de Hábitat */}
+            <div className="info-section">
+              <h3 className="section-title">Hábitat</h3>
+              <p className="section-content">{butterfly.Hábitat || 'Información no disponible'}</p>
+            </div>
+            
+            {/* Sección de Ciclo de Vida */}
+            <div className="info-section">
+              <h3 className="section-title">Ciclo de Vida</h3>
+              <p className="section-content">{butterfly.Life || 'Información no disponible'}</p>
             </div>
             
             {/* Sección de Conservación */}
             <div className="info-section">
-              <h3>🛡️ Estado de Conservación</h3>
-              <p>{butterfly.Conservation || 'Información no disponible'}</p>
+              <h3 className="section-title">Estado de Conservación</h3>
+              <p className="section-content">{butterfly.Conservation || 'Información no disponible'}</p>
             </div>
             
           </div>
+          
         </div>
+         {/* Botón para editar los datos */}
+        <div className="edit-button-container">
+          <button 
+            className="edit-button"
+            onClick={() => {
+              // Aquí puedes navegar a la página de edición
+              // Por ejemplo: navigate(`/butterfly/edit/${butterfly.id}`)
+              console.log(`Editar mariposa con ID: ${butterfly.id}`);
+            }}
+          >
+            Editar datos
+          </button>
+        </div>
+
       </div>
     </div>
   );
 };
 
 export default ButterflyDetail;
-
 
 /*
 // FETCH DIRECTO PARA MOSTRAR DETALLES DE UNA MARIPOSA ESPECÍFICA

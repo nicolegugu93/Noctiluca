@@ -11,16 +11,16 @@
     "api-fake": "json-server --watch server/butterfly.json --port 3002"
   },
   "dependencies": {
-  "alert": "^6.0.2",
-  "@tailwindcss/vite": "^4.1.11",
-  "d3-geo": "^3.1.1",
-  "json-server": "^1.0.0-beta.3",
-  "lucide-react": "^0.525.0",
-  "react": "^18.2.0",
-  "react-dom": "^18.2.0",
-  "react-router-dom": "^7.6.3",
-  "react-simple-maps": "^3.0.0",
-  "sweetalert2": "^11.22.2"
+    "@tailwindcss/vite": "^4.1.11",
+    "alert": "^6.0.2",
+    "d3-geo": "^3.1.1",
+    "json-server": "^1.0.0-beta.3",
+    "lucide-react": "^0.525.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^7.6.3",
+    "react-simple-maps": "^3.0.0",
+    "sweetalert2": "^11.22.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
