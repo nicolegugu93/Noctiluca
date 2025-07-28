@@ -4,8 +4,7 @@ import ButterflyMap from '../components/ButterflyMap';
 
 const Home = () => {
   return (
-      <section className="bg-gradient-to-r from-indigoprofundo via-orotenue-800 to-rosaatardecer font-libre min-h-screen">
-      
+      <section className="bg-linear-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
       {/* Frase principal */}
       <p className="text-lg md:text-xl text-center text-[#F1F1F1] pt-6 tracking-wide font-semibold drop-shadow-md">
         Documentar es conservar
