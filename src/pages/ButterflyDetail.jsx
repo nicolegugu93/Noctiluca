@@ -212,7 +212,20 @@ const ButterflyDetail = () => {
           </div>
           
         </div>
-        
+         {/* Botón para editar los datos */}
+        <div className="edit-button-container">
+          <button 
+            className="edit-button"
+            onClick={() => {
+              // Aquí puedes navegar a la página de edición
+              // Por ejemplo: navigate(`/butterfly/edit/${butterfly.id}`)
+              console.log(`Editar mariposa con ID: ${butterfly.id}`);
+            }}
+          >
+            Editar datos
+          </button>
+        </div>
+
       </div>
     </div>
   );

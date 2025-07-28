@@ -10,7 +10,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5e0a3;
+  background-color: #f5e1a3ab;
   min-height: 100vh;
   border-radius: 10px;
 }
@@ -30,7 +30,7 @@
 }
 
 .butterfly-detail-container .back-button:hover {
-  background-color: #1D1D3F;
+  background-color: #1d1d3fcb;
   color: #F5E0A3;
 }
 
@@ -266,4 +266,39 @@
   .butterfly-detail-container .section-title {
     font-size: 0.9rem;
   }
+}
+
+
+/* Contenedor del botón de editar */
+.butterfly-detail-container .edit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid rgba(245, 224, 163, 0.3);
+}
+
+/* Botón de editar */
+.butterfly-detail-container .edit-button {
+  background-color: #F5E0A3;
+  border: 2px solid #1d1b3fd1;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1d1b3fd1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.butterfly-detail-container .edit-button:hover {
+  background-color: #1d1b3fc3;
+  color: #F5E0A3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
