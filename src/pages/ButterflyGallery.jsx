@@ -60,7 +60,7 @@ export default function ButterflyGallery() {
 
   // Función para navegar al detalle de la mariposa
   const handleCardClick = (butterfly) => {
-    navigate(`/butterfly-detail/${butterfly.id}`, { state: { butterfly } });
+    navigate(`/butterflydetail/${butterfly.id}`, { state: { butterfly } });
   };
 
   // Función para manejar la edición
@@ -278,7 +278,7 @@ export default function ButterflyGallery() {
                     />
                     <div className="image-overlay"></div>
                     <div className="hover-indicator">
-                      <span>🔄 Hover para más info</span>
+                      <span>Dame clic! 👆</span>
                     </div>
                   </div>
 

@@ -1,0 +1,251 @@
+/* Importamos la fuente Libre Baskerville solo para este componente */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* TODOS LOS ESTILOS ESTÁN ENCAPSULADOS DENTRO DE .butterfly-detail-container */
+/* Esto evita que afecten otros componentes */
+
+/* Contenedor principal */
+.butterfly-detail-container {
+  font-family: 'Libre Baskerville', serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Botón de volver - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .back-button {
+  background-color: #F5E0A3;
+  border: 2px solid #1D1D3F;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  color: #1D1D3F;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.butterfly-detail-container .back-button:hover {
+  background-color: #1D1D3F;
+  color: #F5E0A3;
+}
+
+/* Tarjeta principal - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .butterfly-detail-card {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  min-height: 600px;
+}
+
+/* Columna izquierda - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .butterfly-image-card {
+  background: linear-gradient(135deg, rgba(29, 29, 63, 0.2), rgba(29, 29, 63, 0.3));
+  border: 3px solid #F5E0A3;
+  margin: 15px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Placeholder para imagen - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .butterfly-image-placeholder {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, #F5E0A3, #e6d18a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Información básica - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .basic-info-card {
+  text-align: center;
+  padding: 20px;
+  color: #1D1D3F;
+}
+
+.butterfly-detail-container .basic-info-card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #F5E0A3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.butterfly-detail-container .basic-info-card p {
+  margin: 8px 0;
+  font-size: 14px;
+  background-color: rgba(245, 224, 163, 0.2);
+  padding: 5px 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+}
+
+/* Columna derecha - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .butterfly-content {
+  padding: 30px;
+  background-color: white;
+}
+
+/* Título principal - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .butterfly-title {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #1D1D3F;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #F5E0A3;
+  padding-bottom: 15px;
+}
+
+/* Familia - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .butterfly-family {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Información detallada - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .detailed-info {
+  display: grid;
+  gap: 25px;
+}
+
+/* Secciones individuales - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .info-section {
+  background-color: #fafafa;
+  border-left: 4px solid #F5E0A3;
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+  transition: all 0.3s ease;
+}
+
+.butterfly-detail-container .info-section:hover {
+  background-color: #f5f5f5;
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.butterfly-detail-container .info-section h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #1D1D3F;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.butterfly-detail-container .info-section p {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #333;
+  font-size: 1rem;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Estados de carga y error - SOLO dentro del contenedor de detalles */
+.butterfly-detail-container .loading-message, 
+.butterfly-detail-container .error-message {
+  text-align: center;
+  padding: 40px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.butterfly-detail-container .loading-message p {
+  font-size: 1.1rem;
+  color: #1D1D3F;
+}
+
+.butterfly-detail-container .error-message p {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.butterfly-detail-container .error-message button {
+  background-color: #F5E0A3;
+  border: 2px solid #1D1D3F;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  color: #1D1D3F;
+  cursor: pointer;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+.butterfly-detail-container .error-message button:hover {
+  background-color: #1D1D3F;
+  color: #F5E0A3;
+}
+
+/* Responsive Design - SOLO para el componente ButterflyDetail */
+@media (max-width: 768px) {
+  .butterfly-detail-container .butterfly-detail-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .butterfly-detail-container .butterfly-image-card {
+    height: 300px;
+    margin: 10px;
+  }
+  
+  .butterfly-detail-container .butterfly-image-placeholder {
+    width: 150px;
+    height: 150px;
+    font-size: 50px;
+  }
+  
+  .butterfly-detail-container .butterfly-title {
+    font-size: 2rem;
+  }
+  
+  .butterfly-detail-container .butterfly-family {
+    font-size: 1.1rem;
+  }
+  
+  .butterfly-detail-container .butterfly-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .butterfly-detail-container {
+    padding: 10px;
+  }
+  
+  .butterfly-detail-container .butterfly-title {
+    font-size: 1.8rem;
+  }
+  
+  .butterfly-detail-container .info-section {
+    padding: 15px;
+  }
+  
+  .butterfly-detail-container .info-section h3 {
+    font-size: 1.1rem;
+  }
+}
