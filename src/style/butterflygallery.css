@@ -1,268 +1,632 @@
-/* Contenedor principal */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Contenedor general de la galería */
 .gallery-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  padding: 32px;
+  width: 100vw;
+  height: 100vh;
+  padding-inline: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f5e0a3;
+  overflow: hidden;
 }
 
+/* Contenido interno con scroll si hace falta */
 .gallery-content {
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-block: 20px;
 }
 
+/* Título */
 .gallery-title {
-  font-size: 2.5rem;
-  font-weight: bold;
   text-align: center;
-  color: #1f2937;
-  margin-bottom: 48px;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #f5e0a3;
+  font-family: 'Libre Baskerville', serif;
 }
 
-/* Grid de cards */
+/* Grid de tarjetas */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
-/* Contenedor de cada card */
+/* Contenedor con perspectiva */
 .card-container {
   perspective: 1000px;
-  height: 320px;
 }
 
-/* Card principal */
+/* Tarjeta que se voltea */
 .card {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 320px;
   transform-style: preserve-3d;
-  transition: transform 0.7s ease;
+  transition: transform 0.8s;
 }
 
+/* Flip al hacer hover */
 .card-container:hover .card {
   transform: rotateY(180deg);
 }
 
-/* Estilos comunes para ambas caras */
-.card-front,
-.card-back {
+/* Cara delantera y trasera */
+.card-front, .card-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 105%;
+  height: 105%;
+  border-radius: 10px;
+  border: 2px solid #f5e0a3;
+  background-color: #1d1b3faa;
   backface-visibility: hidden;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-/* Parte frontal - Imagen */
-.card-front {
-  background: white;
-}
-
+/* Imagen frontal */
 .butterfly-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.image-overlay {
+  border-radius: 8px 8px 0 0;
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+  z-index: 1;
 }
 
-.hover-indicator {
+/* Overlay semitransparente encima de la imagen */
+.image-overlay {
   position: absolute;
-  bottom: 16px;
-  left: 0;
-  right: 0;
-  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to top, rgba(29, 27, 63, 0.8), transparent);
+  z-index: 2;
 }
 
-.hover-indicator span {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  color: white;
-  font-size: 0.875rem;
-  padding: 8px 16px;
-  border-radius: 20px;
+/* Indicador de hover */
+.hover-indicator {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 10px;
+  color: #f5e0a3;
+  font-size: 0.9rem;
+  background-color: rgba(29, 27, 63, 0.6);
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-family: 'Libre Baskerville', serif;
 }
 
-/* Parte trasera - Información */
+/* Cara trasera */
 .card-back {
-  background: white;
   transform: rotateY(180deg);
+  padding: 16px;
+  text-align: center;
+  z-index: 2;
 }
 
+/* Información de la mariposa */
 .card-info {
-  height: 100%;
+  font-family: 'Libre Baskerville', serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 32px;
-  text-align: center;
-  gap: 24px;
+  height: 100%;
+  gap: 10px;
+  color: #f5e0a3;
 }
 
 .butterfly-name {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: bold;
-  color: #1f2937;
-  line-height: 1.4;
 }
 
 .butterfly-family {
-  font-size: 1rem;
-  color: #6b7280;
-  line-height: 1.4;
+  font-size: 0.8rem;
+  font-style: italic;
 }
 
 .location-section h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 12px;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
 
 .location-section p {
-  color: #6b7280;
-  line-height: 1.5;
-  font-size: 0.9rem;
+  margin: 4px 0 0;
+  font-size: 0.8rem;
 }
 
-/* Estados de carga y error */
-.loading-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Botones de acción mejorados */
+.card-actions {
+  display: flex !important;
+  gap: 10px !important;
+  margin-top: 15px !important;
+  padding-top: 15px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
   justify-content: center;
-  text-align: center;
 }
 
-.loading-spinner {
-  width: 48px;
-  height: 48px;
-  border: 3px solid #e5e7eb;
-  border-top: 3px solid #059669;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 16px;
+.improved-btn {
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  border: 2px solid #f5e0a3 !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  min-height: 36px !important;
+  user-select: none !important;
+  font-family: 'Libre Baskerville', serif !important;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.btn-edit.improved-btn {
+  background-color: #f5e0a3 !important;
+  color: #1d1b3f !important;
 }
 
-.loading-container h1 {
-  font-size: 1.875rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 8px;
+.btn-edit.improved-btn:hover,
+.btn-edit.improved-btn:focus {
+  background-color: transparent !important;
+  color: #f5e0a3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
 }
 
-.loading-container p {
-  color: #6b7280;
+.btn-delete.improved-btn {
+  background-color: #f5e0a3 !important;
+  color: #1d1b3f !important;
 }
 
-.error-container {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fef2f2 0%, #fce7e7 100%);
-  padding: 32px;
+.btn-delete.improved-btn:hover,
+.btn-delete.improved-btn:focus {
+  background-color: transparent !important;
+  color: #f5e0a3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
 }
 
-.error-container h1 {
-  font-size: 1.875rem;
-  font-weight: bold;
-  color: #1f2937;
-  margin-bottom: 24px;
-  text-align: center;
+.improved-btn:active {
+  transform: translateY(0px) !important;
+  transition: all 0.1s ease !important;
 }
 
-.error-box {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #fee2e2;
-  border: 1px solid #fca5a5;
-  border-radius: 8px;
-  padding: 24px;
-  color: #991b1b;
-}
-
-.error-box h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.error-box p {
-  margin-bottom: 16px;
-}
-
-.error-box ul {
-  list-style: disc;
-  margin-left: 20px;
-}
-
-.error-box li {
-  margin-bottom: 4px;
-}
-
+/* Estilos para el mensaje sin datos */
 .no-data {
-  background: #fef3c7;
-  border: 1px solid #fbbf24;
-  border-radius: 8px;
-  padding: 48px;
   text-align: center;
-  max-width: 500px;
-  margin: 0 auto;
+  margin-top: 50px;
+  color: #f5e0a3;
+  font-family: 'Libre Baskerville', serif;
 }
 
 .no-data-icon {
   font-size: 4rem;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
-.no-data h2 {
-  font-size: 1.25rem;
+/* Estilos para el modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: rgba(29, 27, 63, 0.95);
+  border: 2px solid #f5e0a3;
+  border-radius: 15px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+/* Modal expandido */
+.expanded-modal {
+  max-width: 1200px !important;
+  width: 95% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #f5e0a3;
+  background-color: rgba(29, 27, 63, 0.95);
+  color: #f5e0a3;
+  border-radius: 15px 15px 0 0;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #f5e0a3;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.modal-close:hover {
+  background-color: rgba(245, 224, 163, 0.2);
+}
+
+/* Estilos para el formulario */
+.edit-form {
+  padding: 25px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.expanded-form {
+  max-height: 70vh !important;
+  overflow-y: auto !important;
+  padding-right: 10px !important;
+}
+
+.form-columns {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.form-column h3 {
+  color: #f5e0a3 !important;
+  margin-bottom: 15px !important;
+  padding-bottom: 5px !important;
+  border-bottom: 2px solid #f5e0a3 !important;
+  font-size: 16px !important;
+  font-family: 'Libre Baskerville', serif !important;
+}
+
+.form-group {
+  margin-bottom: 15px !important;
+}
+
+.form-group label {
+  display: block !important;
+  margin-bottom: 5px !important;
+  font-weight: 600 !important;
+  color: #f5e0a3 !important;
+  font-size: 14px !important;
+  font-family: 'Libre Baskerville', serif !important;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100% !important;
+  padding: 8px 12px !important;
+  border: 2px solid #f5e0a3 !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  transition: border-color 0.3s ease !important;
+  box-sizing: border-box !important;
+  background-color: rgba(245, 224, 163, 0.1) !important;
+  color: #f5e0a3 !important;
+  font-family: 'Libre Baskerville', serif !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none !important;
+  border-color: #f5e0a3 !important;
+  box-shadow: 0 0 5px rgba(245, 224, 163, 0.5) !important;
+  background-color: rgba(245, 224, 163, 0.2) !important;
+}
+
+.form-group textarea {
+  resize: vertical !important;
+  min-height: 60px !important;
+}
+
+.full-width {
+  grid-column: 1 / -1 !important;
+}
+
+/* Estilos para los botones del formulario */
+.form-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #f5e0a3;
+}
+
+.btn-cancel,
+.btn-save {
+  padding: 12px 24px;
+  border: 2px solid #f5e0a3;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
   font-weight: 600;
-  color: #92400e;
-  margin-bottom: 8px;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  font-family: 'Libre Baskerville', serif;
 }
 
-.no-data p {
-  color: #b45309;
+.btn-cancel {
+  background-color: transparent;
+  color: #f5e0a3;
 }
 
-/* Responsive */
+.btn-cancel:hover {
+  background-color: #f5e0a3;
+  color: #1d1b3f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3);
+}
+
+.btn-save {
+  background-color: #f5e0a3;
+  color: #1d1b3f;
+}
+
+.btn-save:hover {
+  background-color: transparent;
+  color: #f5e0a3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 224, 163, 0.4);
+}
+
+/* Scroll personalizado para formularios */
+.expanded-form::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.expanded-form::-webkit-scrollbar-track {
+  background: rgba(245, 224, 163, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.expanded-form::-webkit-scrollbar-thumb {
+  background: #f5e0a3 !important;
+  border-radius: 4px !important;
+}
+
+.expanded-form::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 224, 163, 0.8) !important;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive para tablets */
+@media (max-width: 1024px) {
+  .form-columns {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Responsive para móviles */
 @media (max-width: 768px) {
-  .gallery-container {
-    padding: 16px;
+  .modal-content {
+    width: 95%;
+    margin: 20px;
   }
   
-  .gallery-title {
-    font-size: 2rem;
-    margin-bottom: 32px;
+  .expanded-modal {
+    width: 95% !important;
+    margin: 10px !important;
   }
   
-  .cards-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .modal-header {
+    padding: 15px 20px;
   }
   
-  .card-info {
-    padding: 24px;
-    gap: 20px;
+  .edit-form {
+    padding: 20px;
   }
   
-  .butterfly-name {
-    font-size: 1.125rem;
+  .form-columns {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .btn-cancel,
+  .btn-save {
+    width: 100%;
+  }
+  
+  .card-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  .improved-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+
+/* sweetAlert*/
+
+/* Estilos personalizados para SweetAlert2 */
+.custom-swal-popup {
+  border: 2px solid #f5e0a3 !important;
+  border-radius: 15px !important;
+  font-family: 'Libre Baskerville', serif !important;
+}
+
+.custom-swal-title {
+  color: #f5e0a3 !important;
+  font-family: 'Libre Baskerville', serif !important;
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+}
+
+.custom-swal-text {
+  color: #f5e0a3 !important;
+  font-family: 'Libre Baskerville', serif !important;
+  font-size: 1rem !important;
+}
+
+.custom-swal-confirm {
+  background-color: #f5e0a3 !important;
+  color: #1d1b3f !important;
+  border: 2px solid #f5e0a3 !important;
+  border-radius: 8px !important;
+  font-family: 'Libre Baskerville', serif !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-swal-confirm:hover {
+  background-color: transparent !important;
+  color: #f5e0a3 !important;
+  border: 2px solid #f5e0a3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
+}
+
+.custom-swal-cancel {
+  background-color: transparent !important;
+  color: #f5e0a3 !important;
+  border: 2px solid #f5e0a3 !important;
+  border-radius: 8px !important;
+  font-family: 'Libre Baskerville', serif !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-swal-cancel:hover {
+  background-color: #f5e0a3 !important;
+  color: #1d1b3f !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
+}
+
+/* boton de conservacion y otros ajustes*/ 
+
+/* Estilos adicionales para el badge de conservación */
+.conservation-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 4;
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: #1d1b3f;
+  font-weight: bold;
+  font-size: 0.75rem;
+  font-family: 'Libre Baskerville', serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.conservation-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Asegurar que la card tenga cursor pointer para indicar que es clickeable */
+.card {
+  cursor: pointer;
+  transition: transform 0.8s, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 25px rgba(245, 224, 163, 0.2);
+}
+
+/* Mejorar la indicación visual de que la card es clickeable */
+.card-container:hover .card {
+  transform: rotateY(180deg) scale(1.02);
+}
+
+/* Estilos para mejorar la accesibilidad de los botones */
+.improved-btn:focus {
+  outline: 2px solid #f5e0a3;
+  outline-offset: 2px;
+}
+
+/* Evitar que los botones se vean clickeables cuando la card está siendo clickeada */
+.card-back .improved-btn {
+  position: relative;
+  z-index: 10;
+}
+
+/* Responsive para el badge de conservación */
+@media (max-width: 768px) {
+  .conservation-badge {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    top: 8px;
+    left: 8px;
   }
 }

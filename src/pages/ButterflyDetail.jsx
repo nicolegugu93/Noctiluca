@@ -6,17 +6,16 @@ import React, { useEffect, useState } from 'react';
 // Importamos useParams para obtener el ID desde la URL
 import { useParams } from 'react-router-dom';
 // Importamos la función que obtiene los datos de una mariposa específica
-// Esta función encapsula la lógica de la petición HTTP para obtener una sola mariposa
 import { getOneButterfly } from '../services/ButterflyServices';
+// Importamos los estilos CSS
+import '../style/butterflydetail.css';
 
 // Definimos el componente funcional ButterflyDetail
 const ButterflyDetail = () => {
   // Obtenemos el ID de la mariposa desde los parámetros de la URL
-  // Por ejemplo: si la ruta es /butterfly/123, id será "123"
   const { id } = useParams();
   
   // Creamos un estado para guardar los datos de UNA mariposa específica
-  // Inicialmente es null porque esperamos a que el ID esté disponible en useEffect
   const [butterfly, setButterfly] = useState(null);
   
   // Estado para manejar los errores que puedan ocurrir
@@ -26,23 +25,20 @@ const ButterflyDetail = () => {
   const [loading, setLoading] = useState(true);
 
   // useEffect se ejecuta cuando el componente se monta O cuando cambia el ID
-  // IMPORTANTE: El ID se pasa como dependencia para que el efecto espere a que esté disponible
   useEffect(() => {
     // Función asíncrona para obtener los datos de la mariposa específica
     const fetchButterflyDetails = async () => {
       try {
         // Verificamos que tenemos un ID válido antes de hacer la petición
-        // Esta verificación es crucial porque useEffect esperará a que ID esté disponible
         if (!id) {
           console.log('Esperando a que el ID esté disponible...');
-          return; // Salimos de la función si no hay ID aún
+          return;
         }
         
         // Iniciamos la carga
         setLoading(true);
         
         // Llamamos al servicio que hace el fetch a la API para obtener UNA mariposa
-        // Esta función está definida en ButterflyServices.js y recibe el ID como parámetro
         const data = await getOneButterfly(id);
         
         // Verificamos que recibimos datos válidos
@@ -81,7 +77,7 @@ const ButterflyDetail = () => {
     // Ejecutamos la función para obtener los detalles
     fetchButterflyDetails();
     
-  }, [id]); // CLAVE: El ID como dependencia hace que useEffect espere y se re-ejecute cuando ID cambie
+  }, [id]);
 
   // Renderizado condicional: Si está cargando, mostramos un mensaje
   if (loading) {
@@ -89,7 +85,6 @@ const ButterflyDetail = () => {
       <div className="butterfly-detail-container">
         <div className="loading-message">
           <p>Cargando detalles de la mariposa ID: {id}...</p>
-          {/* Opcional: puedes añadir un spinner de carga aquí */}
         </div>
       </div>
     );
@@ -134,71 +129,109 @@ const ButterflyDetail = () => {
       <button 
         className="back-button" 
         onClick={() => window.history.back()}
-        style={{ marginBottom: '20px' }}
       >
-        ← Volver
+        ← Volver a la galeria
       </button>
       
       {/* Contenedor principal con los detalles de la mariposa */}
       <div className="butterfly-detail-card">
+        
         {/* Título principal con el nombre de la mariposa */}
         <h1 className="butterfly-title">{butterfly.name}</h1>
         
-        {/* Información básica en una sección destacada */}
-        <div className="basic-info">
-          <h2>Información General</h2>
-          <p><strong>ID:</strong> {butterfly.id}</p>
-          <p><strong>Familia:</strong> {butterfly.family}</p>
+        {/* Familia en itálica como subtítulo */}
+        <p className="butterfly-family">{butterfly.family}</p>
+        
+        {/* Contenedor de imagen centrada */}
+        <div className="butterfly-image-container">
+          <div className="butterfly-image-wrapper">
+            {butterfly.image ? (
+              <img 
+                src={butterfly.image} 
+                alt={butterfly.name}
+                className="butterfly-image"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+            ) : null}
+            <div className="butterfly-image-placeholder">
+              🦋
+            </div>
+          </div>
         </div>
         
-        {/* Detalles completos organizados en secciones */}
-        <div className="detailed-info">
+        {/* Contenedor de información en dos columnas */}
+        <div className="butterfly-info-columns">
           
-          {/* Sección de Ubicación */}
-          <div className="info-section">
-            <h3>📍 Ubicación</h3>
-            <p>{butterfly.Location || 'Información no disponible'}</p>
+          {/* Primera columna */}
+          <div className="info-column">
+            
+            {/* Sección de Ubicación */}
+            <div className="info-section">
+              <h3 className="section-title">Ubicación</h3>
+              <p className="section-content">{butterfly.Location || 'Información no disponible'}</p>
+            </div>
+            
+            {/* Sección de Morfología */}
+            <div className="info-section">
+              <h3 className="section-title">Morfología</h3>
+              <p className="section-content">{butterfly.Morphology || 'Información no disponible'}</p>
+            </div>
+            
+            {/* Sección de Alimentación */}
+            <div className="info-section">
+              <h3 className="section-title">Alimentación</h3>
+              <p className="section-content">{butterfly.Feeding || 'Información no disponible'}</p>
+            </div>
+            
           </div>
           
-          {/* Sección de Hábitat */}
-          <div className="info-section">
-            <h3>🏞️ Hábitat</h3>
-            <p>{butterfly.Hábitat || 'Información no disponible'}</p>
-          </div>
-          
-          {/* Sección de Morfología */}
-          <div className="info-section">
-            <h3>🔬 Morfología</h3>
-            <p>{butterfly.Morphology || 'Información no disponible'}</p>
-          </div>
-          
-          {/* Sección de Ciclo de Vida */}
-          <div className="info-section">
-            <h3>🔄 Ciclo de Vida</h3>
-            <p>{butterfly.Life || 'Información no disponible'}</p>
-          </div>
-          
-          {/* Sección de Alimentación */}
-          <div className="info-section">
-            <h3>🍃 Alimentación</h3>
-            <p>{butterfly.Feeding || 'Información no disponible'}</p>
-          </div>
-          
-          {/* Sección de Conservación */}
-          <div className="info-section">
-            <h3>🛡️ Estado de Conservación</h3>
-            <p>{butterfly.Conservation || 'Información no disponible'}</p>
+          {/* Segunda columna */}
+          <div className="info-column">
+            
+            {/* Sección de Hábitat */}
+            <div className="info-section">
+              <h3 className="section-title">Hábitat</h3>
+              <p className="section-content">{butterfly.Hábitat || 'Información no disponible'}</p>
+            </div>
+            
+            {/* Sección de Ciclo de Vida */}
+            <div className="info-section">
+              <h3 className="section-title">Ciclo de Vida</h3>
+              <p className="section-content">{butterfly.Life || 'Información no disponible'}</p>
+            </div>
+            
+            {/* Sección de Conservación */}
+            <div className="info-section">
+              <h3 className="section-title">Estado de Conservación</h3>
+              <p className="section-content">{butterfly.Conservation || 'Información no disponible'}</p>
+            </div>
+            
           </div>
           
         </div>
+         {/* Botón para editar los datos */}
+        <div className="edit-button-container">
+          <button 
+            className="edit-button"
+            onClick={() => {
+              // Aquí puedes navegar a la página de edición
+              // Por ejemplo: navigate(`/butterfly/edit/${butterfly.id}`)
+              console.log(`Editar mariposa con ID: ${butterfly.id}`);
+            }}
+          >
+            Editar datos
+          </button>
+        </div>
+
       </div>
     </div>
   );
 };
 
 export default ButterflyDetail;
-
-
 
 /*
 // FETCH DIRECTO PARA MOSTRAR DETALLES DE UNA MARIPOSA ESPECÍFICA

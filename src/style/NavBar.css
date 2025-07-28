@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: linear-gradient(to bottom, #1e1b4b, #4c1d95);
+  
   position: relative;
   z-index: 10;
 }
@@ -55,34 +55,41 @@
 .galeria-section {
   padding: 2rem;
   position: relative;
+  padding-top: 6rem; /* o lo que necesite tu diseño */
 }
 
 .galeria-extra-buttons {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+ 
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 2.5rem; /* aumenta separación entre logo y botones */
+
 }
 
+
 .ala-mariposa {
-  width: 100px;
-  opacity: 0.85;
+  width: 200px;
+  opacity: 0.9;
 }
 
 .galeria-buttons-group {
   display: flex;
-  gap: 0.75rem;
+  gap: 2.5rem;
 }
 
 .galeria-button {
   background-color: #f5e8c7;
   color: #1e1b4b;
   font-weight: 600;
-  padding: 0.5rem 1.1rem;
+  padding: 0.6rem 1.4rem;
   border-radius: 9999px;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: 0.3s;
 }
 
@@ -117,5 +124,7 @@
     display: none;
   }
 }
+
+
 
 
