@@ -1,45 +1,9 @@
 /* styles.css */
-
 /* Importar la fuente Libre Baskerville desde Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  background: linear-gradient(to bottom, #1D1B3F, #D9A7C7);
-  font-family: 'Libre Baskerville', serif;
-  color: #F5E0A3;
+@font-face {
+  font-family: 'LibreBaskerville';
+  src: url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 }
 
-/* Ejemplo de encabezado que resalte más en dorado brillante */
-h1, h2, h3 {
-  color: #E6C200; /* Alternativa: #E6C200 si prefieren algo más elegante */
-}
-
-/* Si quieren destacar algunos enlaces o botones */
-a {
-  color: #E6C200;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #F5E0A3;
-}
-
-/* Opcional: estilo para botones */
-button {
-  background-color: #1D1B3F;
-  color: #E6C200;
-  border: 2px solid #E6C200;
-  padding: 10px 20px;
-  font-family: 'Libre Baskerville', serif;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #E6C200;
-  color: #1D1B3F;
-}
