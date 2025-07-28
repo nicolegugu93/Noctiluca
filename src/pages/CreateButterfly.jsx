@@ -1,15 +1,6 @@
 import { useState } from 'react';
-
-// Simulación del servicio (en tu caso real usarías la importación)
-const createButterfly = async (butterflyData) => {
-  // Simulación de la función - en tu código real importarías desde ButterflyServices.jsx
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log('Mariposa creada:', butterflyData);
-      resolve({ success: true, data: butterflyData });
-    }, 1000);
-  });
-};
+import { createButterfly } from '../services/ButterflyServices.jsx';
+import '../style/createbutterfly.css';
 
 export default function CreateButterfly() {
   const [formData, setFormData] = useState({
@@ -37,7 +28,8 @@ export default function CreateButterfly() {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setIsSubmitting(true);
     setMessage('');
 
@@ -75,35 +67,40 @@ export default function CreateButterfly() {
     }
   };
 
+  const handleBackToGallery = () => {
+    // Aquí puedes agregar la lógica de navegación
+    console.log('Regresar a la galería');
+  };
+
   return (
-    <div className="min-h-screen" style={{
-      background: 'linear-gradient(135deg, #2D1B69 0%, #11092A 50%, #0D0820 100%)',
-      fontFamily: 'Inter, system-ui, sans-serif'
-    }}>
+    <div className="create-butterfly-container">
       {/* Botón superior */}
-      <div className="pt-6 pl-6">
-        <button className="px-4 py-2 bg-yellow-600 text-yellow-100 rounded-md text-sm font-medium hover:bg-yellow-700 transition-colors">
+      <div className="back-button-container">
+        <button 
+          onClick={handleBackToGallery}
+          className="back-button"
+        >
           » Regresar a la galería
         </button>
       </div>
 
       {/* Contenido principal */}
-      <div className="flex flex-col items-center justify-center px-6 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-light text-yellow-200 mb-6">
+      <div className="main-content">
+        <div className="header-section">
+          <h1 className="main-title">
             Cada mariposa tiene una historia ¿Quieres contarla?
           </h1>
-          <p className="text-lg text-purple-200 mb-2">
+          <p className="subtitle">
             Comparte lo que sabes sobre una especie europea.
           </p>
-          <p className="text-lg text-purple-200">
+          <p className="subtitle">
             Con tu ayuda, la magia de Noctiluca seguirá creciendo.
           </p>
         </div>
 
         {/* Decorative butterfly */}
-        <div className="absolute top-32 right-16 opacity-30">
-          <svg width="80" height="80" viewBox="0 0 100 100" className="text-yellow-300">
+        <div className="butterfly-decoration">
+          <svg width="80" height="80" viewBox="0 0 100 100" className="butterfly-svg">
             <path d="M50 20 C40 10, 20 15, 15 35 C10 50, 20 60, 35 55 C40 52, 45 48, 50 50 C55 48, 60 52, 65 55 C80 60, 90 50, 85 35 C80 15, 60 10, 50 20 Z" 
                   fill="currentColor" opacity="0.6"/>
             <path d="M50 50 C45 60, 40 70, 35 85 C30 95, 40 98, 50 90 C50 85, 50 75, 50 70 C50 75, 50 85, 50 90 C60 98, 70 95, 65 85 C60 70, 55 60, 50 50 Z" 
@@ -112,23 +109,19 @@ export default function CreateButterfly() {
         </div>
 
         {/* Formulario */}
-        <div className="w-full max-w-4xl">
-          <div className="bg-gray-900 bg-opacity-60 backdrop-blur-sm p-8 rounded-3xl border-2 border-yellow-400 shadow-2xl">
+        <div className="form-wrapper">
+          <form onSubmit={handleSubmit} className="butterfly-form">
             {message && (
-              <div className={`mb-6 p-4 rounded-lg text-center font-medium ${
-                message.includes('correctamente') 
-                  ? 'bg-green-900 bg-opacity-50 text-green-300 border border-green-700' 
-                  : 'bg-red-900 bg-opacity-50 text-red-300 border border-red-700'
-              }`}>
+              <div className={`message ${message.includes('correctamente') ? 'success' : 'error'}`}>
                 {message}
               </div>
             )}
 
-            <div className="space-y-6">
+            <div className="form-content">
               {/* Primera fila */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">
                     Nombre
                   </label>
                   <input
@@ -136,13 +129,13 @@ export default function CreateButterfly() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border-2 border-blue-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-input highlighted"
                     placeholder=""
                     required
                   />
                 </div>
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+                <div className="form-group">
+                  <label className="form-label">
                     Hábitat
                   </label>
                   <input
@@ -150,13 +143,13 @@ export default function CreateButterfly() {
                     name="Hábitat"
                     value={formData.Hábitat}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-input"
                     placeholder=""
                     required
                   />
                 </div>
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+                <div className="form-group">
+                  <label className="form-label">
                     Alimentación
                   </label>
                   <input
@@ -164,7 +157,7 @@ export default function CreateButterfly() {
                     name="Feeding"
                     value={formData.Feeding}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-input"
                     placeholder=""
                     required
                   />
@@ -172,9 +165,9 @@ export default function CreateButterfly() {
               </div>
 
               {/* Segunda fila */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">
                     Otros nombres
                   </label>
                   <input
@@ -182,12 +175,12 @@ export default function CreateButterfly() {
                     name="other names"
                     value={formData['other names']}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-input"
                     placeholder=""
                   />
                 </div>
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+                <div className="form-group">
+                  <label className="form-label">
                     Morfología
                   </label>
                   <input
@@ -195,13 +188,13 @@ export default function CreateButterfly() {
                     name="Morphology"
                     value={formData.Morphology}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-input"
                     placeholder=""
                     required
                   />
                 </div>
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+                <div className="form-group">
+                  <label className="form-label">
                     Conservación detallada
                   </label>
                   <input
@@ -209,7 +202,7 @@ export default function CreateButterfly() {
                     name="Conservation"
                     value={formData.Conservation}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-input"
                     placeholder=""
                     required
                   />
@@ -217,9 +210,9 @@ export default function CreateButterfly() {
               </div>
 
               {/* Tercera fila */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">
                     Familia
                   </label>
                   <input
@@ -227,13 +220,13 @@ export default function CreateButterfly() {
                     name="family"
                     value={formData.family}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-input"
                     placeholder=""
                     required
                   />
                 </div>
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+                <div className="form-group">
+                  <label className="form-label">
                     Vida
                   </label>
                   <input
@@ -241,20 +234,20 @@ export default function CreateButterfly() {
                     name="Life"
                     value={formData.Life}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-input"
                     placeholder=""
                     required
                   />
                 </div>
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
-                    Estado de conservacion
+                <div className="form-group">
+                  <label className="form-label">
+                    Estado de conservación
                   </label>
                   <select
                     name="about conservation"
                     value={formData['about conservation']}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-blue-400 transition-colors"
+                    className="form-select"
                     required
                   >
                     <option value="">Seleccionar</option>
@@ -268,9 +261,9 @@ export default function CreateButterfly() {
               </div>
 
               {/* Cuarta fila */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+              <div className="form-row two-cols">
+                <div className="form-group">
+                  <label className="form-label">
                     Ubicación
                   </label>
                   <textarea
@@ -278,13 +271,13 @@ export default function CreateButterfly() {
                     value={formData.Location}
                     onChange={handleChange}
                     rows="3"
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors resize-vertical"
+                    className="form-textarea"
                     placeholder=""
                     required
                   />
                 </div>
-                <div>
-                  <label className="block text-white text-sm font-medium mb-2">
+                <div className="form-group">
+                  <label className="form-label">
                     URL de la imagen
                   </label>
                   <textarea
@@ -292,29 +285,24 @@ export default function CreateButterfly() {
                     value={formData.image}
                     onChange={handleChange}
                     rows="3"
-                    className="w-full px-4 py-3 bg-gray-800 bg-opacity-70 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors resize-vertical"
+                    className="form-textarea"
                     placeholder="https://"
                   />
                 </div>
               </div>
 
               {/* Botón de envío */}
-              <div className="flex justify-center pt-8">
+              <div className="submit-container">
                 <button
-                  type="button"
-                  onClick={handleSubmit}
+                  type="submit"
                   disabled={isSubmitting}
-                  className={`px-12 py-4 rounded-xl font-medium text-lg transition-all duration-300 ${
-                    isSubmitting
-                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-yellow-500 to-yellow-600 text-white hover:from-yellow-600 hover:to-yellow-700 hover:scale-105 shadow-lg hover:shadow-xl'
-                  }`}
+                  className={`submit-button ${isSubmitting ? 'disabled' : ''}`}
                 >
                   {isSubmitting ? 'Guardando...' : 'Crear Mariposa'}
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
