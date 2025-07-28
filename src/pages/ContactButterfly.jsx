@@ -2,46 +2,45 @@
   //return <div>Contact Butterfly Page</div>;
 //}
 
-
 //import React from "react";
 
 export default function ContactButterfly() {
   const team = [
     {
       name: "Esther Tapias",
-      email: "esther@example.com",
-      linkedin: "https://www.linkedin.com/in/esther-tapias",
-      phone: "+57 300 000 0001",
+      email: "esthertpc93@gmail.com",
+      linkedin: "https://www.linkedin.com/in/esther-tapias-paez-camino/",
+      github: "https://github.com/EstherTapias",
     },
     {
       name: "Valentina Montilla",
-      email: "valentina@example.com",
+      email: "valenmontillaes@gmail.com",
       linkedin: "https://www.linkedin.com/in/valentina-montilla",
-      phone: "+57 300 000 0002",
+      github: "",
     },
     {
       name: "Mariana Moreno",
       email: "mariana@example.com",
       linkedin: "https://www.linkedin.com/in/mariana-moreno",
-      phone: "+57 300 000 0003",
+      github: "",
     },
     {
       name: "Nicole Guevara",
       email: "nicole@example.com",
       linkedin: "https://www.linkedin.com/in/nicole-guevara",
-      phone: "+57 300 000 0004",
+      github: "",
     },
     {
       name: "Maryori Cruz",
-      email: "maryori@example.com",
+      email: "maryori.eguizabal@gmail.com",
       linkedin: "https://www.linkedin.com/in/maryori-cruz",
-      phone: "+57 300 000 0005",
+      github: "https://github.com/MaryoriCruz",
     },
     {
       name: "Rocio",
       email: "rocio@example.com",
       linkedin: "https://www.linkedin.com/in/rocio",
-      phone: "+57 300 000 0006",
+      github: "",
     },
   ];
 

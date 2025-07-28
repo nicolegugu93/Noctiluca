@@ -23,7 +23,7 @@ function NavBar(){
 
         <div className={`navbar-buttons ${menuOpen ? "open" : ""}`}>
           <Link to="/" className="navbar-button" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link to="/contacto" className="navbar-button" onClick={() => setMenuOpen(false)}>Contacto</Link>
+          <Link to="/contactbutterfly" className="navbar-button" onClick={() => setMenuOpen(false)}>Contacto</Link>
         </div>
       </nav>
 
