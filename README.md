@@ -1,6 +1,8 @@
 # ✨ Noctiluca
 
+
 **Noctiluca** es una aplicación web interactiva pensada para explorar, aprender y valorar la biodiversidad de polinizadores en diferentes continentes. Esta edición se centra en el continente europeo y ha sido desarrollada como parte de un proyecto colaborativo en un bootcamp de desarrollo Fullstack + DevOps.
+
 
 > 🌍 *Descubre mariposasde Europa en un entorno visual, educativo y accesible.*
 
@@ -44,7 +46,7 @@
     bash
 
     npm run api-fake
-        ```
+    ```
 
 4. **Inicia la app:**
     ```
