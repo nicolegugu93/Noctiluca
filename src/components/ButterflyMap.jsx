@@ -229,30 +229,31 @@ const Map = () => {
             </p>
           </div>
 
-          {/* Botones zoom con mismo estilo */}
+          {/* Controles de zoom con iconos en morado */}
           <div className="absolute top-6 right-6 z-30 flex flex-col gap-2">
             <button
               onClick={handleZoomIn}
-              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F5E0A3] font-lato rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-transform duration-200 shadow-lg"
+              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F0DC82] rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg"
               title="Acercar"
             >
-              <ZoomIn size={20} />
+              <ZoomIn size={20} color="#693971" />
             </button>
             <button
               onClick={handleZoomOut}
-              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F5E0A3] font-lato rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-transform duration-200 shadow-lg"
+              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F0DC82] rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg"
               title="Alejar"
             >
-              <ZoomOut size={20} />
+              <ZoomOut size={20} color="#693971" />
             </button>
             <button
               onClick={handleResetZoom}
-              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F5E0A3] font-lato rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-transform duration-200 shadow-lg"
+              className="p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F0DC82] rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg"
               title="Vista inicial"
             >
-              <RotateCcw size={20} />
+              <RotateCcw size={20} color="#693971" />
             </button>
           </div>
+
 
           {/* Mapa principal */}
           <div className="h-[600px] bg-[#F1E9D2]">
@@ -345,117 +346,117 @@ const Map = () => {
 
       {/* MODAL CON FONDO TRANSPARENTE Y DESENFOQUE SUAVE */}
       {selectedCountry && (
-  <div
-    className="fixed inset-0 flex items-center justify-center z-50 p-6"
-    style={{
-      backdropFilter: 'blur(6px)',
-      backgroundColor: 'rgba(255,255,255,0.12)'
-    }}
-    onClick={() => setSelectedCountry(null)}
-  >
-    <div
-      onClick={(e) => e.stopPropagation()}
-      className="max-w-5xl w-full max-h-[85vh] overflow-y-auto rounded-3xl shadow-lg border-2 p-0 bg-[#F3E9C9cc] flex flex-col"
-      style={{
-        borderColor: '#693971', // Borde morado como la leyenda
-        fontFamily: "'Lato', sans-serif",
-        color: '#5B4B24',
-        boxShadow: '0 4px 20px 0 #69397133'
-      }}
-    >
-      {/* Header modal con fondo degradado morado claro y borde inferior dorado */}
-      <div
-        className="flex items-center justify-between px-8 py-6"
-        style={{
-          background: 'linear-gradient(90deg, #69397122 0%, #D9A7C740 100%)',
-          borderTopLeftRadius: '1.5rem',
-          borderTopRightRadius: '1.5rem',
-          borderBottom: '2px solid #F5E0A3'
-        }}
-      >
-        <h3
-          className="text-3xl md:text-4xl font-bold"
+        <div
+          className="fixed inset-0 flex items-center justify-center z-50 p-6"
           style={{
-            fontFamily: "'Libre Baskerville', serif",
-            color: '#693971',
-            letterSpacing: '.02em'
+            backdropFilter: 'blur(6px)',
+            backgroundColor: 'rgba(255,255,255,0.12)'
           }}
-        >
-          {selectedCountry.name}
-        </h3>
-        <button
           onClick={() => setSelectedCountry(null)}
-          className="p-2 rounded-full hover:bg-[#d9a7c7]/30 focus:outline-none transition"
-          style={{ border: '2px solid #693971', color: '#693971' }}
-          aria-label="Cerrar modal"
         >
-          <X size={28} />
-        </button>
-      </div>
-      
-      {/* Contenido mariposas */}
-      <div className="p-8 pt-6" style={{ background: 'linear-gradient(0deg, #f3e9c9 80%, #d9a7c7 120%)' }}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {selectedCountry.butterflies.map(butterfly => (
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-5xl w-full max-h-[85vh] overflow-y-auto rounded-3xl shadow-lg border-2 p-0 bg-[#F3E9C9cc] flex flex-col"
+            style={{
+              borderColor: '#693971', // Borde morado como la leyenda
+              fontFamily: "'Lato', sans-serif",
+              color: '#5B4B24',
+              boxShadow: '0 4px 20px 0 #69397133'
+            }}
+          >
+            {/* Header modal con fondo degradado morado claro y borde inferior dorado */}
             <div
-              key={butterfly.id}
-              onClick={() => handleButterflyClick(butterfly)}
-              className="cursor-pointer rounded-xl shadow-md border border-[#69397150] bg-[#fcf5e5cc] hover:shadow-lg hover:bg-[#ede6f6] transition-colors duration-200 flex flex-col overflow-hidden group"
+              className="flex items-center justify-between px-8 py-6"
               style={{
-                fontFamily: "'Lato', sans-serif"
+                background: 'linear-gradient(90deg, #69397122 0%, #D9A7C740 100%)',
+                borderTopLeftRadius: '1.5rem',
+                borderTopRightRadius: '1.5rem',
+                borderBottom: '2px solid #F5E0A3'
               }}
             >
-              {/* Imagen o icono de mariposa */}
-              <div className="relative w-full h-48 flex items-center justify-center overflow-hidden"
+              <h3
+                className="text-3xl md:text-4xl font-bold"
                 style={{
-                  background: 'linear-gradient(120deg, #e5d2fa 0%, #f3e9c9 100%)'
+                  fontFamily: "'Libre Baskerville', serif",
+                  color: '#693971',
+                  letterSpacing: '.02em'
                 }}
               >
-                {butterfly.image ? (
-                  <img
-                    src={butterfly.image}
-                    alt={butterfly.name}
-                    className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                    onError={e => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
+                {selectedCountry.name}
+              </h3>
+              <button
+                onClick={() => setSelectedCountry(null)}
+                className="p-2 rounded-full hover:bg-[#d9a7c7]/30 focus:outline-none transition"
+                style={{ border: '2px solid #693971', color: '#693971' }}
+                aria-label="Cerrar modal"
+              >
+                <X size={28} />
+              </button>
+            </div>
+
+            {/* Contenido mariposas */}
+            <div className="p-8 pt-6" style={{ background: 'linear-gradient(0deg, #f3e9c9 80%, #d9a7c7 120%)' }}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {selectedCountry.butterflies.map(butterfly => (
+                  <div
+                    key={butterfly.id}
+                    onClick={() => handleButterflyClick(butterfly)}
+                    className="cursor-pointer rounded-xl shadow-md border border-[#69397150] bg-[#fcf5e5cc] hover:shadow-lg hover:bg-[#ede6f6] transition-colors duration-200 flex flex-col overflow-hidden group"
+                    style={{
+                      fontFamily: "'Lato', sans-serif"
                     }}
-                  />
-                ) : (
-                  <div className="text-8xl opacity-40 text-[#693971] select-none">🦋</div>
-                )}
-              </div>
-              {/* Nombre mariposa */}
-              <div className="p-4">
-                <h4 className="text-lg md:text-xl font-semibold truncate"
-                  style={{
-                    color: '#693971', // Acento morado en el nombre
-                    fontFamily: "'Lato', sans-serif"
-                  }}>
-                  {butterfly.name}
-                </h4>
+                  >
+                    {/* Imagen o icono de mariposa */}
+                    <div className="relative w-full h-48 flex items-center justify-center overflow-hidden"
+                      style={{
+                        background: 'linear-gradient(120deg, #e5d2fa 0%, #f3e9c9 100%)'
+                      }}
+                    >
+                      {butterfly.image ? (
+                        <img
+                          src={butterfly.image}
+                          alt={butterfly.name}
+                          className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+                          onError={e => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'flex';
+                          }}
+                        />
+                      ) : (
+                        <div className="text-8xl opacity-40 text-[#693971] select-none">🦋</div>
+                      )}
+                    </div>
+                    {/* Nombre mariposa */}
+                    <div className="p-4">
+                      <h4 className="text-lg md:text-xl font-semibold truncate"
+                        style={{
+                          color: '#693971', // Acento morado en el nombre
+                          fontFamily: "'Lato', sans-serif"
+                        }}>
+                        {butterfly.name}
+                      </h4>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
+            {/* Footer modal con acento morado y dorado */}
+            <div
+              className="mt-2 px-8 py-3 text-center"
+              style={{
+                borderTop: '2px solid #F5E0A3',
+                background: 'linear-gradient(90deg, #ede6f6 0%, #f3e9c9 100%)',
+                borderBottomLeftRadius: '1.5rem',
+                borderBottomRightRadius: '1.5rem'
+              }}
+            >
+              <p className="font-lato text-sm" style={{ color: '#693971', fontFamily: "'Lato', sans-serif" }}>
+                Haz clic en cualquier mariposa para explorar sus detalles
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      {/* Footer modal con acento morado y dorado */}
-      <div
-        className="mt-2 px-8 py-3 text-center"
-        style={{
-          borderTop: '2px solid #F5E0A3',
-          background: 'linear-gradient(90deg, #ede6f6 0%, #f3e9c9 100%)',
-          borderBottomLeftRadius: '1.5rem',
-          borderBottomRightRadius: '1.5rem'
-        }}
-      >
-        <p className="font-lato text-sm" style={{ color: '#693971', fontFamily: "'Lato', sans-serif" }}>
-          Haz clic en cualquier mariposa para explorar sus detalles
-        </p>
-      </div>
-    </div>
-  </div>
-)}
+      )}
 
 
       {/* Mensaje cuando no hay datos (sin cambios) */}
