@@ -2,7 +2,6 @@
   "butterfly": [
     {
       "name": "Vanesa atalanta",
-      "other names": "",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "Presente en España, Francia, Italia, Reino Unido, Alemania, Suecia, Noruega, Finlandia; migraciones hacia el norte en primavera y vuelta al sur en otoño",
       "Hábitat": "Bosques claros, jardines, márgenes; larvas en ortigas",
@@ -10,7 +9,6 @@
       "Life": "Varias generaciones en sur de Europa; hibernación de adultos; huevos en Urtica, larvas espinosas, pupación variable",
       "Feeding": "Larvas en ortigas; adultos en néctar, savia, fruta",
       "Conservation": "LC; migraciones sensibles al cambio climático",
-      "about conservation": "LC",
       "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/327184069/large.jpeg",
       "id": "1"
     },
@@ -379,9 +377,7 @@
       "image": "https://wastemagazine.es/fotos2/thymelicus-silvestris4.jpg"
     },
     {
-      "id": "28",
       "name": "Saltadora grisácea",
-      "other names": "Ochlodes sylvanus",
       "family": "Hesperiidae (saltarinas)",
       "Location": "Presente ampliamente en España, Francia, Reino Unido, Alemania, Suecia, Rusia",
       "Hábitat": "Praderas, bordes de caminos, claros boscosos húmedos",
@@ -389,12 +385,12 @@
       "Life": "1–2 generaciones entre primavera y otoño; hibernación como oruga",
       "Feeding": "Larvas en gramíneas; adultos en néctar de flores silvestres",
       "Conservation": "LC; especie común y estable",
-      "about conservation": "LC",
-      "image": "https://media.istockphoto.com/id/970043046/es/foto/primer-plano-de-gran-macho-de-la-mariposa-patr%C3%B3n.jpg?s=612x612&w=0&k=20&c=86pytCnop5QDuyHCIXdD17HwOrMDKXE85chZOoYAimU="
+      "image": "https://media.istockphoto.com/id/970043046/es/foto/primer-plano-de-gran-macho-de-la-mariposa-patr%C3%B3n.jpg?s=612x612&w=0&k=20&c=86pytCnop5QDuyHCIXdD17HwOrMDKXE85chZOoYAimU=",
+      "id": "28"
     },
     {
       "id": "29",
-      "name": "Saltadora ibérica ()",
+      "name": "Saltadora ibérica ",
       "other names": "Carcharodus baeticus",
       "family": "Hesperiidae (saltarinas)",
       "Location": "España (Peninsula Ibérica), sur de Francia, Italia (incluida Sicilia), extinta en Suiza",
