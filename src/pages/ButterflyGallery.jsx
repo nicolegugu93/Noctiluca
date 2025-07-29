@@ -231,6 +231,7 @@ export default function ButterflyGallery() {
 
   if (error) {
     return (
+      
       <div className="error-container">
         <h1>Galería de Mariposas</h1>
         <div className="error-box">
