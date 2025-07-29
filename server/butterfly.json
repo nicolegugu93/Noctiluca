@@ -2,7 +2,7 @@
   "butterfly": [
     {
       "name": "Vanesa atalanta",
-      "other names": "Almirante rojo",
+      "other names": "",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "Presente en España, Francia, Italia, Reino Unido, Alemania, Suecia, Noruega, Finlandia; migraciones hacia el norte en primavera y vuelta al sur en otoño",
       "Hábitat": "Bosques claros, jardines, márgenes; larvas en ortigas",
@@ -29,7 +29,6 @@
       "id": "2"
     },
     {
-      "id": "3",
       "name": "Mariposa del abeto",
       "other names": "Camberwell beauty",
       "family": "Nymphalidae (alas cepillo)",
@@ -40,10 +39,10 @@
       "Feeding": "Larvas en sauces, álamos, abedules; adultos en savia y fruta podre",
       "Conservation": "LC; raro localmente, protegido en algunos países",
       "about conservation": "LC",
-      "image": "https://i.pinimg.com/736x/bd/fa/5a/bdfa5a7d4ee7c10228c0f1b0f707d40e.jpg"
+      "image": "https://i.pinimg.com/736x/bd/fa/5a/bdfa5a7d4ee7c10228c0f1b0f707d40e.jpg",
+      "id": "4126"
     },
     {
-      "id": "4",
       "name": "Mariposa del ortigal",
       "other names": "Small tortoiseshell",
       "family": "Nymphalidae (alas cepillo)",
@@ -54,7 +53,8 @@
       "Feeding": "Larvas en Urtica dioica; adultos en néctar, savia",
       "Conservation": "LC, en declive en Reino Unido",
       "about conservation": "LC",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Aglais_urticae_LC0310.jpg"
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Aglais_urticae_LC0310.jpg",
+      "id": "014d"
     },
     {
       "id": "5",
