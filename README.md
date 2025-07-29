@@ -1,12 +1,125 @@
-# React + Vite
+# ✨ Noctiluca
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+**Noctiluca** es una aplicación web interactiva pensada para explorar, aprender y valorar la biodiversidad de polinizadores en diferentes continentes. Esta edición se centra en el continente europeo y ha sido desarrollada como parte de un proyecto colaborativo en un bootcamp de desarrollo Fullstack + DevOps.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+> 🌍 *Descubre mariposasde Europa en un entorno visual, educativo y accesible.*
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Demo
+
+👉 [Haz clic aquí para ver la demo en vivo](https://noctiluca.vercel.app) *(enlace ficticio, sustituir por el real si lo tenéis desplegado)*
+
+---
+
+## 🛠️ Tecnologías utilizadas
+
+- [React](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [axios](https://axios-http.com/)
+- [json-server](https://github.com/typicode/json-server) (para simular una API REST)
+- [Vitest](https://vitest.dev/) (testing)
+- [Cloudinary](https://cloudinary.com/) (gestión de imágenes)
+- CSS Modules
+
+---
+
+## 📁 Instalación y uso local
+
+1. **Clona este repositorio:**
+
+   ```bash
+   git clone https://github.com/usuario/noctiluca.git
+   cd noctiluca
+    ```
+2. **Instala las dependencias:**
+
+    ```bash
+    npm install
+    ```
+
+3. **Inicia el servidor JSON (simula una API REST):**
+    ```
+    bash
+
+    npm run api-fake
+    ```
+
+4. **Inicia la app:**
+    ```
+    bash
+
+    npm run dev
+    ```
+5. Abre tu navegador en http://localhost:5173 para ver la aplicación.
+
+## 👩‍💻 Equipo de desarrollo
+Este proyecto ha sido desarrollado por el equipo Noctiluca dentro del bootcamp de Desarrollo Fullstack + DevOps:
+
+| Nombre             | Rol                     | GitHub                                                     |
+| ------------------ | ----------------------- | ---------------------------------------------------------- |
+| Nicole Guevara     | Scrum Master & Developer       | [@nicolegugu93](https://github.com/nicolegugu93)         |
+| Mariana            | Product Owner & Developer         | [@MarianaMH1195](https://github.com/MarianaMH1195)             |
+| Maryori Cruz       | Developer      | [@MaryoriCruz](https://github.com/MaryoriCruz)             |
+| Valentina Montilla | Developer     | [@ValenMontilla7](https://github.com/ValenMontilla7) |
+| Rocío Coronel      | Developer | [@Rocio-Coronel](https://github.com/Rocio-Coronel)                 |
+| Esther Tapias      | Developer      | [@EstherTapias](https://github.com/EstherTapias)             |
+
+## 🌱 Funcionalidades
+🌼 CRUD completo de polinizadores: crea, edita, elimina y consulta especies.
+
+🗺️ Mapa interactivo con países de Europa.
+
+🦋 Visualización de mariposas .
+
+📸 Subida de imágenes vía Cloudinary.
+
+✅ Validaciones de formularios con feedback visual.
+
+🧪 Pruebas unitarias con Vitest.
+
+## 📌 Estructura del proyecto
+```
+noctiluca/
+├── public/
+├── server/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── layout/
+│   ├── pages/
+│   ├── router/
+│   ├── services/
+│   ├── style/
+│   └── test/
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── vite.config.js
+```
+## 🧪 Tests
+Para ejecutar los tests:
+```
+bash
+npm run test
+ ```
+
+## 📦 Próximas mejoras
+🔍 Buscador de especies por nombre o país.
+
+📊 Estadísticas visuales sobre biodiversidad.
+
+🌐 Traducción multilingüe (i18n).
+
+🔒 Autenticación y perfiles de usuario.
+
+## 📄 Licencia
+Este proyecto está bajo la licencia MIT.
+
+>“Noctiluca” significa luz nocturna, como la bioluminiscencia en el océano o el brillo sutil de los insectos en la oscuridad. Queremos que esta app sea una chispa de conocimiento que ilumine la importancia de los polinizadores en Europa.

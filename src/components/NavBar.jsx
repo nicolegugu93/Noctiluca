@@ -11,20 +11,31 @@ function NavBar() {
   };
 
   return (
-    <div className="app-container">
+    <nav className="nav-container">
       {/* NAVBAR FIJA */}
       <div className="galeria-extra-buttons">
         <img src={alaImg} alt="ala mariposa" className="ala-mariposa" />
-        <div className="galeria-buttons-group">
+
+        {/* Botón hamburguesa visible solo en móvil */}
+        <button className="hamburger" onClick={toggleMenu}>
+          ☰
+        </button>
+
+        {/* Botones de navegación */}
+        <div className={`galeria-buttons-group ${menuOpen ? "open" : ""}`}>
           <Link to="/" className="galeria-button">Home</Link>
           <Link to="/contactbutterfly" className="galeria-button">Contacto</Link>
+
         </div>
       </div>
-
-     
-    </div>
+      {/* Línea decorativa debajo del navbar */}
+      <div className="navbar-line"></div>
+    </nav>
   );
+
 }
+
+
 
 export default NavBar;
 
