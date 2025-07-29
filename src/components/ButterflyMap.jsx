@@ -198,7 +198,7 @@ const Map = () => {
     }
   };
 
-  // 🦋 Manejo clic en mariposa (sin cambios)
+  // 🦋 Manejo clic en mariposa 
   const handleButterflyClick = (butterfly) => {
     setSelectedCountry(null);
     navigate(`/butterflydetail/${butterfly.id}`);

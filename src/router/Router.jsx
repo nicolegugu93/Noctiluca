@@ -28,7 +28,7 @@ export const routerButterfly =createBrowserRouter ([{
     children: [
     
     { 
-        path: "/newbutterly", 
+        path: "/newbutterfly", 
         element: <CreateButterfly/>
     },
     {

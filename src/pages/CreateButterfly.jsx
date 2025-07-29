@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // ✅ Importamos useNavigate
+import { useNavigate } from 'react-router-dom';
 import { createButterfly } from '../services/ButterflyServices.jsx';
 import '../style/createbutterfly.css';
 
 export default function CreateButterfly() {
-  const navigate = useNavigate(); // ✅ Inicializamos useNavigate
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -61,10 +61,9 @@ export default function CreateButterfly() {
           image: ''
         });
 
-        // ✅ Redirigir a la galería automáticamente después de guardar
         setTimeout(() => {
-          navigate('/galeria'); // Asegúrate de que esta ruta sea la correcta
-        }, 1500); // Espera breve para que el mensaje se vea
+          navigate('/butterflygallery'); 
+        }, 1500);
       } else {
         setMessage('Error al añadir la mariposa');
       }
@@ -76,7 +75,7 @@ export default function CreateButterfly() {
   };
 
   const handleBackToGallery = () => {
-    navigate('/butterflygallery'); // ✅ Navegación directa a la galería
+    navigate('/butterflygallery');
   };
 
   return (
@@ -105,7 +104,7 @@ export default function CreateButterfly() {
           </p>
         </div>
 
-        {/* Formulario */}
+        {/* FORMULARIO */}
         <div className="form-wrapper">
           <form onSubmit={handleSubmit} className="butterfly-form">
             {message && (
@@ -115,25 +114,22 @@ export default function CreateButterfly() {
             )}
 
             <div className="form-content">
-              {/* Primera fila */}
-              <div className="form-row">
+              {/* Primera fila - 3 columnas */}
+              <div className="form-row three-cols">
                 <div className="form-group">
-                  <label className="form-label">
-                    Nombre
-                  </label>
+                  <label className="form-label">Nombre</label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="form-input highlighted"
+                    className="form-input"
                     required
                   />
                 </div>
+                
                 <div className="form-group">
-                  <label className="form-label">
-                    Hábitat
-                  </label>
+                  <label className="form-label">Hábitat</label>
                   <input
                     type="text"
                     name="Hábitat"
@@ -143,10 +139,9 @@ export default function CreateButterfly() {
                     required
                   />
                 </div>
+                
                 <div className="form-group">
-                  <label className="form-label">
-                    Alimentación
-                  </label>
+                  <label className="form-label">Alimentación</label>
                   <input
                     type="text"
                     name="Feeding"
@@ -158,12 +153,10 @@ export default function CreateButterfly() {
                 </div>
               </div>
 
-              {/* Segunda fila */}
-              <div className="form-row">
+              {/* Segunda fila - 3 columnas */}
+              <div className="form-row three-cols">
                 <div className="form-group">
-                  <label className="form-label">
-                    Otros nombres
-                  </label>
+                  <label className="form-label">Otros nombres</label>
                   <input
                     type="text"
                     name="other names"
@@ -172,10 +165,9 @@ export default function CreateButterfly() {
                     className="form-input"
                   />
                 </div>
+                
                 <div className="form-group">
-                  <label className="form-label">
-                    Morfología
-                  </label>
+                  <label className="form-label">Morfología</label>
                   <input
                     type="text"
                     name="Morphology"
@@ -185,10 +177,9 @@ export default function CreateButterfly() {
                     required
                   />
                 </div>
+                
                 <div className="form-group">
-                  <label className="form-label">
-                    Conservación detallada
-                  </label>
+                  <label className="form-label">Conservación detallada</label>
                   <input
                     type="text"
                     name="Conservation"
@@ -200,12 +191,10 @@ export default function CreateButterfly() {
                 </div>
               </div>
 
-              {/* Tercera fila */}
-              <div className="form-row">
+              {/* Tercera fila - 3 columnas */}
+              <div className="form-row three-cols">
                 <div className="form-group">
-                  <label className="form-label">
-                    Familia
-                  </label>
+                  <label className="form-label">Familia</label>
                   <input
                     type="text"
                     name="family"
@@ -215,10 +204,9 @@ export default function CreateButterfly() {
                     required
                   />
                 </div>
+                
                 <div className="form-group">
-                  <label className="form-label">
-                    Vida
-                  </label>
+                  <label className="form-label">Vida</label>
                   <input
                     type="text"
                     name="Life"
@@ -228,10 +216,9 @@ export default function CreateButterfly() {
                     required
                   />
                 </div>
+                
                 <div className="form-group">
-                  <label className="form-label">
-                    Estado de conservación
-                  </label>
+                  <label className="form-label">Estado de conservación</label>
                   <select
                     name="about conservation"
                     value={formData['about conservation']}
@@ -249,30 +236,27 @@ export default function CreateButterfly() {
                 </div>
               </div>
 
-              {/* Cuarta fila */}
+              {/* Cuarta fila - 2 columnas */}
               <div className="form-row two-cols">
                 <div className="form-group">
-                  <label className="form-label">
-                    Ubicación
-                  </label>
+                  <label className="form-label">Ubicación</label>
                   <textarea
                     name="Location"
                     value={formData.Location}
                     onChange={handleChange}
-                    rows="3"
+                    rows="4"
                     className="form-textarea"
                     required
                   />
                 </div>
+                
                 <div className="form-group">
-                  <label className="form-label">
-                    URL de la imagen
-                  </label>
+                  <label className="form-label">URL de la Imagen</label>
                   <textarea
                     name="image"
                     value={formData.image}
                     onChange={handleChange}
-                    rows="3"
+                    rows="4"
                     className="form-textarea"
                     placeholder="https://"
                   />
