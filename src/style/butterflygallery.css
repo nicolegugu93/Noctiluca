@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
-
 /* Contenedor general de la galería */
 .gallery-container {
   width: 100vw;
@@ -31,40 +30,104 @@
   font-family: 'Libre Baskerville', serif;
 }
 
-/* Grid de tarjetas */
+/* Grid de tarjetas - 3 COLUMNAS VERTICALES */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 24px;
   width: 100%;
-  padding: 0 10px;
   box-sizing: border-box;
+  
+  /* Desktop: 3 columnas verticales con márgenes específicos */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5cm; /* 1.5cm entre cards como pediste */
+  padding: 0 3cm; /* 3cm de margen izquierda y derecha como pediste */
+  
+  /* Auto-ajuste de filas según contenido */
+  grid-auto-rows: max-content;
+}
+
+/* Breakpoints responsivos */
+
+/* Large Desktop (1200px+) - 3 columnas */
+@media (min-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5cm;
+    padding: 0 3cm;
+  }
+}
+
+/* Medium Desktop (992px - 1199px) - 3 columnas más compactas */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2cm;
+    padding: 0 2.5cm;
+  }
+}
+
+/* Small Desktop / Large Tablet (768px - 991px) - 2 columnas */
+@media (min-width: 768px) and (max-width: 991px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5cm;
+    padding: 0 2cm;
+  }
+}
+
+/* Tablet Portrait (576px - 767px) - 2 columnas más compactas */
+@media (min-width: 576px) and (max-width: 767px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1cm;
+    padding: 0 1.5cm;
+  }
+}
+
+/* Mobile (hasta 575px) - 1 columna */
+@media (max-width: 575px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1cm;
+    padding: 0 1cm;
+  }
 }
 
 /* Contenedor con perspectiva */
 .card-container {
   perspective: 1000px;
+  /* Altura fija para mantener consistencia en el grid */
+  height: 320px;
+  margin-bottom: 0; /* Sin margen extra, el gap del grid se encarga */
+}
+
+/* Mobile: altura adaptativa para las cards */
+@media (max-width: 575px) {
+  .card-container {
+    height: 280px;
+  }
 }
 
 /* Tarjeta que se voltea */
 .card {
   position: relative;
   width: 100%;
-  height: 320px;
+  height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.8s;
+  transition: transform 0.8s, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 /* Flip al hacer hover */
 .card-container:hover .card {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scale(1.02);
+  box-shadow: 0 8px 25px rgba(245, 224, 163, 0.2);
 }
 
 /* Cara delantera y trasera */
 .card-front, .card-back {
   position: absolute;
-  width: 105%;
-  height: 105%;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
   border: 2px solid #f5e0a3;
   background-color: #1d1b3faa;
@@ -110,6 +173,31 @@
   padding: 4px 8px;
   border-radius: 5px;
   font-family: 'Libre Baskerville', serif;
+}
+
+/* Badge de conservación */
+.conservation-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 4;
+  padding: 6px 12px;
+  border-radius: 20px;
+  color: #1d1b3f;
+  font-weight: bold;
+  font-size: 0.75rem;
+  font-family: 'Libre Baskerville', serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.conservation-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Cara trasera */
@@ -166,8 +254,8 @@
   cursor: pointer !important;
   transition: all 0.2s ease !important;
   padding: 8px 12px !important;
-  border-radius: 6px !important;
-  border: 2px solid #f5e0a3 !important;
+  border-radius: 999px !important;
+  border: 1px solid #a77c4e !important;
   font-weight: 500 !important;
   font-size: 14px !important;
   display: flex !important;
@@ -176,30 +264,36 @@
   min-height: 36px !important;
   user-select: none !important;
   font-family: 'Libre Baskerville', serif !important;
+  position: relative;
+  z-index: 10;
+}
+
+.improved-btn:focus {
+  outline: 2px solid #1d1b3f;
+  outline-offset: 2px;
 }
 
 .btn-edit.improved-btn {
-  background-color: #f5e0a3 !important;
+  background:linear-gradient(145deg, #e0c896, #f5e8c7 )!important;
   color: #1d1b3f !important;
 }
 
 .btn-edit.improved-btn:hover,
 .btn-edit.improved-btn:focus {
-  background-color: transparent !important;
-  color: #f5e0a3 !important;
+  color: #1d1b3f !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
 }
 
 .btn-delete.improved-btn {
-  background-color: #f5e0a3 !important;
+ background:linear-gradient(145deg, #e0c896, #f5e8c7 ) !important;
   color: #1d1b3f !important;
 }
 
 .btn-delete.improved-btn:hover,
 .btn-delete.improved-btn:focus {
   background-color: transparent !important;
-  color: #f5e0a3 !important;
+  color: #1d1b3f !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
 }
@@ -209,12 +303,41 @@
   transition: all 0.1s ease !important;
 }
 
+/* Responsive para botones en móviles */
+@media (max-width: 575px) {
+  .card-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  .improved-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  
+  .conservation-badge {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    top: 8px;
+    left: 8px;
+  }
+  
+  .butterfly-name {
+    font-size: 1.2rem;
+  }
+  
+  .hover-indicator {
+    font-size: 0.8rem;
+  }
+}
+
 /* Estilos para el mensaje sin datos */
 .no-data {
   text-align: center;
   margin-top: 50px;
   color: #f5e0a3;
   font-family: 'Libre Baskerville', serif;
+  grid-column: 1 / -1;
 }
 
 .no-data-icon {
@@ -222,7 +345,7 @@
   margin-bottom: 10px;
 }
 
-/* Estilos para el modal */
+/* ESTILOS DEL MODAL - Sin cambios */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -250,7 +373,6 @@
   animation: slideIn 0.3s ease;
 }
 
-/* Modal expandido */
 .expanded-modal {
   max-width: 1200px !important;
   width: 95% !important;
@@ -295,7 +417,6 @@
   background-color: rgba(245, 224, 163, 0.2);
 }
 
-/* Estilos para el formulario */
 .edit-form {
   padding: 25px;
   font-family: 'Libre Baskerville', serif;
@@ -369,7 +490,6 @@
   grid-column: 1 / -1 !important;
 }
 
-/* Estilos para los botones del formulario */
 .form-actions {
   display: flex;
   gap: 15px;
@@ -382,8 +502,9 @@
 .btn-cancel,
 .btn-save {
   padding: 12px 24px;
-  border: 2px solid #f5e0a3;
-  border-radius: 8px;
+  border: 1px solid #a77c4e;
+  background: linear-gradient(145deg, #e0c896, #f5e8c7);
+  border-radius: 999px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
@@ -394,7 +515,7 @@
 
 .btn-cancel {
   background-color: transparent;
-  color: #f5e0a3;
+  color: #1d1b3f;
 }
 
 .btn-cancel:hover {
@@ -411,12 +532,11 @@
 
 .btn-save:hover {
   background-color: transparent;
-  color: #f5e0a3;
+  color: #1d1b3f;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(245, 224, 163, 0.4);
 }
 
-/* Scroll personalizado para formularios */
 .expanded-form::-webkit-scrollbar {
   width: 8px !important;
 }
@@ -435,35 +555,14 @@
   background: rgba(245, 224, 163, 0.8) !important;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Responsive para tablets */
+/* Responsive para tablets - Modal */
 @media (max-width: 1024px) {
   .form-columns {
     grid-template-columns: 1fr 1fr !important;
   }
 }
 
-/* Responsive para móviles */
+/* Responsive para móviles - Modal */
 @media (max-width: 768px) {
   .modal-content {
     width: 95%;
@@ -496,22 +595,9 @@
   .btn-save {
     width: 100%;
   }
-  
-  .card-actions {
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-  
-  .improved-btn {
-    width: 100% !important;
-    justify-content: center !important;
-  }
 }
 
-
-/* sweetAlert*/
-
-/* Estilos personalizados para SweetAlert2 */
+/* SweetAlert personalizado - Sin cambios */
 .custom-swal-popup {
   border: 2px solid #f5e0a3 !important;
   border-radius: 15px !important;
@@ -568,67 +654,23 @@
   box-shadow: 0 4px 8px rgba(245, 224, 163, 0.3) !important;
 }
 
-/* boton de conservacion y otros ajustes*/ 
-
-/* Estilos adicionales para el badge de conservación */
-.conservation-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 4;
-  padding: 6px 12px;
-  border-radius: 20px;
-  color: #1d1b3f;
-  font-weight: bold;
-  font-size: 0.75rem;
-  font-family: 'Libre Baskerville', serif;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.conservation-badge:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* Asegurar que la card tenga cursor pointer para indicar que es clickeable */
-.card {
-  cursor: pointer;
-  transition: transform 0.8s, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 8px 25px rgba(245, 224, 163, 0.2);
-}
-
-/* Mejorar la indicación visual de que la card es clickeable */
-.card-container:hover .card {
-  transform: rotateY(180deg) scale(1.02);
-}
-
-/* Estilos para mejorar la accesibilidad de los botones */
-.improved-btn:focus {
-  outline: 2px solid #f5e0a3;
-  outline-offset: 2px;
-}
-
-/* Evitar que los botones se vean clickeables cuando la card está siendo clickeada */
-.card-back .improved-btn {
-  position: relative;
-  z-index: 10;
-}
-
-/* Responsive para el badge de conservación */
-@media (max-width: 768px) {
-  .conservation-badge {
-    font-size: 0.65rem;
-    padding: 4px 8px;
-    top: 8px;
-    left: 8px;
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

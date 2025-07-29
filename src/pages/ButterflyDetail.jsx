@@ -82,152 +82,161 @@ const ButterflyDetail = () => {
   // Renderizado condicional: Si está cargando, mostramos un mensaje
   if (loading) {
     return (
-      <div className="butterfly-detail-container">
-        <div className="loading-message">
-          <p>Cargando detalles de la mariposa ID: {id}...</p>
+      <section className="bg-linear-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
+        <div className="butterfly-detail-container">
+          <div className="loading-message">
+            <p>Cargando detalles de la mariposa ID: {id}...</p>
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 
   // Si hay un error, lo mostramos con opción de volver atrás
   if (error) {
     return (
-      <div className="butterfly-detail-container">
-        <div className="error-message">
-          <p style={{ color: 'red' }}>{error}</p>
-          <p>ID solicitado: {id}</p>
-          <div>
-            <button onClick={() => window.location.reload()} style={{ marginRight: '10px' }}>
-              Reintentar
-            </button>
-            <button onClick={() => window.history.back()}>
-              Volver atrás
-            </button>
+      <section className="bg-linear-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
+        <div className="butterfly-detail-container">
+          <div className="error-message">
+            <p style={{ color: 'red' }}>{error}</p>
+            <p>ID solicitado: {id}</p>
+            <div>
+              <button onClick={() => window.location.reload()} style={{ marginRight: '10px' }}>
+                Reintentar
+              </button>
+              <button onClick={() => window.history.back()}>
+                Volver atrás
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 
   // Si no hay datos de mariposa (caso edge), mostramos mensaje
   if (!butterfly) {
     return (
-      <div className="butterfly-detail-container">
-        <p>No se encontraron datos de la mariposa.</p>
-        <button onClick={() => window.history.back()}>
-          Volver atrás
-        </button>
-      </div>
+      <section className="bg-linear-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
+        <div className="butterfly-detail-container">
+          <p>No se encontraron datos de la mariposa.</p>
+          <button onClick={() => window.history.back()}>
+            Volver atrás
+          </button>
+        </div>
+      </section>
     );
   }
 
   // Renderizado principal: mostramos los detalles de la mariposa
   return (
-    <div className="butterfly-detail-container">
-      {/* Botón para volver a la lista o página anterior */}
-      <button 
-        className="back-button" 
-        onClick={() => window.history.back()}
-      >
-        ← Volver
-      </button>
-      
-      {/* Contenedor principal con los detalles de la mariposa */}
-      <div className="butterfly-detail-card">
+    <section className="bg-linear-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
+      <div className="butterfly-detail-container">
+        {/* Botón para volver a la lista o página anterior */}
+        <button 
+          className="back-button" 
+          onClick={() => window.history.back()}
+        >
+          ← Volver
+        </button>
         
-        {/* Título principal con el nombre de la mariposa */}
-        <h1 className="butterfly-title">{butterfly.name}</h1>
-        
-        {/* Familia en itálica como subtítulo */}
-        <p className="butterfly-family">{butterfly.family}</p>
-        
-        {/* Contenedor de imagen centrada */}
-        <div className="butterfly-image-container">
-          <div className="butterfly-image-wrapper">
-            {butterfly.image ? (
-              <img 
-                src={butterfly.image} 
-                alt={butterfly.name}
-                className="butterfly-image"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
-            ) : null}
-            <div className="butterfly-image-placeholder">
-              🦋
+        {/* Contenedor principal con los detalles de la mariposa */}
+        <div className="butterfly-detail-card">
+          
+          {/* Título principal con el nombre de la mariposa */}
+          <h1 className="butterfly-title">{butterfly.name}</h1>
+          
+          {/* Familia en itálica como subtítulo */}
+          <p className="butterfly-family">{butterfly.family}</p>
+          
+          {/* Contenedor de imagen centrada */}
+          <div className="butterfly-image-container">
+            <div className="butterfly-image-wrapper">
+              {butterfly.image ? (
+                <img 
+                  src={butterfly.image} 
+                  alt={butterfly.name}
+                  className="butterfly-image"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+              ) : null}
+              <div className="butterfly-image-placeholder">
+                🦋
+              </div>
             </div>
           </div>
-        </div>
-        
-        {/* Contenedor de información en dos columnas */}
-        <div className="butterfly-info-columns">
           
-          {/* Primera columna */}
-          <div className="info-column">
+          {/* Contenedor de información en dos columnas */}
+          <div className="butterfly-info-columns">
             
-            {/* Sección de Ubicación */}
-            <div className="info-section">
-              <h3 className="section-title">Ubicación</h3>
-              <p className="section-content">{butterfly.Location || 'Información no disponible'}</p>
+            {/* Primera columna */}
+            <div className="info-column">
+              
+              {/* Sección de Ubicación */}
+              <div className="info-section">
+                <h3 className="section-title">Ubicación</h3>
+                <p className="section-content">{butterfly.Location || 'Información no disponible'}</p>
+              </div>
+              
+              {/* Sección de Morfología */}
+              <div className="info-section">
+                <h3 className="section-title">Morfología</h3>
+                <p className="section-content">{butterfly.Morphology || 'Información no disponible'}</p>
+              </div>
+              
+              {/* Sección de Alimentación */}
+              <div className="info-section">
+                <h3 className="section-title">Alimentación</h3>
+                <p className="section-content">{butterfly.Feeding || 'Información no disponible'}</p>
+              </div>
+              
             </div>
             
-            {/* Sección de Morfología */}
-            <div className="info-section">
-              <h3 className="section-title">Morfología</h3>
-              <p className="section-content">{butterfly.Morphology || 'Información no disponible'}</p>
-            </div>
-            
-            {/* Sección de Alimentación */}
-            <div className="info-section">
-              <h3 className="section-title">Alimentación</h3>
-              <p className="section-content">{butterfly.Feeding || 'Información no disponible'}</p>
+            {/* Segunda columna */}
+            <div className="info-column">
+              
+              {/* Sección de Hábitat */}
+              <div className="info-section">
+                <h3 className="section-title">Hábitat</h3>
+                <p className="section-content">{butterfly.Hábitat || 'Información no disponible'}</p>
+              </div>
+              
+              {/* Sección de Ciclo de Vida */}
+              <div className="info-section">
+                <h3 className="section-title">Ciclo de Vida</h3>
+                <p className="section-content">{butterfly.Life || 'Información no disponible'}</p>
+              </div>
+              
+              {/* Sección de Conservación */}
+              <div className="info-section">
+                <h3 className="section-title">Estado de Conservación</h3>
+                <p className="section-content">{butterfly.Conservation || 'Información no disponible'}</p>
+              </div>
+              
             </div>
             
           </div>
           
-          {/* Segunda columna */}
-          <div className="info-column">
-            
-            {/* Sección de Hábitat */}
-            <div className="info-section">
-              <h3 className="section-title">Hábitat</h3>
-              <p className="section-content">{butterfly.Hábitat || 'Información no disponible'}</p>
-            </div>
-            
-            {/* Sección de Ciclo de Vida */}
-            <div className="info-section">
-              <h3 className="section-title">Ciclo de Vida</h3>
-              <p className="section-content">{butterfly.Life || 'Información no disponible'}</p>
-            </div>
-            
-            {/* Sección de Conservación */}
-            <div className="info-section">
-              <h3 className="section-title">Estado de Conservación</h3>
-              <p className="section-content">{butterfly.Conservation || 'Información no disponible'}</p>
-            </div>
-            
+          {/* Botón para editar los datos */}
+          <div className="edit-button-container">
+            <button 
+              className="edit-button"
+              onClick={() => {
+                // Aquí puedes navegar a la página de edición
+                // Por ejemplo: navigate(`/butterfly/edit/${butterfly.id}`)
+                console.log(`Editar mariposa con ID: ${butterfly.id}`);
+              }}
+            >
+              Editar datos
+            </button>
           </div>
-          
-        </div>
-         {/* Botón para editar los datos */}
-        <div className="edit-button-container">
-          <button 
-            className="edit-button"
-            onClick={() => {
-              // Aquí puedes navegar a la página de edición
-              // Por ejemplo: navigate(`/butterfly/edit/${butterfly.id}`)
-              console.log(`Editar mariposa con ID: ${butterfly.id}`);
-            }}
-          >
-            Editar datos
-          </button>
-        </div>
 
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
