@@ -1,18 +1,17 @@
-
-
+/* TIPOGRAFÍA GLOBAL */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
-
-
+/* Fuente y altura para la estructura contenedora del nav */
 .nav-container {
   font-family: "Libre Baskerville", serif;
   font-weight: 200;
   font-style: normal;
-  height: 50px;
+  height: 150px;
+  
+  
 }
 
-
-
+/*  BOTÓN MENÚ HAMBURGUESA (para móviles) */
 .hamburger {
   display: none;
   font-size: 2rem;
@@ -22,49 +21,69 @@
   cursor: pointer;
 }
 
-
-
-/* ---------------- SECCIÓN GALERÍA ---------------- */
-.galeria-extra-buttons {
-  position: sticky;
+/*  NAV FIJO + BOTONES + LOGO */
+.gallery-extra-buttons {
+  position: static; 
   top: 0;
+  width: 100%;
   z-index: 999;
   padding: 1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
-background-color: red;
+  
 }
 
-
-.ala-mariposa {
+/* Estilo para el logo del ala */
+.butterfly-wing {
   width: 200px;
   opacity: 0.9;
 }
 
-.galeria-buttons-group {
+/* Contenedor de botones */
+.gallery-buttons-group {
   display: flex;
-  gap: 2.5rem;
+  gap: 2.5rem; 
 }
 
-.galeria-button {
-  background: linear-gradient(145deg, #f5e8c7, #e0c896); /* gradiente */
+/* Estilo para cada botón del nav */
+.gallery-button {
+  background: linear-gradient(145deg, #f5e8c7, #e0c896); 
   color: #1D1B3F;
   font-weight: 600;
   padding: 0.6rem 1.4rem;
-  border-radius: 9999px;
+  border-radius: 9999px; 
   text-decoration: none;
   font-size: 1rem;
   transition: 0.3s ease;
   border: 1px solid #A77C4E; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
+/* Hover para los botones */
+.gallery-button:hover {
+  background: linear-gradient(145deg, #e0c896, #f5e8c7);
+  box-shadow: 0 0 10px rgba(255, 239, 184, 0.6);
+  transform: scale(1.05);
+  border: 1px solid #A77C4E;
+}
 
+/*  LÍNEA DECORATIVA BAJO EL NAV  */
+.navbar-line {
+  position: static; 
+  top: 70px; 
+  z-index: 998;
+  height: 2px;
+  background-color: #f5e8c7; 
+  width: 80%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  border-radius: 999px;
+}
 
-/* ---------------- RESPONSIVE ---------------- */
-/* Responsive hamburguesa */
+/* RESPONSIVE PARA PANTALLAS PEQUEÑAS */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -73,9 +92,13 @@ background-color: red;
     border: none;
     color: #1e1b4b;
     cursor: pointer;
+    margin: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+
   }
 
-  .galeria-buttons-group {
+  .gallery-buttons-group {
     display: none;
     flex-direction: column;
     align-items: center;
@@ -84,43 +107,27 @@ background-color: red;
     margin-top: 1rem;
   }
 
-  .galeria-buttons-group.open {
+  .gallery-buttons-group.open {
     display: flex;
   }
 
-  .galeria-extra-buttons {
+  .gallery-extra-buttons {
     flex-direction: column;
     align-items: center;
+    margin: 0px;
+    gap: 0px;
+    height: 150px;
+    position: relative;
+   z-index: 999;
   }
 
-  .ala-mariposa {
+  .butterfly-wing {
     width: 150px;
-    margin-bottom: 0.5rem;
+    margin: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  
   }
 }
-
-.navbar-line {
-  position: sticky;
-  top: calc(100px + 1rem); /* ajusta según altura real del navbar */
-  z-index: 998;
-  height: 2px;
-  background-color: #f5e8c7; /* color dorado claro */
-  width: 80%; /* aquí defines que no ocupe toda la página */
-  margin: 0 auto; /* centra horizontalmente */
-  border-radius: 999px; /* opcional, para que no termine en corte recto */
-}
-
-.galeria-button:hover {
-  background: linear-gradient(145deg, #e0c896, #f5e8c7);
-  box-shadow: 0 0 10px rgba(255, 239, 184, 0.6);
-  transform: scale(1.05);
-  border: 1px solid #A77C4E; /* asegúrate de mantener el borde */
-}
-
-
-
-
-
-
 
 
