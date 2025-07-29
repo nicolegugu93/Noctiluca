@@ -4,6 +4,8 @@ import '../style/butterflygallery.css';
 import { getAllButterflies, updateButterfly, deleteButterfly } from '../services/ButterflyServices';
 import Swal from 'sweetalert2';
 
+
+
 export default function ButterflyGallery() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);

@@ -130,7 +130,7 @@ const ButterflyDetail = () => {
         className="back-button" 
         onClick={() => window.history.back()}
       >
-        ← Volver a la galeria
+        ← Volver
       </button>
       
       {/* Contenedor principal con los detalles de la mariposa */}

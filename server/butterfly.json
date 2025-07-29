@@ -29,7 +29,6 @@
       "id": "2"
     },
     {
-      "id": "3",
       "name": "Mariposa del abeto",
       "other names": "Camberwell beauty",
       "family": "Nymphalidae (alas cepillo)",
@@ -40,10 +39,10 @@
       "Feeding": "Larvas en sauces, álamos, abedules; adultos en savia y fruta podre",
       "Conservation": "LC; raro localmente, protegido en algunos países",
       "about conservation": "LC",
-      "image": ""
+      "image": "",
+      "id": "3"
     },
     {
-      "id": "4",
       "name": "Mariposa del ortigal",
       "other names": "Small tortoiseshell",
       "family": "Nymphalidae (alas cepillo)",
@@ -54,7 +53,8 @@
       "Feeding": "Larvas en Urtica dioica; adultos en néctar, savia",
       "Conservation": "LC, en declive en Reino Unido",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Aglais_urticae_LC0310.jpg",
+      "id": "4"
     },
     {
       "id": "5",

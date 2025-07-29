@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
+
 /* Contenedor general de la galería */
 .gallery-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding-inline: 20px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   color: #f5e0a3;
-  overflow: hidden;
+  overflow: auto;
 }
 
 /* Contenido interno con scroll si hace falta */
@@ -630,3 +631,4 @@
     left: 8px;
   }
 }
+
