@@ -73,7 +73,7 @@ export async function deleteButterfly(id) {
 //Metodo Post para contacto
 export async function createContact(contactData) {
   try {
-    const response = await fetch(URL_CONTACT, {
+    const response = await fetch(URL_API, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
