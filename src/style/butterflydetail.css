@@ -17,10 +17,10 @@
 
 /* Botón de volver - SOLO dentro del contenedor de detalles */
 .butterfly-detail-container .back-button {
-  background-color: #F5E0A3;
+  background:linear-gradient(145deg, #e0c896,  #F5E0A3);
   border: 2px solid #1D1B3F;
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 999px;
   font-family: 'Libre Baskerville', serif;
   font-weight: 700;
   color: #1D1B3F;
@@ -280,10 +280,10 @@
 
 /* Botón de editar */
 .butterfly-detail-container .edit-button {
-  background-color: #F5E0A3;
-  border: 2px solid #1d1b3fd1;
+  background: linear-gradient(145deg, #e0c896, #f5e8c7);
+  border: 2px solid #a77c4e;
   padding: 15px 30px;
-  border-radius: 10px;
+  border-radius: 999px;
   font-family: 'Libre Baskerville', serif;
   font-weight: 700;
   font-size: 1.1rem;
