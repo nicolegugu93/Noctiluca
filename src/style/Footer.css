@@ -1,20 +1,38 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet');
 
 
 footer {
     
-    color: #F5E0A3;
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: italic;
-    
+   color: #F5E0A3;
+   font-family: "Libre Baskerville", serif;
+   font-weight: 300;
+   font-style: normal;
+
+
 }
 
 .footer-line {
   height: 2px;
   background-color: #f5e8c7; /* color dorado claro */
-  width: 80%; /* o 60%, según prefieras */
+  width: 80%; 
   margin: 2rem auto 1rem auto; /* separación arriba/abajo y centrado */
   border-radius: 999px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  width: 80px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05);
 }

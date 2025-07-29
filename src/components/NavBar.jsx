@@ -11,7 +11,7 @@ function NavBar() {
   };
 
   return (
-    <div className="app-container">
+    <nav className="nav-container">
       {/* NAVBAR FIJA */}
       <div className="galeria-extra-buttons">
         <img src={alaImg} alt="ala mariposa" className="ala-mariposa" />
@@ -30,7 +30,7 @@ function NavBar() {
       </div>
       {/* Línea decorativa debajo del navbar */}
       <div className="navbar-line"></div>
-    </div>
+    </nav>
   );
 
 }
