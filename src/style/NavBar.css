@@ -3,13 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
 
-/* Contenedor general */
-.app-container {
-  min-height: 100vh;
+
+.nav-container {
   font-family: "Libre Baskerville", serif;
   font-weight: 200;
   font-style: normal;
-
+  height: 50px;
 }
 
 
@@ -35,7 +34,7 @@
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
-
+background-color: red;
 }
 
 
@@ -51,7 +50,7 @@
 
 .galeria-button {
   background: linear-gradient(145deg, #f5e8c7, #e0c896); /* gradiente */
-  color: #1e1b4b;
+  color: #1D1B3F;
   font-weight: 600;
   padding: 0.6rem 1.4rem;
   border-radius: 9999px;
