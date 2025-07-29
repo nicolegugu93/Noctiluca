@@ -59,10 +59,6 @@ export default function ContactButterfly() {
     }
   };
 
-  const handleBackToGallery = () => {
-    navigate('/butterflygallery');
-  };
-
   // Datos de los desarrolladores --`poner los links
   const developers = [
     {
@@ -92,16 +88,6 @@ export default function ContactButterfly() {
 
   return (
     <div className="contact-butterfly-container">
-      {/* Botón superior */}
-      <div className="back-button-container">
-        <button 
-          onClick={handleBackToGallery}
-          className="back-button"
-        >
-          » Regresar a la galería
-        </button>
-      </div>
-
       {/* Contenido principal */}
       <div className="main-content">
         <div className="header-section">

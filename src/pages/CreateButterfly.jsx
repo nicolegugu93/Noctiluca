@@ -74,22 +74,8 @@ export default function CreateButterfly() {
     }
   };
 
-  const handleBackToGallery = () => {
-    navigate('/butterflygallery');
-  };
-
   return (
     <div className="create-butterfly-container">
-      {/* Botón superior */}
-      <div className="back-button-container">
-        <button 
-          onClick={handleBackToGallery}
-          className="back-button"
-        >
-          » Regresar a la galería
-        </button>
-      </div>
-
       {/* Contenido principal */}
       <div className="main-content">
         <div className="header-section">
