@@ -13,30 +13,38 @@ function NavBar() {
 
   return (
     <nav className="nav-container">
-      <div className="gallery-extra-buttons">
-        <img src={alaImg} alt="butterfly-wing" className="butterfly-wing" />
+      <div className="galeria-extra-buttons">
+        <img src={alaImg} alt="ala mariposa" className="ala-mariposa" />
 
         <button className="hamburger" onClick={toggleMenu}>
           ☰
         </button>
 
-        <div className={`gallery-buttons-group ${menuOpen ? "open" : ""}`}>
-          
-          <Link to="/" className="gallery-button">Home</Link>
+        <div className={`galeria-buttons-group ${menuOpen ? "open" : ""}`}>
+          {/* Botón siempre visible */}
+          <Link to="/" className="galeria-button">Home</Link>
 
-          
+          {/* Mostrar "Galería" solo si estás en Contacto */}
           {location.pathname === "/contactbutterfly" && (
-            <Link to="/butterflygallery" className="gallery-button">Galería</Link>
+            <Link to="/butterflygallery" className="galeria-button">Galería</Link>
           )}
 
           
+           {/* Mostrar "Galería" en formulario de mariposas*/}
+          {location.pathname.startsWith("/butterflydetail")&& (
+            <Link to="/butterflygallery" className="galeria-button">Galería</Link>
+          )}
+           
+
+
+          {/* Mostrar "Contacto" solo si estás en Galería o Home */}
           {(location.pathname === "/butterflygallery" || location.pathname === "/") && (
-            <Link to="/contactbutterfly" className="gallery-button">Contacto</Link>
+            <Link to="/contactbutterfly" className="galeria-button">Contacto</Link>
           )}
         </div>
       </div>
 
-     
+      {/* Línea decorativa debajo del nav */}
       <div className="navbar-line"></div>
     </nav>
   );
