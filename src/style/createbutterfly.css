@@ -1,30 +1,44 @@
+/* Importamos la fuente Libre Baskerville */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
 /* Contenedor principal */
 .create-butterfly-container {
-  min-height: 100vh;
+  font-family: 'Libre Baskerville', serif;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
+  background-color: #f5e1a3a6;
+  min-height: 100vh;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .main-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .header-section {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 0;
+  padding-bottom: 32px;
+  margin-top: 60px; /* Aumentado de 20px a 60px para mover el texto más abajo */
 }
 
 .main-title {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
   font-size: 2.5rem;
-  font-weight: bold;
-  color: rgba(29, 27, 63, 0.95);
+  color: #F5E0A3;
   margin-bottom: 16px;
   line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
+  font-family: 'Libre Baskerville', serif;
   font-size: 1.1rem;
-  color: rgba(29, 27, 63, 0.8);
+  color: #f1f1f1;
   margin-bottom: 8px;
   font-weight: 400;
   max-width: 600px;
@@ -32,17 +46,29 @@
   margin-right: auto;
 }
 
-/* Contenedor del formulario */
+/* Contenedor del formulario - Mismo estilo que butterfly-detail-card */
 .form-wrapper {
-  background: rgba(29, 27, 63, 0.95);
-  border: 3px solid #f5e0a3;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px);
+  background-color: rgba(56, 53, 77, 0.9)!important; /* Cambiado a un color más grisáceo-púrpura como en la imagen */
+  border-radius: 15px;
+  padding: 80px 40px 40px 40px; /* Aumentado el padding superior de 60px a 80px */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   margin-bottom: 48px;
+  margin-top: 40px; /* Cambiado de -20px a 40px para mover todo el contenedor más abajo */
   animation: fadeInUp 0.6s ease-out;
+  position: relative;
+  z-index: 0;
 }
+
+/* Línea decorativa debajo del texto del header */
+.header-section::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #f5e1a3a6;
+  margin: 24px auto 0 auto;
+}
+
 
 /* Formulario */
 .butterfly-form {
@@ -56,6 +82,7 @@
   margin-bottom: 24px;
   font-weight: 500;
   text-align: center;
+  font-family: 'Libre Baskerville', serif;
 }
 
 .message.success {
@@ -96,53 +123,53 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
-/* Etiquetas */
+/* Etiquetas - Mismo estilo que form-label de ButterflyDetail */
 .form-label {
-  color: #f5e0a3;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #F5E0A3;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Campos de entrada */
+/* Campos de entrada - Mismo estilo que form-input de ButterflyDetail */
 .form-input, 
 .form-textarea, 
 .form-select {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(245, 224, 163, 0.3);
-  color: white;
-  padding: 14px 16px;
-  border-radius: 12px;
-  font-size: 16px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(5px);
-  font-family: inherit;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: 2px solid #F5E0A3;
+  border-radius: 8px;
+  background-color: rgba(245, 224, 163, 0.1);
+  color: #f1f1f1;
+  transition: all 0.3s ease;
+  resize: vertical;
 }
 
 .form-input:focus, 
 .form-textarea:focus,
 .form-select:focus {
   outline: none;
-  border-color: #f5e0a3;
-  box-shadow: 0 0 0 4px rgba(245, 224, 163, 0.2);
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
+  border: 2px solid #F5E0A3;
+  background-color: rgba(245, 224, 163, 0.2);
+  box-shadow: 0 0 10px rgba(245, 224, 163, 0.3);
 }
 
 .form-input:hover:not(:focus), 
 .form-textarea:hover:not(:focus),
 .form-select:hover:not(:focus) {
-  border-color: rgba(245, 224, 163, 0.5);
-  background: rgba(255, 255, 255, 0.12);
+  background-color: rgba(245, 224, 163, 0.15);
 }
 
 .form-input::placeholder, 
 .form-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(241, 241, 241, 0.6);
+  font-style: italic;
 }
 
 /* Select específico */
@@ -157,14 +184,13 @@
 }
 
 .form-select option {
-  background: rgba(29, 27, 63, 0.95);
-  color: white;
+  background: rgba(56, 53, 77, 0.9); /* Actualizado para coincidir con el nuevo fondo */
+  color: #f1f1f1;
   padding: 8px;
 }
 
 /* Textarea específico */
 .form-textarea {
-  resize: vertical;
   min-height: 100px;
   line-height: 1.5;
 }
@@ -174,39 +200,47 @@
   display: flex;
   justify-content: center;
   margin-top: 32px;
+  padding-top: 30px;
+  border-top: 2px solid rgba(245, 224, 163, 0.3);
 }
 
-/* Botón de envío */
+/* Botón de envío - Mismo estilo que los botones de ButterflyDetail */
 .submit-button {
-  background: linear-gradient(135deg, #f5e0a3 0%, #e6d194 100%);
-  color: rgba(29, 27, 63, 0.95);
-  padding: 18px 60px;
-  border: none;
-  border-radius: 12px;
-  font-size: 18px;
-  font-weight: 700;
+  background: linear-gradient(145deg, #f5e8c7, #e0c896);
+  color: #1D1B3F;
+  font-weight: 600;
+  padding: 0.8rem 1.8rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: 0.3s ease;
+  border: 1px solid #A77C4E;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Libre Baskerville', serif;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 6px 20px rgba(245, 224, 163, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .submit-button:hover:not(.disabled) {
-  background: linear-gradient(135deg, #e6d194 0%, #d4c082 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(245, 224, 163, 0.4);
+  background: linear-gradient(145deg, #e0c896, #f5e8c7);
+  box-shadow: 0 0 10px rgba(255, 239, 184, 0.6);
+  transform: scale(1.05);
+  border: 1px solid #A77C4E;
 }
 
 .submit-button:active:not(.disabled) {
-  transform: translateY(-1px);
+  transform: scale(0.98);
 }
 
 .submit-button.disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  background: linear-gradient(135deg, #a0a0a0 0%, #888888 100%);
+  background: linear-gradient(145deg, #a0a0a0, #888888);
   color: #666;
+  transform: none;
 }
 
 /* Animaciones */
@@ -224,7 +258,12 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .form-wrapper {
-    padding: 32px 24px;
+    padding: 50px 24px 32px 24px; /* Ajustado para tablets */
+    margin-top: 30px; /* Ajustado para tablets */
+  }
+  
+  .header-section {
+    margin-top: 40px; /* Reducido para tablets */
   }
   
   .main-title {
@@ -242,7 +281,12 @@
   }
   
   .form-wrapper {
-    padding: 24px 16px;
+    padding: 40px 25px 25px 25px; /* Ajustado para móviles */
+    margin-top: 20px; /* Ajustado para móviles */
+  }
+  
+  .header-section {
+    margin-top: 30px; /* Reducido para móviles */
   }
   
   .form-row.three-cols,
@@ -252,7 +296,7 @@
   }
   
   .main-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
   .subtitle {
@@ -261,30 +305,56 @@
   
   .submit-button {
     width: 100%;
-    padding: 16px 24px;
-    font-size: 16px;
+    max-width: 300px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .form-input, 
+  .form-textarea,
+  .form-select {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
+  .create-butterfly-container {
+    padding: 10px;
+  }
+
   .main-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     line-height: 1.3;
   }
   
   .form-wrapper {
-    padding: 20px 12px;
+    padding: 30px 20px 20px 20px; /* Ajustado para móviles pequeños */
+    margin-top: 15px; /* Ajustado para móviles pequeños */
+  }
+  
+  .header-section {
+    margin-top: 20px; /* Reducido para móviles pequeños */
   }
   
   .form-input, 
   .form-textarea,
   .form-select {
-    font-size: 14px;
-    padding: 12px 14px;
+    font-size: 0.9rem;
+    padding: 10px 12px;
   }
   
   .form-label {
-    font-size: 12px;
+    font-size: 0.9rem;
+  }
+
+  .submit-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
   }
 }
 

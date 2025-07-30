@@ -3,6 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { createContact } from '../services/ButterflyServices.jsx';
 import '../style/butterflymembers.css';
 import ButtonCreateButterfly from '../components/ButtonCreateButterfly';
+import marianaImg from '../assets/mariana.jpeg';
+import nicoleImg from '../assets/nicole.jpg';
+import valentinaImg from '../assets/valentina.jpeg';
+import maryoriImg from '../assets/maryori.jpeg';
+import estherImg from '../assets/esther.jpg';
+import rocioImg from '../assets/rocio.jpeg';
+// Importa correctamente la imagen de la mariposa
+import butterflyWing from '../assets/logo-mariposa.png'; // O desde donde esté ubicada
 
 export default function ContactButterfly() {
   const navigate = useNavigate();
@@ -15,6 +23,8 @@ export default function ContactButterfly() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  // Estado para controlar qué imágenes han cargado correctamente
+  const [imageLoadStatus, setImageLoadStatus] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +56,7 @@ export default function ContactButterfly() {
           reason: ''
         });
 
-        // Redirigir a la galería después de un momento --cambiar--
+        // Redirigir a la galería después de un momento
         setTimeout(() => {
           navigate('/butterflygallery');
         }, 2000);
@@ -60,6 +70,22 @@ export default function ContactButterfly() {
     }
   };
 
+  // Función para manejar la carga exitosa de imágenes
+  const handleImageLoad = (developerName) => {
+    setImageLoadStatus(prev => ({
+      ...prev,
+      [developerName]: 'loaded'
+    }));
+  };
+
+  // Función para manejar errores de carga de imágenes
+  const handleImageError = (developerName) => {
+    setImageLoadStatus(prev => ({
+      ...prev,
+      [developerName]: 'error'
+    }));
+  };
+
   // Función para manejar clicks en enlaces (para debugging)
   const handleLinkClick = (url, platform) => {
     console.log(`Abriendo ${platform}: ${url}`);
@@ -70,37 +96,37 @@ export default function ContactButterfly() {
   const developers = [
     {
       name: "Mariana",
-      image: "/path/to/mariana.jpg", 
+      image: marianaImg, 
       github: "https://github.com/MarianaMH1195",
       linkedin: "https://www.linkedin.com/in/mariana-moreno-henao-70305a16b/"
     },
     {
       name: "Nicole", 
-      image: "/path/to/nicole.jpg", 
+      image: nicoleImg, 
       github: "https://github.com/nicolegugu93",
       linkedin: "https://www.linkedin.com/in/nicoleguevaragutierrez"
     },
     {
       name: "Valentina",
-      image: "/path/to/valentina.jpg", 
+      image: valentinaImg, 
       github: "https://github.com/ValenMontilla7",
       linkedin: "https://www.linkedin.com/in/valentin-montilla-march/"
     },
     {
       name: "Maryori",
-      image: "/path/to/maryori.jpg", 
+      image: maryoriImg, 
       github: "https://github.com/MaryoriCruz",
-      linkedin: "https://www.linkedin.com/in/maryori-cruz-b4770b27a/"
+      linkedin: "https://www.linkedin.com/in/maryori-cruz-eguizabal-6b440116b/"
     },
     {
       name: "Esther",
-      image: "/path/to/esther.jpg", 
+      image: estherImg, 
       github: "https://github.com/EstherTapias",
       linkedin: "https://www.linkedin.com/in/esther-tapias-paez-camino/"
     },
     {
       name: "Rocío",
-      image: "/path/to/rocio.jpg", 
+      image: rocioImg, 
       github: "https://github.com/Rocio-Coronel",
       linkedin: "https://www.linkedin.com/in/roc%C3%ADo-coronel/"
     }
@@ -200,93 +226,93 @@ export default function ContactButterfly() {
             <div className="developers-grid">
               {developers.map((developer, index) => (
                 <div key={index} className="developer-card">
-                  {/* Ala izquierda */}
+                  {/* Ala izquierda - Usar la imagen importada */}
                   <img 
-                    src="public/logo-mariposa.png"
+                    src={butterflyWing}
                     alt="Wing" 
                     className="butterfly-wing left-wing"
+                    onError={(e) => {
+                      console.log('Error cargando ala izquierda');
+                      e.target.style.display = 'none';
+                    }}
                   />
                   
                   {/* Contenido central */}
                   <div className="developer-content">
-                    <div className="developer-image-container">
+                    <div 
+                      className="developer-image-container"
+                      data-has-image={imageLoadStatus[developer.name] === 'loaded' ? 'true' : undefined}
+                    >
                       <img 
                         src={developer.image} 
                         alt={developer.name}
                         className="developer-image"
-                        onError={(e) => {
-                          // Imagen por defecto 
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'flex';
+                        onLoad={() => handleImageLoad(developer.name)}
+                        onError={() => handleImageError(developer.name)}
+                        style={{
+                          display: imageLoadStatus[developer.name] === 'loaded' ? 'block' : 'none'
                         }}
                       />
-                      <div className="developer-placeholder">
+                      <div 
+                        className="developer-placeholder"
+                        style={{
+                          display: imageLoadStatus[developer.name] === 'loaded' ? 'none' : 'flex'
+                        }}
+                      >
                         👤
                       </div>
                     </div>
                     <p className="developer-name">{developer.name}</p>
-                    <div className="developer-links">
-                      {/* Enlace GitHub - Versión mejorada */}
-                      {developer.github && (
-                        <a 
-                          href={developer.github}
-                          className="developer-link github"
-                          title={`GitHub de ${developer.name}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => {
-                            console.log('Click en GitHub:', developer.github);
-                            // Si el enlace normal no funciona, usar window.open como fallback
-                            // e.preventDefault();
-                            // handleLinkClick(developer.github, 'GitHub');
-                          }}
-                          style={{ 
-                            cursor: 'pointer',
-                            pointerEvents: 'auto',
-                            zIndex: 10,
-                            position: 'relative'
-                          }}
-                        >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                          </svg>
-                        </a>
-                      )}
-                      
-                      {/* Enlace LinkedIn - Versión mejorada */}
-                      {developer.linkedin && (
-                        <a 
-                          href={developer.linkedin}
-                          className="developer-link linkedin"
-                          title={`LinkedIn de ${developer.name}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => {
-                            console.log('Click en LinkedIn:', developer.linkedin);
-                            // Si el enlace normal no funciona, usar window.open como fallback
-                            // e.preventDefault();
-                            // handleLinkClick(developer.linkedin, 'LinkedIn');
-                          }}
-                          style={{ 
-                            cursor: 'pointer',
-                            pointerEvents: 'auto',
-                            zIndex: 10,
-                            position: 'relative'
-                          }}
-                        >
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                          </svg>
-                        </a>
-                      )}
-                    </div>
                   </div>
 
-                  {/* Ala derecha */}
+                  {/* Enlaces sociales fuera del contenido central */}
+                  <div className="developer-links-external">
+                    {/* Enlace GitHub */}
+                    {developer.github && (
+                      <a 
+                        href={developer.github}
+                        className="developer-link github"
+                        title={`GitHub de ${developer.name}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          console.log('Click en GitHub:', developer.github);
+                        }}
+                      >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                      </a>
+                    )}
+                    
+                    {/* Enlace LinkedIn */}
+                    {developer.linkedin && (
+                      <a 
+                        href={developer.linkedin}
+                        className="developer-link linkedin"
+                        title={`LinkedIn de ${developer.name}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => {
+                          console.log('Click en LinkedIn:', developer.linkedin);
+                        }}
+                      >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+
+                  {/* Ala derecha - Usar la imagen importada */}
                   <img 
-                    src="public/logo-mariposa.png"
+                    src={butterflyWing}
                     alt="Wing" 
                     className="butterfly-wing right-wing"
+                    onError={(e) => {
+                      console.log('Error cargando ala derecha');
+                      e.target.style.display = 'none';
+                    }}
                   />
                 </div>
               ))}

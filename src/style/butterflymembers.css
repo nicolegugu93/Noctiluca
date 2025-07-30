@@ -206,12 +206,14 @@
 /* Tarjetas de desarrolladores */
 .developer-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   width: 100%;
   max-width: 350px;
-  height: 200px;
+  height: 280px; /* Aumentado para acomodar los enlaces externos */
+  gap: 16px;
 }
 
 /* Alas de mariposa */
@@ -223,17 +225,17 @@
   transition: all 0.3s ease;
   pointer-events: none;
   position: absolute;
-  top: 50%;
+  top: 30%; /* Ajustado para centrar con el contenido principal */
   transform: translateY(-50%);
 }
 
 .left-wing {
-  left: 0px;
+  left: -10px;
   transform: translateY(-50%) scaleX(-1);
 }
 
 .right-wing {
-  right: 0px;
+  right: -10px;
   transform: translateY(-50%) scaleX(1);
 }
 
@@ -259,12 +261,12 @@
   border: 2px solid #f5e0a3;
   border-radius: 20px;
   padding: 20px;
-  width: 170px;
-  height: 170px;
+  width: 180px;
+  height: 180px;
   transition: all 0.3s ease;
   position: relative;
   z-index: 5;
-  gap: 12px;
+  gap: 16px; /* Aumentado el gap */
 }
 
 .developer-content::before {
@@ -290,24 +292,24 @@
   opacity: 1;
 }
 
-/* Imagen del desarrollador */
+/* Imagen del desarrollador - CORREGIDO Y AGRANDADO */
 .developer-image-container {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 80px; /* Aumentado de 60px a 80px */
+  height: 80px; /* Aumentado de 60px a 80px */
   margin-bottom: 0;
   flex-shrink: 0;
   background: rgba(100, 100, 100, 0.3);
-  border-radius: 12px;
+  border-radius: 16px; /* Aumentado el border-radius */
   border: 2px solid #f5e0a3;
 }
 
 .developer-image {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 14px; /* Ajustado al nuevo tamaño */
   object-fit: cover;
-  display: block;
+  /* Las imágenes ahora se mostrarán por defecto */
 }
 
 .developer-placeholder {
@@ -315,14 +317,18 @@
   width: 100%;
   height: 100%;
   background: rgba(100, 100, 100, 0.3);
-  border-radius: 10px;
+  border-radius: 14px; /* Ajustado al nuevo tamaño */
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  color: #333;
+  font-size: 32px; /* Aumentado el tamaño del emoji */
+  color: #f5e0a3;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* Mostrar placeholder por defecto */
+/* ELIMINAMOS las reglas que ocultaban las imágenes por defecto */
+/* Ya no usamos estas reglas problemáticas:
 .developer-image-container .developer-image {
   display: none;
 }
@@ -330,20 +336,12 @@
 .developer-image-container .developer-placeholder {
   display: flex;
 }
-
-/* Si tiene imagen, mostrar imagen */
-.developer-image-container[data-has-image] .developer-image {
-  display: block;
-}
-
-.developer-image-container[data-has-image] .developer-placeholder {
-  display: none;
-}
+*/
 
 /* Nombre del desarrollador */
 .developer-name {
   color: #f5e0a3;
-  font-size: 16px;
+  font-size: 18px; /* Aumentado de 16px */
   font-weight: 600;
   margin-bottom: 0;
   text-align: center;
@@ -351,7 +349,16 @@
   line-height: 1.2;
 }
 
-/* Enlaces sociales */
+/* Enlaces sociales externos - NUEVA SECCIÓN */
+.developer-links-external {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Enlaces sociales (ahora externos) */
 .developer-links {
   display: flex;
   gap: 12px;
@@ -365,32 +372,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: rgba(100, 100, 100, 0.3);
-  border: 1px solid rgba(245, 224, 163, 0.3);
-  border-radius: 6px;
+  width: 40px; /* Aumentado de 32px */
+  height: 40px; /* Aumentado de 32px */
+  background: rgba(29, 27, 63, 0.95);
+  border: 2px solid #f5e0a3;
+  border-radius: 50%; /* Cambiado a circular */
   color: #f5e0a3;
   text-decoration: none;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .developer-link:hover {
   background: #f5e0a3;
   color: rgba(29, 27, 63, 0.95);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(245, 224, 163, 0.3);
+  transform: translateY(-3px) scale(1.1); /* Efecto más dramático */
+  box-shadow: 0 8px 25px rgba(245, 224, 163, 0.4);
 }
 
 .developer-link:active {
-  transform: translateY(0);
+  transform: translateY(-1px) scale(1.05);
 }
 
 .developer-link svg {
-  width: 16px;
-  height: 16px;
+  width: 20px; /* Aumentado de 16px */
+  height: 20px; /* Aumentado de 16px */
   pointer-events: none;
 }
 
@@ -485,6 +493,98 @@
   }
 
   .butterfly-wing {
+    width: 60px;
+    height: 60px;
+  }
+
+  .developer-card {
+    height: 160px;
+  }
+
+  .developer-links {
+    gap: 8px;
+  }
+
+  .developer-link {
+    width: 28px;
+    height: 28px;
+  }
+
+  .developer-link svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Mejoras generales */
+* {
+  box-sizing: border-box;
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+.butterfly-wing{
+    width: 70px;
+    height: 70px;
+  }
+
+  .developer-image-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .developer-name {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  
+  .form-wrapper {
+    padding: 20px 12px;
+  }
+  
+  .form-input, 
+  .form-textarea {
+    font-size: 14px;
+  }
+  
+  .form-label {
+    font-size: 12px;
+  }
+
+  .developer-content {
+    padding: 12px;
+    width: 130px;
+    height: 130px;
+    gap: 8px;
+  }
+
+  .developer-image-container {
+    width: 40px;
+    height: 40px;
+  }
+
+  .developer-name {
+    font-size: 13px;
+  }
+
+  .developer-placeholder {
+    font-size: 18px;
+  }
+
+  .butterfly-wing {
+
     width: 70px;
     height: 70px;
   }
