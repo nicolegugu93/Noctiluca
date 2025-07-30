@@ -2,7 +2,6 @@
   "butterfly": [
     {
       "name": "Vanesa atalanta",
-      "other names": "Almirante rojo",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "Presente en España, Francia, Italia, Reino Unido, Alemania, Suecia, Noruega, Finlandia; migraciones hacia el norte en primavera y vuelta al sur en otoño",
       "Hábitat": "Bosques claros, jardines, márgenes; larvas en ortigas",
@@ -10,7 +9,6 @@
       "Life": "Varias generaciones en sur de Europa; hibernación de adultos; huevos en Urtica, larvas espinosas, pupación variable",
       "Feeding": "Larvas en ortigas; adultos en néctar, savia, fruta",
       "Conservation": "LC; migraciones sensibles al cambio climático",
-      "about conservation": "LC",
       "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/327184069/large.jpeg",
       "id": "1"
     },
@@ -29,7 +27,6 @@
       "id": "2"
     },
     {
-      "id": "3",
       "name": "Mariposa del abeto",
       "other names": "Camberwell beauty",
       "family": "Nymphalidae (alas cepillo)",
@@ -40,10 +37,10 @@
       "Feeding": "Larvas en sauces, álamos, abedules; adultos en savia y fruta podre",
       "Conservation": "LC; raro localmente, protegido en algunos países",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://i.pinimg.com/736x/bd/fa/5a/bdfa5a7d4ee7c10228c0f1b0f707d40e.jpg",
+      "id": "4126"
     },
     {
-      "id": "4",
       "name": "Mariposa del ortigal",
       "other names": "Small tortoiseshell",
       "family": "Nymphalidae (alas cepillo)",
@@ -54,7 +51,8 @@
       "Feeding": "Larvas en Urtica dioica; adultos en néctar, savia",
       "Conservation": "LC, en declive en Reino Unido",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Aglais_urticae_LC0310.jpg",
+      "id": "014d"
     },
     {
       "id": "5",
@@ -68,7 +66,7 @@
       "Feeding": "Larvas en ortigas; adultos en néctar, savia, fruta podrida",
       "Conservation": "LC; rango estable o en expansión",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://thumbs.dreamstime.com/b/el-peacock-eye-es-una-mariposa-europea-brillante-con-ojos-manchados-en-las-alas-subfamilia-de-ninfalidos-verdaderos-foto-230687942.jpg"
     },
     {
       "id": "6",
@@ -82,7 +80,7 @@
       "Feeding": "Larvas en Salix, Populus; adultos en savia, fruta",
       "Conservation": "LC, pero localmente declinante",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://us.images.westend61.de/0000345714j/pequena-mariposa-carey-aglais-urticae-sobre-rama-de-sauce-SIEF005233.jpg"
     },
     {
       "id": "7",
@@ -96,12 +94,12 @@
       "Feeding": "Larvas en gramíneas; adultos en néctar",
       "Conservation": "LC",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/102255693/large.jpg"
     },
     {
       "id": "8",
       "name": "Mariposa medioluto ibérica",
-      "other names": "",
+      "other names": "Melanargia lachesis",
       "family": "Nymphalidae (alas cepillo)",
       "Location": "España (toda la península), Portugal, sur de Francia (hasta Avignon)",
       "Hábitat": "Praderas secas y floridas en calizas",
@@ -110,7 +108,7 @@
       "Feeding": "Larvas en gramíneas; adultos en néctar",
       "Conservation": "LC, endémica; sensible a alteraciones de praderas",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://lh3.googleusercontent.com/proxy/oxowJyFU8N0NHmtAuOdeb3a38Uu3n142j1D0rMkYO6ol52ZnnRzktCj6OBV7Ok62rXkTR9nxre1ux2wqpXNoRPPciMKcQSzaI79r8U_nZTQd"
     },
     {
       "id": "9",
@@ -124,7 +122,7 @@
       "Feeding": "Larvas en gramíneas; adultos en néctar",
       "Conservation": "LC",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://pictureinsect.com/wiki-image/1080/153984236984991783.jpeg"
     },
     {
       "id": "10",
@@ -138,7 +136,7 @@
       "Feeding": "Larvas en gramíneas; adultos en néctar",
       "Conservation": "LC; muy común",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://i.pinimg.com/736x/6c/23/35/6c2335eed45eaaccddff513eae7efdde.jpg"
     },
     {
       "id": "11",
@@ -152,7 +150,7 @@
       "Feeding": "Larvas en umbelíferas (zanahoria, hinojo, perejil) y rutáceas; adultos liban néctar de floraciones variadas y fruta fermentada",
       "Conservation": "LC (Least Concern, IUCN); especie común aunque declinante localmente por pesticidas y pérdida de plantas hospederas",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://fotografialola.wordpress.com/wp-content/uploads/2015/08/dsc_0176.jpg"
     },
     {
       "id": "12",
@@ -166,7 +164,7 @@
       "Feeding": "Larvas en hojas de diversas Rosaceae (Prunus, Pyrus, Malus, Crataegus); adultos probables liban néctar y savia",
       "Conservation": "LC (no amenazada globalmente); parece estable localmente aunque sujeta a cambio de uso del suelo",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://upload.wikimedia.org/wikipedia/commons/2/23/Iphiclides_feisthamelii_male.jpg"
     },
     {
       "id": "13",
@@ -180,7 +178,7 @@
       "Feeding": "Larvas comen Prunus (espino negro, ciruelo, almendro), Malus, Pyrus, Crataegus; adultos néctar de flores como buddleia, cardos, Lantana, etc.",
       "Conservation": "LC globalmente, aunque en algunos países (Austria) figura como NT; localmente protegida y en declive por pérdida de setos frutales y pesticidas",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://live.staticflickr.com/65535/52981485299_f3d0ae412c_b.jpg"
     },
     {
       "id": "14",
@@ -194,7 +192,7 @@
       "Feeding": "Larvas en crucíferas (col, brócoli), adultos en néctar variado :contentReference[oaicite:2]{index=2}",
       "Conservation": "LC; sin preocupación, pero plaga ocasional en cultivos :contentReference[oaicite:3]{index=3}",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://www.montesdevalsain.es/images/pierisnapi2.jpg"
     },
     {
       "id": "15",
@@ -208,7 +206,7 @@
       "Feeding": "Larvas en Brassicaceae; adultos en néctar de flores silvestres",
       "Conservation": "LC; común y no amenazada",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://inaturalist-open-data.s3.amazonaws.com/photos/68282347/original.jpg"
     },
     {
       "id": "16",
@@ -222,7 +220,7 @@
       "Feeding": "Larvas en leguminosas y gramíneas; adultos en néctar de flores silvestres",
       "Conservation": "LC según IUCN",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://vivelanaturaleza.com/wp-content/uploads/2020/06/colias-comun-colias-crocea-croceus-3-1024x683.jpg"
     },
     {
       "id": "17",
@@ -236,7 +234,7 @@
       "Feeding": "Larvas en Rhamnaceae (espinos, aladierno); adultos néctar de flores primaverales.",
       "Conservation": "LC; sin amenazas actuales",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiejZi8_y2_feJ-vPj2SS4cRNNG7LyFs6CPjzVBOw_NYSPYCep-o9eIbCSRmvOt34ZFD1BrnW_HuPoxOSiSOsTvA4AzxEjXMhVMH3M3UN1_RNrEc0U6JsCKkUjNQQ4Qrj-ive_dKzXqOIW5/s1600/IMG_0300.jpg"
     },
     {
       "id": "18",
@@ -250,7 +248,7 @@
       "Feeding": "Larvas en Brassicaceae (Cardamine, Alliaria, Armoracia); adultos en néctar primavera",
       "Conservation": "LC",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://wastemagazine.es/fotos2/anthochariscardamines1.jpg"
     },
     {
       "id": "19",
@@ -264,7 +262,7 @@
       "Feeding": "Larvas en Brassicaceae (Erysimum, Hirschfeldia); adultos néctar de flores silvestres",
       "Conservation": "LC",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://biodiversidade.eu/web/cache/scene/uploads/imaxes/imaxe/99d/_S7QytKoutjK3UsovKMnMzytWsi62MjS0UipKLc6sStVRsDAwUL_/_KuBQA=_/5665d72a24-181.jpg"
     },
     {
       "id": "20",
@@ -278,7 +276,7 @@
       "Feeding": "Larvas en leguminosas (Lotus, Trifolium, Vicia); adultos en néctar de cardos, tréboles, escabiosas",
       "Conservation": "LC",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://insectmacro.photography/wp-content/uploads/2017/12/polyommatus_icarus30.jpg"
     },
     {
       "id": "21",
@@ -292,7 +290,7 @@
       "Feeding": "Larvas en leguminosas (como Anthyllis, Lotus), adultos en néctar de flores silvestres",
       "Conservation": "LC; estable, aunque en zonas intensamente gestionadas puede disminuir",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://img.freepik.com/fotos-premium/andonis-azul-lysandra-bellargus-familia-lycaenidae_621486-6754.jpg"
     },
     {
       "id": "22",
@@ -306,7 +304,7 @@
       "Feeding": "Larvas en Lathyrus, Vicia; adultos en néctar alpino",
       "Conservation": "LC; estable en zonas de montaña",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpc1gJCLlZBhIebiBDlyc5wy-ak0GzxxfLIx7rIZ7_4UyTWzF4y7WFLXt1FrgL-p81PyXUXQxa6JT4TR_5JTFJQ-EC9C6tqretHkNwO6QWUqfELdw6SHzU9rhh7GdmvHodV9L-P32PEG0/s1600/bellargus+(3).jpg"
     },
     {
       "id": "23",
@@ -320,7 +318,7 @@
       "Feeding": "Larvas en Polygonaceae (Rumex), adultos en néctar de flores silvestres",
       "Conservation": "LC; muy común y extendida",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://live.staticflickr.com/4346/36863742425_a082226fc0_b.jpg"
     },
     {
       "id": "24",
@@ -334,7 +332,7 @@
       "Feeding": "Larvas en Rumex spp.; adultos en néctar de flores húmedas",
       "Conservation": "LC a nivel europeo (2023); poblaciones fragmentadas y declinantes; protegido bajo Directiva Hábitats",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://nature.guide/cdn/photos/Large/7919f493-31dc-47c6-af4d-aa253bcf16df.jpg"
     },
     {
       "id": "25",
@@ -348,7 +346,7 @@
       "Feeding": "Larvas en Fabaceae; adultos en néctar variado",
       "Conservation": "LC; común en su rango",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://vivelanaturaleza.com/wp-content/uploads/2020/06/canela-estriada-lampides-boeticus-3-1024x683.jpg"
     },
     {
       "id": "26",
@@ -362,7 +360,7 @@
       "Feeding": "Larvas en Poaceae (Calamagrostis, Agropyron, Helictochloa, Bromus); adultos liban néctar de cardos y tréboles",
       "Conservation": "LC; común y en expansión de rango hacia el norte; no amenazada",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://miblogdebichos.wordpress.com/wp-content/uploads/2021/08/thymelicus-sylvestris.jpg"
     },
     {
       "id": "27",
@@ -376,12 +374,10 @@
       "Feeding": "Larvas en Poaceae (Holcus, Phleum, Phalaris); adultos en néctar diverso",
       "Conservation": "LC; común, no amenazada",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://wastemagazine.es/fotos2/thymelicus-silvestris4.jpg"
     },
     {
-      "id": "28",
       "name": "Saltadora grisácea",
-      "other names": "Ochlodes sylvanus",
       "family": "Hesperiidae (saltarinas)",
       "Location": "Presente ampliamente en España, Francia, Reino Unido, Alemania, Suecia, Rusia",
       "Hábitat": "Praderas, bordes de caminos, claros boscosos húmedos",
@@ -389,12 +385,12 @@
       "Life": "1–2 generaciones entre primavera y otoño; hibernación como oruga",
       "Feeding": "Larvas en gramíneas; adultos en néctar de flores silvestres",
       "Conservation": "LC; especie común y estable",
-      "about conservation": "LC",
-      "image": ""
+      "image": "https://media.istockphoto.com/id/970043046/es/foto/primer-plano-de-gran-macho-de-la-mariposa-patr%C3%B3n.jpg?s=612x612&w=0&k=20&c=86pytCnop5QDuyHCIXdD17HwOrMDKXE85chZOoYAimU=",
+      "id": "28"
     },
     {
       "id": "29",
-      "name": "Saltadora ibérica ()",
+      "name": "Saltadora ibérica ",
       "other names": "Carcharodus baeticus",
       "family": "Hesperiidae (saltarinas)",
       "Location": "España (Peninsula Ibérica), sur de Francia, Italia (incluida Sicilia), extinta en Suiza",
@@ -404,7 +400,7 @@
       "Feeding": "Larvas en Marrubium vulgare y Ballota spp.; adultos liban néctar variado :contentReference[",
       "Conservation": "LC; no evaluada por IUCN globalmente, en España preocupacion menor y protegida en algunas regiones",
       "about conservation": "LC",
-      "image": ""
+      "image": "https://thumbs.dreamstime.com/b/carcharodus-baeticus-skipni-mariposa-del-sur-posada-sobre-una-planta-junio-de-188351050.jpg"
     }
   ]
 }
