@@ -7,8 +7,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // Importamos la función que obtiene los datos de una mariposa específica y la actualiza
 import { getOneButterfly, updateButterfly } from '../services/ButterflyServices';
-// Importamos SweetAlert2 para las alertas
-import Swal from 'sweetalert2';
 // Importamos los estilos CSS
 import '../style/butterflydetail.css';
 
@@ -157,29 +155,8 @@ const ButterflyDetail = () => {
         setButterfly(updatedButterfly);
         setIsEditing(false);
         
-        // Mostrar mensaje de éxito con SweetAlert2 personalizado
-        Swal.fire({
-  position: "center", // Cambiado de "top-end" a "center"
-  icon: "success",
-  title: "Los cambios han sido guardados",
-  showConfirmButton: false,
-  timer: 13000, 
-  customClass: {
-    popup: 'custom-success-popup',
-    title: 'custom-success-title'
-  },
-  background: 'rgba(29, 27, 63, 0.96)', // Cambiado de 0.3 a 0.2 (20% de transparencia)
-  color: '#f5e0a3',
-  iconColor: '#f5e0a3',
-  // CSS personalizado para el borde y la fuente
-  didOpen: () => {
-    const popup = Swal.getPopup();
-    if (popup) {
-      popup.style.border = '2px solid #f5e0a3';
-      popup.style.fontFamily = 'Libre Baskerville, serif';
-    }
-  }
-});
+        // Mostrar mensaje de éxito (opcional)
+        alert('Mariposa actualizada correctamente');
       }
       
     } catch (err) {

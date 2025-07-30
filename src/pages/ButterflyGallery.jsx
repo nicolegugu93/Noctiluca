@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 
 
+
 export default function ButterflyGallery() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -516,6 +517,7 @@ export default function ButterflyGallery() {
           </div>
         )}
       </div>
+    
     </section>
   );
 }
