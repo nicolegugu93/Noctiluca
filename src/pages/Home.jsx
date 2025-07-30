@@ -43,18 +43,19 @@ const Home = () => {
       </div>
 
       {/* Sección Sobre el proyecto */}
-      <section className="bg-[#E7D7B8] text-[#1D1B3F] p-4 sm:p-6 md:p-8 lg:p-12 rounded-xl sm:rounded-2xl shadow-lg max-w-xs sm:max-w-2xl md:max-w-4xl lg:max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 my-6 sm:my-8 md:my-10 border border-[#A77C4E]">
-        <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center font-extrabold text-[#1D1B3F] mb-4 sm:mb-6 tracking-tight">
-          Sobre el proyecto
-        </h3>
-        <p className="text-sm sm:text-base md:text-lg lg:text-xl font-serif text-justify leading-relaxed sm:leading-relaxed">
-          <span className="font-bold text-[#A77C4E]">Noctiluca</span>, palabra real que significa "la que brilla en la noche", es un cuaderno de campo digital dedicado a las mariposas de Europa. Una experiencia visual y educativa que combina ciencia, arte y conservación.
-          <br /><br />
-          Desde los rincones más silvestres del continente, cada especie registrada revela una historia que merece ser contada. Más que una página web, <span className="text-[#A77C4E] font-medium">Noctiluca</span> es una invitación a observar, aprender y proteger.
-          <br /><br />
-          Porque cada aleteo, por pequeño que parezca, es vital para el equilibrio del planeta.
-        </p>
-      </section>
+<section className="bg-[#E7D7B8] text-[#1D1B3F] px-4 sm:px-6 md:px-10 py-6 md:py-10 rounded-2xl shadow-lg max-w-6xl mx-auto my-10 border border-[#A77C4E]">
+  <h3 className="text-2xl sm:text-3xl text-center font-extrabold text-[#1D1B3F] mb-6 tracking-tight leading-snug">
+    Sobre el proyecto
+  </h3>
+  <p className="text-base sm:text-lg md:text-xl font-serif text-justify leading-relaxed space-y-4">
+    <span className="font-bold text-[#A77C4E]">Noctiluca</span>, palabra real que significa “la que brilla en la noche”, es un cuaderno de campo digital dedicado a las mariposas de Europa. Una experiencia visual y educativa que combina ciencia, arte y conservación.
+    <br /><br />
+    Desde los rincones más silvestres del continente, cada especie registrada revela una historia que merece ser contada. Más que una página web, <span className="text-[#A77C4E] font-medium">Noctiluca</span> es una invitación a observar, aprender y proteger.
+    <br /><br />
+    Porque cada aleteo, por pequeño que parezca, es vital para el equilibrio del planeta.
+  </p>
+</section>
+
 
       {/* Mapa de mariposas */}
       <ButterflyMap />
