@@ -7,6 +7,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 // Importamos la función que obtiene los datos de una mariposa específica y la actualiza
 import { getOneButterfly, updateButterfly } from '../services/ButterflyServices';
+// Importamos Swal para las alertas
+import Swal from 'sweetalert2';
 // Importamos los estilos CSS
 import '../style/butterflydetail.css';
 import ButtonCreateButterfly from '../components/ButtonCreateButterfly';
@@ -28,7 +30,7 @@ const ButterflyDetail = () => {
   // Estado para controlar el modo de edición
   const [isEditing, setIsEditing] = useState(false);
 
-  // Estado para los datos del formulario de edición
+  // Estado para los datos del formulario de edición - AGREGADO "about conservation"
   const [editForm, setEditForm] = useState({
     name: '',
     family: '',
@@ -38,6 +40,7 @@ const ButterflyDetail = () => {
     Life: '',
     Feeding: '',
     Conservation: '',
+    'about conservation': '', // NUEVO CAMPO AGREGADO
     image: ''
   });
 
@@ -90,7 +93,7 @@ const ButterflyDetail = () => {
         // Actualizamos el estado con los datos de la mariposa obtenida
         setButterfly(data);
 
-        // Inicializamos el formulario de edición con los datos existentes
+        // Inicializamos el formulario de edición con los datos existentes - AGREGADO "about conservation"
         setEditForm({
           name: data.name || '',
           family: data.family || '',
@@ -100,6 +103,7 @@ const ButterflyDetail = () => {
           Life: data.Life || '',
           Feeding: data.Feeding || '',
           Conservation: data.Conservation || '',
+          'about conservation': data['about conservation'] || '', // NUEVO CAMPO AGREGADO
           image: data.image || ''
         });
         
@@ -147,7 +151,7 @@ const ButterflyDetail = () => {
     setIsEditing(true);
   };
 
-  // Función para cancelar la edición
+  // Función para cancelar la edición - ACTUALIZADA con "about conservation"
   const handleCancelEdit = () => {
     setIsEditing(false);
     // Restauramos los datos originales
@@ -160,6 +164,7 @@ const ButterflyDetail = () => {
       Life: butterfly.Life || '',
       Feeding: butterfly.Feeding || '',
       Conservation: butterfly.Conservation || '',
+      'about conservation': butterfly['about conservation'] || '', // RESTAURAR NUEVO CAMPO
       image: butterfly.image || ''
     });
   };
@@ -177,13 +182,37 @@ const ButterflyDetail = () => {
         setButterfly(updatedButterfly);
         setIsEditing(false);
         
-        // Mostrar mensaje de éxito (opcional)
-        alert('Mariposa actualizada correctamente');
+        // Mostrar mensaje de éxito con SweetAlert2
+        Swal.fire({
+          position: "center",
+          title: "Mariposa actualizada correctamente",
+          showConfirmButton: false,
+          timer: 60000, // 1 minuto
+          customClass: {
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title'
+          },
+          background: 'rgba(29, 27, 63, 0.95)',
+          color: '#f5e0a3'
+        });
       }
       
     } catch (err) {
       console.error('Error al actualizar la mariposa:', err);
-      setError('Error al actualizar la mariposa. Inténtalo de nuevo.');
+      Swal.fire({
+        position: "top-end",
+        title: "Error al actualizar la mariposa",
+        text: "Inténtalo de nuevo",
+        showConfirmButton: false,
+        timer: 60000, // 1 minuto
+        customClass: {
+          popup: 'custom-swal-popup',
+          title: 'custom-swal-title',
+          htmlContainer: 'custom-swal-text'
+        },
+        background: 'rgba(29, 27, 63, 0.95)',
+        color: '#f5e0a3'
+      });
     } finally {
       setIsUpdating(false);
     }
@@ -249,15 +278,27 @@ const ButterflyDetail = () => {
               {/* Familia en itálica como subtítulo */}
               <p className="butterfly-family">{butterfly.family}</p>
               
-              {/* Contenedor de imagen centrada con indicador de conservación */}
+              {/* Contenedor de imagen centrada con indicador de conservación - ACTUALIZADO */}
               <div className="butterfly-image-container">
                 <div className="butterfly-image-wrapper">
-                  {/* Indicador de estado de conservación */}
+                  {/* Indicador de estado de conservación en esquina superior izquierda */}
                   <div 
-                    className="conservation-indicator"
-                    style={{ backgroundColor: getConservationColor(butterfly.Conservation) }}
+                    className="conservation-badge"
+                    style={{ 
+                      backgroundColor: getConservationColor(butterfly['about conservation']),
+                      position: 'absolute',
+                      top: '10px',
+                      left: '10px',
+                      padding: '4px 8px',
+                      borderRadius: '4px',
+                      fontSize: '12px',
+                      fontWeight: 'bold',
+                      color: '#000',
+                      zIndex: 10,
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
+                    }}
                   >
-                    {butterfly.Conservation || 'Estado no disponible'}
+                    {butterfly['about conservation'] || 'No especificado'}
                   </div>
                   
                   {butterfly.image ? (
@@ -381,6 +422,26 @@ const ButterflyDetail = () => {
                   />
                 </div>
 
+                {/* NUEVO: Campo de Estado de Conservación con selector dropdown */}
+                <div className="form-group">
+                  <label className="form-label">Estado de Conservación:</label>
+                  <select
+                    name="about conservation"
+                    value={editForm['about conservation']}
+                    onChange={handleInputChange}
+                    className="form-input"
+                  >
+                    <option value="">Seleccionar estado...</option>
+                    <option value="LC">LC - Preocupación menor</option>
+                    <option value="NT">NT - Casi amenazada</option>
+                    <option value="VU">VU - Vulnerable</option>
+                    <option value="EN">EN - En peligro</option>
+                    <option value="CR">CR - En peligro crítico</option>
+                    <option value="EW">EW - Extinta en estado silvestre</option>
+                    <option value="EX">EX - Extinta</option>
+                  </select>
+                </div>
+
                 {/* Campos de descripción */}
                 <div className="form-group">
                   <label className="form-label">Ubicación:</label>
@@ -443,13 +504,13 @@ const ButterflyDetail = () => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Estado de Conservación:</label>
+                  <label className="form-label">Información Detallada de Conservación:</label>
                   <textarea
                     name="Conservation"
                     value={editForm.Conservation}
                     onChange={handleInputChange}
                     className="form-textarea"
-                    placeholder="Estado de conservación"
+                    placeholder="Información detallada sobre conservación"
                     rows="3"
                   />
                 </div>
