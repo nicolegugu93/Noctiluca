@@ -44,6 +44,27 @@ const ButterflyDetail = () => {
   // Estado para manejar la carga durante la actualización
   const [isUpdating, setIsUpdating] = useState(false);
 
+  // Función para obtener el color del estado de conservación
+  const getConservationColor = (status) => {
+    if (!status) return '#f5e0a3';
+    
+    const lowerStatus = status.toLowerCase();
+    if (lowerStatus.includes('lc') || lowerStatus.includes('preocupación menor')) {
+      return '#4ade80'; // Verde
+    } else if (lowerStatus.includes('nt') || lowerStatus.includes('casi amenazada')) {
+      return '#fbbf24'; // Amarillo
+    } else if (lowerStatus.includes('vu') || lowerStatus.includes('vulnerable')) {
+      return '#f97316'; // Naranja
+    } else if (lowerStatus.includes('en') || lowerStatus.includes('peligro')) {
+      return '#ef4444'; // Rojo
+    } else if (lowerStatus.includes('cr') || lowerStatus.includes('crítico')) {
+      return '#dc2626'; // Rojo oscuro
+    } else if (lowerStatus.includes('ex') || lowerStatus.includes('extinta')) {
+      return '#6b7280'; // Gris
+    }
+    return '#f5e0a3'; // Color por defecto
+  };
+
   // useEffect se ejecuta cuando el componente se monta O cuando cambia el ID
   useEffect(() => {
     // Función asíncrona para obtener los datos de la mariposa específica
@@ -193,9 +214,6 @@ const ButterflyDetail = () => {
               <button onClick={() => window.location.reload()} style={{ marginRight: '10px' }}>
                 Reintentar
               </button>
-              <button onClick={() => window.history.back()}>
-                Volver atrás
-              </button>
             </div>
           </div>
         </div>
@@ -209,9 +227,6 @@ const ButterflyDetail = () => {
       <section className="bg-gradient-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
         <div className="butterfly-detail-container">
           <p>No se encontraron datos de la mariposa.</p>
-          <button onClick={() => window.history.back()}>
-            Volver atrás
-          </button>
         </div>
       </section>
     );
@@ -221,13 +236,6 @@ const ButterflyDetail = () => {
   return (
     <section className="bg-gradient-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
       <div className="butterfly-detail-container">
-        {/* Botón para volver a la lista o página anterior */}
-        <button 
-          className="back-button" 
-          onClick={() => window.history.back()}
-        >
-          ← Volver
-        </button>
         
         {/* Contenedor principal con los detalles de la mariposa */}
         <div className="butterfly-detail-card">
@@ -241,9 +249,17 @@ const ButterflyDetail = () => {
               {/* Familia en itálica como subtítulo */}
               <p className="butterfly-family">{butterfly.family}</p>
               
-              {/* Contenedor de imagen centrada */}
+              {/* Contenedor de imagen centrada con indicador de conservación */}
               <div className="butterfly-image-container">
                 <div className="butterfly-image-wrapper">
+                  {/* Indicador de estado de conservación */}
+                  <div 
+                    className="conservation-indicator"
+                    style={{ backgroundColor: getConservationColor(butterfly.Conservation) }}
+                  >
+                    {butterfly.Conservation || 'Estado no disponible'}
+                  </div>
+                  
                   {butterfly.image ? (
                     <img 
                       src={butterfly.image} 
