@@ -4,34 +4,32 @@ import ButterflyMap from '../components/ButterflyMap';
 
 const Home = () => {
   return (
-      <section className="bg-linear-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
+      <section className="bg-linear-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen py-8 sm:py-12">
       {/* Frase principal */}
-      <h1 className="text-[30px] text-[#F5E0A3] text-center tracking-wide p-10">
+      <h1 className="text-[30px] text-[#F5E0A3] text-center tracking-wide">
       Documentar es conservar
       </h1>
-
       {/* Logo centrado */}
-      <div className="flex justify-center items-center -mt-20 mb-8">
-        <img
-          src="/logo-noctiluca.png"
-          alt="Logo Noctiluca"
-          className="w-[20rem] sm:w-[28rem] md:w-[36rem] lg:w-[44rem] xl:w-[52rem] -m-30"
-        />
-      </div>
+      <div className="w-full flex justify-center">
+  <img
+    src="/logo-noctiluca.png"
+    alt="Logo Noctiluca"
+    className="logo-noctiluca "
+  />
+</div>
       {/* Subtítulo */}
-      <h2 className="text-[30px] text-center text-[#F5E0A3] mb-18 -my-14 px-4 max-w-3xl mx-auto">
+      <h2 className="text-[26px] sm:text-[28px] md:text-[30px] text-center text-[#F5E0A3] mt-[-2rem] mb-10 px-4 max-w-3xl mx-auto">
         Un proyecto que combina ciencia, arte y amor por la biodiversidad
       </h2>
-
-      {/* Botones */}
-      <div className="flex gap-4 justify-center flex-wrap mb-10">
+  {/* Botones */}
+      <div className="flex gap-4 justify-center mb-10">
         <Link to="/butterflygallery">
-          <button className="flex mx-10 bg-[#f5e8c7] text-[#1D1B3F] font-semibold px-8 py-2 rounded-full border border-[#A77C4E] shadow-md transition-all duration-300 ease-in-out hover:bg-[#e0c896]">
+          <button className="flex mx-10 px-8 py-2">
             Galería
           </button>
         </Link>
         <Link to="/contactbutterfly">
-          <button className="flex mx-10 bg-[#f5e8c7] text-[#1D1B3F] font-semibold px-6 py-2 rounded-full border border-[#A77C4E] shadow-md transition-all duration-300 ease-in-out hover:bg-[#e0c896]">
+          <button className="flex mx-10 px-6 py-2">
             Contacto
           </button>
         </Link>
@@ -53,7 +51,6 @@ const Home = () => {
     Porque cada aleteo, por pequeño que parezca, es vital para el equilibrio del planeta.
   </p>
 </section>
-
       {/* Mapa de mariposas */}
       <ButterflyMap />
 
