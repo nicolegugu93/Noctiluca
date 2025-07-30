@@ -255,7 +255,7 @@ const Map = () => {
 
 
           {/* Controles de zoom responsivos */}
-          <div className="absolute top-2 sm:top-4 lg:top-6 right-2 sm:right-4 lg:right-6 z-30 flex flex-col gap-1 sm:gap-2">
+          <div className="absolute bottom-2 sm:bottom-4 lg:bottom-6 left-2 sm:left-4 lg:left-6 z-30 flex flex-col-reverse gap-1 sm:gap-2">
             <button
               onClick={handleZoomIn}
               className="p-2 sm:p-3 bg-yellow-100/90 backdrop-blur-sm text-[#F0DC82] rounded-lg sm:rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg touch-manipulation"
