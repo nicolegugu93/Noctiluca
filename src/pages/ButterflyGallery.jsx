@@ -54,7 +54,7 @@ export default function ButterflyGallery() {
       
     } catch (error) {
       console.error('Error en la petición:', error);
-      setError(`Error del servidor: ${error.message}. Mostrando datos de prueba.`);
+      setError(`Error del servidor: ${error.message}.`);
     } finally {
       setLoading(false);
     }
@@ -212,6 +212,41 @@ export default function ButterflyGallery() {
       [name]: value
     }));
   };
+  const handleImageUpload = () => {
+    // Verificar que Cloudinary esté disponible
+    if (!window.cloudinary) {
+      alert('Error: Cloudinary no está disponible. Verifica que el script esté cargado.');
+      return;
+    }
+
+    const widget = window.cloudinary.createUploadWidget({
+      cloudName: 'dggqy6jfb',
+      uploadPreset: 'butterflies_preset',
+      folder: 'butterflies',
+      multiple: false,
+      resourceType: 'image',
+      clientAllowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      maxFileSize: 10000000, // 10MB
+      sources: ['local', 'url', 'camera']
+    }, (error, result) => {
+      console.log('Cloudinary result:', result); // Para debug
+      
+      if (error) {
+        console.error('Error en Cloudinary:', error);
+        return;
+      }
+      
+      if (result && result.event === "success") {
+        console.log('Imagen subida exitosamente:', result.info.secure_url); // Para debug
+        setEditFormData(prev => ({
+          ...prev,
+          image: result.info.secure_url
+        }));
+      }
+    });
+
+    widget.open();
+  };
 
   // Función para cerrar el modal
   const closeModal = () => {
@@ -219,36 +254,49 @@ export default function ButterflyGallery() {
     setEditingButterfly(null);
   };
 
-  if (loading) {
-    return (
-      <section className="bg-gradient-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <h1>Galería de Mariposas</h1>
-          <p>Cargando mariposas...</p>
-        </div>
-      </section>
-    );
-  }
+  // ❌ ELIMINADO: El loading ya no se muestra
+  // if (loading) {
+    // return (
+      // <section className="bg-gradient-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
+        // <div className="loading-container">
+          // <div className="loading-spinner"></div>
+          // <h1>Galería de Mariposas</h1>
+          // <p>Cargando mariposas...</p>
+        // </div>
+      // </section>
+    // );
+  // }
 
+  // ✅ NUEVO: Mensaje de error estilizado como en el mapa
   if (error) {
     return (
       <section className="bg-gradient-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
-        <div className="error-container">
-          <h1>Galería de Mariposas</h1>
-          <div className="error-box">
-            <h3>Error al cargar los datos:</h3>
-            <p>{error}</p>
-            <div>
-              <strong>Posibles soluciones:</strong>
-              <ul>
-                <li>Verifica que el servidor esté ejecutándose en puerto 3002</li>
-                <li>Revisa la estructura del archivo JSON</li>
-                <li>Comprueba la consola del servidor para más detalles</li>
-              </ul>
+        <div className="gallery-container">
+          <div className="gallery-content">
+            <h1 className="gallery-title enhanced-title">Galería de Mariposas Europeas</h1>
+            
+            <div className="error-message-container">
+              <div className="text-center p-6 sm:p-8 lg:p-12 bg-gradient-to-br from-amber-50 to-stone-100 rounded-2xl sm:rounded-3xl border border-amber-400/30 sm:border-2 shadow-xl">
+                <div className="text-4xl sm:text-6xl lg:text-8xl mb-4 sm:mb-6 opacity-60">🦋</div>
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 mb-3 sm:mb-4">
+                  Error al cargar las mariposas
+                </h3>
+                <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-light max-w-md mx-auto mb-4">
+                  {error}
+                </p>
+                <div className="text-sm sm:text-base text-slate-500">
+                  <strong>Posibles soluciones:</strong>
+                  <ul className="mt-2 text-left max-w-sm mx-auto">
+                    <li>• Verifica que el servidor esté ejecutándose en puerto 3002</li>
+                    <li>• Revisa la estructura del archivo JSON</li>
+                    <li>• Comprueba la consola del servidor para más detalles</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <ButtonCreateButterfly/>
       </section>
     );
   }
@@ -257,7 +305,7 @@ export default function ButterflyGallery() {
     <section className="bg-gradient-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
       <div className="gallery-container">
         <div className="gallery-content">
-          <h1 className="gallery-title">🦋 Galería de Mariposas Europeas</h1>
+          <h1 className="gallery-title enhanced-title">Galería de Mariposas Europeas</h1>
 
           {Array.isArray(data) && data.length > 0 ? (
             <div className="cards-grid">
@@ -491,14 +539,25 @@ export default function ButterflyGallery() {
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="image">URL de Imagen:</label>
-                      <input
-                        type="url"
-                        id="image"
-                        name="image"
-                        value={editFormData.image}
-                        onChange={handleInputChange}
-                      />
+                      <label htmlFor="image">Imagen:</label>
+                      <div className="image-upload-section">
+                        <input
+                          type="url"
+                          id="image"
+                          name="image"
+                          value={editFormData.image}
+                          onChange={handleInputChange}
+                          placeholder="https://"
+                        />
+                        <div className="upload-divider">O</div>
+                        <button
+                          type="button"
+                          onClick={handleImageUpload}
+                          className="upload-button"
+                        >
+                          📁 Subir desde ordenador
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

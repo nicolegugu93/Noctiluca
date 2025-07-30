@@ -242,6 +242,32 @@
   color: #666;
   transform: none;
 }
+.image-upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upload-divider {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  margin: 4px 0;
+}
+
+.upload-button {
+  padding: 8px 12px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.upload-button:hover {
+  background: #45a049;
+}
 
 /* Animaciones */
 @keyframes fadeInUp {

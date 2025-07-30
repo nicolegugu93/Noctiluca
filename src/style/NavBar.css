@@ -8,8 +8,6 @@
   font-style: normal;
   height: 150px;
   background: #1D1B3F
-  
-  
 }
 
 /*  BOTÓN MENÚ HAMBURGUESA (para móviles) */
@@ -33,7 +31,6 @@
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
-  
 }
 
 /* Estilo para el logo del ala */
@@ -85,50 +82,67 @@
 }
 
 /* RESPONSIVE PARA PANTALLAS PEQUEÑAS */
+/* RESPONSIVE PARA PANTALLAS PEQUEÑAS */
 @media (max-width: 768px) {
-  .hamburger {
+    .hamburger {
     display: block;
     font-size: 2rem;
     background: none;
     border: none;
     color: #f5e8c7;
     cursor: pointer;
-    margin: 0;
-    margin-bottom: 0;
-    margin-top: 0;
-
+    position: absolute;
+    left: 1rem;
+    right: auto; /* CORRECCIÓN para asegurar que quede a la izquierda */
+    top: 1.2rem;
+    z-index: 1001;
   }
 
   .galeria-buttons-group {
     display: none;
+    position: absolute;
+    top: 60px;
+    left:10px;
+    background-color: #2c2352;
+    padding: 1rem;
+    border-radius: 10px;
     flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 1rem;
-    margin-top: 1rem;
+    align-items: flex-end;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
   }
 
   .galeria-buttons-group.open {
     display: flex;
   }
 
+  .galeria-button {
+    margin: 0.3rem 0;
+    background-color: #f5e8c7;
+    color: #2c2352;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s;
+    min-width: 100px;
+    text-align: center;
+  }
+
+  .galeria-button:hover {
+    background-color: #e3d6b0;
+  }
+
   .galeria-extra-buttons {
-    flex-direction: column;
-    align-items: center;
-    margin: 0px;
-    gap: 0px;
-    height: 150px;
     position: relative;
-   z-index: 999;
   }
 
   .butterfly-wing {
     width: 150px;
-    margin: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  
+    height: auto;
+    margin: 0;
   }
+
 }
 
 

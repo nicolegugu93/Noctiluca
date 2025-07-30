@@ -15,8 +15,8 @@ body, html {
   margin: 0 auto;
   word-wrap: break-word; /* ✅ Permite dividir texto en varias líneas si es necesario */
   overflow-wrap: break-word;
+  z-index: 100; /* ✅ SOLUCIÓN: z-index alto para estar por encima del mapa */
 }
-
 
 .imagen-boton {
   cursor: pointer;
@@ -27,7 +27,6 @@ body, html {
   transition: transform 0.3s ease, filter 0.3s ease;
   margin: 0 auto;
 }
-
 
 .imagen-boton:hover {
   transform: scale(0.9);
@@ -40,7 +39,7 @@ body, html {
   font-family: sans-serif;
   font-size: 15px;
   color: #e5d19d;
-  text-shadow: 0 0 6px #ffd700;
+  text-shadow: 0 0 6px #4a2772;
   width: 100%;
   text-align: center;
   line-height: 1.2;
@@ -51,6 +50,7 @@ body, html {
   .boton-imagen {
     top: 10px;
     right: 10px;
+    z-index: 100; /* ✅ Mantener z-index en responsive */
   }
 
   .imagen-boton {
@@ -67,6 +67,7 @@ body, html {
   .boton-imagen {
     top: 5px;
     right: 5px;
+    z-index: 100; /* ✅ Mantener z-index en responsive */
   }
 
   .imagen-boton {
