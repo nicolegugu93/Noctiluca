@@ -145,6 +145,42 @@ const ButterflyDetail = () => {
       [name]: value
     }));
   };
+  // Función para manejar la subida de imagen
+  const handleImageUpload = () => {
+    // Verificar que Cloudinary esté disponible
+    if (!window.cloudinary) {
+      alert('Error: Cloudinary no está disponible. Verifica que el script esté cargado.');
+      return;
+    }
+
+    const widget = window.cloudinary.createUploadWidget({
+      cloudName: 'dggqy6jfb',
+      uploadPreset: 'butterflies_preset',
+      folder: 'butterflies',
+      multiple: false,
+      resourceType: 'image',
+      clientAllowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      maxFileSize: 10000000, // 10MB
+      sources: ['local', 'url', 'camera']
+    }, (error, result) => {
+      console.log('Cloudinary result:', result); // Para debug
+      
+      if (error) {
+        console.error('Error en Cloudinary:', error);
+        return;
+      }
+      
+      if (result && result.event === "success") {
+        console.log('Imagen subida exitosamente:', result.info.secure_url); // Para debug
+        setEditForm(prev => ({
+          ...prev,
+          image: result.info.secure_url
+        }));
+      }
+    });
+
+    widget.open();
+  };
 
   // Función para activar el modo de edición
   const handleEditClick = () => {
@@ -411,15 +447,25 @@ const ButterflyDetail = () => {
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">URL de la imagen:</label>
-                  <input
-                    type="url"
-                    name="image"
-                    value={editForm.image}
-                    onChange={handleInputChange}
-                    className="form-input"
-                    placeholder="https://ejemplo.com/imagen.jpg"
-                  />
+                  <label className="form-label">Imagen:</label>
+                  <div className="image-upload-section">
+                    <input
+                      type="url"
+                      name="image"
+                      value={editForm.image}
+                      onChange={handleInputChange}
+                      className="form-input"
+                      placeholder="https://ejemplo.com/imagen.jpg"
+                    />
+                    <div className="upload-divider">O</div>
+                    <button
+                      type="button"
+                      onClick={handleImageUpload}
+                      className="upload-button"
+                    >
+                      📁 Subir imagen desde ordenador
+                    </button>
+                  </div>
                 </div>
 
                 {/* NUEVO: Campo de Estado de Conservación con selector dropdown */}
