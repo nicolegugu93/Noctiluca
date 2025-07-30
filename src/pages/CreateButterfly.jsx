@@ -84,20 +84,22 @@ export default function CreateButterfly() {
 
         {/* Contenido principal */}
         <div className="main-content">
-          <div className="header-section">
-            <h1 className="main-title">
-              Cada mariposa tiene una historia ¿Quieres contarla?
-            </h1>
-            <p className="subtitle">
-              Comparte lo que sabes sobre una especie europea.
-            </p>
-            <p className="subtitle">
-              Con tu ayuda, la magia de Noctiluca seguirá creciendo.
-            </p>
-          </div>
-
+          
           {/* FORMULARIO */}
           <div className="form-wrapper">
+            {/* Header section movido dentro del formulario */}
+            <div className="header-section">
+              <h1 className="main-title">
+                Cada mariposa tiene una historia ¿Quieres contarla?
+              </h1>
+              <p className="subtitle">
+                Comparte lo que sabes sobre una especie europea.
+              </p>
+              <p className="subtitle">
+                Con tu ayuda, la magia de Noctiluca seguirá creciendo.
+              </p>
+            </div>
+
             <form onSubmit={handleSubmit} className="butterfly-form">
               {message && (
                 <div className={`message ${message.includes('correctamente') ? 'success' : 'error'}`}>
