@@ -3,7 +3,6 @@
 
 h1{
   font-family: "Libre Baskerville", serif;
-
 }
 
 h2{
@@ -19,3 +18,67 @@ h3{
 p{
 font-family: "Libre Baskerville", serif;
 }
+
+button {
+  position: static; 
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  
+}
+
+/* Contenedor de botones */
+button {
+  display: flex;
+  gap: 2.5rem; 
+}
+
+/* Estilo para cada botón del nav */
+button {
+  background: linear-gradient(145deg, #f5e8c7, #e0c896); 
+  color: #1D1B3F;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px; 
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  border: 1px solid #A77C4E; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+/* Hover para los botones */
+button:hover {
+  background: linear-gradient(145deg, #e0c896, #f5e8c7);
+  box-shadow: 0 0 10px rgba(255, 239, 184, 0.6);
+  transform: scale(1.05);
+  border: 1px solid #A77C4E;
+}
+
+.logo-noctiluca {
+  width: 32rem;         /* tamaño base del logo */
+  max-width: 90vw;       /* asegura que no se pase en pantallas pequeñas */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 640px) {
+  .logo-noctiluca {
+    width: 20rem;
+  }
+}
+
+/* Ajuste para pantallas grandes */
+@media (min-width: 1024px) {
+  .logo-noctiluca {
+    width: 36rem;
+  }
+}
+
