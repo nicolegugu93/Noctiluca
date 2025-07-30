@@ -8,11 +8,6 @@
 
 ---
 
-## 🚀 Demo
-
-👉 [Haz clic aquí para ver la demo en vivo](https://noctiluca.vercel.app) *(enlace ficticio, sustituir por el real si lo tenéis desplegado)*
-
----
 
 ## 🛠️ Tecnologías utilizadas
 

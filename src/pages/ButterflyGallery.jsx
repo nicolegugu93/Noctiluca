@@ -212,6 +212,41 @@ export default function ButterflyGallery() {
       [name]: value
     }));
   };
+  const handleImageUpload = () => {
+    // Verificar que Cloudinary esté disponible
+    if (!window.cloudinary) {
+      alert('Error: Cloudinary no está disponible. Verifica que el script esté cargado.');
+      return;
+    }
+
+    const widget = window.cloudinary.createUploadWidget({
+      cloudName: 'dggqy6jfb',
+      uploadPreset: 'butterflies_preset',
+      folder: 'butterflies',
+      multiple: false,
+      resourceType: 'image',
+      clientAllowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      maxFileSize: 10000000, // 10MB
+      sources: ['local', 'url', 'camera']
+    }, (error, result) => {
+      console.log('Cloudinary result:', result); // Para debug
+      
+      if (error) {
+        console.error('Error en Cloudinary:', error);
+        return;
+      }
+      
+      if (result && result.event === "success") {
+        console.log('Imagen subida exitosamente:', result.info.secure_url); // Para debug
+        setEditFormData(prev => ({
+          ...prev,
+          image: result.info.secure_url
+        }));
+      }
+    });
+
+    widget.open();
+  };
 
   // Función para cerrar el modal
   const closeModal = () => {
@@ -504,14 +539,25 @@ export default function ButterflyGallery() {
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="image">URL de Imagen:</label>
-                      <input
-                        type="url"
-                        id="image"
-                        name="image"
-                        value={editFormData.image}
-                        onChange={handleInputChange}
-                      />
+                      <label htmlFor="image">Imagen:</label>
+                      <div className="image-upload-section">
+                        <input
+                          type="url"
+                          id="image"
+                          name="image"
+                          value={editFormData.image}
+                          onChange={handleInputChange}
+                          placeholder="https://"
+                        />
+                        <div className="upload-divider">O</div>
+                        <button
+                          type="button"
+                          onClick={handleImageUpload}
+                          className="upload-button"
+                        >
+                          📁 Subir desde ordenador
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
