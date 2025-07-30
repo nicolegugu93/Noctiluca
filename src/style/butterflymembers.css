@@ -1,37 +1,7 @@
-/* Contenedor principal con fondo degradado */
+/* Contenedor principal sin fondo */
 .contact-butterfly-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f0e5d8 0%, #e6d5c3 100%);
   padding: 20px;
-}
-
-.back-button-container {
-  margin-bottom: 24px;
-}
-
-.back-button {
-  background-color: #f5e0a3;
-  color: rgba(29, 27, 63, 0.95);
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  transform: translateY(0);
-}
-
-.back-button:hover {
-  background-color: rgba(29, 27, 63, 0.95);
-  color: #f5e0a3;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px) scale(1.05);
-}
-
-.back-button:active {
-  transform: translateY(0) scale(0.98);
 }
 
 .main-content {
@@ -47,14 +17,14 @@
 .main-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: rgba(29, 27, 63, 0.95);
+  color: #f5e0a3;
   margin-bottom: 16px;
   line-height: 1.2;
 }
 
 .subtitle {
   font-size: 1.1rem;
-  color: rgba(29, 27, 63, 0.8);
+  color: #f5e0a3;
   margin-bottom: 8px;
   font-weight: 400;
   max-width: 600px;
@@ -134,7 +104,7 @@
   padding: 12px 16px;
   border-radius: 8px;
   font-size: 16px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(5px);
 }
 
@@ -166,6 +136,13 @@
   font-family: inherit;
 }
 
+/* Efectos hover adicionales */
+.form-input:hover:not(:focus), 
+.form-textarea:hover:not(:focus) {
+  border-color: rgba(245, 224, 163, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .submit-container {
   display: flex;
   justify-content: center;
@@ -181,7 +158,7 @@
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(245, 224, 163, 0.3);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -204,7 +181,7 @@
   color: #666;
 }
 
-/* Sección de desarrolladores rediseñada */
+/* Sección de desarrolladores */
 .developers-section {
   text-align: center;
   margin-top: 48px;
@@ -221,8 +198,9 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+  justify-items: center;
 }
 
 /* Tarjetas de desarrolladores */
@@ -230,35 +208,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  padding: 20px;
   position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: 200px;
 }
 
 /* Alas de mariposa */
 .butterfly-wing {
-  width: 60px;
-  height: 60px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
-  filter: opacity(0.8);
+  filter: opacity(0.9);
   transition: all 0.3s ease;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .left-wing {
-  transform: scaleX(-1);
+  left: 0px;
+  transform: translateY(-50%) scaleX(-1);
 }
 
 .right-wing {
-  transform: scaleX(1);
+  right: 0px;
+  transform: translateY(-50%) scaleX(1);
 }
 
 .developer-card:hover .butterfly-wing {
   filter: opacity(1);
-  transform: scale(1.1);
 }
 
 .developer-card:hover .left-wing {
-  transform: scaleX(-1) scale(1.1);
+  transform: translateY(-50%) scaleX(-1) scale(1.05);
+}
+
+.developer-card:hover .right-wing {
+  transform: translateY(-50%) scale(1.05);
 }
 
 /* Contenido central de la tarjeta */
@@ -266,14 +254,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background: rgba(29, 27, 63, 0.95);
   border: 2px solid #f5e0a3;
-  border-radius: 16px;
-  padding: 24px;
-  min-width: 180px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 170px;
+  height: 170px;
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  z-index: 5;
+  gap: 12px;
 }
 
 .developer-content::before {
@@ -286,6 +277,8 @@
   background: linear-gradient(45deg, transparent, rgba(245, 224, 163, 0.05), transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 14px;
 }
 
 .developer-card:hover .developer-content {
@@ -300,30 +293,51 @@
 /* Imagen del desarrollador */
 .developer-image-container {
   position: relative;
-  width: 80px;
-  height: 80px;
-  margin-bottom: 16px;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+  background: rgba(100, 100, 100, 0.3);
+  border-radius: 12px;
+  border: 2px solid #f5e0a3;
 }
 
 .developer-image {
   width: 100%;
   height: 100%;
-  border-radius: 16px;
+  border-radius: 10px;
   object-fit: cover;
-  border: 2px solid #f5e0a3;
+  display: block;
 }
 
 .developer-placeholder {
-  display: none;
+  display: flex;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(245, 224, 163, 0.2) 0%, rgba(245, 224, 163, 0.1) 100%);
-  border: 2px solid #f5e0a3;
-  border-radius: 16px;
+  background: rgba(100, 100, 100, 0.3);
+  border-radius: 10px;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
-  color: #f5e0a3;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Mostrar placeholder por defecto */
+.developer-image-container .developer-image {
+  display: none;
+}
+
+.developer-image-container .developer-placeholder {
+  display: flex;
+}
+
+/* Si tiene imagen, mostrar imagen */
+.developer-image-container[data-has-image] .developer-image {
+  display: block;
+}
+
+.developer-image-container[data-has-image] .developer-placeholder {
+  display: none;
 }
 
 /* Nombre del desarrollador */
@@ -331,9 +345,10 @@
   color: #f5e0a3;
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 0;
   text-align: center;
   letter-spacing: 0.5px;
+  line-height: 1.2;
 }
 
 /* Enlaces sociales */
@@ -341,20 +356,25 @@
   display: flex;
   gap: 12px;
   justify-content: center;
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
 }
 
 .developer-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: rgba(245, 224, 163, 0.1);
+  width: 32px;
+  height: 32px;
+  background: rgba(100, 100, 100, 0.3);
   border: 1px solid rgba(245, 224, 163, 0.3);
-  border-radius: 8px;
+  border-radius: 6px;
   color: #f5e0a3;
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
 .developer-link:hover {
@@ -364,9 +384,14 @@
   box-shadow: 0 4px 12px rgba(245, 224, 163, 0.3);
 }
 
+.developer-link:active {
+  transform: translateY(0);
+}
+
 .developer-link svg {
   width: 16px;
   height: 16px;
+  pointer-events: none;
 }
 
 /* Animaciones */
@@ -389,14 +414,7 @@
   }
 }
 
-/* Efectos hover adicionales */
-.form-input:hover:not(:focus), 
-.form-textarea:hover:not(:focus) {
-  border-color: rgba(245, 224, 163, 0.5);
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 1024px) {
   .form-wrapper {
     padding: 32px 24px;
@@ -404,6 +422,15 @@
   
   .main-title {
     font-size: 2rem;
+  }
+
+  .developers-grid {
+    gap: 24px;
+    max-width: 700px;
+  }
+
+  .developer-content {
+    margin: 0 60px;
   }
 }
 
@@ -429,11 +456,6 @@
     font-size: 1rem;
   }
   
-  .back-button {
-    width: 100%;
-    text-align: center;
-  }
-  
   .submit-button {
     width: 100%;
     padding: 16px 24px;
@@ -442,7 +464,8 @@
 
   .developers-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 32px;
+    max-width: 350px;
   }
 
   .developers-title {
@@ -450,17 +473,29 @@
   }
 
   .developer-card {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .butterfly-wing {
-    width: 40px;
-    height: 40px;
+    max-width: 300px;
+    height: 180px;
   }
 
   .developer-content {
-    min-width: 160px;
+    width: 150px;
+    height: 150px;
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .butterfly-wing {
+    width: 70px;
+    height: 70px;
+  }
+
+  .developer-image-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .developer-name {
+    font-size: 14px;
   }
 }
 
@@ -484,22 +519,46 @@
   }
 
   .developer-content {
-    padding: 16px;
-    min-width: 140px;
+    padding: 12px;
+    width: 130px;
+    height: 130px;
+    gap: 8px;
   }
 
   .developer-image-container {
+    width: 40px;
+    height: 40px;
+  }
+
+  .developer-name {
+    font-size: 13px;
+  }
+
+  .developer-placeholder {
+    font-size: 18px;
+  }
+
+  .butterfly-wing {
     width: 60px;
     height: 60px;
   }
 
-  .developer-placeholder {
-    font-size: 24px;
+  .developer-card {
+    height: 160px;
   }
 
-  .butterfly-wing {
-    width: 35px;
-    height: 35px;
+  .developer-links {
+    gap: 8px;
+  }
+
+  .developer-link {
+    width: 28px;
+    height: 28px;
+  }
+
+  .developer-link svg {
+    width: 14px;
+    height: 14px;
   }
 }
 
@@ -508,9 +567,11 @@
   box-sizing: border-box;
 }
 
-.form-input, 
-.form-textarea, 
-.back-button, 
-.submit-button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

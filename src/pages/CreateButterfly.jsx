@@ -79,204 +79,197 @@ export default function CreateButterfly() {
   };
 
   return (
-    <div className="create-butterfly-container">
-      {/* Botón superior */}
-      <div className="back-button-container">
-        <button 
-          onClick={handleBackToGallery}
-          className="back-button"
-        >
-          » Regresar a la galería
-        </button>
-      </div>
+    <section className="bg-gradient-to-t from-rosaatardecer to-indigoprofundo font-libre min-h-screen">
+      <div className="create-butterfly-container">
 
-      {/* Contenido principal */}
-      <div className="main-content">
-        <div className="header-section">
-          <h1 className="main-title">
-            Cada mariposa tiene una historia ¿Quieres contarla?
-          </h1>
-          <p className="subtitle">
-            Comparte lo que sabes sobre una especie europea.
-          </p>
-          <p className="subtitle">
-            Con tu ayuda, la magia de Noctiluca seguirá creciendo.
-          </p>
-        </div>
+        {/* Contenido principal */}
+        <div className="main-content">
+          <div className="header-section">
+            <h1 className="main-title">
+              Cada mariposa tiene una historia ¿Quieres contarla?
+            </h1>
+            <p className="subtitle">
+              Comparte lo que sabes sobre una especie europea.
+            </p>
+            <p className="subtitle">
+              Con tu ayuda, la magia de Noctiluca seguirá creciendo.
+            </p>
+          </div>
 
-        {/* FORMULARIO */}
-        <div className="form-wrapper">
-          <form onSubmit={handleSubmit} className="butterfly-form">
-            {message && (
-              <div className={`message ${message.includes('correctamente') ? 'success' : 'error'}`}>
-                {message}
-              </div>
-            )}
+          {/* FORMULARIO */}
+          <div className="form-wrapper">
+            <form onSubmit={handleSubmit} className="butterfly-form">
+              {message && (
+                <div className={`message ${message.includes('correctamente') ? 'success' : 'error'}`}>
+                  {message}
+                </div>
+              )}
 
-            <div className="form-content">
-              {/* Primera fila - 3 columnas */}
-              <div className="form-row three-cols">
-                <div className="form-group">
-                  <label className="form-label">Nombre</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
+              <div className="form-content">
+                {/* Primera fila - 3 columnas */}
+                <div className="form-row three-cols">
+                  <div className="form-group">
+                    <label className="form-label">Nombre</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="form-label">Hábitat</label>
+                    <input
+                      type="text"
+                      name="Hábitat"
+                      value={formData.Hábitat}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="form-label">Alimentación</label>
+                    <input
+                      type="text"
+                      name="Feeding"
+                      value={formData.Feeding}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
                 </div>
-                
-                <div className="form-group">
-                  <label className="form-label">Hábitat</label>
-                  <input
-                    type="text"
-                    name="Hábitat"
-                    value={formData.Hábitat}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label className="form-label">Alimentación</label>
-                  <input
-                    type="text"
-                    name="Feeding"
-                    value={formData.Feeding}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
-                </div>
-              </div>
 
-              {/* Segunda fila - 3 columnas */}
-              <div className="form-row three-cols">
-                <div className="form-group">
-                  <label className="form-label">Otros nombres</label>
-                  <input
-                    type="text"
-                    name="other names"
-                    value={formData['other names']}
-                    onChange={handleChange}
-                    className="form-input"
-                  />
+                {/* Segunda fila - 3 columnas */}
+                <div className="form-row three-cols">
+                  <div className="form-group">
+                    <label className="form-label">Otros nombres</label>
+                    <input
+                      type="text"
+                      name="other names"
+                      value={formData['other names']}
+                      onChange={handleChange}
+                      className="form-input"
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="form-label">Morfología</label>
+                    <input
+                      type="text"
+                      name="Morphology"
+                      value={formData.Morphology}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="form-label">Conservación detallada</label>
+                    <input
+                      type="text"
+                      name="Conservation"
+                      value={formData.Conservation}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
                 </div>
-                
-                <div className="form-group">
-                  <label className="form-label">Morfología</label>
-                  <input
-                    type="text"
-                    name="Morphology"
-                    value={formData.Morphology}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label className="form-label">Conservación detallada</label>
-                  <input
-                    type="text"
-                    name="Conservation"
-                    value={formData.Conservation}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
-                </div>
-              </div>
 
-              {/* Tercera fila - 3 columnas */}
-              <div className="form-row three-cols">
-                <div className="form-group">
-                  <label className="form-label">Familia</label>
-                  <input
-                    type="text"
-                    name="family"
-                    value={formData.family}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
+                {/* Tercera fila - 3 columnas */}
+                <div className="form-row three-cols">
+                  <div className="form-group">
+                    <label className="form-label">Familia</label>
+                    <input
+                      type="text"
+                      name="family"
+                      value={formData.family}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="form-label">Vida</label>
+                    <input
+                      type="text"
+                      name="Life"
+                      value={formData.Life}
+                      onChange={handleChange}
+                      className="form-input"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="form-label">Estado de conservación</label>
+                    <select
+                      name="about conservation"
+                      value={formData['about conservation']}
+                      onChange={handleChange}
+                      className="form-select"
+                      required
+                    >
+                      <option value="">Seleccionar</option>
+                      <option value="LC">LC (Least Concern)</option>
+                      <option value="NT">NT (Near Threatened)</option>
+                      <option value="VU">VU (Vulnerable)</option>
+                      <option value="EN">EN (Endangered)</option>
+                      <option value="CR">CR (Critically Endangered)</option>
+                    </select>
+                  </div>
                 </div>
-                
-                <div className="form-group">
-                  <label className="form-label">Vida</label>
-                  <input
-                    type="text"
-                    name="Life"
-                    value={formData.Life}
-                    onChange={handleChange}
-                    className="form-input"
-                    required
-                  />
+
+                {/* Cuarta fila - 2 columnas */}
+                <div className="form-row two-cols">
+                  <div className="form-group">
+                    <label className="form-label">Ubicación</label>
+                    <textarea
+                      name="Location"
+                      value={formData.Location}
+                      onChange={handleChange}
+                      rows="4"
+                      className="form-textarea"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label className="form-label">URL de la Imagen</label>
+                    <textarea
+                      name="image"
+                      value={formData.image}
+                      onChange={handleChange}
+                      rows="4"
+                      className="form-textarea"
+                      placeholder="https://"
+                    />
+                  </div>
                 </div>
-                
-                <div className="form-group">
-                  <label className="form-label">Estado de conservación</label>
-                  <select
-                    name="about conservation"
-                    value={formData['about conservation']}
-                    onChange={handleChange}
-                    className="form-select"
-                    required
+
+                {/* Botón de envío */}
+                <div className="submit-container">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`submit-button ${isSubmitting ? 'disabled' : ''}`}
                   >
-                    <option value="">Seleccionar</option>
-                    <option value="LC">LC (Least Concern)</option>
-                    <option value="NT">NT (Near Threatened)</option>
-                    <option value="VU">VU (Vulnerable)</option>
-                    <option value="EN">EN (Endangered)</option>
-                    <option value="CR">CR (Critically Endangered)</option>
-                  </select>
+                    {isSubmitting ? 'Guardando...' : 'Crear Mariposa'}
+                  </button>
                 </div>
               </div>
-
-              {/* Cuarta fila - 2 columnas */}
-              <div className="form-row two-cols">
-                <div className="form-group">
-                  <label className="form-label">Ubicación</label>
-                  <textarea
-                    name="Location"
-                    value={formData.Location}
-                    onChange={handleChange}
-                    rows="4"
-                    className="form-textarea"
-                    required
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label className="form-label">URL de la Imagen</label>
-                  <textarea
-                    name="image"
-                    value={formData.image}
-                    onChange={handleChange}
-                    rows="4"
-                    className="form-textarea"
-                    placeholder="https://"
-                  />
-                </div>
-              </div>
-
-              {/* Botón de envío */}
-              <div className="submit-container">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`submit-button ${isSubmitting ? 'disabled' : ''}`}
-                >
-                  {isSubmitting ? 'Guardando...' : 'Crear Mariposa'}
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

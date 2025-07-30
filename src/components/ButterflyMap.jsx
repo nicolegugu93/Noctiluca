@@ -4,8 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { X, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
 import { getAllButterflies } from '../services/ButterflyServices';
 
+
 // URL del archivo de geografías mundial
 const geoUrl = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
+
 
 // 🌍 Diccionario completo de países europeos 
 const countryNames = {
@@ -24,6 +26,7 @@ const countryNames = {
   IE: 'Irlanda',
   IS: 'Islandia',
 
+
   // Europa del Este
   PL: 'Polonia',
   CZ: 'República Checa',
@@ -40,22 +43,26 @@ const countryNames = {
   AL: 'Albania',
   XK: 'Kosovo',
 
+
   // Europa Nórdica
   SE: 'Suecia',
   NO: 'Noruega',
   DK: 'Dinamarca',
   FI: 'Finlandia',
 
+
   // Países Bálticos
   EE: 'Estonia',
   LV: 'Letonia',
   LT: 'Lituania',
+
 
   // Europa Oriental
   UA: 'Ucrania',
   BY: 'Bielorrusia',
   MD: 'Moldavia',
   RU: 'Rusia',
+
 
   // Otros
   GR: 'Grecia',
@@ -68,10 +75,12 @@ const countryNames = {
   LI: 'Liechtenstein'
 };
 
+
 // 🔍 Función que detecta países mencionados en el campo Location de las mariposas
 const extractCountriesFromLocation = (location) => {
   const locationLower = location.toLowerCase();
   const countries = [];
+
 
   if (locationLower.includes('españa') || locationLower.includes('spain') || locationLower.includes('ibérica')) {
     countries.push('ES');
@@ -92,20 +101,25 @@ const extractCountriesFromLocation = (location) => {
   if (locationLower.includes('dinamarca') || locationLower.includes('denmark')) countries.push('DK');
   if (locationLower.includes('finlandia') || locationLower.includes('finland')) countries.push('FI');
 
+
   return countries;
 };
 
+
 const Map = () => {
   const navigate = useNavigate();
+
 
   // 📊 Estados para manejar los datos y la interfaz
   const [butterfliesData, setButterfliesData] = useState([]); // Datos de mariposas desde la API
   const [selectedCountry, setSelectedCountry] = useState(null); // País seleccionado para mostrar modal
   const [hoveredISO, setHoveredISO] = useState(null); // País sobre el que está el cursor
 
+
   // ⬇️ Estado inicial centrado en Europa con zoom menos aumentado para vista general
   const initialPosition = { coordinates: [15, 50], zoom: 1.2 };
   const [position, setPosition] = useState(initialPosition); // Posición y zoom del mapa
+
 
   useEffect(() => {
     async function fetchData() {
@@ -119,7 +133,9 @@ const Map = () => {
     fetchData();
   }, []);
 
+
   // Funciones auxiliares convertISO3ToISO2, convertCountryNameToISO2, getCountryISO 
+
 
   const convertISO3ToISO2 = (iso3) => {
     const iso3ToIso2Map = {
@@ -133,6 +149,7 @@ const Map = () => {
     };
     return iso3ToIso2Map[iso3] || null;
   };
+
 
   const convertCountryNameToISO2 = (countryName) => {
     const nameToIso2Map = {
@@ -155,6 +172,7 @@ const Map = () => {
     };
     return nameToIso2Map[countryName.toLowerCase()] || null;
   };
+
 
   const getCountryISO = (geo) => {
     const props = geo.properties;
@@ -181,6 +199,7 @@ const Map = () => {
     return null;
   };
 
+
   // 🖱️ Manejo clic en país 
   const handleCountryClick = (geo) => {
     const isoCode = getCountryISO(geo);
@@ -198,11 +217,13 @@ const Map = () => {
     }
   };
 
+
   // 🦋 Manejo clic en mariposa 
   const handleButterflyClick = (butterfly) => {
     setSelectedCountry(null);
     navigate(`/butterflydetail/${butterfly.id}`);
   };
+
 
   // 🔍 Control zoom
   const handleZoomIn = () => {
@@ -216,11 +237,13 @@ const Map = () => {
   const handleResetZoom = () => setPosition(initialPosition);
   const handleMoveEnd = (pos) => setPosition(pos);
 
+
   return (
     // Fondo pergamino vintage general con padding responsive
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 lg:py-8">
         <div className="relative rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl overflow-hidden border border-[#C8B676] sm:border-2 bg-[#F1E9D2]">
+
 
           {/* Instrucciones responsivas */}
           <div className="absolute top-2 sm:top-4 lg:top-6 left-2 sm:left-4 lg:left-6 z-30 bg-[#693971]/90 backdrop-blur-sm rounded-lg sm:rounded-xl px-2 sm:px-3 lg:px-4 py-2 sm:py-3 border border-[#C8B676]/40 max-w-[calc(100%-120px)] sm:max-w-none">
@@ -230,30 +253,33 @@ const Map = () => {
             </p>
           </div>
 
+
           {/* Controles de zoom responsivos */}
-          <div className="absolute top-2 sm:top-4 lg:top-6 right-2 sm:right-4 lg:right-6 z-30 flex flex-col gap-1 sm:gap-2">
+          <div className="absolute bottom-2 sm:bottom-4 lg:bottom-6 left-2 sm:left-4 lg:left-6 z-30 flex flex-col-reverse gap-1 sm:gap-2">
             <button
               onClick={handleZoomIn}
-              className="p-2 sm:p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F0DC82] rounded-lg sm:rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg touch-manipulation"
+              className="cursor-pointer p-2 sm:p-3 bg-yellow-100/90 backdrop-blur-sm text-[#F0DC82] rounded-lg sm:rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg touch-manipulation"
               title="Acercar"
             >
               <ZoomIn size={16} className="sm:w-5 sm:h-5" color="#693971" />
             </button>
             <button
               onClick={handleZoomOut}
-              className="p-2 sm:p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F0DC82] rounded-lg sm:rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg touch-manipulation"
+              className="cursor-pointer p-2 sm:p-3 bg-yellow-100/90 backdrop-blur-sm text-[#F0DC82] rounded-lg sm:rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg touch-manipulation"
               title="Alejar"
             >
               <ZoomOut size={16} className="sm:w-5 sm:h-5" color="#693971" />
             </button>
             <button
               onClick={handleResetZoom}
-              className="p-2 sm:p-3 bg-[#693971]/90 backdrop-blur-sm text-[#F0DC82] rounded-lg sm:rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg touch-manipulation"
+              className="cursor-pointer p-2 sm:p-3 bg-yellow-100/90 backdrop-blur-sm text-[#F0DC82] rounded-lg sm:rounded-xl border border-[#C8B676]/40 hover:scale-105 transition-all duration-200 shadow-lg touch-manipulation"
               title="Vista inicial"
             >
               <RotateCcw size={16} className="sm:w-5 sm:h-5" color="#693971" />
             </button>
           </div>
+
+
 
           {/* Mapa principal con altura responsiva */}
           <div className="h-[400px] sm:h-[500px] lg:h-[600px] bg-[#F1E9D2]">
@@ -287,7 +313,7 @@ const Map = () => {
                           fill: hasButterflies ? '#F0DC82' : '#DFD8C3',
                           stroke: '#907958',
                           strokeWidth: 0.9,
-                          cursor: hasButterflies ? 'pointer' : 'default',
+                          cursor: 'pointer', 
                           opacity: 1,
                           outline: 'none',
                           transition: 'all 0.2s ease'
@@ -296,13 +322,15 @@ const Map = () => {
                           fill: '#FAE2A2',
                           stroke: '#C8B676',
                           strokeWidth: 2,
-                          outline: 'none'
+                          outline: 'none',
+                          cursor: 'pointer'  // también en hover mantenemos el cursor pointer
                         },
                         pressed: {
                           fill: '#E6D3B3',
                           stroke: '#907958',
                           strokeWidth: 2.5,
-                          outline: 'none'
+                          outline: 'none',
+                          cursor: 'pointer'
                         }
                       };
 
@@ -328,6 +356,7 @@ const Map = () => {
             </ComposableMap>
           </div>
 
+
           {/* Leyenda responsiva */}
           <div className="absolute bottom-2 sm:bottom-4 lg:bottom-6 left-1/2 transform -translate-x-1/2 z-30 px-2">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 lg:gap-6 bg-[#693971]/90 backdrop-blur-sm rounded-lg sm:rounded-xl px-3 sm:px-4 lg:px-6 py-2 sm:py-3 border border-[#C8B676]/40">
@@ -346,6 +375,7 @@ const Map = () => {
           </div>
         </div>
       </div>
+
 
       {/* MODAL RESPONSIVO */}
       {selectedCountry && (
@@ -395,6 +425,14 @@ const Map = () => {
                 <X size={20} className="sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
               </button>
             </div>
+
+            {/* Contador de mariposas */}
+            <div className="px-4 sm:px-6 lg:px-8 py-3 border-b-2 border-[#F5E0A3]" style={{ background: 'linear-gradient(90deg, #ede6f6 0%, #f3e9c9 100%)' }}>
+              <p className="text-sm sm:text-base text-[#693971] font-medium">
+                Hay {selectedCountry.butterflies.length} especie{selectedCountry.butterflies.length !== 1 ? 's' : ''} de mariposas
+              </p>
+            </div>
+
 
             {/* Contenido mariposas responsivo */}
             <div className="p-4 sm:p-6 lg:p-8 pt-4 sm:pt-5 lg:pt-6" style={{ background: 'linear-gradient(0deg, #f3e9c9 80%, #d9a7c7 120%)' }}>
@@ -462,6 +500,7 @@ const Map = () => {
         </div>
       )}
 
+
       {/* Mensaje cuando no hay datos - responsivo */}
       {butterfliesData.length === 0 && (
         <div className="max-w-5xl mx-auto px-4 mt-4 sm:mt-6 lg:mt-8">
@@ -479,5 +518,6 @@ const Map = () => {
     </div>
   );
 };
+
 
 export default Map;

@@ -14,9 +14,8 @@ footer {
 
 .footer-line {
   height: 2px;
-  background-color: #f5e8c7; /* color dorado claro */
+  background-color: #f5e8c7; 
   width: 80%; 
-  margin: 2rem auto 1rem auto; /* separación arriba/abajo y centrado */
   border-radius: 999px;
 }
 
