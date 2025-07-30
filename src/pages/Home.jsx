@@ -56,9 +56,9 @@ const Home = () => {
         </p>
       </section>
 
+      <ButtonCreateButterfly/>
       {/* Mapa de mariposas */}
       <ButterflyMap />
-
     </section>
   );
 };

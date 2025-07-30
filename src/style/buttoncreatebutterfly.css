@@ -1,0 +1,60 @@
+/* Para toda la página: permitir scroll si hay mucho contenido */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto; /* Scroll vertical si se necesita */
+}
+
+/* Estilo para el contenedor del botón */
+.boton-imagen {
+  position: absolute; /* Lo ubicamos sobre la página */
+  top: 80px;           /* Distancia desde la parte superior */
+  right: 20px;         /* Distancia desde la parte derecha */
+  text-align: center;  /* Centra los textos respecto a la imagen */
+}
+
+/* Estilo para la imagen del botón */
+.imagen-boton {
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Opcional: estilos para el texto */
+.boton-imagen p {
+  margin: 4px 0;
+  font-weight: bold;
+  font-family: sans-erif;
+  font-size: 25px;
+  color: #e5d19d;
+}
+@media (max-width: 768px) {
+  .boton-imagen {
+    top: 10px;
+    right: 10px;
+  }
+
+  .boton-imagen p {
+    font-size: 12px;
+  }
+
+  .imagen-boton {
+    max-width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .boton-imagen {
+    top: 5px;
+    right: 5px;
+  }
+
+  .boton-imagen p {
+    font-size: 11px;
+  }
+
+  .imagen-boton {
+    max-width: 60px;
+  }
+}
