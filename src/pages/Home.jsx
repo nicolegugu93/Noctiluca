@@ -11,11 +11,16 @@ const Home = () => {
         Documentar es conservar
       </h1>
       {/* Logo centrado con espaciado controlado */}
-      <div className="w-full flex justify-center overflow-hidden m-4">
+       {/* Logo centrado con tamaño más controlado */}
+      <div className="w-full flex justify-center my-6 px-4">
         <img
           src="/logo-noctiluca.png"
           alt="Logo Noctiluca"
-          className="logo-noctiluca object-cover scale-100 sm:scale-100 md:scale-100 lg:scale-100"
+          className="object-contain max-h-20 sm:max-h-24 md:max-h-28 lg:max-h-32 w-auto"
+          style={{
+            maxWidth: '90vw',
+            height: 'auto'
+          }}
         />
       </div>
       {/* Subtítulo con margen superior reducido */}
