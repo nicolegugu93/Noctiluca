@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../style/butterflygallery.css';
 import { getAllButterflies, updateButterfly, deleteButterfly } from '../services/ButterflyServices';
 import Swal from 'sweetalert2';
-
-
+import ButtonCreateButterfly from '../components/ButtonCreateButterfly';
 
 
 export default function ButterflyGallery() {
@@ -517,7 +516,7 @@ export default function ButterflyGallery() {
           </div>
         )}
       </div>
-    
+      <ButtonCreateButterfly/>
     </section>
   );
 }

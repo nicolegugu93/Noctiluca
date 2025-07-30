@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { getOneButterfly, updateButterfly } from '../services/ButterflyServices';
 // Importamos los estilos CSS
 import '../style/butterflydetail.css';
+import ButtonCreateButterfly from '../components/ButtonCreateButterfly';
 
 // Definimos el componente funcional ButterflyDetail
 const ButterflyDetail = () => {
@@ -461,6 +462,7 @@ const ButterflyDetail = () => {
 
         </div>
       </div>
+      <ButtonCreateButterfly/>
     </section>
   );
 };
