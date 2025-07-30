@@ -12,14 +12,13 @@ function ButtonCreateButterfly() {
 return (
   <div>
     <div className="boton-imagen">
-    <p>Dame click y </p>
       <img
         src="../src/assets/button-butterfly.png"
         alt="Crear Nueva Mariposa"
         onClick={irAOtraPagina}
         className="imagen-boton"
       />
-      <p>añade más!</p>
+       <p>¡Agrega tu<br />mariposa favorita!</p>
     </div>
   </div>
 );

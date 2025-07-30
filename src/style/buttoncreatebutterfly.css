@@ -1,60 +1,79 @@
-/* Para toda la página: permitir scroll si hay mucho contenido */
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-y: auto; /* Scroll vertical si se necesita */
+  overflow-y: auto;
 }
 
-/* Estilo para el contenedor del botón */
 .boton-imagen {
-  position: absolute; /* Lo ubicamos sobre la página */
-  top: 80px;           /* Distancia desde la parte superior */
-  right: 20px;         /* Distancia desde la parte derecha */
-  text-align: center;  /* Centra los textos respecto a la imagen */
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  text-align: center;
+  width: fit-content;
+  max-width: 90vw; /* ✅ Limita el ancho máximo en pantallas pequeñas */
+  margin: 0 auto;
+  word-wrap: break-word; /* ✅ Permite dividir texto en varias líneas si es necesario */
+  overflow-wrap: break-word;
 }
 
-/* Estilo para la imagen del botón */
+
 .imagen-boton {
   cursor: pointer;
   display: block;
+  width: 100%;
+  max-width: 150px;
+  filter: drop-shadow(0 0 6px #ffd700);
+  transition: transform 0.3s ease, filter 0.3s ease;
   margin: 0 auto;
 }
 
-/* Opcional: estilos para el texto */
-.boton-imagen p {
-  margin: 4px 0;
-  font-weight: bold;
-  font-family: sans-erif;
-  font-size: 25px;
-  color: #e5d19d;
+
+.imagen-boton:hover {
+  transform: scale(0.9);
+  filter: drop-shadow(0 0 12px #fffacd);
 }
+
+.boton-imagen p {
+  margin: 4px auto 0 auto;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 15px;
+  color: #e5d19d;
+  text-shadow: 0 0 6px #ffd700;
+  width: 100%;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Responsive tablet */
 @media (max-width: 768px) {
   .boton-imagen {
     top: 10px;
     right: 10px;
   }
 
-  .boton-imagen p {
-    font-size: 12px;
-  }
-
   .imagen-boton {
     max-width: 70px;
   }
+
+  .boton-imagen p {
+    font-size: 12px;
+  }
 }
 
+/* Responsive móvil */
 @media (max-width: 480px) {
   .boton-imagen {
     top: 5px;
     right: 5px;
   }
 
-  .boton-imagen p {
-    font-size: 11px;
-  }
-
   .imagen-boton {
     max-width: 60px;
+  }
+
+  .boton-imagen p {
+    font-size: 10px;
   }
 }
