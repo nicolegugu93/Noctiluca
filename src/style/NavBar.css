@@ -1,18 +1,16 @@
-/*TIPOGRAFÍA GLOBAL*/
+/* TIPOGRAFÍA GLOBAL */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
-/*Fuente y altura para la estructura contenedora del nav*/
+/* Fuente y altura para la estructura contenedora del nav */
 .nav-container {
   font-family: "Libre Baskerville", serif;
   font-weight: 200;
   font-style: normal;
   height: 150px;
-  background: #1d1b3f
-  
-  
+  background: #1D1B3F
 }
 
-/*BOTÓN MENÚ HAMBURGUESA (para móviles)*/
+/*  BOTÓN MENÚ HAMBURGUESA (para móviles) */
 .hamburger {
   display: none;
   font-size: 2rem;
@@ -20,9 +18,13 @@
   border: none;
   color: #f5e8c7;
   cursor: pointer;
+  position: absolute;
+  left: 1rem;
+  top: 1.2rem;
+  z-index: 1001;
 }
 
-/*NAV FIJO + BOTONES + LOGO*/
+/*  NAV FIJO + BOTONES + LOGO */
 .galeria-extra-buttons {
   position: static; 
   top: 0;
@@ -30,25 +32,24 @@
   z-index: 999;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 2.5rem;
-  
 }
 
-/*Estilo para el logo del ala*/
+/* Estilo para el logo del ala */
 .ala-mariposa {
   width: 150px;
   opacity: 0.9;
 }
 
-/*Contenedor de botones*/
+/* Contenedor de botones */
 .galeria-buttons-group {
   display: flex;
   gap: 2.5rem; 
 }
 
-/*Estilo para cada botón del nav*/
+/* Estilo para cada botón del nav */
 .galeria-button {
   background: linear-gradient(145deg, #f5e8c7, #e0c896); 
   color: #1D1B3F;
@@ -62,7 +63,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
-/*Hover para los botones*/
+/* Hover para los botones */
 .galeria-button:hover {
   background: linear-gradient(145deg, #e0c896, #f5e8c7);
   box-shadow: 0 0 10px rgba(255, 239, 184, 0.6);
@@ -70,29 +71,31 @@
   border: 1px solid #A77C4E;
 }
 
-/*LÍNEA DECORATIVA BAJO EL NAV*/
+/*  LÍNEA DECORATIVA BAJO EL NAV  */
 .navbar-line {
-  position: static; 
-  top: 70px; 
+  position: relative;
   z-index: 998;
   height: 2px;
   background-color: #f5e8c7; 
   width: 80%;
-  margin: 0 auto;
+  margin: 6rem auto 0 auto;
   left: 0;
   right: 0;
   border-radius: 999px;
 }
 
-/*RESPONSIVE PARA PANTALLAS PEQUEÑAS*/
+/* RESPONSIVE PARA PANTALLAS PEQUEÑAS */
 @media (max-width: 768px) {
   .hamburger {
-   display: block;
+    display: block;
     font-size: 2rem;
     background: none;
     border: none;
     color: #f5e8c7;
     cursor: pointer;
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
     z-index: 1001;
   }
 
@@ -100,12 +103,12 @@
     display: none;
     position: absolute;
     top: 60px;
-    right: 10px;
+    left: 10px;
     background-color: #2c2352;
     padding: 1rem;
     border-radius: 10px;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     z-index: 1000;
   }
@@ -116,7 +119,7 @@
 
   .galeria-button {
     margin: 0.3rem 0;
-    background-color: #f5c7c7;
+    background-color: #f5e8c7;
     color: #2c2352;
     padding: 0.5rem 1rem;
     border-radius: 12px;
@@ -129,11 +132,19 @@
 
   .galeria-button:hover {
     background-color: #e3d6b0;
-     }
-  
+  }
 
   .galeria-extra-buttons {
     position: relative;
+    justify-content: space-between;
+  }
+
+  .ala-mariposa {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 1rem;
+    z-index: 1000;
   }
 
   .butterfly-wing {
@@ -141,8 +152,10 @@
     height: auto;
     margin: 0;
   }
+
+  .navbar-line {
+    margin-top: 6rem;
+  }
 }
-
-
 
 
