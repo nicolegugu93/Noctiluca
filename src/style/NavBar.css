@@ -18,10 +18,6 @@
   border: none;
   color: #f5e8c7;
   cursor: pointer;
-  position: absolute;
-  left: 1rem;
-  top: 1.2rem;
-  z-index: 1001;
 }
 
 /*  NAV FIJO + BOTONES + LOGO */
@@ -32,7 +28,7 @@
   z-index: 999;
   padding: 1rem 2rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 2.5rem;
 }
@@ -73,12 +69,13 @@
 
 /*  LÍNEA DECORATIVA BAJO EL NAV  */
 .navbar-line {
-  position: relative;
+  position: static; 
+  top: 70px; 
   z-index: 998;
   height: 2px;
   background-color: #f5e8c7; 
   width: 80%;
-  margin: 6rem auto 0 auto;
+  margin: 0 auto;
   left: 0;
   right: 0;
   border-radius: 999px;
@@ -136,7 +133,7 @@
 
   .galeria-extra-buttons {
     position: relative;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .ala-mariposa {
@@ -144,7 +141,6 @@
     left: 50%;
     transform: translateX(-50%);
     top: 1rem;
-    z-index: 1000;
   }
 
   .butterfly-wing {
@@ -153,9 +149,10 @@
     margin: 0;
   }
 
-  .navbar-line {
-    margin-top: 6rem;
-  }
+   .navbar-line {
+    position: absolute;
+    top: 100px;
+    }
 }
 
 
