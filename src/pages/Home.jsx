@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ButterflyMap from '../components/ButterflyMap';
+import ButtonCreateButterfly from '../components/ButtonCreateButterfly';
 
 const Home = () => {
   return (
@@ -54,9 +55,9 @@ const Home = () => {
   </p>
 </section>
 
+      <ButtonCreateButterfly/>
       {/* Mapa de mariposas */}
       <ButterflyMap />
-
     </section>
   );
 };

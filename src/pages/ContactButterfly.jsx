@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createContact } from '../services/ButterflyServices.jsx';
 import '../style/butterflymembers.css';
+import ButtonCreateButterfly from '../components/ButtonCreateButterfly';
 
 export default function ContactButterfly() {
   const navigate = useNavigate();
@@ -293,6 +294,7 @@ export default function ContactButterfly() {
           </div>
         </div>
       </div>
+      <ButtonCreateButterfly/>
     </section>
   );
 }

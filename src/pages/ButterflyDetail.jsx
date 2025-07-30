@@ -11,6 +11,7 @@ import { getOneButterfly, updateButterfly } from '../services/ButterflyServices'
 import Swal from 'sweetalert2';
 // Importamos los estilos CSS
 import '../style/butterflydetail.css';
+import ButtonCreateButterfly from '../components/ButtonCreateButterfly';
 
 // Definimos el componente funcional ButterflyDetail
 const ButterflyDetail = () => {
@@ -484,6 +485,7 @@ const ButterflyDetail = () => {
 
         </div>
       </div>
+      <ButtonCreateButterfly/>
     </section>
   );
 };
