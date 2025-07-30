@@ -6,13 +6,13 @@ function ButtonCreateButterfly() {
   const navigate = useNavigate();
 
   const irAOtraPagina = () => {
-    navigate('/newbutterly'); // Esta es la ruta de React Router
+    navigate('/newbutterfly'); // Esta es la ruta de React Router
   };
 
 return (
   <div>
     <div className="boton-imagen">
-    <p>Dame click y</p>
+    <p>Dame click y </p>
       <img
         src="../src/assets/button-butterfly.png"
         alt="Crear Nueva Mariposa"
