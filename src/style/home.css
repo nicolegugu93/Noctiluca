@@ -68,17 +68,5 @@ button:hover {
   margin: 0 auto;
 }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 640px) {
-  .logo-noctiluca {
-    width: 20rem;
-  }
-}
 
-/* Ajuste para pantallas grandes */
-@media (min-width: 1024px) {
-  .logo-noctiluca {
-    width: 36rem;
-  }
-}
 

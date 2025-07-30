@@ -18,12 +18,10 @@ const Home = () => {
           className="logo-noctiluca object-cover scale-100 sm:scale-100 md:scale-100 lg:scale-100"
         />
       </div>
-
       {/* Subtítulo con margen superior reducido */}
       <h2 className="text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] text-center text-[#F5E0A3] mt-2 sm:mt-4 mb-6 sm:mb-8 md:mb-10 px-4 sm:px-6 max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto leading-tight sm:leading-normal">
         Un proyecto que combina ciencia, arte y amor por la biodiversidad
       </h2>
-
       {/* Botones */}
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 md:mb-10 px-4">
         <Link to="/butterflygallery">
@@ -37,25 +35,25 @@ const Home = () => {
           </button>
         </Link>
       </div>
-
       {/* Línea decorativa */}
       <div className="w-full mb-8 sm:mb-10 md:mb-12 px-4">
         <hr className="border-t border-[#e7d7b8] opacity-30" />
       </div>
-
       {/* Sección Sobre el proyecto */}
-<section className="bg-[#E7D7B8] text-[#1D1B3F] px-4 sm:px-6 md:px-10 py-6 md:py-10 rounded-2xl shadow-lg max-w-6xl mx-auto my-10 border border-[#A77C4E]">
-  <h3 className="text-2xl sm:text-3xl text-center font-extrabold text-[#1D1B3F] mb-6 tracking-tight leading-snug">
-    Sobre el proyecto
-  </h3>
-  <p className="text-base sm:text-lg md:text-xl font-serif text-justify leading-relaxed space-y-4">
-    <span className="font-bold text-[#A77C4E]">Noctiluca</span>, palabra real que significa “la que brilla en la noche”, es un cuaderno de campo digital dedicado a las mariposas de Europa. Una experiencia visual y educativa que combina ciencia, arte y conservación.
-    <br /><br />
-    Desde los rincones más silvestres del continente, cada especie registrada revela una historia que merece ser contada. Más que una página web, <span className="text-[#A77C4E] font-medium">Noctiluca</span> es una invitación a observar, aprender y proteger.
-    <br /><br />
-    Porque cada aleteo, por pequeño que parezca, es vital para el equilibrio del planeta.
-  </p>
-</section>
+<div className="px-4 sm:px-6 lg:px-8">
+  <section className="bg-[#E7D7B8] text-[#1D1B3F] py-6 md:py-10 rounded-2xl shadow-lg max-w-6xl mx-auto my-10 border border-[#A77C4E]">
+    <h3 className="text-2xl sm:text-3xl text-center font-extrabold text-[#1D1B3F] mb-6 tracking-tight leading-snug">
+      Sobre el proyecto
+    </h3>
+    <p className="text-base sm:text-lg md:text-xl font-serif text-justify leading-relaxed max-w-prose mx-auto">
+      <span className="font-bold text-[#A77C4E]">Noctiluca</span>, palabra real que significa “la que brilla en la noche”, es un cuaderno de campo digital dedicado a las mariposas de Europa. Una experiencia visual y educativa que combina ciencia, arte y conservación.
+      <br /><br />
+      Desde los rincones más silvestres del continente, cada especie registrada revela una historia que merece ser contada. Más que una página web, <span className="text-[#A77C4E] font-medium">Noctiluca</span> es una invitación a observar, aprender y proteger.
+      <br /><br />
+      Porque cada aleteo, por pequeño que parezca, es vital para el equilibrio del planeta.
+    </p>
+  </section>
+</div>
 
       <ButtonCreateButterfly/>
       {/* Mapa de mariposas */}
