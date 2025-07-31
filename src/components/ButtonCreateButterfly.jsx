@@ -6,7 +6,7 @@ function ButtonCreateButterfly() {
   const navigate = useNavigate();
 
   const irAOtraPagina = () => {
-    navigate('/newbutterfly'); // Esta es la ruta de React Router
+    navigate('/newbutterfly'); 
   };
 
 return (

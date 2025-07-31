@@ -56,7 +56,7 @@ Este proyecto ha sido desarrollado por el equipo Noctiluca dentro del bootcamp d
 
 | Nombre             | Rol                     | GitHub                                                     |
 | ------------------ | ----------------------- | ---------------------------------------------------------- |
-| Mariana            | Product Owner & Developer         | [@MarianaMH1195](https://github.com/MarianaMH1195)             |
+| Mariana Moreno     | Product Owner & Developer         | [@MarianaMH1195](https://github.com/MarianaMH1195)             |
 | Nicole Guevara     | Scrum Master & Developer       | [@nicolegugu93](https://github.com/nicolegugu93)         |
 | Maryori Cruz       | Developer      | [@MaryoriCruz](https://github.com/MaryoriCruz)             |
 | Valentina Montilla | Developer     | [@ValenMontilla7](https://github.com/ValenMontilla7) |
