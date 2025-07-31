@@ -14,7 +14,6 @@
 - [React](https://reactjs.org/)
 - [React Router](https://reactrouter.com/)
 - [React Hook Form](https://react-hook-form.com/)
-- [axios](https://axios-http.com/)
 - [json-server](https://github.com/typicode/json-server) (para simular una API REST)
 - [Vitest](https://vitest.dev/) (testing)
 - [Cloudinary](https://cloudinary.com/) (gestión de imágenes)
