@@ -22,7 +22,41 @@ export default function CreateButterfly() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const handleImageUpload = () => {
+    // Verificar que Cloudinary esté disponible
+    if (!window.cloudinary) {
+      alert('Error: Cloudinary no está disponible. Verifica que el script esté cargado.');
+      return;
+    }
 
+    const widget = window.cloudinary.createUploadWidget({
+      cloudName: 'dggqy6jfb',
+      uploadPreset: 'butterflies_preset',
+      folder: 'butterflies',
+      multiple: false,
+      resourceType: 'image',
+      clientAllowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      maxFileSize: 10000000, // 10MB
+      sources: ['local', 'url', 'camera']
+    }, (error, result) => {
+      console.log('Cloudinary result:', result); // Para debug
+
+      if (error) {
+        console.error('Error en Cloudinary:', error);
+        return;
+      }
+
+      if (result && result.event === "success") {
+        console.log('Imagen subida exitosamente:', result.info.secure_url); // Para debug
+        setFormData(prev => ({
+          ...prev,
+          image: result.info.secure_url
+        }));
+      }
+    });
+
+    widget.open();
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -242,19 +276,30 @@ export default function CreateButterfly() {
                       className="form-textarea"
                       required
                     />
+                  </div>                 
+
+                  <div className="form-group">
+                    <label className="form-label">Imagen</label>
+                    <div className="image-upload-section">
+                      <textarea
+                        name="image"
+                        value={formData.image}
+                        onChange={handleChange}
+                        rows="3"
+                        className="form-textarea"
+                        placeholder="https://"
+                      />
+                      <div className="upload-divider">O</div>
+                      <button
+                        type="button"
+                        onClick={handleImageUpload}
+                        className="upload-button"
+                      >
+                        📁 Subir imagen desde ordenador
+                      </button>
+                    </div>
                   </div>
                   
-                  <div className="form-group">
-                    <label className="form-label">URL de la Imagen</label>
-                    <textarea
-                      name="image"
-                      value={formData.image}
-                      onChange={handleChange}
-                      rows="4"
-                      className="form-textarea"
-                      placeholder="https://"
-                    />
-                  </div>
                 </div>
 
                 {/* Botón de envío */}

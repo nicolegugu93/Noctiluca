@@ -11,11 +11,16 @@ const Home = () => {
         Documentar es conservar
       </h1>
       {/* Logo centrado con espaciado controlado */}
-      <div className="w-full flex justify-center overflow-hidden m-4">
+       {/* Logo centrado con tamaño más controlado */}
+      <div className="w-full flex justify-center my-6 px-4">
         <img
           src="/logo-noctiluca.png"
           alt="Logo Noctiluca"
-          className="logo-noctiluca object-cover scale-100 sm:scale-100 md:scale-100 lg:scale-100"
+          className="object-contain max-h-20 sm:max-h-24 md:max-h-28 lg:max-h-32 w-auto"
+          style={{
+            maxWidth: '90vw',
+            height: 'auto'
+          }}
         />
       </div>
       {/* Subtítulo con margen superior reducido */}
@@ -25,12 +30,12 @@ const Home = () => {
       {/* Botones */}
       <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8 md:mb-10 px-4">
         <Link to="/butterflygallery">
-          <button className="w-full sm:w-auto px-6 sm:px-8 py-2 sm:py-2 text-sm sm:text-base">
+          <button className="nocti-button w-32">
             Galería
           </button>
         </Link>
         <Link to="/contactbutterfly">
-          <button className="w-full sm:w-auto px-6 sm:px-6 py-2 sm:py-2 text-sm sm:text-base">
+          <button className="nocti-button w-32">
             Contacto
           </button>
         </Link>
@@ -39,19 +44,21 @@ const Home = () => {
       <div className="w-full mb-8 sm:mb-10 md:mb-12 px-4">
         <hr className="border-t border-[#e7d7b8] opacity-30" />
       </div>
-      {/* Sección Sobre el proyecto */}
+      {/* Sección Sobre el proyecto - VERSIÓN CORREGIDA */}
 <div className="px-4 sm:px-6 lg:px-8">
-  <section className="bg-[#E7D7B8] text-[#1D1B3F] py-6 md:py-10 rounded-2xl shadow-lg max-w-6xl mx-auto my-10 border border-[#A77C4E]">
+  <section className="bg-[#E7D7B8] text-[#1D1B3F] py-6 md:py-10 px-4 sm:px-6 md:px-8 lg:px-10 rounded-2xl shadow-lg max-w-6xl mx-auto my-10 border border-[#A77C4E]">
     <h3 className="text-2xl sm:text-3xl text-center font-extrabold text-[#1D1B3F] mb-6 tracking-tight leading-snug">
       Sobre el proyecto
     </h3>
-    <p className="text-base sm:text-lg md:text-xl font-serif text-justify leading-relaxed max-w-prose mx-auto">
-      <span className="font-bold text-[#A77C4E]">Noctiluca</span>, palabra real que significa “la que brilla en la noche”, es un cuaderno de campo digital dedicado a las mariposas de Europa. Una experiencia visual y educativa que combina ciencia, arte y conservación.
-      <br /><br />
-      Desde los rincones más silvestres del continente, cada especie registrada revela una historia que merece ser contada. Más que una página web, <span className="text-[#A77C4E] font-medium">Noctiluca</span> es una invitación a observar, aprender y proteger.
-      <br /><br />
-      Porque cada aleteo, por pequeño que parezca, es vital para el equilibrio del planeta.
-    </p>
+    <div className="max-w-4xl mx-auto">
+      <p className="text-base sm:text-lg md:text-xl font-serif text-justify leading-relaxed hyphens-auto">
+        <span className="font-bold text-[#A77C4E]">Noctiluca</span>, palabra real que significa "la que brilla en la noche", es un cuaderno de campo digital dedicado a las mariposas de Europa. Una experiencia visual y educativa que combina ciencia, arte y conservación.
+        <br /><br />
+        Desde los rincones más silvestres del continente, cada especie registrada revela una historia que merece ser contada. Más que una página web, <span className="text-[#A77C4E] font-medium">Noctiluca</span> es una invitación a observar, aprender y proteger.
+        <br /><br />
+        Porque cada aleteo, por pequeño que parezca, es vital para el equilibrio del planeta.
+      </p>
+    </div>
   </section>
 </div>
 
