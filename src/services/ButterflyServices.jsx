@@ -1,6 +1,9 @@
 const URL_API = "http://localhost:3002/butterfly";
+const URL_CONTACTS = "http://localhost:3002/contacts";
 
-// Método GET para leer todas las mariposas
+// ===== FUNCIONES PARA MARIPOSAS =====
+
+// Método GET 
 export async function getAllButterflies() {
   try {
     const response = await fetch(URL_API); 
@@ -11,7 +14,7 @@ export async function getAllButterflies() {
   }
 }
 
-// Método GET para obtener una sola mariposa por ID
+// Método GET  por ID
 export async function getOneButterfly(id) {
   try {
     const response = await fetch(`${URL_API}/${id}`);
@@ -38,7 +41,8 @@ export async function createButterfly(butterflyData) {
     console.error("Error al crear la mariposa:", error);
   }
 }
-//Metodo Put para actualizar 
+
+//Metodo Put 
 export async function updateButterfly(id, updatedData) {
   try {
     const response = await fetch(`${URL_API}/${id}`, {
@@ -55,7 +59,7 @@ export async function updateButterfly(id, updatedData) {
   }
 }
 
-//Metodo Delete para eliminar
+//Metodo Delete 
 export async function deleteButterfly(id) {
   try {
     const response = await fetch(`${URL_API}/${id}`, {
@@ -63,23 +67,33 @@ export async function deleteButterfly(id) {
     });
     if (response.ok) {
       console.log(`Mariposa con ID ${id} eliminada correctamente.`);
+      return true;
     } else {
       console.error(`Error al eliminar la mariposa con ID ${id}`);
+      return false;
     }
   } catch (error) {
     console.error(`Error al eliminar la mariposa con ID ${id}:`, error);
   }
 }
-//Metodo Post para contacto
+
+// ===== FUNCIONES PARA CONTACTOS =====
+
+// Método POST 
 export async function createContact(contactData) {
   try {
-    const response = await fetch(URL_API, {
+    const response = await fetch(URL_CONTACTS, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(contactData)
     });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const data = await response.json();
     return data;
   } catch (error) {
@@ -87,3 +101,22 @@ export async function createContact(contactData) {
     throw error;
   }
 }
+
+// Método GET 
+export async function getAllContacts() {
+  try {
+    const response = await fetch(URL_CONTACTS);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error al obtener los contactos:", error);
+    throw error;
+  }
+}
+
+

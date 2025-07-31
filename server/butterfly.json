@@ -406,5 +406,35 @@
       "about conservation": "LC",
       "image": "https://thumbs.dreamstime.com/b/carcharodus-baeticus-skipni-mariposa-del-sur-posada-sobre-una-planta-junio-de-188351050.jpg"
     }
+  ],
+  "contacts": [
+    {
+      "id": "1735689600000",
+      "name": "María García",
+      "email": "maria.garcia@email.com",
+      "reason": "Me interesa conocer más sobre el proyecto de conservación de mariposas y cómo puedo colaborar.",
+      "timestamp": "2025-01-01T10:00:00.000Z"
+    },
+    {
+      "id": "1735776000000",
+      "name": "Juan Pérez",
+      "email": "juan.perez@email.com",
+      "reason": "Quiero información sobre las especies de mariposas en mi región y cómo identificarlas.",
+      "timestamp": "2025-01-02T10:00:00.000Z"
+    },
+    {
+      "id": "1753950849229",
+      "name": "prueba",
+      "email": "pureba@gmail.com",
+      "reason": "prueba prueba prueba",
+      "timestamp": "2025-07-31T08:34:09.229Z"
+    },
+    {
+      "id": "1753950994145",
+      "name": "prueba1",
+      "email": "pureba1@gmail.com",
+      "reason": "prueba 1prueba 1",
+      "timestamp": "2025-07-31T08:36:34.145Z"
+    }
   ]
 }
