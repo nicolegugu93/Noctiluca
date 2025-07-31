@@ -203,37 +203,39 @@
   justify-items: center;
 }
 
-/* Tarjetas de desarrolladores */
+/* Tarjetas de desarrolladores - MODIFICADO */
 .developer-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
   width: 100%;
   max-width: 350px;
-  height: 200px;
+  height: 300px; /* Aumentado para acomodar el nombre fuera */
+  gap: 20px; /* Espacio entre la card con imagen y el nombre */
 }
 
 /* Alas de mariposa */
 .butterfly-wing {
-  width: 120px;
-  height: 120px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   filter: opacity(0.9);
   transition: all 0.3s ease;
   pointer-events: none;
   position: absolute;
-  top: 50%;
+  top: 25%; /* Ajustado para centrar con la imagen */
   transform: translateY(-50%);
 }
 
 .left-wing {
-  left: 0px;
+  left: -10px;
   transform: translateY(-50%) scaleX(-1);
 }
 
 .right-wing {
-  right: 0px;
+  right: -10px;
   transform: translateY(-50%) scaleX(1);
 }
 
@@ -249,7 +251,7 @@
   transform: translateY(-50%) scale(1.05);
 }
 
-/* Contenido central de la tarjeta */
+/* Contenido central de la tarjeta - MODIFICADO para solo imagen */
 .developer-content {
   display: flex;
   flex-direction: column;
@@ -258,13 +260,13 @@
   background: rgba(29, 27, 63, 0.95);
   border: 2px solid #f5e0a3;
   border-radius: 20px;
-  padding: 20px;
-  width: 170px;
-  height: 170px;
+  padding: 8px; /* Reducido el padding */
+  width: 180px;
+  height: 180px;
   transition: all 0.3s ease;
   position: relative;
   z-index: 5;
-  gap: 12px;
+  overflow: hidden; /* Para que la imagen se ajuste bien */
 }
 
 .developer-content::before {
@@ -278,7 +280,7 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  border-radius: 14px;
+  border-radius: 18px;
 }
 
 .developer-card:hover .developer-content {
@@ -290,24 +292,23 @@
   opacity: 1;
 }
 
-/* Imagen del desarrollador */
+/* Imagen del desarrollador - MODIFICADO para ocupar toda la card */
 .developer-image-container {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 100%; /* Ocupa todo el ancho de la card */
+  height: 100%; /* Ocupa toda la altura de la card */
   margin-bottom: 0;
   flex-shrink: 0;
   background: rgba(100, 100, 100, 0.3);
-  border-radius: 12px;
-  border: 2px solid #f5e0a3;
+  border-radius: 12px; /* Ajustado al border-radius de la card */
+  overflow: hidden;
 }
 
 .developer-image {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
   object-fit: cover;
-  display: block;
 }
 
 .developer-placeholder {
@@ -315,40 +316,38 @@
   width: 100%;
   height: 100%;
   background: rgba(100, 100, 100, 0.3);
-  border-radius: 10px;
+  border-radius: 12px;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  color: #333;
+  font-size: 48px; /* Aumentado para la card más grande */
+  color: #f5e0a3;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* Mostrar placeholder por defecto */
-.developer-image-container .developer-image {
-  display: none;
-}
-
-.developer-image-container .developer-placeholder {
-  display: flex;
-}
-
-/* Si tiene imagen, mostrar imagen */
-.developer-image-container[data-has-image] .developer-image {
-  display: block;
-}
-
-.developer-image-container[data-has-image] .developer-placeholder {
-  display: none;
-}
-
-/* Nombre del desarrollador */
+/* Nombre del desarrollador - MODIFICADO para estar fuera de la card */
 .developer-name {
   color: #f5e0a3;
-  font-size: 16px;
+  font-size: 20px; /* Aumentado un poco */
   font-weight: 600;
   margin-bottom: 0;
   text-align: center;
   letter-spacing: 0.5px;
   line-height: 1.2;
+  margin-top: 12px; /* Espacio desde la imagen */
+  z-index: 10;
+  position: relative;
+}
+
+/* Enlaces sociales externos */
+.developer-links-external {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+  margin-top: 8px; /* Espacio desde el nombre */
 }
 
 /* Enlaces sociales */
@@ -365,32 +364,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: rgba(100, 100, 100, 0.3);
-  border: 1px solid rgba(245, 224, 163, 0.3);
-  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  background: rgba(29, 27, 63, 0.95);
+  border: 2px solid #f5e0a3;
+  border-radius: 50%;
   color: #f5e0a3;
   text-decoration: none;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .developer-link:hover {
   background: #f5e0a3;
   color: rgba(29, 27, 63, 0.95);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(245, 224, 163, 0.3);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(245, 224, 163, 0.4);
 }
 
 .developer-link:active {
-  transform: translateY(0);
+  transform: translateY(-1px) scale(1.05);
 }
 
 .developer-link svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   pointer-events: none;
 }
 
@@ -474,28 +474,36 @@
 
   .developer-card {
     max-width: 300px;
-    height: 180px;
+    height: 250px; /* Ajustado para móviles */
   }
 
   .developer-content {
     width: 150px;
     height: 150px;
-    padding: 16px;
-    gap: 10px;
+    padding: 6px;
   }
 
   .butterfly-wing {
-    width: 70px;
-    height: 70px;
-  }
-
-  .developer-image-container {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 
   .developer-name {
-    font-size: 14px;
+    font-size: 18px;
+  }
+
+  .developer-links {
+    gap: 8px;
+  }
+
+  .developer-link {
+    width: 32px;
+    height: 32px;
+  }
+
+  .developer-link svg {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -519,32 +527,26 @@
   }
 
   .developer-content {
-    padding: 12px;
+    padding: 4px;
     width: 130px;
     height: 130px;
-    gap: 8px;
-  }
-
-  .developer-image-container {
-    width: 40px;
-    height: 40px;
   }
 
   .developer-name {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .developer-placeholder {
-    font-size: 18px;
+    font-size: 36px;
   }
 
   .butterfly-wing {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
 
   .developer-card {
-    height: 160px;
+    height: 220px;
   }
 
   .developer-links {

@@ -23,7 +23,7 @@ export default function CreateButterfly() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
   const handleImageUpload = () => {
-    // Verificar que Cloudinary esté disponible
+
     if (!window.cloudinary) {
       alert('Error: Cloudinary no está disponible. Verifica que el script esté cargado.');
       return;
@@ -36,10 +36,10 @@ export default function CreateButterfly() {
       multiple: false,
       resourceType: 'image',
       clientAllowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
-      maxFileSize: 10000000, // 10MB
+      maxFileSize: 10000000,
       sources: ['local', 'url', 'camera']
     }, (error, result) => {
-      console.log('Cloudinary result:', result); // Para debug
+      console.log('Cloudinary result:', result); 
 
       if (error) {
         console.error('Error en Cloudinary:', error);
@@ -47,7 +47,7 @@ export default function CreateButterfly() {
       }
 
       if (result && result.event === "success") {
-        console.log('Imagen subida exitosamente:', result.info.secure_url); // Para debug
+        console.log('Imagen subida exitosamente:', result.info.secure_url);
         setFormData(prev => ({
           ...prev,
           image: result.info.secure_url
@@ -118,20 +118,21 @@ export default function CreateButterfly() {
 
         {/* Contenido principal */}
         <div className="main-content">
-          <div className="header-section">
-            <h1 className="main-title">
-              Cada mariposa tiene una historia ¿Quieres contarla?
-            </h1>
-            <p className="subtitle">
-              Comparte lo que sabes sobre una especie europea.
-            </p>
-            <p className="subtitle">
-              Con tu ayuda, la magia de Noctiluca seguirá creciendo.
-            </p>
-          </div>
-
+          
           {/* FORMULARIO */}
           <div className="form-wrapper">
+            <div className="header-section">
+              <h1 className="main-title">
+                Cada mariposa tiene una historia ¿Quieres contarla?
+              </h1>
+              <p className="subtitle">
+                Comparte lo que sabes sobre una especie europea.
+              </p>
+              <p className="subtitle">
+                Con tu ayuda, la magia de Noctiluca seguirá creciendo.
+              </p>
+            </div>
+
             <form onSubmit={handleSubmit} className="butterfly-form">
               {message && (
                 <div className={`message ${message.includes('correctamente') ? 'success' : 'error'}`}>
@@ -179,7 +180,7 @@ export default function CreateButterfly() {
                   </div>
                 </div>
 
-                {/* Segunda fila - 3 columnas */}
+                {/* Segunda fila  */}
                 <div className="form-row three-cols">
                   <div className="form-group">
                     <label className="form-label">Otros nombres</label>
@@ -217,7 +218,7 @@ export default function CreateButterfly() {
                   </div>
                 </div>
 
-                {/* Tercera fila - 3 columnas */}
+                {/* Tercera fila */}
                 <div className="form-row three-cols">
                   <div className="form-group">
                     <label className="form-label">Familia</label>
