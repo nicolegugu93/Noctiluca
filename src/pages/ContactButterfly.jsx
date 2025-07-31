@@ -9,8 +9,8 @@ import valentinaImg from '../assets/valentina.jpeg';
 import maryoriImg from '../assets/maryori.jpeg';
 import estherImg from '../assets/esther.jpg';
 import rocioImg from '../assets/rocio.jpeg';
-// Importa correctamente la imagen de la mariposa
-import butterflyWing from '../assets/logo-mariposa.png'; // O desde donde esté ubicada
+
+import butterflyWing from '../assets/logo-mariposa.png'; 
 
 export default function ContactButterfly() {
   const navigate = useNavigate();
@@ -23,7 +23,6 @@ export default function ContactButterfly() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
-  // Estado para controlar qué imágenes han cargado correctamente
   const [imageLoadStatus, setImageLoadStatus] = useState({});
 
   const handleChange = (e) => {
@@ -56,7 +55,6 @@ export default function ContactButterfly() {
           reason: ''
         });
 
-        // Redirigir a la galería después de un momento
         setTimeout(() => {
           navigate('/butterflygallery');
         }, 2000);
@@ -70,7 +68,6 @@ export default function ContactButterfly() {
     }
   };
 
-  // Función para manejar la carga exitosa de imágenes
   const handleImageLoad = (developerName) => {
     setImageLoadStatus(prev => ({
       ...prev,
@@ -78,7 +75,6 @@ export default function ContactButterfly() {
     }));
   };
 
-  // Función para manejar errores de carga de imágenes
   const handleImageError = (developerName) => {
     setImageLoadStatus(prev => ({
       ...prev,
@@ -86,13 +82,11 @@ export default function ContactButterfly() {
     }));
   };
 
-  // Función para manejar clicks en enlaces (para debugging)
   const handleLinkClick = (url, platform) => {
     console.log(`Abriendo ${platform}: ${url}`);
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  // Datos de los desarrolladores - Enlaces corregidos
   const developers = [
     {
       name: "Mariana",
@@ -236,8 +230,7 @@ export default function ContactButterfly() {
                       e.target.style.display = 'none';
                     }}
                   />
-                  
-                  {/* Contenido central */}
+
                   <div className="developer-content">
                     <div 
                       className="developer-image-container"
@@ -262,10 +255,21 @@ export default function ContactButterfly() {
                         👤
                       </div>
                     </div>
-                    <p className="developer-name">{developer.name}</p>
                   </div>
 
-                  {/* Enlaces sociales fuera del contenido central */}
+                  {/* Ala derecha  */}
+                  <img 
+                    src={butterflyWing}
+                    alt="Wing" 
+                    className="butterfly-wing right-wing"
+                    onError={(e) => {
+                      console.log('Error cargando ala derecha');
+                      e.target.style.display = 'none';
+                    }}
+                  />
+
+                  <p className="developer-name">{developer.name}</p>
+
                   <div className="developer-links-external">
                     {/* Enlace GitHub */}
                     {developer.github && (
@@ -303,17 +307,6 @@ export default function ContactButterfly() {
                       </a>
                     )}
                   </div>
-
-                  {/* Ala derecha - Usar la imagen importada */}
-                  <img 
-                    src={butterflyWing}
-                    alt="Wing" 
-                    className="butterfly-wing right-wing"
-                    onError={(e) => {
-                      console.log('Error cargando ala derecha');
-                      e.target.style.display = 'none';
-                    }}
-                  />
                 </div>
               ))}
             </div>
