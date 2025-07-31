@@ -5,7 +5,7 @@ export default function Footer() {
     <>
       <div className="footer-line"></div> {/* LÍNEA DECORATIVA */}
 
-      <footer className="bg-indigo-950 text-white py-6 text-sm mt-auto">
+      <footer className="">
         <div className="footer-content">
           <p>
             © 2025 · Proyecto realizado por Nicole, Maryori, Valentina, Esther, Rocío y Mariana para el Bootcamp Fullstack

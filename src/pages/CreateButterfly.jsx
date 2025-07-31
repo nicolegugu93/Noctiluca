@@ -22,7 +22,41 @@ export default function CreateButterfly() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const handleImageUpload = () => {
 
+    if (!window.cloudinary) {
+      alert('Error: Cloudinary no está disponible. Verifica que el script esté cargado.');
+      return;
+    }
+
+    const widget = window.cloudinary.createUploadWidget({
+      cloudName: 'dggqy6jfb',
+      uploadPreset: 'butterflies_preset',
+      folder: 'butterflies',
+      multiple: false,
+      resourceType: 'image',
+      clientAllowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      maxFileSize: 10000000,
+      sources: ['local', 'url', 'camera']
+    }, (error, result) => {
+      console.log('Cloudinary result:', result); 
+
+      if (error) {
+        console.error('Error en Cloudinary:', error);
+        return;
+      }
+
+      if (result && result.event === "success") {
+        console.log('Imagen subida exitosamente:', result.info.secure_url);
+        setFormData(prev => ({
+          ...prev,
+          image: result.info.secure_url
+        }));
+      }
+    });
+
+    widget.open();
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -84,20 +118,21 @@ export default function CreateButterfly() {
 
         {/* Contenido principal */}
         <div className="main-content">
-          <div className="header-section">
-            <h1 className="main-title">
-              Cada mariposa tiene una historia ¿Quieres contarla?
-            </h1>
-            <p className="subtitle">
-              Comparte lo que sabes sobre una especie europea.
-            </p>
-            <p className="subtitle">
-              Con tu ayuda, la magia de Noctiluca seguirá creciendo.
-            </p>
-          </div>
-
+          
           {/* FORMULARIO */}
           <div className="form-wrapper">
+            <div className="header-section">
+              <h1 className="main-title">
+                Cada mariposa tiene una historia ¿Quieres contarla?
+              </h1>
+              <p className="subtitle">
+                Comparte lo que sabes sobre una especie europea.
+              </p>
+              <p className="subtitle">
+                Con tu ayuda, la magia de Noctiluca seguirá creciendo.
+              </p>
+            </div>
+
             <form onSubmit={handleSubmit} className="butterfly-form">
               {message && (
                 <div className={`message ${message.includes('correctamente') ? 'success' : 'error'}`}>
@@ -145,7 +180,7 @@ export default function CreateButterfly() {
                   </div>
                 </div>
 
-                {/* Segunda fila - 3 columnas */}
+                {/* Segunda fila  */}
                 <div className="form-row three-cols">
                   <div className="form-group">
                     <label className="form-label">Otros nombres</label>
@@ -183,7 +218,7 @@ export default function CreateButterfly() {
                   </div>
                 </div>
 
-                {/* Tercera fila - 3 columnas */}
+                {/* Tercera fila */}
                 <div className="form-row three-cols">
                   <div className="form-group">
                     <label className="form-label">Familia</label>
@@ -240,19 +275,30 @@ export default function CreateButterfly() {
                       className="form-textarea"
                       required
                     />
+                  </div>                 
+
+                  <div className="form-group">
+                    <label className="form-label">Imagen</label>
+                    <div className="image-upload-section">
+                      <textarea
+                        name="image"
+                        value={formData.image}
+                        onChange={handleChange}
+                        rows="3"
+                        className="form-textarea"
+                        placeholder="https://"
+                      />
+                      <div className="upload-divider">O</div>
+                      <button
+                        type="button"
+                        onClick={handleImageUpload}
+                        className="upload-button"
+                      >
+                        📁 Subir imagen desde ordenador
+                      </button>
+                    </div>
                   </div>
                   
-                  <div className="form-group">
-                    <label className="form-label">URL de la Imagen</label>
-                    <textarea
-                      name="image"
-                      value={formData.image}
-                      onChange={handleChange}
-                      rows="4"
-                      className="form-textarea"
-                      placeholder="https://"
-                    />
-                  </div>
                 </div>
 
                 {/* Botón de envío */}
