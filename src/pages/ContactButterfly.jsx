@@ -89,10 +89,10 @@ export default function ContactButterfly() {
 
   const developers = [
     {
-      name: "Mariana",
-      image: marianaImg, 
-      github: "https://github.com/MarianaMH1195",
-      linkedin: "https://www.linkedin.com/in/mariana-moreno-henao-70305a16b/"
+            name: "Esther",
+      image: estherImg, 
+      github: "https://github.com/EstherTapias",
+      linkedin: "https://www.linkedin.com/in/esther-tapias-paez-camino/"
     },
     {
       name: "Nicole", 
@@ -107,22 +107,23 @@ export default function ContactButterfly() {
       linkedin: "https://www.linkedin.com/in/valentin-montilla-march/"
     },
     {
-      name: "Maryori",
-      image: maryoriImg, 
-      github: "https://github.com/MaryoriCruz",
-      linkedin: "https://www.linkedin.com/in/maryori-cruz-eguizabal-6b440116b/"
-    },
-    {
-      name: "Esther",
-      image: estherImg, 
-      github: "https://github.com/EstherTapias",
-      linkedin: "https://www.linkedin.com/in/esther-tapias-paez-camino/"
-    },
-    {
       name: "Rocío",
       image: rocioImg, 
       github: "https://github.com/Rocio-Coronel",
       linkedin: "https://www.linkedin.com/in/roc%C3%ADo-coronel/"
+      
+    },
+    {
+      name: "Mariana",
+      image: marianaImg, 
+      github: "https://github.com/MarianaMH1195",
+      linkedin: "https://www.linkedin.com/in/mariana-moreno-henao-70305a16b/"
+    },
+    {
+      name: "Maryori",
+      image: maryoriImg, 
+      github: "https://github.com/MaryoriCruz",
+      linkedin: "https://www.linkedin.com/in/maryori-cruz-eguizabal-6b440116b/"
     }
   ];
 
