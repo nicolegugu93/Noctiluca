@@ -293,7 +293,7 @@ export default function CreateButterfly() {
                         onClick={handleImageUpload}
                         className="upload-button"
                       >
-                        📁 Subir imagen desde ordenador
+                         Subir imagen desde ordenador
                       </button>
                     </div>
                   </div>
