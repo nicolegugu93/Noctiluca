@@ -11,11 +11,11 @@ body, html {
   right: 20px;
   text-align: center;
   width: fit-content;
-  max-width: 90vw; /* ✅ Limita el ancho máximo en pantallas pequeñas */
+  max-width: 90vw; 
   margin: 0 auto;
-  word-wrap: break-word; /* ✅ Permite dividir texto en varias líneas si es necesario */
+  word-wrap: break-word; 
   overflow-wrap: break-word;
-  z-index: 100; /* ✅ SOLUCIÓN: z-index alto para estar por encima del mapa */
+  z-index: 100;  
 }
 
 .imagen-boton {
@@ -50,7 +50,7 @@ body, html {
   .boton-imagen {
     top: 10px;
     right: 10px;
-    z-index: 100; /* ✅ Mantener z-index en responsive */
+    z-index: 100;  
   }
 
   .imagen-boton {
@@ -67,7 +67,7 @@ body, html {
   .boton-imagen {
     top: 5px;
     right: 5px;
-    z-index: 100; /* ✅ Mantener z-index en responsive */
+    z-index: 100; 
   }
 
   .imagen-boton {
